@@ -17,8 +17,11 @@
             align-items: center;
             justify-content: center;
             position: absolute;
+            flex-direction: column;
             top: 0;
             left: 0;
+            margin-left: auto;
+            margin-right: auto;
             width: 100vw;
             height: 100vh;
         }
@@ -26,14 +29,36 @@
         .loading-logo {
             background: url('./assets/DRN_WebLogo_HDPI.png') no-repeat center center;
             background-size: contain;
+            justify-content: center;
+            align-items: center;
             width: 50%; /* adjust based on your desired size */
             height: 50%; /* adjust based on your desired size */
             max-width: 600px; /* or another size that makes sense for your logo */
             max-height: 600px;
         }
+
+        .loading-bar-container {
+            position: relative;
+            width: 50%;
+            height: 20px;
+            background-color: #ddd;
+            margin-top: 20%; /* Position it in the bottom half of the screen */
+        }
+
+        .loading-bar {
+            position: absolute;
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50; /* Green loading bar */
+            transition: width 3s;
+        }
     </style>
 
     <script>
+        setTimeout(function() {
+            document.querySelector('.loading-bar').style.width = "100%";
+        }, 100); // Start the bar load almost immediately after page load
+
         // Redirects to a new HTML page after 3 seconds
         setTimeout(function(){
             window.location.href = 'mainPage.html'; 
@@ -44,6 +69,9 @@
 <body>
     <div class="app-container">
         <div class="loading-logo"></div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
     </div>
 </body>
 </html>
