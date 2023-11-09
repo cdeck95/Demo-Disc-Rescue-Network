@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disc Rescue Network - Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9f1f6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #1B73B5;
+        }
+
+        .status, .location {
+            display: flex;
+            align-items: center;
+        }
+
+        .status {
+            color: #4CAF50; /* Green color for "OPT IN STATUS CONFIRMED" */
+        }
+
+        .logo-container {
+            width: 60%; 
+            margin: 20px auto;
+            display: block;
+            position: relative;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .btn {
+            padding: 15px;
+            margin: 10px 0;
+            width: 90%;
+            text-align: center;
+            background-color: #1B73B5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .discs {
+            padding: 20px;
+        }
+
+        .disc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .disc-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .disc-icon {
+            margin-right: 10px;
+            width: 30px; /* You can adjust this */
+            height: 30px; /* You can adjust this */
+        }
+
+        .disc-location, .disc-date {
+            margin-right: 10px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #1B73B5;
+        }
+
+        .footer-icon {
+            flex: 1;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="status">✔️ OPT IN STATUS CONFIRMED</div>
+    <div class="location">📍 NEW JERSEY <span>CHANGE</span></div>
+</header>
+
+<div class="logo-container">
+    <img src="./assets/DRN_App_Main.png" alt="Disc Rescue Network Logo" class="logo">
+</div>
+
+<button class="btn">FIND MY DISC</button>
+<button class="btn">SEARCH COURSES</button>
+
+<div class="discs">
+    <h2>RECENTLY TURNED IN DISCS</h2>
+
+    <div class="disc-item">
+        <div class="disc-info">
+            <img src="./assets/disc_icon.png" alt="Disc Icon" class="disc-icon">
+            <span class="disc-name">Orange Gator</span>
+            <span class="disc-owner">Deck, C.</span>
+        </div>
+        <div class="disc-location">🌲 Tranquility, NJ</div>
+        <div class="disc-date">11.03.2023</div>
+        <span>></span>
+    </div>
+
+    <!-- Repeat the above .disc-item block for other items -->
+</div>
+
+<div class="footer">
+    <div class="footer-icon">🔍 SEARCH ALL</div>
+    <div class="footer-icon">🛒 DISC STORE</div>
+    <div class="footer-icon">🌲 COURSES</div>
+    <div class="footer-icon">⚙️ SETTINGS</div>
+</div>
+
+</body>
+</html>

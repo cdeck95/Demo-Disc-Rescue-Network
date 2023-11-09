@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disc Rescue Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1B73B5; /* Taken from the image's blue background */
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .loading-logo {
+            background: url('./assets/DRN_WebLogo_HDPI.png') no-repeat center center;
+            background-size: contain;
+            width: 50%; /* adjust based on your desired size */
+            height: 50%; /* adjust based on your desired size */
+            max-width: 600px; /* or another size that makes sense for your logo */
+            max-height: 600px;
+        }
+    </style>
+
+    <script>
+        // Redirects to a new HTML page after 3 seconds
+        setTimeout(function(){
+            window.location.href = 'mainPage.html'; 
+        }, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="app-container">
+        <div class="loading-logo"></div>
+    </div>
+</body>
+</html>
+
+
+
+
