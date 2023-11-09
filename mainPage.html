@@ -126,6 +126,15 @@
             object-fit: contain;
         }
 
+        .logo-fab {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0px;
+            padding: 5px;
+            object-fit: contain;
+        }
+
         .btn {
             width: 90%;
             text-align: center;
@@ -213,17 +222,72 @@
 
         .footer {
             display: flex;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: var(--secondary-blue);
+            justify-content: space-between; /* Changed to space-between */
+            align-items: center;
+            padding: 5px;
+            background-color: var(--primary-blue);
             position: fixed;
             bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px; /* Adjust as needed */
+            z-index: 1;
+        }
+
+        .footer-item, .footer-item-middle-left, .footer-item-middle-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--primary-white);
+        }
+
+        .footer .footer-item {
+            flex: 1; /* Distributes space evenly */
+            text-align: center; /* Ensures the text is centered within the footer-item */
+            margin: 10px;
+        }
+
+        .footer .footer-item-middle-left {
+            margin-right: 40px;
+        }
+
+        .footer .footer-item-middle-right {
+            margin-left: 40px;
         }
 
         .footer-icon {
-            flex: 1;
-            text-align: center;
+            font-size: 1.5em; /* Adjust the size as needed */
+            margin-bottom: 5px; /* Space between icon and text */
+        }
+
+        .footer-text {
+            font-size: 0.75em; /* Adjust the size as needed */
+        }
+
+        .fab-container {
+            position: absolute;
+            top: -50%; /* Adjust as needed to lift the FAB */
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            z-index: 2; /* Higher than the footer to appear on top */
+            background-color: var(--primary-grey);
+            border-radius: 40px;
+        }
+
+        .fab {
+            background-color: var(--primary-red); /* Or any color you want for the FAB */
+            border: none;
+            border-radius: 50%;
             color: var(--primary-white);
+            cursor: pointer;
+            font-size: 24px; /* Adjust as needed */
+            height: 56px; /* FAB size */
+            width: 56px; /* FAB size */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #toast {
@@ -335,11 +399,29 @@
 
 
     <div class="footer">
-        <div class="footer-icon">🔍 SEARCH ALL</div>
-        <div class="footer-icon">🛒 DISC STORE</div>
-        <div class="footer-icon">🌲 COURSES</div>
-        <div class="footer-icon">⚙️ SETTINGS</div>
+        <div class="footer-item">
+            <i class="fa-solid fa-house footer-icon"></i>
+            <div class="footer-text">HOME</div>
+        </div>
+        <div class="footer-item-middle-left">
+            <i class="fa-solid fa-magnifying-glass footer-icon"></i>
+            <div class="footer-text">SEARCH ALL</div>
+        </div>
+        <div class="fab-container">
+            <button class="fab">
+                <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab">
+            </button>
+        </div>
+        <div class="footer-item-middle-right">
+            <i class="fa-solid fa-compact-disc footer-icon"></i>
+            <div class="footer-text">DISC STORE</div>
+        </div>
+        <div class="footer-item">
+            <i class="fa-solid fa-basket-shopping footer-icon"></i>
+            <div class="footer-text">COURSES</div>
+        </div>
     </div>
+    
 
     <div id="toast">Button is clicked</div>
 </body>
