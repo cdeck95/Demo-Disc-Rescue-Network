@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disc Rescue Network - Main Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #16619b; 
-            --secondary-blue: #2d93e2;
+            --primary-blue: #005daa; 
+            --secondary-blue: #228de5;
             --primary-black: #000000;
-            --primary-red: #c00c0c;
+            --primary-red: #d31245;
             --primary-white: #FFFFFF;
-            --primary-grey: #f3e9e9;
-            --primary-green: #1bd622;
+            --primary-grey: #e3e3e3;
+            --primary-green: #55de1f;
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Bebas Neue', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--primary-grey);
@@ -43,29 +46,28 @@
         .location-icon {
             color: var(--primary-red);
             margin-right: 5px;
-            font-size: 0.75em;
+            font-size: 0.6em;
         }
 
         .location-state {
             color: var(--primary-red);
-            font-size: .6em;
+            font-size: .8em;
             margin: 0px;
             padding: 0px;
         }
 
         .location-change {
-            font-size: 0.45em;
+            font-size: 0.55em;
             font-weight: 600;
             color: var(--primary-black);
             margin: 0px;
-            margin-top: 2px;
             padding: 0px;
         }
 
         .status {
             display: flex;
             align-items: center;
-            font-size: 0.6em;
+            font-size: 0.8em;
             padding: 10px;
             padding-top: 15px;
             white-space: nowrap;
@@ -142,7 +144,8 @@
             color: var(--primary-white);
             border: none;
             border-radius: 0px;
-            font-size: 1.2em;
+            font-size: 1.5em;
+            font-family: 'Bebas Neue', sans-serif;
             cursor: pointer;
         }
 
@@ -167,11 +170,12 @@
         .btn-description {
             text-align: center;
             color: var(--primary-blue);
-            font-size: 0.5em;
+            font-size: 0.75em;
             font-weight: 600;
             margin: 0px;
             padding: 0px;
             width: 90%;
+            margin-bottom: 20px;
         }
 
         .rescue-flow {
@@ -225,7 +229,7 @@
             justify-content: space-between; /* Changed to space-between */
             align-items: center;
             padding: 5px;
-            background-color: var(--primary-blue);
+            background-color: var(--secondary-blue);
             position: fixed;
             bottom: 0;
             left: 0;
@@ -234,25 +238,31 @@
             z-index: 1;
         }
 
-        .footer-item, .footer-item-middle-left, .footer-item-middle-right {
+        .footer-item, .footer-item-middle-left, .footer-item-middle-right, .footer-item-left, .footer-item-right {
             display: flex;
             flex-direction: column;
             align-items: center;
             color: var(--primary-white);
         }
 
-        .footer .footer-item {
+        .footer .footer-item-left {
+            margin-right: 10px;
             flex: 1; /* Distributes space evenly */
             text-align: center; /* Ensures the text is centered within the footer-item */
-            margin: 10px;
+        }
+
+        .footer .footer-item-right {
+            margin-left: 10px;
+            flex: 1; /* Distributes space evenly */
+            text-align: center; /* Ensures the text is centered within the footer-item */
         }
 
         .footer .footer-item-middle-left {
-            margin-right: 40px;
+            margin-right: 50px;
         }
 
         .footer .footer-item-middle-right {
-            margin-left: 40px;
+            margin-left: 50px;
         }
 
         .footer-icon {
@@ -399,7 +409,7 @@
 
 
     <div class="footer">
-        <div class="footer-item">
+        <div class="footer-item-left">
             <i class="fa-solid fa-house footer-icon"></i>
             <div class="footer-text">HOME</div>
         </div>
@@ -416,7 +426,7 @@
             <i class="fa-solid fa-compact-disc footer-icon"></i>
             <div class="footer-text">DISC STORE</div>
         </div>
-        <div class="footer-item">
+        <div class="footer-item-right">
             <i class="fa-solid fa-basket-shopping footer-icon"></i>
             <div class="footer-text">COURSES</div>
         </div>
