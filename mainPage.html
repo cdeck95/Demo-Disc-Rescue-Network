@@ -423,6 +423,144 @@
             margin-top: 35px;
             margin-bottom: 20px;
         }
+
+        .grid {
+  width: 100%;
+  max-height: 125px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  opacity: 1;
+  text-align: left;
+  background-color: #fff;
+  border: 2px #000;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0;
+  padding: 2px 2px 2px 0;
+}
+
+.div-block {
+  min-height: 40px;
+  opacity: .78;
+  border: 1.5px solid #e3e3e3;
+  align-items: center;
+  padding-left: 0;
+  display: flex;
+}
+
+.text-block {
+  flex: 1;
+  margin-top: 0;
+  padding-left: 10px;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.card-container {
+  width: 100%;
+  max-width: 400px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.image {
+  width: 135px;
+  height: 135px;
+  max-width: 135px;
+  object-fit: fill;
+  border: 5px solid #005daa;
+  border-radius: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.sub-info {
+  width: 100%;
+  clear: none;
+  flex-direction: row;
+  flex: 0 auto;
+  align-self: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+}
+
+.section {
+  max-width: 400px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+.body {
+  background-color: #e3e3e3;
+}
+
+.disc-info {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+}
+
+.grid-of-cards {
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.text-block-2 {
+  aspect-ratio: auto;
+  display: flex;
+  text-align: left;
+  justify-content: center;
+}
+
+.div-block-2 {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.button-2 {
+  width: 150px;
+  text-align: center;
+  letter-spacing: 1px;
+  background-color: #005daa;
+  align-self: center;
+  margin: auto;
+  padding: 5px 10px;
+  font-family: Bebas Neue, sans-serif;
+  font-size: 1.75rem;
+  display: block;
+}
+
+.disc-icon {
+  margin-left: 5px;
+}
+
+.image-5 {
+    margin-right: 10px;
+    margin-left: 5px;
+    max-width: 20px;
+  }
+
+  .sub-info .btn {
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 5px 10px;
+  }
     </style>
     <script>
         // Function to show toast message
@@ -510,9 +648,36 @@
 
         <div class="discs">
             <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
-            <div class="discs-container">
+            <!-- <div class="discs-container"> -->
                 <!-- Disc cards will be dynamically added here -->
-            </div>
+            <!-- </div> -->
+            <div class="w-layout-grid grid-of-cards">
+                <div id="w-node-_17c7294b-a06b-de45-0738-941d0231ec7d-c5a415d0" class="card-container">
+                  <div class="disc-info"><img src="./assets/santa_cruz_driver.png" loading="lazy" alt="" class="image">
+                    <div class="w-layout-grid grid">
+                      <div id="w-node-_7f4bbee6-bd6b-468c-6e10-da1df1d9f808-c5a415d0" class="div-block">
+                        <i class="fa-regular fa-address-card disc-icon"></i>
+                        <div class="text-block">Neon Orange</div>
+                      </div>
+                      <div id="w-node-_230dafbc-e26e-055b-3757-12d7fbccaad9-c5a415d0" class="div-block">
+                        <i class="fa-solid fa-barcode disc-icon"></i>
+                        <div class="text-block">Santa Cruz Driver</div>
+                      </div>
+                      <div id="w-node-_413374ef-ab19-4a63-1deb-32da87122214-c5a415d0" class="div-block">
+                        <i class="fa-regular fa-user disc-icon"></i>
+                        <div class="text-block">C. Deck</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sub-info">
+                    <div class="div-block-2">
+                        <img src="./assets/basket_icon.png" loading="lazy" alt="" class="image-5">
+                        <div class="text-block-2">Tranquility, NJ</div>
+                    </div>
+                    <button class="btn">Claim Disc</button>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
 
