@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #005daa; 
+            --primary-blue: #005daa;
             --secondary-blue: #228de5;
             --primary-black: #000000;
             --primary-red: #d31245;
@@ -46,19 +46,19 @@
         .location-icon {
             color: var(--primary-red);
             margin-right: 5px;
-            font-size: 0.6em;
+            font-size: 0.55em;
         }
 
         .location-state {
             color: var(--primary-red);
-            font-size: .8em;
+            font-size: .7em;
             margin: 0px;
             padding: 0px;
         }
 
         .location-change {
-            font-size: 0.55em;
-            font-weight: 600;
+            font-size: 0.5em;
+            font-weight: 500;
             color: var(--primary-black);
             margin: 0px;
             padding: 0px;
@@ -67,11 +67,11 @@
         .status {
             display: flex;
             align-items: center;
-            font-size: 0.8em;
+            font-size: 0.65em;
             padding: 10px;
             padding-top: 15px;
             white-space: nowrap;
-            font-weight: 600;
+            font-weight: 400;
             text-align: left;
         }
 
@@ -112,8 +112,8 @@
 
         .logo-container {
             position: absolute;
-            top: 15px;
-            width: 60%;
+            top: 5px;
+            width: 75%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -138,7 +138,7 @@
         }
 
         .btn {
-            width: 90%;
+            width: 100%;
             text-align: center;
             background-color: var(--primary-blue);
             color: var(--primary-white);
@@ -158,7 +158,7 @@
             /* Positioned absolutely within the page-container */
             top: 165px;
             /* Adjust this value as needed to place the buttons below the logo */
-            width: 90%;
+            width: 80%;
             /* Adjust width as needed */
             display: flex;
             flex-direction: column;
@@ -167,11 +167,18 @@
             min-height: 200px;
         }
 
+        .btn-container .btn {
+            padding: 17px;
+            margin: 3px;
+            letter-spacing: 1.25px;
+            font-size: 2.25rem;
+        }
+
         .btn-description {
             text-align: center;
             color: var(--primary-blue);
-            font-size: 0.75em;
-            font-weight: 600;
+            font-size: 0.85em;
+            font-weight: 500;
             margin: 0px;
             padding: 0px;
             width: 90%;
@@ -187,46 +194,78 @@
 
         .discs {
             position: absolute;
-            top: 50%;
-            width: 90%;
-            max-height: 50%;
+            top: 52%;
+            width: 80%;
+            max-height: 45%;
         }
 
-        .btn-container .btn {
+        .discs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Creates a responsive 2-column layout */
+            gap: 20px;
             padding: 20px;
-            margin: 3px;
         }
 
-        .disc-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: var(--primary-white);
-            margin: 10px 0;
-            border-radius: 5px;
-        }
+.disc-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Adjust as needed */
+  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 
-        .disc-info {
-            flex: 1;
-            display: flex;
-            align-items: center;
-        }
+.disc-image-container {
+  position: relative;
+}
 
-        .disc-icon {
-            margin-right: 10px;
-            width: 30px;
-            height: 30px;
-        }
+.disc-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border: 3px solid var(--primary-blue);
+}
 
-        .disc-location,
-        .disc-date {
-            margin-right: 10px;
-        }
+.disc-name, .disc-type, .disc-owner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.25em;
+    font-weight: 500;
+    justify-content: center;
+}
+
+.disc-location-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.disc-basket-icon {
+  margin-right: 5px;
+}
+
+.disc-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.claim-btn {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
 
         .footer {
             display: flex;
-            justify-content: space-between; /* Changed to space-between */
+            justify-content: space-between;
+            /* Changed to space-between */
             align-items: center;
             padding: 5px;
             background-color: var(--secondary-blue);
@@ -234,11 +273,16 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px; /* Adjust as needed */
+            height: 60px;
+            /* Adjust as needed */
             z-index: 1;
         }
 
-        .footer-item, .footer-item-middle-left, .footer-item-middle-right, .footer-item-left, .footer-item-right {
+        .footer-item,
+        .footer-item-middle-left,
+        .footer-item-middle-right,
+        .footer-item-left,
+        .footer-item-right {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -246,55 +290,73 @@
         }
 
         .footer .footer-item-left {
-            margin-right: 10px;
-            flex: 1; /* Distributes space evenly */
-            text-align: center; /* Ensures the text is centered within the footer-item */
+            margin-right: 30px;
+            flex: 1;
+            /* Distributes space evenly */
+            text-align: center;
+            /* Ensures the text is centered within the footer-item */
         }
 
         .footer .footer-item-right {
-            margin-left: 10px;
-            flex: 1; /* Distributes space evenly */
-            text-align: center; /* Ensures the text is centered within the footer-item */
+            margin-left: 30px;
+            flex: 1;
+            /* Distributes space evenly */
+            text-align: center;
+            /* Ensures the text is centered within the footer-item */
         }
 
         .footer .footer-item-middle-left {
-            margin-right: 50px;
+            margin-right: 65px;
         }
 
         .footer .footer-item-middle-right {
-            margin-left: 50px;
+            margin-left: 65px;
         }
 
         .footer-icon {
-            font-size: 1.5em; /* Adjust the size as needed */
-            margin-bottom: 5px; /* Space between icon and text */
+            font-size: 1.5em;
+            /* Adjust the size as needed */
+            margin-bottom: 5px;
+            /* Space between icon and text */
         }
 
         .footer-text {
-            font-size: 0.75em; /* Adjust the size as needed */
+            font-size: 0.75em;
+            /* Adjust the size as needed */
         }
 
         .fab-container {
             position: absolute;
-            top: -50%; /* Adjust as needed to lift the FAB */
+            top: -50%;
+            /* Adjust as needed to lift the FAB */
             left: 50%;
             transform: translateX(-50%);
             padding: 5px;
-            z-index: 2; /* Higher than the footer to appear on top */
+            z-index: 2;
+            /* Higher than the footer to appear on top */
             background-color: var(--primary-grey);
             border-radius: 40px;
         }
 
         .fab {
-            background-color: var(--primary-red); /* Or any color you want for the FAB */
+            background-color: var(--primary-red);
+            /* Or any color you want for the FAB */
             border: none;
             border-radius: 50%;
             color: var(--primary-white);
             cursor: pointer;
-            font-size: 24px; /* Adjust as needed */
-            height: 56px; /* FAB size */
-            width: 56px; /* FAB size */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow */
+            padding-top: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            font-size: 24px;
+            /* Adjust as needed */
+            height: 65px;
+            /* FAB size */
+            width: 65px;
+            /* FAB size */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Optional shadow */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -336,7 +398,30 @@
             width: 100%;
             height: 100%;
             margin: 0px;
+            margin-top: 30px;
             padding: 0px;
+        }
+
+        .box-2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            margin-top: 25px;
+            padding: 0px;
+        }
+
+        .sub-header {
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--primary-blue);
+            margin: 0px;
+            padding: 0px;
+            margin-top: 35px;
+            margin-bottom: 20px;
         }
     </style>
     <script>
@@ -347,6 +432,40 @@
             setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
         }
     </script>
+    <script>
+        // Example array of disc objects
+        const discs = [
+            { id: 1, name: 'Neon Orange Shark', type: 'Driver', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/disc_icon.png' },
+            { id: 2, name: 'Blue Buzz', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.04.2023', imageUrl: './assets/disc_icon.png' },
+            { id: 3, name: 'Neon Orange Shark', type: 'Driver', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/disc_icon.png' },
+            { id: 4, name: 'Blue Buzz', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.04.2023', imageUrl: './assets/disc_icon.png' },
+        ];
+
+        function createDiscCards(discs) {
+            const container = document.querySelector('.discs-container');
+            container.innerHTML = discs.map(disc => `
+                <div class="disc-card">
+                <div class="disc-image-container">
+                    <img src="${disc.imageUrl}" alt="${disc.name}" class="disc-image">
+                    <div class="disc-location-container">
+                    <i class="fa-solid fa-basket-shopping disc-basket-icon"></i>
+                    <span class="disc-location">${disc.location}</span>
+                    </div>
+                </div>
+                <div class="disc-info-container">
+                    <div class="disc-name"><i class="fa-solid fa-key"></i> ${disc.name}</div>
+                    <div class="disc-type"><i class="fa-solid fa-compact-disc"></i> ${disc.type}</div>
+                    <div class="disc-owner"><i class="fa-solid fa-user"></i> ${disc.owner}</div>
+                    <button class="claim-btn">CLAIM DISK</button>
+                </div>
+                </div>
+            `).join('');
+        }
+
+        // Call the function on page load
+        document.addEventListener('DOMContentLoaded', () => createDiscCards(discs));
+    </script>
+
 </head>
 
 <body>
@@ -381,29 +500,19 @@
             <div class="box">
                 <button class="btn">FIND MY DISC</button>
                 <div class="btn-description">GO THROUGH THE <span class="rescue-flow" onclick="showToast()">RESCUE
-                    FLOW</span> TO FIND YOUR DISC</div>
+                        FLOW</span> TO FIND YOUR DISC</div>
             </div>
-            <div class="box">
+            <div class="box-2">
                 <button class="btn">SEARCH COURSES</button>
                 <div class="btn-description">SEARCH BY COURSE FOR TURNED IN DISCS</div>
             </div>
         </div>
 
         <div class="discs">
-            <h2>RECENTLY TURNED IN DISCS</h2>
-
-            <div class="disc-item">
-                <div class="disc-info">
-                    <img src="./assets/disc_icon.png" alt="Disc Icon" class="disc-icon">
-                    <span class="disc-name">Orange Gator</span>
-                    <span class="disc-owner">Deck, C.</span>
-                </div>
-                <div class="disc-location">🌲 Tranquility, NJ</div>
-                <div class="disc-date">11.03.2023</div>
-                <span>></span>
+            <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
+            <div class="discs-container">
+                <!-- Disc cards will be dynamically added here -->
             </div>
-
-            <!-- Repeat the above .disc-item block for other items -->
         </div>
     </div>
 
@@ -431,7 +540,7 @@
             <div class="footer-text">COURSES</div>
         </div>
     </div>
-    
+
 
     <div id="toast">Button is clicked</div>
 </body>
