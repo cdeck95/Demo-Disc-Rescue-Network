@@ -489,7 +489,9 @@
         }
 
         .card-container {
-            width: 100%;
+            flex-shrink: 0;
+            width: 400px;
+            /* width: 100%; */
             max-width: 400px;
             flex-wrap: wrap;
             justify-content: center;
@@ -537,11 +539,10 @@
         }
 
         .grid-of-cards {
-            grid-template-columns: 1fr;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            justify-items: center;
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
         }
 
         .text-block-2 {
@@ -583,6 +584,7 @@
         .image-5 {
             margin-right: 10px;
             margin-left: 0px;
+            margin-bottom: 3px;
             max-width: 20px;
         }
 
@@ -665,32 +667,44 @@
     <script>
         // Example array of disc objects
         const discs = [
-            { id: 1, name: 'Neon Orange Shark', type: 'Driver', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/disc_icon.png' },
-            { id: 2, name: 'Blue Buzz', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.04.2023', imageUrl: './assets/disc_icon.png' },
-            { id: 3, name: 'Neon Orange Shark', type: 'Driver', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/disc_icon.png' },
-            { id: 4, name: 'Blue Buzz', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.04.2023', imageUrl: './assets/disc_icon.png' },
+            { id: 1, name: 'Neon Orange Shark', type: 'Driver', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/santa_cruz_driver.png' },
+            { id: 2, name: 'Blue Buzz', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.04.2023', imageUrl: './assets/santa_cruz_driver.png' },
+            { id: 3, name: 'Neon Orange Shark', type: 'Driver', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/santa_cruz_driver.png' },
+            { id: 4, name: 'Blue Buzz', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.04.2023', imageUrl: './assets/santa_cruz_driver.png' },
         ];
 
         function createDiscCards(discs) {
-            const container = document.querySelector('.discs');
-            container.innerHTML = discs.map(disc => `
-                <div class="disc-card">
-                    <div class="disc-image-container">
-                        <img src="${disc.imageUrl}" alt="${disc.name}" class="disc-image">
-                        <div class="disc-location-container">
-                            <i class="fa-solid fa-basket-shopping disc-basket-icon"></i>
-                            <span class="disc-location">${disc.location}</span>
-                        </div>
+    const container = document.querySelector('.grid-of-cards');
+    container.innerHTML = discs.map(disc => `
+        <div class="card-container">
+            <div class="disc-info">
+                <img src="${disc.imageUrl}" loading="lazy" alt="${disc.name}" class="image">
+                <div class="w-layout-grid grid">
+                    <div class="div-block">
+                        <i class="fa-regular fa-address-card disc-icon"></i>
+                        <div class="text-block">${disc.name}</div>
                     </div>
-                    <div class="disc-info-container">
-                        <div class="disc-name"><i class="fa-solid fa-key"></i> ${disc.name}</div>
-                        <div class="disc-type"><i class="fa-solid fa-compact-disc"></i> ${disc.type}</div>
-                        <div class="disc-owner"><i class="fa-solid fa-user"></i> ${disc.owner}</div>
-                        <button class="claim-btn">CLAIM DISK</button>
+                    <div class="div-block">
+                        <i class="fa-solid fa-barcode disc-icon"></i>
+                        <div class="text-block">${disc.type}</div>
+                    </div>
+                    <div class="div-block">
+                        <i class="fa-regular fa-user disc-icon"></i>
+                        <div class="text-block">${disc.owner}</div>
                     </div>
                 </div>
-            `).join('');
-        }
+            </div>
+            <div class="sub-info">
+                <div class="div-block-2">
+                    <i class="fa-solid fa-map-pin image-5"></i>
+                    <div class="text-block-2">${disc.location}</div>
+                </div>
+                <button class="btn">Claim Disc</button>
+            </div>
+        </div>
+    `).join('');
+}
+
 
 
         // Call the function on page load
