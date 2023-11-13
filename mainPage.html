@@ -111,8 +111,8 @@
         }
 
         .logo-container {
-            position: absolute;
-            top: 5px;
+            /* position: absolute;
+            top: 5px; */
             width: 75%;
             display: flex;
             justify-content: center;
@@ -122,6 +122,7 @@
 
         .logo {
             max-width: 60%;
+            max-height: 175px;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -154,9 +155,9 @@
         }
 
         .btn-container {
-            position: absolute;
+            /* position: absolute; */
             /* Positioned absolutely within the page-container */
-            top: 165px;
+            /* top: 165px; */
             /* Adjust this value as needed to place the buttons below the logo */
             width: 80%;
             /* Adjust width as needed */
@@ -193,72 +194,76 @@
         }
 
         .discs {
-            position: absolute;
-            top: 52%;
+            /* position: absolute;
+            top: 52%; */
             width: 80%;
-            max-height: 45%;
+            /* max-height: 45%; */
         }
 
         .discs-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Creates a responsive 2-column layout */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            /* Creates a responsive 2-column layout */
             gap: 20px;
             padding: 20px;
         }
 
-.disc-card {
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* Adjust as needed */
-  gap: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
+        .disc-card {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            /* Adjust as needed */
+            gap: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-.disc-image-container {
-  position: relative;
-}
+        .disc-image-container {
+            position: relative;
+        }
 
-.disc-image {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border: 3px solid var(--primary-blue);
-}
+        .disc-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border: 3px solid var(--primary-blue);
+        }
 
-.disc-name, .disc-type, .disc-owner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 1.25em;
-    font-weight: 500;
-    justify-content: center;
-}
+        .disc-name,
+        .disc-type,
+        .disc-owner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 1.25em;
+            font-weight: 500;
+            justify-content: center;
+        }
 
-.disc-location-container {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
+        .disc-location-container {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
 
-.disc-basket-icon {
-  margin-right: 5px;
-}
+        .disc-basket-icon {
+            margin-right: 5px;
+        }
 
-.disc-info-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-}
+        .disc-info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+        }
 
-.claim-btn {
-  background-color: var(--primary-blue);
-  color: var(--primary-white);
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+        .claim-btn {
+            background-color: var(--primary-blue);
+            color: var(--primary-white);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
 
 
@@ -350,16 +355,45 @@
             padding-right: 10px;
             padding-bottom: 10px;
             font-size: 24px;
-            /* Adjust as needed */
+            z-index: 12;
             height: 65px;
-            /* FAB size */
             width: 65px;
-            /* FAB size */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Optional shadow */
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .fab-menu {
+            position: fixed;
+            bottom: 10%;
+            /* Adjust as necessary */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            /* Adjust size as necessary */
+            height: 200px;
+            /* Adjust size as necessary */
+            border-radius: 50%;
+            background-color: var(--primary-red);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 11;
+            /* Above the overlay */
+        }
+
+        .fab-menu.active {
+            display: flex;
+        }
+
+        .fab-menu-item {
+            background: none;
+            border: none;
+            color: var(--primary-white);
+            margin: 10px;
+            cursor: pointer;
         }
 
         #toast {
@@ -418,149 +452,164 @@
             font-size: 1em;
             font-weight: 500;
             color: var(--primary-blue);
-            margin: 0px;
             padding: 0px;
-            margin-top: 35px;
-            margin-bottom: 20px;
+            margin: 10px 0px;
         }
 
         .grid {
-  width: 100%;
-  max-height: 125px;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  opacity: 1;
-  text-align: left;
-  background-color: #fff;
-  border: 2px #000;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 1fr;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 0;
-  padding: 2px 2px 2px 0;
-}
+            width: 100%;
+            max-height: 125px;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            opacity: 1;
+            text-align: left;
+            background-color: #fff;
+            border: 2px #000;
+            grid-template-rows: auto auto auto;
+            grid-template-columns: 1fr;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 0;
+            padding: 2px 2px 2px 0;
+        }
 
-.div-block {
-  min-height: 40px;
-  opacity: .78;
-  border: 1.5px solid #e3e3e3;
-  align-items: center;
-  padding-left: 0;
-  display: flex;
-}
+        .div-block {
+            min-height: 40px;
+            opacity: .78;
+            border: 1.5px solid #e3e3e3;
+            align-items: center;
+            padding-left: 0;
+            display: flex;
+        }
 
-.text-block {
-  flex: 1;
-  margin-top: 0;
-  padding-left: 10px;
-  font-size: 1rem;
-  font-family: Arial, Helvetica, sans-serif !important;
-}
+        .text-block {
+            flex: 1;
+            margin-top: 0;
+            padding-left: 10px;
+            font-size: 1rem;
+            font-family: Arial, Helvetica, sans-serif !important;
+        }
 
-.card-container {
-  width: 100%;
-  max-width: 400px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
+        .card-container {
+            width: 100%;
+            max-width: 400px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
 
-.image {
-  width: 135px;
-  height: 135px;
-  max-width: 135px;
-  object-fit: fill;
-  border: 5px solid #005daa;
-  border-radius: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-}
+        .image {
+            width: 135px;
+            height: 135px;
+            max-width: 135px;
+            object-fit: fill;
+            border: 5px solid #005daa;
+            border-radius: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
 
-.sub-info {
-  width: 100%;
-  clear: none;
-  flex-direction: row;
-  flex: 0 auto;
-  align-self: center;
-  align-items: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  display: flex;
-}
+        .sub-info {
+            width: 100%;
+            clear: none;
+            flex-direction: row;
+            flex: 0 auto;
+            align-self: center;
+            align-items: center;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            display: flex;
+        }
 
-.section {
-  max-width: 400px;
-  margin: auto;
-  padding-top: 100px;
-}
+        .section {
+            max-width: 400px;
+            margin: auto;
+            padding-top: 100px;
+        }
 
-.body {
-  background-color: #e3e3e3;
-}
+        .body {
+            background-color: #e3e3e3;
+        }
 
-.disc-info {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-}
+        .disc-info {
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+        }
 
-.grid-of-cards {
-  grid-template-columns: 1fr;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
-}
+        .grid-of-cards {
+            grid-template-columns: 1fr;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            justify-items: center;
+        }
 
-.text-block-2 {
-  aspect-ratio: auto;
-  display: flex;
-  text-align: left;
-  justify-content: center;
-}
+        .text-block-2 {
+            aspect-ratio: auto;
+            display: flex;
+            text-align: left;
+            justify-content: center;
+            font-size: .9rem;
+        }
 
-.div-block-2 {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
-  margin-right: 20px;
-}
+        .div-block-2 {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            align-items: center;
+            margin-right: 20px;
+        }
 
-.button-2 {
-  width: 150px;
-  text-align: center;
-  letter-spacing: 1px;
-  background-color: #005daa;
-  align-self: center;
-  margin: auto;
-  padding: 5px 10px;
-  font-family: Bebas Neue, sans-serif;
-  font-size: 1.75rem;
-  display: block;
-}
+        .button-2 {
+            width: 150px;
+            text-align: center;
+            letter-spacing: 1px;
+            background-color: #005daa;
+            align-self: center;
+            margin: auto;
+            padding: 5px 10px;
+            font-family: Bebas Neue, sans-serif;
+            font-size: 1.75rem;
+            display: block;
+        }
 
-.disc-icon {
-  margin-left: 5px;
-}
+        .disc-icon {
+            margin-left: 5px;
+        }
 
-.image-5 {
-    margin-right: 10px;
-    margin-left: 5px;
-    max-width: 20px;
-  }
+        .image-5 {
+            margin-right: 10px;
+            margin-left: 0px;
+            max-width: 20px;
+        }
 
-  .sub-info .btn {
-    max-width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    padding: 5px 10px;
-  }
+        .sub-info .btn {
+            max-width: 130px;
+            max-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            padding: 5px 5px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .overlay.active {
+            display: block;
+        }
     </style>
     <script>
         // Function to show toast message
@@ -569,6 +618,24 @@
             toast.className = "show";
             setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
         }
+
+        // JavaScript functions to toggle the FAB menu and overlay
+        function toggleFabMenu() {
+            document.getElementById('overlay').classList.toggle('active');
+            document.getElementById('fabMenu').classList.toggle('active');
+            // Toggle FAB icon between '+' and 'X'
+            const fab = document.querySelector('.fab');
+            if (fab.textContent === '+') {
+                fab.textContent = 'X';
+            } else {
+                fab.textContent = '+';
+            }
+        }
+
+        // Placeholder functions for menu item actions
+        function reportLostDisc() { /* ... */ }
+        function requestCourse() { /* ... */ }
+        function openSettings() { /* ... */ }
     </script>
     <script>
         // Example array of disc objects
@@ -649,35 +716,36 @@
         <div class="discs">
             <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
             <!-- <div class="discs-container"> -->
-                <!-- Disc cards will be dynamically added here -->
+            <!-- Disc cards will be dynamically added here -->
             <!-- </div> -->
             <div class="w-layout-grid grid-of-cards">
                 <div id="w-node-_17c7294b-a06b-de45-0738-941d0231ec7d-c5a415d0" class="card-container">
-                  <div class="disc-info"><img src="./assets/santa_cruz_driver.png" loading="lazy" alt="" class="image">
-                    <div class="w-layout-grid grid">
-                      <div id="w-node-_7f4bbee6-bd6b-468c-6e10-da1df1d9f808-c5a415d0" class="div-block">
-                        <i class="fa-regular fa-address-card disc-icon"></i>
-                        <div class="text-block">Neon Orange</div>
-                      </div>
-                      <div id="w-node-_230dafbc-e26e-055b-3757-12d7fbccaad9-c5a415d0" class="div-block">
-                        <i class="fa-solid fa-barcode disc-icon"></i>
-                        <div class="text-block">Santa Cruz Driver</div>
-                      </div>
-                      <div id="w-node-_413374ef-ab19-4a63-1deb-32da87122214-c5a415d0" class="div-block">
-                        <i class="fa-regular fa-user disc-icon"></i>
-                        <div class="text-block">C. Deck</div>
-                      </div>
+                    <div class="disc-info"><img src="./assets/santa_cruz_driver.png" loading="lazy" alt=""
+                            class="image">
+                        <div class="w-layout-grid grid">
+                            <div id="w-node-_7f4bbee6-bd6b-468c-6e10-da1df1d9f808-c5a415d0" class="div-block">
+                                <i class="fa-regular fa-address-card disc-icon"></i>
+                                <div class="text-block">Neon Orange</div>
+                            </div>
+                            <div id="w-node-_230dafbc-e26e-055b-3757-12d7fbccaad9-c5a415d0" class="div-block">
+                                <i class="fa-solid fa-barcode disc-icon"></i>
+                                <div class="text-block">Santa Cruz Driver</div>
+                            </div>
+                            <div id="w-node-_413374ef-ab19-4a63-1deb-32da87122214-c5a415d0" class="div-block">
+                                <i class="fa-regular fa-user disc-icon"></i>
+                                <div class="text-block">C. Deck</div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="sub-info">
-                    <div class="div-block-2">
-                        <img src="./assets/basket_icon.png" loading="lazy" alt="" class="image-5">
-                        <div class="text-block-2">Tranquility, NJ</div>
+                    <div class="sub-info">
+                        <div class="div-block-2">
+                            <img src="./assets/basket_icon.png" loading="lazy" alt="" class="image-5">
+                            <div class="text-block-2">Tranquility, NJ</div>
+                        </div>
+                        <button class="btn">Claim Disc</button>
                     </div>
-                    <button class="btn">Claim Disc</button>
-                  </div>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
 
@@ -691,23 +759,32 @@
             <i class="fa-solid fa-magnifying-glass footer-icon"></i>
             <div class="footer-text">SEARCH ALL</div>
         </div>
-        <div class="fab-container">
+        <div class="fab-container" onclick="toggleFabMenu()">
             <button class="fab">
                 <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab">
             </button>
         </div>
         <div class="footer-item-middle-right">
-            <i class="fa-solid fa-compact-disc footer-icon"></i>
+            <i class="fa-solid fa-shop footer-icon"></i>
             <div class="footer-text">DISC STORE</div>
         </div>
         <div class="footer-item-right">
-            <i class="fa-solid fa-basket-shopping footer-icon"></i>
+            <i class="fa-solid fa-map-pin footer-icon"></i>
             <div class="footer-text">COURSES</div>
         </div>
     </div>
 
 
     <div id="toast">Button is clicked</div>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+
+    <!-- FAB Menu -->
+    <div class="fab-menu" id="fabMenu">
+        <button class="fab-menu-item" onclick="reportLostDisc()">Report Lost Disc</button>
+        <button class="fab-menu-item" onclick="requestCourse()">Request a Course</button>
+        <button class="fab-menu-item" onclick="openSettings()">Settings</button>
+    </div>
 </body>
 
 
