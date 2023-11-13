@@ -113,7 +113,7 @@
         .logo-container {
             /* position: absolute;
             top: 5px; */
-            width: 75%;
+            width: 65%;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -156,12 +156,8 @@
         }
 
         .btn-container {
-            /* position: absolute; */
-            /* Positioned absolutely within the page-container */
-            /* top: 165px; */
-            /* Adjust this value as needed to place the buttons below the logo */
             width: 80%;
-            /* Adjust width as needed */
+            margin-top: 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -170,7 +166,7 @@
         }
 
         .btn-container .btn {
-            padding: 17px;
+            padding: 10px;
             margin: 3px;
             letter-spacing: 1.25px;
             font-size: 2.25rem;
@@ -198,7 +194,7 @@
             width: 80%;
             overflow-x: auto; /* Enable horizontal scrolling */
             white-space: nowrap; /* Ensure items are in a single line */
-            padding: 10px 0;
+            padding: 5px 0;
         }
 
         .disc-card {
@@ -333,13 +329,14 @@
         }
 
         .fab-container {
-            position: absolute;
+            position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             padding: 5px;
             z-index: 15;
-            background-color: var(--primary-grey);
+            background-color: transparent;
+            /* background-color: var(--primary-grey); */
             border-radius: 40px;
         }
 
@@ -370,8 +367,8 @@
             bottom: -10%;
             left: 50%;
             transform: translateX(-50%);
-            width: 260px;
-            height: 260px;
+            width: 225px;
+            height: 225px;
             border-radius: 50%;
             opacity: .65;
             background-color: var(--primary-red);
@@ -379,7 +376,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 13;
+            z-index: 3;
         }
 
         .fab-menu-container.active {
@@ -388,8 +385,8 @@
 
         .fab-menu {
             position: relative; 
-            width: 260px; 
-            height: 260px;
+            width: 225px; 
+            height: 2250px;
         }
 
         .fab-menu-item {
@@ -408,6 +405,22 @@
             font-family: 'Bebas Neue', sans-serif;
             margin: 0px;
             padding: 0px;
+            text-align: center;
+        }
+        .fab-menu-item-text-left {
+            color: var(--secondary-blue) !important;
+            font-family: 'Bebas Neue', sans-serif;
+            margin: 0px;
+            padding: 0px;
+            padding-left: 10px;
+        }
+        .fab-menu-item-text-right {
+            color: var(--secondary-blue) !important;
+            font-family: 'Bebas Neue', sans-serif;
+            margin: 0px;
+            padding: 0px;
+            text-align: left;
+            padding-right: 10px;
         }
 
 .fab-menu-item:nth-child(1) {
@@ -509,7 +522,7 @@
             width: 100%;
             height: 100%;
             margin: 0px;
-            margin-top: 30px;
+            margin-top: 2%;
             padding: 0px;
         }
 
@@ -521,7 +534,7 @@
             width: 100%;
             height: 100%;
             margin: 0px;
-            margin-top: 25px;
+            margin-top: 2%;
             padding: 0px;
         }
 
@@ -530,11 +543,12 @@
             font-weight: 500;
             color: var(--primary-blue);
             padding: 0px;
-            margin: 10px 0px;
+            margin: 5px 0px;
         }
 
         .grid {
             width: 100%;
+            max-width: 180px;
             max-height: 125px;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -551,7 +565,8 @@
         }
 
         .div-block {
-            min-height: 40px;
+            min-height: 32px;
+            max-width: 98%;
             opacity: .78;
             border: 1.5px solid #e3e3e3;
             align-items: center;
@@ -562,8 +577,8 @@
         .text-block {
             flex: 1;
             margin-top: 0;
-            padding-left: 10px;
-            font-size: 1rem;
+            padding-left: 5px;
+            font-size: .9rem;
             font-family: Arial, Helvetica, sans-serif !important;
         }
 
@@ -579,9 +594,9 @@
         }
 
         .image {
-            width: 135px;
-            height: 135px;
-            max-width: 135px;
+            width: 115px;
+            height: 115px;
+            max-width: 115px;
             object-fit: fill;
             border: 5px solid #005daa;
             border-radius: 0;
@@ -633,12 +648,13 @@
         }
 
         .div-block-2 {
-            width: 40%;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-self: center;
             align-items: center;
             margin-right: 30px;
+            max-width: 115px;
         }
 
         .button-2 {
@@ -655,7 +671,7 @@
         }
 
         .disc-icon {
-            margin-left: 10px;
+            margin-left: 5px;
             margin-right: 5px;
             font-size: .9rem;
         }
@@ -718,14 +734,12 @@
                 // Menu is active, show 'X' and hide logo
                 fabLogo.style.display = 'none'; // Hide the logo
                 fabClose.style.display = 'block'; // Show the 'X'
-                fabContainer.style.backgroundColor = 'transparent';
                 fab.style.padding = '0px';
                 
             } else {
                 // Menu is not active, hide 'X' and show logo
                 fabLogo.style.display = 'block'; // Show the logo
                 fabClose.style.display = 'none'; // Hide the 'X'
-                fabContainer.style.backgroundColor = 'var(--primary-grey)';
                 fab.style.paddingTop = '15px';
                 fab.style.paddingLeft = '10px';
                 fab.style.paddingRight = '10px';
@@ -867,7 +881,7 @@
         <div class="fab-menu" id="fabMenu">
             
             <div class="fab-menu-item">
-                <p class="fab-menu-item-text">Report Lost Disc</p>
+                <p class="fab-menu-item-text-left">Report <br/> Lost Disc</p>
                 <i class="fa-regular fa-flag"></i>
             </div>
             <div class="fab-menu-item">
@@ -876,13 +890,14 @@
             </div>
             <div class="fab-menu-item">
                 <i class="fa-solid fa-gear"></i> 
-                <p class="fab-menu-item-text">Settings</p>
+                <p class="fab-menu-item-text-right">Settings</p>
             </div>
         </div>
     </div>  
 
 
     <div class="footer">
+        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
         <div class="footer-item-left">
             <i class="fa-solid fa-house footer-icon"></i>
             <div class="footer-text">HOME</div>
@@ -901,11 +916,10 @@
         </div>
     </div>
 
-    <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
     <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
         <button class="fab" id="fab">
             <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
-            <span id="fabClose" style="display: none;">X</span> <!-- Hidden by default -->
+            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
         </button>
     </div>
 
