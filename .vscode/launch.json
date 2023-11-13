@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open mainPage.html",
-            "file": "c:\\Users\\deckc\\OneDrive\\Documents\\VS Code Projects\\demo-drn\\mainPage.html"
+            "name": "Open home.html",
+            "file": "c:\\Users\\deckc\\OneDrive\\Documents\\VS Code Projects\\demo-drn\\home.html"
         }
     ]
 }

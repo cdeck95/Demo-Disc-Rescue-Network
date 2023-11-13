@@ -136,6 +136,7 @@
             margin: 0px;
             padding: 5px;
             object-fit: contain;
+            z-index: 12;
         }
 
         .btn {
@@ -194,10 +195,19 @@
         }
 
         .discs {
-            /* position: absolute;
-            top: 52%; */
             width: 80%;
-            /* max-height: 45%; */
+            overflow-x: auto; /* Enable horizontal scrolling */
+            white-space: nowrap; /* Ensure items are in a single line */
+            padding: 10px 0;
+        }
+
+        .disc-card {
+            display: inline-block; /* Change from grid to inline-block */
+            width: 300px; /* Adjust width as needed */
+            margin-right: 20px; /* Space between cards */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            vertical-align: top; /* Align items to the top */
         }
 
         .discs-container {
@@ -208,14 +218,6 @@
             padding: 20px;
         }
 
-        .disc-card {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            /* Adjust as needed */
-            gap: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
 
         .disc-image-container {
             position: relative;
@@ -332,13 +334,11 @@
 
         .fab-container {
             position: absolute;
-            top: -50%;
-            /* Adjust as needed to lift the FAB */
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             padding: 5px;
-            z-index: 2;
-            /* Higher than the footer to appear on top */
+            z-index: 15;
             background-color: var(--primary-grey);
             border-radius: 40px;
         }
@@ -355,7 +355,8 @@
             padding-right: 10px;
             padding-bottom: 10px;
             font-size: 24px;
-            z-index: 12;
+            z-index: 15;
+            position: relative;
             height: 65px;
             width: 65px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -366,22 +367,19 @@
 
         .fab-menu {
             position: fixed;
-            bottom: 10%;
-            /* Adjust as necessary */
+            bottom: -10%;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            /* Adjust size as necessary */
-            height: 200px;
-            /* Adjust size as necessary */
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
+            opacity: .85;
             background-color: var(--primary-red);
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 11;
-            /* Above the overlay */
+            z-index: 13;
         }
 
         .fab-menu.active {
@@ -599,15 +597,17 @@
         }
 
         .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 10;
-        }
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background: rgba(0, 0, 0, 0.5); /* Slightly transparent */
+    z-index: 12;
+    bottom: -30%; /* Shift the overlay upwards by 30% of the viewport */
+}
+
 
         .overlay.active {
             display: block;
@@ -621,18 +621,41 @@
             setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
         }
 
-        // JavaScript functions to toggle the FAB menu and overlay
         function toggleFabMenu() {
-            document.getElementById('overlay').classList.toggle('active');
-            document.getElementById('fabMenu').classList.toggle('active');
-            // Toggle FAB icon between '+' and 'X'
-            const fab = document.querySelector('.fab');
-            if (fab.textContent === '+') {
-                fab.textContent = 'X';
+            const overlay = document.getElementById('overlay');
+            const fabMenu = document.getElementById('fabMenu');
+            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
+            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
+            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
+            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+
+
+            // Toggle the active class on the overlay and the FAB menu
+            overlay.classList.toggle('active');
+            fabMenu.classList.toggle('active');
+
+            // Check if the menu is active or not
+            if (fabMenu.classList.contains('active')) {
+                // Menu is active, show 'X' and hide logo
+                fabLogo.style.display = 'none'; // Hide the logo
+                fabClose.style.display = 'block'; // Show the 'X'
+                fabContainer.style.backgroundColor = 'transparent';
+                fab.style.padding = '0px';
+                
             } else {
-                fab.textContent = '+';
+                // Menu is not active, hide 'X' and show logo
+                fabLogo.style.display = 'block'; // Show the logo
+                fabClose.style.display = 'none'; // Hide the 'X'
+                fabContainer.style.backgroundColor = 'var(--primary-grey)';
+                fab.style.paddingTop = '15px';
+                fab.style.paddingLeft = '10px';
+                fab.style.paddingRight = '10px';
+                fab.style.paddingBottom = '10px';
             }
         }
+
+
+
 
         // Placeholder functions for menu item actions
         function reportLostDisc() { /* ... */ }
@@ -649,25 +672,26 @@
         ];
 
         function createDiscCards(discs) {
-            const container = document.querySelector('.discs-container');
+            const container = document.querySelector('.discs');
             container.innerHTML = discs.map(disc => `
                 <div class="disc-card">
-                <div class="disc-image-container">
-                    <img src="${disc.imageUrl}" alt="${disc.name}" class="disc-image">
-                    <div class="disc-location-container">
-                    <i class="fa-solid fa-basket-shopping disc-basket-icon"></i>
-                    <span class="disc-location">${disc.location}</span>
+                    <div class="disc-image-container">
+                        <img src="${disc.imageUrl}" alt="${disc.name}" class="disc-image">
+                        <div class="disc-location-container">
+                            <i class="fa-solid fa-basket-shopping disc-basket-icon"></i>
+                            <span class="disc-location">${disc.location}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="disc-info-container">
-                    <div class="disc-name"><i class="fa-solid fa-key"></i> ${disc.name}</div>
-                    <div class="disc-type"><i class="fa-solid fa-compact-disc"></i> ${disc.type}</div>
-                    <div class="disc-owner"><i class="fa-solid fa-user"></i> ${disc.owner}</div>
-                    <button class="claim-btn">CLAIM DISK</button>
-                </div>
+                    <div class="disc-info-container">
+                        <div class="disc-name"><i class="fa-solid fa-key"></i> ${disc.name}</div>
+                        <div class="disc-type"><i class="fa-solid fa-compact-disc"></i> ${disc.type}</div>
+                        <div class="disc-owner"><i class="fa-solid fa-user"></i> ${disc.owner}</div>
+                        <button class="claim-btn">CLAIM DISK</button>
+                    </div>
                 </div>
             `).join('');
         }
+
 
         // Call the function on page load
         document.addEventListener('DOMContentLoaded', () => createDiscCards(discs));
@@ -717,9 +741,6 @@
 
         <div class="discs">
             <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
-            <!-- <div class="discs-container"> -->
-            <!-- Disc cards will be dynamically added here -->
-            <!-- </div> -->
             <div class="w-layout-grid grid-of-cards">
                 <div id="w-node-_17c7294b-a06b-de45-0738-941d0231ec7d-c5a415d0" class="card-container">
                     <div class="disc-info"><img src="./assets/santa_cruz_driver.png" loading="lazy" alt=""
@@ -751,6 +772,12 @@
         </div>
     </div>
 
+    <div class="fab-menu" id="fabMenu">
+        <button class="fab-menu-item" onclick="reportLostDisc()">Report Lost Disc</button>
+        <button class="fab-menu-item" onclick="requestCourse()">Request a Course</button>
+        <button class="fab-menu-item" onclick="openSettings()">Settings</button>
+    </div>
+
 
     <div class="footer">
         <div class="footer-item-left">
@@ -760,11 +787,6 @@
         <div class="footer-item-middle-left">
             <i class="fa-solid fa-magnifying-glass footer-icon"></i>
             <div class="footer-text">SEARCH ALL</div>
-        </div>
-        <div class="fab-container" onclick="toggleFabMenu()">
-            <button class="fab">
-                <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab">
-            </button>
         </div>
         <div class="footer-item-middle-right">
             <i class="fa-solid fa-shop footer-icon"></i>
@@ -776,17 +798,17 @@
         </div>
     </div>
 
+    <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+    <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
+        <button class="fab" id="fab">
+            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
+            <span id="fabClose" style="display: none;">X</span> <!-- Hidden by default -->
+        </button>
+    </div>
+
 
     <div id="toast">Button is clicked</div>
-    <!-- Overlay -->
-    <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
-
-    <!-- FAB Menu -->
-    <div class="fab-menu" id="fabMenu">
-        <button class="fab-menu-item" onclick="reportLostDisc()">Report Lost Disc</button>
-        <button class="fab-menu-item" onclick="requestCourse()">Request a Course</button>
-        <button class="fab-menu-item" onclick="openSettings()">Settings</button>
-    </div>
+    
 </body>
 
 
