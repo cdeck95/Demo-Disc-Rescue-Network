@@ -634,9 +634,15 @@
 
         .grid-of-cards {
             display: flex;
-            overflow-x: auto;
+            overflow-x: scroll;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ */
             gap: 20px;
             padding-bottom: 20px;
+        }
+
+        .grid-of-cards::-webkit-scrollbar {
+            display: none;
         }
 
         .text-block-2 {
