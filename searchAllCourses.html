@@ -10,28 +10,91 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-blue: #005daa;
-            --secondary-blue: #228de5;
-            --primary-black: #000000;
-            --primary-red: #d31245;
-            --primary-white: #FFFFFF;
-            --primary-grey: #e3e3e3;
-            --primary-green: #55de1f;
-            font-family: 'Bebas Neue', sans-serif;
-        }
+       :root {
+    --primary-blue: #005daa;
+    --secondary-blue: #228de5;
+    --primary-black: #000000;
+    --primary-red: #d31245;
+    --primary-white: #FFFFFF;
+    --primary-grey: #e3e3e3;
+    --primary-green: #55de1f;
+    font-family: 'Bebas Neue', sans-serif;
+}
 
-        button {
-            font-family: 'Bebas Neue', sans-serif;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-grey);
+    width: 100vw;
+    height: 100vh;
+    font-family: var(--font-family);
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--primary-blue);
-            width: 100dvw;
-            height: 100vh;
-        }
+header {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    padding: 10px;
+    text-align: right;
+}
+
+main {
+    text-align: center;
+    color: var(--primary-white);
+}
+
+.hero h1 {
+    background-color: var(--secondary-blue);
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.hero p {
+    margin: 20px 0;
+}
+
+.personal-details {
+    background-color: var(--primary-blue);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.personal-details h2, .personal-details p {
+    color: var(--primary-white);
+}
+
+.personal-details form {
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--primary-red);
+    border: none;
+    color: var(--primary-white);
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-green);
+}
+
+.additional-info p {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    padding: 20px;
+    margin-top: 20px;
+}
+
 
         .overlay {
             display: none;
@@ -288,8 +351,36 @@
 </head>
 
 <body>
+    <header>
+        <div class="opt-in-status">
+            <span>OPT IN STATUS CONFIRMED</span>
+        </div>
+    </header>
 
-    <div class="footer">
+    <main>
+        <section class="hero">
+            <h1>LET'S GET STARTED</h1>
+            <p>In order to find your disc in our system we're going to take you through the Rescue Flow! This easy guided process will gather some information from you and search it against our system. Don't worry, if we can't find your disc in the flow, you can always <span style="text-decoration: underline;">search the inventory</span> or <span style="text-decoration: underline;">report your disc lost</span> right here in the app.</p>
+        </section>
+
+        <section class="personal-details">
+            <h2>PERSONAL DETAILS</h2>
+            <p>Our volunteers notate all personal information written on the discs...</p>
+            <form>
+                <input type="text" placeholder="First Name or Initial On Disc">
+                <input type="text" placeholder="Last Name or Initial On Disc">
+                <input type="text" placeholder="Phone Number or Any Partial Digits on Disc">
+                <button type="button">CLEAR BOXES</button>
+                <button type="submit">IS IT IN THERE?</button>
+            </form>
+        </section>
+
+        <section class="additional-info">
+            <p>IF YOU DON’T WANNA GO THROUGH THE WHOLE FLOW YOU CAN ALWAYS JUST SEARCH THE DATABASE YOURSELF</p>
+        </section>
+    </main>
+
+   <div class="footer">
         <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
         <div class="footer-item-left">
             <i class="fa-solid fa-house footer-icon"></i>
