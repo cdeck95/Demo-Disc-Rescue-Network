@@ -18,10 +18,14 @@
             --primary-white: #FFFFFF;
             --primary-grey: #e3e3e3;
             --primary-green: #55de1f;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        button {
+            font-family: 'Bebas Neue', sans-serif;
         }
 
         body {
-            font-family: 'Bebas Neue', sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--primary-grey);
@@ -147,7 +151,6 @@
             border: none;
             border-radius: 0px;
             font-size: 1.5em;
-            font-family: 'Bebas Neue', sans-serif;
             cursor: pointer;
         }
 
@@ -185,31 +188,28 @@
 
         .rescue-flow {
             color: var(--primary-red);
-            /* Red color for the "rescue flow" text */
             cursor: pointer;
-            /* Change cursor to indicate clickability */
         }
 
         .discs {
             width: 80%;
-            overflow-x: auto; /* Enable horizontal scrolling */
-            white-space: nowrap; /* Ensure items are in a single line */
+            overflow-x: auto;
+            white-space: nowrap;
             padding: 5px 0;
         }
 
         .disc-card {
-            display: inline-block; /* Change from grid to inline-block */
-            width: 300px; /* Adjust width as needed */
-            margin-right: 20px; /* Space between cards */
-            border: 1px solid #ddd;
+            display: inline-block;
+            width: 300px;
+            margin-right: 20px;
+            border: 1px solid var(--primary-grey);
             border-radius: 5px;
-            vertical-align: top; /* Align items to the top */
+            vertical-align: top;
         }
 
         .discs-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            /* Creates a responsive 2-column layout */
             gap: 20px;
             padding: 20px;
         }
@@ -268,7 +268,6 @@
         .footer {
             display: flex;
             justify-content: space-between;
-            /* Changed to space-between */
             align-items: center;
             padding: 5px;
             background-color: var(--secondary-blue);
@@ -277,7 +276,6 @@
             left: 0;
             right: 0;
             height: 60px;
-            /* Adjust as needed */
             z-index: 1;
         }
 
@@ -295,17 +293,13 @@
         .footer .footer-item-left {
             margin-right: 30px;
             flex: 1;
-            /* Distributes space evenly */
             text-align: center;
-            /* Ensures the text is centered within the footer-item */
         }
 
         .footer .footer-item-right {
             margin-left: 30px;
             flex: 1;
-            /* Distributes space evenly */
             text-align: center;
-            /* Ensures the text is centered within the footer-item */
         }
 
         .footer .footer-item-middle-left {
@@ -318,14 +312,11 @@
 
         .footer-icon {
             font-size: 1.5em;
-            /* Adjust the size as needed */
             margin-bottom: 5px;
-            /* Space between icon and text */
         }
 
         .footer-text {
             font-size: 0.75em;
-            /* Adjust the size as needed */
         }
 
         .fab-container {
@@ -336,13 +327,11 @@
             padding: 5px;
             z-index: 15;
             background-color: transparent;
-            /* background-color: var(--primary-grey); */
             border-radius: 40px;
         }
 
         .fab {
             background-color: var(--primary-red);
-            /* Or any color you want for the FAB */
             border: none;
             border-radius: 50%;
             color: var(--primary-white);
@@ -384,107 +373,105 @@
         }
 
         .fab-menu {
-            position: relative; 
-            width: 225px; 
+            position: relative;
+            width: 225px;
             height: 2250px;
         }
 
         .fab-menu-item {
             position: absolute;
-            bottom: 100%; 
+            bottom: 100%;
             width: 120px;
-            text-align: center; 
+            text-align: center;
             color: var(--secondary-blue) !important;
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: .9rem; 
+            font-size: .9rem;
             transform: translateX(-50%);
         }
 
         .fab-menu-item-text {
             color: var(--secondary-blue) !important;
-            font-family: 'Bebas Neue', sans-serif;
             margin: 0px;
             padding: 0px;
             text-align: center;
         }
+
         .fab-menu-item-text-left {
             color: var(--secondary-blue) !important;
-            font-family: 'Bebas Neue', sans-serif;
             margin: 0px;
             padding: 0px;
             padding-left: 10px;
         }
+
         .fab-menu-item-text-right {
             color: var(--secondary-blue) !important;
-            font-family: 'Bebas Neue', sans-serif;
             margin: 0px;
             padding: 0px;
             text-align: left;
             padding-right: 10px;
         }
 
-.fab-menu-item:nth-child(1) {
-    left: -5%;
-    top: 20%;
-    transform: translate(-50%, 0);
-    color: var(--secondary-blue);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 0px;
-    text-align: left;
-    height: 125px;
-    width: 125px;
-}
+        .fab-menu-item:nth-child(1) {
+            left: -5%;
+            top: 20%;
+            transform: translate(-50%, 0);
+            color: var(--secondary-blue);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 0px;
+            text-align: left;
+            height: 125px;
+            width: 125px;
+        }
 
-.fab-menu-item:nth-child(2) {
-    top: -15%;
-    left: 50%;
-    transform: translate(-50%, 0); 
-    color: var(--secondary-blue);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 0px;
-    text-align: left;
-    height: 125px;
-    width: 125px;
-}
+        .fab-menu-item:nth-child(2) {
+            top: -15%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: var(--secondary-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 0px;
+            text-align: left;
+            height: 125px;
+            width: 125px;
+        }
 
-.fab-menu-item:nth-child(3) {
-    top: 20%;
-    right: -115px;
-    transform: translate(-50%, 0); 
-    color: var(--secondary-blue);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 0px;
-    text-align: left;
-    height: 125px;
-    width: 125px;
-}
+        .fab-menu-item:nth-child(3) {
+            top: 20%;
+            right: -135px;
+            transform: translate(-50%, 0);
+            color: var(--secondary-blue);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 0px;
+            text-align: left;
+            height: 125px;
+            width: 125px;
+        }
 
-.fab-menu-item i {
-    color: white;
-    background-color: var(--secondary-blue);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
+        .fab-menu-item i {
+            color: white;
+            background-color: var(--secondary-blue);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: 0px;
+        }
 
         #toast {
             visibility: hidden;
@@ -509,9 +496,7 @@
 
         #toast.show {
             visibility: visible;
-            /* Show the toast */
             opacity: 1;
-            /* Full opacity */
         }
 
         .box {
@@ -554,8 +539,8 @@
             grid-row-gap: 0px;
             opacity: 1;
             text-align: left;
-            background-color: #fff;
-            border: 2px #000;
+            background-color: var(--primary-white);
+            border: 2px var(--primary-black);
             grid-template-rows: auto auto auto;
             grid-template-columns: 1fr;
             margin-top: auto;
@@ -568,7 +553,7 @@
             min-height: 32px;
             max-width: 98%;
             opacity: .78;
-            border: 1.5px solid #e3e3e3;
+            border: 1.5px solid var(--primary-grey);
             align-items: center;
             padding-left: 0;
             display: flex;
@@ -585,7 +570,6 @@
         .card-container {
             flex-shrink: 0;
             width: 400px;
-            /* width: 100%; */
             max-width: 400px;
             flex-wrap: wrap;
             justify-content: center;
@@ -598,7 +582,7 @@
             height: 115px;
             max-width: 115px;
             object-fit: fill;
-            border: 5px solid #005daa;
+            border: 5px solid var(--primary-blue);
             border-radius: 0;
             margin-top: auto;
             margin-bottom: auto;
@@ -623,7 +607,7 @@
         }
 
         .body {
-            background-color: #e3e3e3;
+            background-color: var(--primary-grey);
         }
 
         .disc-info {
@@ -635,8 +619,10 @@
         .grid-of-cards {
             display: flex;
             overflow-x: scroll;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE 10+ */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE 10+ */
             gap: 20px;
             padding-bottom: 20px;
         }
@@ -667,11 +653,10 @@
             width: 150px;
             text-align: center;
             letter-spacing: 1px;
-            background-color: #005daa;
+            background-color: var(--primary-blue);
             align-self: center;
             margin: auto;
             padding: 5px 10px;
-            font-family: Bebas Neue, sans-serif;
             font-size: 1.75rem;
             display: block;
         }
@@ -705,11 +690,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; 
-            background: rgba(0, 0, 0, 0.9); /* Slightly transparent */
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
             z-index: 12;
-            bottom: -30%; /* Shift the overlay upwards by 30% of the viewport */
+            bottom: -30%;
         }
+
         .overlay.active {
             display: block;
         }
@@ -741,7 +727,7 @@
                 fabLogo.style.display = 'none'; // Hide the logo
                 fabClose.style.display = 'block'; // Show the 'X'
                 fab.style.padding = '0px';
-                
+
             } else {
                 // Menu is not active, hide 'X' and show logo
                 fabLogo.style.display = 'block'; // Show the logo
@@ -771,8 +757,8 @@
         ];
 
         function createDiscCards(discs) {
-    const container = document.querySelector('.grid-of-cards');
-    container.innerHTML = discs.map(disc => `
+            const container = document.querySelector('.grid-of-cards');
+            container.innerHTML = discs.map(disc => `
         <div class="card-container">
             <div class="disc-info">
                 <img src="${disc.imageUrl}" loading="lazy" alt="${disc.name}" class="image">
@@ -800,7 +786,7 @@
             </div>
         </div>
     `).join('');
-}
+        }
 
 
 
@@ -885,9 +871,9 @@
 
     <div class="fab-menu-container" id="fabMenuContainer">
         <div class="fab-menu" id="fabMenu">
-            
+
             <div class="fab-menu-item">
-                <p class="fab-menu-item-text-left">Report <br/> Lost Disc</p>
+                <p class="fab-menu-item-text-left">Report <br /> Lost Disc</p>
                 <i class="fa-regular fa-flag"></i>
             </div>
             <div class="fab-menu-item">
@@ -895,11 +881,11 @@
                 <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="fab-menu-item">
-                <i class="fa-solid fa-gear"></i> 
+                <i class="fa-solid fa-gear"></i>
                 <p class="fab-menu-item-text-right">Settings</p>
             </div>
         </div>
-    </div>  
+    </div>
 
 
     <div class="footer">
@@ -931,7 +917,7 @@
 
 
     <div id="toast">Button is clicked</div>
-    
+
 </body>
 
 
