@@ -793,6 +793,15 @@
         // Call the function on page load
         document.addEventListener('DOMContentLoaded', () => createDiscCards(discs));
     </script>
+    <script>
+        function goToRescueFlow() {
+            window.location.href = 'rescueFlow.html'; // Replace with your destination URL
+        }
+
+        function searchAllCourses() {
+            window.location.href = 'searchAllCourses.html'; // Replace with your destination URL
+        }
+    </script>
 
 </head>
 
@@ -826,12 +835,12 @@
 
         <div class="btn-container">
             <div class="box">
-                <button class="btn">FIND MY DISC</button>
+                <button class="btn" onclick="goToRescueFlow()">FIND MY DISC</button>
                 <div class="btn-description">GO THROUGH THE <span class="rescue-flow" onclick="showToast()">RESCUE
                         FLOW</span> TO FIND YOUR DISC</div>
             </div>
             <div class="box-2">
-                <button class="btn">SEARCH COURSES</button>
+                <button class="btn" onclick="searchAllCourses()">SEARCH COURSES</button>
                 <div class="btn-description">SEARCH BY COURSE FOR TURNED IN DISCS</div>
             </div>
         </div>
