@@ -121,6 +121,16 @@
         max-width: 400px !important;
     }
 
+    .where .line-break {
+        display: block; /* Makes the span behave like a line break */
+        margin: 0; /* Removes any default margin */
+    }
+
+    .where .smaller-text {
+        display: block; /* Ensures this text appears on a new line */
+        margin-top: -5px; /* Adjusts the space above this line, set as needed */
+    }
+
 </style>
 
 
@@ -143,8 +153,12 @@
                 <h3 class="m-0 text-white">3 <span class="overtext">/ 5</span></h3>
             </div>
 
-            <h3 class="mt-3 text-white text-center mb-3 where">WHERE'D IT GO <span class="missingtext">MISSING?</span>
+            <h3 class="mt-3 text-white text-center mb-3 where">
+                Throw and a <span class="missingtext-blue">Miss</span>.
+                <span class="line-break"></span>
+                <span class="smaller-text">Not to worry, Let's keep searching</span>
             </h3>
+            
 
             <div class="row mb-4 select-box d-flex justify-content-center align-items-center" style="height: 100%; width: 100%">
                 <div class="col-4 pe-0 arrow one">

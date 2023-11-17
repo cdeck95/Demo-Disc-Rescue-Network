@@ -78,6 +78,17 @@ h4.confirmd {
   color: var(--primary-red);
 }
 
+.main-section .missingtext-blue {
+  color: var(--secondary-blue);
+}
+
+.smaller-text {
+  font-size: .8rem;
+  margin: 0px;
+  padding: 0px;
+  color: var(--primary-white);
+}
+
 .rescue h3 {
   font-size: 3.2rem;
 }
