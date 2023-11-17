@@ -52,7 +52,7 @@ body {
 }
 
 img.weblogo {
-  width: 35%;
+  width: 12%;
   padding: 20px 0 0;
 }
 
@@ -90,6 +90,7 @@ h4.confirmd {
 .main-section button.stepbutton {
   background-color: var(--primary-red);
   width: 50%;
+  max-width: 250px;
   padding: 4px 0;
   border: none;
   font-size: 18px;
@@ -99,6 +100,7 @@ h4.confirmd {
 
 button.rememberbtn {
   width: 40%;
+  max-width: 150px;
   padding: 4px 0;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-blue);
@@ -240,6 +242,28 @@ footer {
 @media only screen and (max-width: 640px) {
   img.weblogo {
     width: 35%;
+  }
+
+  .rescue h3 {
+    font-size: 3.2rem;
+  }
+
+  .footer-content {
+    justify-content: space-around;
+  }
+
+  .footer-content .col-2:nth-child(2) {
+    margin-right: 140px;
+  }
+
+  .wizardbox {
+    bottom: 47px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  img.weblogo {
+    width: 25%;
   }
 
   .rescue h3 {
