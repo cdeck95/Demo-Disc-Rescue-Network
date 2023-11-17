@@ -1,0 +1,310 @@
+:root {
+  --primary-blue: #005daa;
+  --secondary-blue: #228de5;
+  --primary-black: #000000;
+  --primary-red: #d31245;
+  --primary-white: #FFFFFF;
+  --primary-grey: #e3e3e3;
+  --primary-green: #55de1f;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+body {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeue-Thin.eot');
+  src: url('fonts/BebasNeue-Thin.eot?#iefix') format('embedded-opentype'),
+    url('fonts/BebasNeue-Thin.woff2') format('woff2'),
+    url('fonts/BebasNeue-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeueLight.eot');
+  src: url('fonts/BebasNeueLight.eot?#iefix') format('embedded-opentype'),
+    url('fonts/BebasNeueLight.woff2') format('woff2'),
+    url('fonts/BebasNeueLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('fonts/BebasNeueRegular.eot');
+  src: url('fonts/BebasNeueRegular.eot?#iefix') format('embedded-opentype'),
+    url('fonts/BebasNeueRegular.woff2') format('woff2'),
+    url('fonts/BebasNeueRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.main-section {
+  background-color: #005daa;
+  height: 100vh;
+}
+
+img.weblogo {
+  width: 40%;
+  padding: 20px 0 0;
+}
+
+.main-section .overtext {
+  color: var(--secondary-blue);
+  font-weight: bold;
+}
+
+.chat-box h4 {
+  font-size: .75rem;
+}
+
+.chat-box img {
+  width: .75rem;
+  transform: translate(5px, -1px);
+}
+
+h4.confirmd {
+  color: #55de1f;
+}
+
+.main-section .missingtext {
+  color: #ce1547;
+}
+
+.rescue h3 {
+  font-size: 5rem;
+}
+
+.rescue h3 span {
+  font-weight: 100 !important;
+  font-family: 'Bebas Neue';
+}
+
+.main-section button.stepbutton {
+  background-color: #ce1547;
+  width: 140px;
+  padding: 4px 0;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+button.rememberbtn {
+  width: 110px;
+  padding: 4px 0;
+  border: 2px solid white;
+  background-color: #005daa;
+  color: white;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 1080px;
+}
+
+.select-box {
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.wizardbox {
+  padding: 25px 0;
+  left: 460px;
+  left: 47%;
+  right: 0;
+  position: absolute;
+  bottom: 56px;
+  min-width: 300px;
+}
+
+.wizardbox img {
+  width: 80px;
+  max-width: 60px !important;
+}
+
+.wizardbox p {
+  font-size: 10px;
+  font-weight: 500;
+  color: white;
+  max-width: 550px;
+  text-align: left;
+  transform: translate(3px, -11px);
+}
+
+footer {
+  background-color: #218de5;
+  position: relative;
+}
+
+.btnaction img.btnlogo {
+  width: 35px;
+}
+
+.footer-content .col-2 {
+  position: relative;
+}
+
+button.btnaction {
+  background-color: #ce1547;
+  border: 5px solid #005daa;
+  border-radius: 100%;
+  padding: 10px;
+  position: absolute;
+  top: -46px;
+  left: 0;
+  right: 0;
+  max-width: 64px;
+  margin: 0 auto;
+}
+
+span.img {
+  min-height: 29px;
+}
+
+.footer-content span {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+.footer-content img {
+  max-width: 21px;
+  /* max-height: 43px; */
+}
+
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 13px 0 9px;
+}
+
+.main-section h3.where {
+  font-size: 22px;
+}
+
+.select-box select {
+  border-radius: 0;
+  padding: 6px 6px;
+  font-size: 12px;
+  border: 3px solid #268cdf;
+  background-image: none;
+  position: relative;
+  color: #268cdf;
+}
+
+.select-box .arrow {
+  position: relative;
+}
+
+.select-box .arrow:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  border-color: #218de5 transparent transparent transparent;
+  position: absolute;
+  right: 21px;
+  top: 15px;
+  pointer-events: none;
+}
+
+.select-box .arrow.one:after {
+  content: "";
+  right: 10px;
+}
+
+.footer-content {
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 992px) {
+  .container {
+    max-width: 570px;
+  }
+
+}
+
+@media only screen and (max-width: 640px) {
+  img.weblogo {
+    width: 40%;
+  }
+
+  .rescue h3 {
+    font-size: 3.5rem;
+  }
+
+  .footer-content {
+    justify-content: space-around;
+  }
+
+  .footer-content .col-2:nth-child(2) {
+    margin-right: 140px;
+  }
+
+  .wizardbox {
+    bottom: 47px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    max-width: 400px;
+  }
+
+  .footer-content .col-2:nth-child(2) {
+    margin-right: 32px;
+  }
+
+  .footer-content span {
+    font-size: 13px;
+  }
+
+  .footer-content .col-2 {
+    padding: 0;
+  }
+
+  .wizardbox img {
+    width: 42px;
+  }
+
+  .wizardbox p {
+    padding-right: 24px;
+  }
+
+  .wizardbox {
+    left: 30px;
+    bottom: 37px;
+  }
+
+  .wizardbox {
+    min-width: 230px;
+  }
+
+  .btnaction img.btnlogo {
+    width: 24px;
+  }
+
+  .select-box {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  button.btnaction {
+    padding: 11px;
+    top: -29px;
+    max-width: 57px;
+  }
+}
