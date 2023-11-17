@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRN Rescue Flow - Step 1</title>
+    <title>DRN Rescue Flow - Step 2</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -132,14 +132,6 @@
             window.location.href = 'settings.html'; 
         }
 
-        function goToStep2() { 
-            window.location.href = 'rescueFlowStep2.html'; 
-        }
-
-        function skipStep() { 
-            window.location.href = 'rescueFlowStep2.html'; 
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('inputState').addEventListener('change', function() {
                 var selectedState = this.value;
@@ -172,7 +164,35 @@
         });
 
     </script>
+    <style>
+        @media (max-width: 767px) {
+            .form-control {
+                width: 90% !important; 
+            }
+        }
 
+        .form-control::placeholder {
+            color: var(--primary-blue);
+        }
+
+        .form-control {
+            border: 2px solid var(--secondary-blue) !important; 
+            width: 90% !important;
+            max-width: 500px !important;
+            border-radius: 0 !important;
+            height: 60px !important;
+            margin: 0 auto !important;
+            display: block !important;
+        }
+
+        .select-box {
+            height: 100%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+
+    </style>
 
 </head>
 
@@ -190,31 +210,23 @@
             </div>
             <div class="rescue d-flex align-items-center flex-column text-center mb-2">
                 <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
-                <h3 class="m-0 text-white">1 <span class="overtext">/ 5</span></h3>
+                <h3 class="m-0 text-white">2 <span class="overtext">/ 5</span></h3>
             </div>
 
-            <h3 class="mt-3 text-white text-center mb-3 where">WHERE'D IT GO <span class="missingtext">MISSING?</span>
+            <h3 class="mt-3 text-white text-center mb-3 where">New Phone, <span class="missingtext">Who Dis?</span>
             </h3>
 
-            <div class="row mb-4 select-box">
-                <div class="col-4 pe-0 arrow one">
-                    <select id="inputState" class="form-select">
-                        <option selected>STATE</option>
-                        <!-- States options will be populated by JavaScript -->
-                    </select>
-                </div>
-                
-                <!-- Disc Golf Courses Dropdown -->
-                <div class="col-8 arrow">
-                    <select id="inputCourse" class="form-select">
-                        <option selected>SELECT A COURSE</option>
-                        <!-- Courses options will be populated by JavaScript -->
-                    </select>
+            <div class="row mb-4 select-box d-flex justify-content-center align-items-center" style="height: 100%">
+                <div class="col-12 col-md-10 col-lg-8" style="padding: 0;">
+                    <input type="tel" class="form-control" placeholder="PHONE NUMBER WRITTEN ON THE DISC" inputmode="numeric">
                 </div>                
             </div>
-            <button class="stepbutton text-white mb-3" onClick="goToStep2()">NEXT STEP</button>
+            
+            
+            
+            <button class="stepbutton text-white mb-3">Locate My Disc</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light" onClick="skipStep()">DON’T REMEMBER</button>
+                <button class="rememberbtn fw-light">Didn't Write One</button>
             </div>
 
 
@@ -258,11 +270,11 @@
                         </span>
                         <span>SEARCH ALL</span>
                     </a>
-                    <div class="wizardbox d-flex align-items-center">
+                    <!-- <div class="wizardbox d-flex align-items-center">
                         <img src="./assets/arrow-down.png" alt="arrow">
                         <p>if you don’t want to use the wizard you can always just enter
                             the information manually on our search page</p>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="col-2 ">

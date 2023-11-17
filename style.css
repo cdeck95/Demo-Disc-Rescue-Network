@@ -106,6 +106,7 @@ button.rememberbtn {
   background-color: var(--primary-blue);
   color: var(--primary-white);
   font-size: 16px;
+  letter-spacing: .08em;
 }
 
 .container {

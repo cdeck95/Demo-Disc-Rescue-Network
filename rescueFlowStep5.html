@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRN Rescue Flow - Step 1</title>
+    <title>DRN Rescue Flow - Step 5</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -132,14 +132,6 @@
             window.location.href = 'settings.html'; 
         }
 
-        function goToStep2() { 
-            window.location.href = 'rescueFlowStep2.html'; 
-        }
-
-        function skipStep() { 
-            window.location.href = 'rescueFlowStep2.html'; 
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('inputState').addEventListener('change', function() {
                 var selectedState = this.value;
@@ -212,9 +204,9 @@
                     </select>
                 </div>                
             </div>
-            <button class="stepbutton text-white mb-3" onClick="goToStep2()">NEXT STEP</button>
+            <button class="stepbutton text-white mb-3">NEXT STEP</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light" onClick="skipStep()">DON’T REMEMBER</button>
+                <button class="rememberbtn fw-light">DON’T REMEMBER</button>
             </div>
 
 
