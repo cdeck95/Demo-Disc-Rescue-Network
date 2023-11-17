@@ -60,10 +60,15 @@
             }
         }
 
-        // Placeholder functions for menu item actions
-        function reportLostDisc() { /* ... */ }
-        function requestCourse() { /* ... */ }
-        function openSettings() { /* ... */ }
+        function reportLostDisc() { 
+            window.location.href = 'reportLostDisc.html'; 
+        }
+        function requestCourse() { 
+            window.location.href = 'requestCourse.html'; 
+        }
+        function openSettings() { 
+            window.location.href = 'settings.html'; 
+        }
     </script>
 </head>
 
@@ -74,16 +79,16 @@
         <div class="fab-menu" id="fabMenu">
 
             <div class="fab-menu-item">
-                <p class="fab-menu-item-text-left">Report <br /> Lost Disc</p>
-                <i class="fa-regular fa-flag"></i>
+                <a class="fab-menu-item-text-left" href="/reportLostDisc.html" style="text-decoration: none;">Report <br /> Lost Disc</a>
+                <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
             </div>
             <div class="fab-menu-item">
-                <p class="fab-menu-item-text">Request a Course</p>
-                <i class="fa-solid fa-location-dot"></i>
+                <a class="fab-menu-item-text" href="/requestACourse.html" style="text-decoration: none;">Request a Course</a>
+                <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
             </div>
             <div class="fab-menu-item">
-                <i class="fa-solid fa-gear"></i>
-                <p class="fab-menu-item-text-right">Settings</p>
+                <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+                <a class="fab-menu-item-text-right" href="/settings.html" style="text-decoration: none;">Settings</a>
             </div>
         </div>
     </div>
@@ -101,7 +106,7 @@
                     </a>
                 </div>
                 <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/searchAllCourses.html">
+                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
                         <span class="img">
                             <img class="search" src="./assets/search.png" alt="home" width="18">
                         </span>
