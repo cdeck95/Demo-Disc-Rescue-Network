@@ -47,18 +47,18 @@ body {
 }
 
 .main-section {
-  background-color: #005daa;
+  background-color: var(--primary-blue);
   height: 100vh;
 }
 
 img.weblogo {
-  width: 40%;
+  width: 35%;
   padding: 20px 0 0;
 }
 
 .main-section .overtext {
   color: var(--secondary-blue);
-  font-weight: bold;
+  font-weight: 500 !important;
 }
 
 .chat-box h4 {
@@ -75,7 +75,7 @@ h4.confirmd {
 }
 
 .main-section .missingtext {
-  color: #ce1547;
+  color: var(--primary-red);
 }
 
 .rescue h3 {
@@ -88,22 +88,22 @@ h4.confirmd {
 }
 
 .main-section button.stepbutton {
-  background-color: #ce1547;
-  width: 140px;
+  background-color: var(--primary-red);
+  width: 50%;
   padding: 4px 0;
   border: none;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 1px;
 }
 
 button.rememberbtn {
-  width: 110px;
+  width: 40%;
   padding: 4px 0;
-  border: 2px solid white;
-  background-color: #005daa;
-  color: white;
-  font-size: 14px;
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  font-size: 16px;
 }
 
 .container {
@@ -133,14 +133,14 @@ button.rememberbtn {
 .wizardbox p {
   font-size: 10px;
   font-weight: 500;
-  color: white;
+  color: var(--primary-white);
   max-width: 550px;
   text-align: left;
   transform: translate(3px, -11px);
 }
 
 footer {
-  background-color: #218de5;
+  background-color: var(--secondary-blue);
   position: relative;
 }
 
@@ -153,8 +153,8 @@ footer {
 }
 
 button.btnaction {
-  background-color: #ce1547;
-  border: 5px solid #005daa;
+  background-color: var(--primary-red);
+  border: 5px solid var(--primary-blue);
   border-radius: 100%;
   padding: 10px;
   position: absolute;
@@ -172,15 +172,12 @@ span.img {
 .footer-content span {
   font-size: 14px;
   font-weight: 500;
-  color: white;
+  color: var(--primary-white);
 }
 
 .footer-content img {
   max-width: 21px;
-  /* max-height: 43px; */
 }
-
-
 
 footer {
   position: fixed;
@@ -191,17 +188,20 @@ footer {
 }
 
 .main-section h3.where {
-  font-size: 22px;
+  margin-top: 200px;
+  font-size: 2rem;
+  letter-spacing: .03em;
+  font-weight: 500;
 }
 
 .select-box select {
   border-radius: 0;
-  padding: 6px 6px;
-  font-size: 12px;
-  border: 3px solid #268cdf;
+  padding: 12px 6px;
+  font-size: 16px;
+  border: 2px solid var(--secondary-blue);;
   background-image: none;
   position: relative;
-  color: #268cdf;
+  color: var(--primary-blue);
 }
 
 .select-box .arrow {
@@ -214,10 +214,10 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 6px 6px 0 6px;
-  border-color: #218de5 transparent transparent transparent;
+  border-color: var(--secondary-blue) transparent transparent transparent;
   position: absolute;
   right: 21px;
-  top: 15px;
+  top: 40%;
   pointer-events: none;
 }
 
@@ -239,7 +239,7 @@ footer {
 
 @media only screen and (max-width: 640px) {
   img.weblogo {
-    width: 40%;
+    width: 35%;
   }
 
   .rescue h3 {
