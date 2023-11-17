@@ -179,7 +179,7 @@ span.img {
 }
 
 .footer-content img {
-  max-width: 21px;
+  max-width: 25px;
 }
 
 footer {
@@ -271,7 +271,7 @@ footer {
   }
 
   .footer-content .col-2:nth-child(2) {
-    margin-right: 32px;
+    margin-right: 75px;
   }
 
   .footer-content span {
