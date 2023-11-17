@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disc Rescue Network - Disc Store</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+       :root {
+            --primary-blue: #005daa;
+            --secondary-blue: #228de5;
+            --primary-black: #000000;
+            --primary-red: #d31245;
+            --primary-white: #FFFFFF;
+            --primary-grey: #e3e3e3;
+            --primary-green: #55de1f;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-blue);
+            font-family: var(--font-family);
+        }
+    </style>
+
+    <script>
+        function toggleFabMenu() {
+            const overlay = document.getElementById('overlay');
+            const fabMenuContainer = document.getElementById('fabMenuContainer');
+            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
+            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
+            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
+            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+
+
+            // Toggle the active class on the overlay and the FAB menu
+            overlay.classList.toggle('active');
+            fabMenuContainer.classList.toggle('active');
+
+            // Check if the menu is active or not
+            if (fabMenuContainer.classList.contains('active')) {
+                // Menu is active, show 'X' and hide logo
+                fabLogo.style.display = 'none'; // Hide the logo
+                fabClose.style.display = 'block'; // Show the 'X'
+                fab.style.padding = '0px';
+
+            } else {
+                // Menu is not active, hide 'X' and show logo
+                fabLogo.style.display = 'block'; // Show the logo
+                fabClose.style.display = 'none'; // Hide the 'X'
+                fab.style.padding = '10px';
+            }
+        }
+
+        // Placeholder functions for menu item actions
+        function reportLostDisc() { /* ... */ }
+        function requestCourse() { /* ... */ }
+        function openSettings() { /* ... */ }
+    </script>
+</head>
+
+<body>
+    Store
+
+    <div class="fab-menu-container" id="fabMenuContainer">
+        <div class="fab-menu" id="fabMenu">
+
+            <div class="fab-menu-item">
+                <p class="fab-menu-item-text-left">Report <br /> Lost Disc</p>
+                <i class="fa-regular fa-flag"></i>
+            </div>
+            <div class="fab-menu-item">
+                <p class="fab-menu-item-text">Request a Course</p>
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="fab-menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <p class="fab-menu-item-text-right">Settings</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+        <div class="container">
+            <div class="footer-content row">
+                <div class="col-2 ">
+                    <a class="d-flex align-items-center flex-column" href="/">
+                        <span class="img">
+                            <img src="./assets/home.png" alt="home">
+                        </span>
+                        <span>HOME</span>
+                    </a>
+                </div>
+                <div class="col-2 ">
+                    <a class="d-flex align-items-center flex-column" href="#">
+                        <span class="img">
+                            <img class="search" src="./assets/search.png" alt="home" width="18">
+                        </span>
+                        <span>SEARCH ALL</span>
+                    </a>
+                </div>
+                <div class="col-2 ">
+                    <a class=" d-flex align-items-center flex-column" href="/store">
+                        <span class="img">
+                            <img src="./assets/disk-store.png" alt="home">
+                        </span>
+                        <span>DISC STORE</span>
+                    </a>
+
+                </div>
+                <div class="col-2">
+                    <a class="d-flex align-items-center flex-column" href="/courses">
+                        <span class="img">
+                            <img src="./assets/courses.png" alt="home">
+                        </span>
+                        <span>COURSES</span>
+                    </a>
+                </div>
+            </div>
+<!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+        </div>
+    </footer>
+
+    <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
+        <button class="fab" id="fab">
+            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
+            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
+        </button>
+    </div>
+
+</body>
+
+</html> 
