@@ -114,9 +114,11 @@
 
     .select-box {
         height: 100%; 
+        width: 100%;
         display: flex; 
         justify-content: center; 
         align-items: center; 
+        max-width: 400px !important;
     }
 
 </style>
@@ -145,7 +147,7 @@
             </h3>
 
             <div class="row mb-4 select-box d-flex justify-content-center align-items-center" style="height: 100%; width: 100%">
-                <div class="col-5 pe-0 arrow one">
+                <div class="col-4 pe-0 arrow one">
                     <select id="inputState" class="form-select" style>
                         <option selected>First Initial</option>
                         <option>A</option>
@@ -177,7 +179,7 @@
                     </select>
                 </div>
                 
-                    <div class="col-7 pe-0" style="padding: 2;">
+                    <div class="col-8 pe-0" style="padding: 2;">
                         <input type="tel" class="form-control" placeholder="Enter Last Name">
                     </div>                
                 </div>            
