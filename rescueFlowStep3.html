@@ -4,95 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRN Rescue Flow - Step 1</title>
+    <title>DRN Rescue Flow - Step 3</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-    <script>
-        var states = [
-                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
-                "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
-                "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
-                "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", 
-                "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
-                "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", 
-                "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-            ]
-    
-            var courses = [
-            { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
-            { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
-            { name: "Flip City", city: "Shelby", state: "Michigan" },
-            { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
-            { name: "Idlewild", city: "Burlington", state: "Kentucky" },
-            { name: "The Beast", city: "Waco", state: "Texas" },
-            { name: "DeLaveaga", city: "Santa Cruz", state: "California" },
-            { name: "Hornets Nest", city: "Charlotte", state: "North Carolina" },
-            { name: "Fountain Hills", city: "Fountain Hills", state: "Arizona" },
-            { name: "Rollin Ridge", city: "Reedsville", state: "Wisconsin" },
-            { name: "S.Y. Wilson Arlington Sports Complex", city: "Arlington", state: "Tennessee" },
-            { name: "10-3 at CB", city: "Mt. Crested Butte", state: "Colorado" },
-            { name: "1000 Acres Ranch Disc Golf Course", city: "Stony Creek", state: "New York" },
-            { name: "2022 Lucky Disc Golf Open Freeman North", city: "Idaho Falls", state: "Idaho" },
-            { name: "3 Creeks", city: "Rising Sun", state: "Maryland" },
-            { name: "50 Acre Park", city: "Evergreen", state: "Illinois" },
-            { name: "501 Disc Golf", city: "Warren", state: "Massachusetts" },
-            { name: "65th Infantry Veterans Disc Golf Course", city: "Kissimmee", state: "Florida" },
-            { name: "A. J. Jolly Park", city: "Alexandria", state: "Kentucky" },
-            { name: "Stafford Woods", city: "Voorhees", state: "New Jersey" },
-            { name: "Bellevue State Park", city: "Bellevue", state: "Delaware" },
-            { name: "Inverness Disc Golf Park", city: "Inverness", state: "Florida" },
-            { name: "Girdwood Forest Fair Park", city: "Girdwood", state: "Alaska" },
-            { name: "Windy Ridge Disc Golf at Mitchusson Park", city: "Huntsville", state: "Arkansas" },
-            { name: "North Landing", city: "Virginia Beach", state: "Virginia" }
-        ];
-
-        window.onload = function() {
-            // Placeholder names for remaining states not already in 'courses'
-            var remainingStates = [
-                "Alabama", "Connecticut", "Georgia", "Hawaii", "Iowa", "Kansas", "Louisiana", "Maine", "Mississippi", 
-                "Montana", "Nebraska", "Nevada", "New Hampshire", "New Mexico", "North Dakota", "Ohio", "Oklahoma", 
-                "Oregon", "Rhode Island", "South Carolina", "South Dakota", "Utah", "Vermont", "Washington", "West Virginia", 
-                "Wyoming"
-            ];
-            remainingStates.forEach(function(state) {
-                if (!courses.some(course => course.state === state)) {
-                    courses.push({ name: state + " Disc Golf Course", city: state + " City", state: state });
-                }
-            });
-    
-            // Function to populate states dropdown (unchanged)
-            function populateStates() {
-                var select = document.getElementById('inputState');
-                states.forEach(function(state) {
-                    var option = document.createElement('option');
-                    option.textContent = state;
-                    option.value = state;
-                    select.appendChild(option);
-                });
-            }
-    
-            // Revised function to populate courses dropdown
-            function populateCourses() {
-                var select = document.getElementById('inputCourse');
-                courses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name; // Only display the course name
-                    option.value = course.name; // You can change this if you need to store a different value
-                    select.appendChild(option);
-                });
-            }
-    
-            // Call the functions to populate the dropdowns
-            populateStates();
-            populateCourses();
-        };
-    
-    </script>
     <script>
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
@@ -132,6 +50,14 @@
             window.location.href = 'settings.html'; 
         }
 
+        function skipStep() { 
+            window.location.href = 'rescueFlowStep4.html'; 
+        }
+
+        function searchName() { 
+            window.location.href = 'rescueFlowStep4.html'; 
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('inputState').addEventListener('change', function() {
                 var selectedState = this.value;
@@ -165,6 +91,36 @@
 
     </script>
 
+<style>
+    @media (max-width: 767px) {
+        .form-control {
+            width: 100% !important; 
+        }
+    }
+
+    .form-control::placeholder {
+        color: var(--primary-blue);
+    }
+
+    .form-control {
+        border: 2px solid var(--secondary-blue) !important; 
+        width: 100% !important;
+        max-width: 500px !important;
+        border-radius: 0 !important;
+        height: 50px !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .select-box {
+        height: 100%; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
+
+</style>
+
 
 </head>
 
@@ -182,31 +138,54 @@
             </div>
             <div class="rescue d-flex align-items-center flex-column text-center mb-2">
                 <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
-                <h3 class="m-0 text-white">1 <span class="overtext">/ 5</span></h3>
+                <h3 class="m-0 text-white">3 <span class="overtext">/ 5</span></h3>
             </div>
 
             <h3 class="mt-3 text-white text-center mb-3 where">WHERE'D IT GO <span class="missingtext">MISSING?</span>
             </h3>
 
-            <div class="row mb-4 select-box">
-                <div class="col-4 pe-0 arrow one">
-                    <select id="inputState" class="form-select">
-                        <option selected>STATE</option>
-                        <!-- States options will be populated by JavaScript -->
+            <div class="row mb-4 select-box d-flex justify-content-center align-items-center" style="height: 100%; width: 100%">
+                <div class="col-5 pe-0 arrow one">
+                    <select id="inputState" class="form-select" style>
+                        <option selected>First Initial</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                        <option>J</option>
+                        <option>K</option>
+                        <option>L</option>
+                        <option>M</option>
+                        <option>N</option>
+                        <option>O</option>
+                        <option>P</option>
+                        <option>Q</option>
+                        <option>R</option>
+                        <option>S</option>
+                        <option>T</option>
+                        <option>U</option>
+                        <option>V</option>
+                        <option>W</option>
+                        <option>X</option>
+                        <option>Y</option>
+                        <option>Z</option>
                     </select>
                 </div>
                 
-                <!-- Disc Golf Courses Dropdown -->
-                <div class="col-8 arrow">
-                    <select id="inputCourse" class="form-select">
-                        <option selected>SELECT A COURSE</option>
-                        <!-- Courses options will be populated by JavaScript -->
-                    </select>
-                </div>                
+                    <div class="col-7 pe-0" style="padding: 2;">
+                        <input type="tel" class="form-control" placeholder="Enter Last Name">
+                    </div>                
+                </div>            
             </div>
-            <button class="stepbutton text-white mb-3">NEXT STEP</button>
+            
+            <button class="stepbutton text-white mb-3" onClick="searchName()">Let's try this again</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light">DON’T REMEMBER</button>
+                <button class="rememberbtn fw-light" onClick="skipStep()">Didn't write one</button>
             </div>
 
 
@@ -250,11 +229,11 @@
                         </span>
                         <span>SEARCH ALL</span>
                     </a>
-                    <div class="wizardbox d-flex align-items-center">
+                    <!-- <div class="wizardbox d-flex align-items-center">
                         <img src="./assets/arrow-down.png" alt="arrow">
                         <p>if you don’t want to use the wizard you can always just enter
                             the information manually on our search page</p>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="col-2 ">

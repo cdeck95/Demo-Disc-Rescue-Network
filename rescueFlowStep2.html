@@ -132,6 +132,14 @@
             window.location.href = 'settings.html'; 
         }
 
+        function skipStep() { 
+            window.location.href = 'rescueFlowStep3.html'; 
+        }
+
+        function searchPhoneNumber() { 
+            window.location.href = 'rescueFlowStep3.html'; 
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('inputState').addEventListener('change', function() {
                 var selectedState = this.value;
@@ -224,9 +232,9 @@
             
             
             
-            <button class="stepbutton text-white mb-3">Locate My Disc</button>
+            <button class="stepbutton text-white mb-3" onClick="searchPhoneNumber()">Locate My Disc</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light">Didn't Write One</button>
+                <button class="rememberbtn fw-light" onClick="skipStep()">Didn't Write One</button>
             </div>
 
 
