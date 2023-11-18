@@ -14,18 +14,63 @@
 
     <script>
         
-        var states = [
-                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
-                "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
-                "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
-                "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", 
-                "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
-                "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", 
-                "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-            ]
-    
+        var stateTuples = [
+          ["All", "All"],
+    ["Alabama", "AL"],
+    ["Alaska", "AK"],
+    ["Arizona", "AZ"],
+    ["Arkansas", "AR"],
+    ["California", "CA"],
+    ["Colorado", "CO"],
+    ["Connecticut", "CT"],
+    ["Delaware", "DE"],
+    ["Florida", "FL"],
+    ["Georgia", "GA"],
+    ["Hawaii", "HI"],
+    ["Idaho", "ID"],
+    ["Illinois", "IL"],
+    ["Indiana", "IN"],
+    ["Iowa", "IA"],
+    ["Kansas", "KS"],
+    ["Kentucky", "KY"],
+    ["Louisiana", "LA"],
+    ["Maine", "ME"],
+    ["Maryland", "MD"],
+    ["Massachusetts", "MA"],
+    ["Michigan", "MI"],
+    ["Minnesota", "MN"],
+    ["Mississippi", "MS"],
+    ["Missouri", "MO"],
+    ["Montana", "MT"],
+    ["Nebraska", "NE"],
+    ["Nevada", "NV"],
+    ["New Hampshire", "NH"],
+    ["New Jersey", "NJ"],
+    ["New Mexico", "NM"],
+    ["New York", "NY"],
+    ["North Carolina", "NC"],
+    ["North Dakota", "ND"],
+    ["Ohio", "OH"],
+    ["Oklahoma", "OK"],
+    ["Oregon", "OR"],
+    ["Pennsylvania", "PA"],
+    ["Rhode Island", "RI"],
+    ["South Carolina", "SC"],
+    ["South Dakota", "SD"],
+    ["Tennessee", "TN"],
+    ["Texas", "TX"],
+    ["Utah", "UT"],
+    ["Vermont", "VT"],
+    ["Virginia", "VA"],
+    ["Washington", "WA"],
+    ["West Virginia", "WV"],
+    ["Wisconsin", "WI"],
+    ["Wyoming", "WY"]
+];    
             var courses = [
+            { name: "Course Not Listed", city: "NA", state: "NA" },
             { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
+            { name: "Tranquility Trails", city: "Woolwich", state: "New Jersey" },
             { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
             { name: "Flip City", city: "Shelby", state: "Michigan" },
             { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
@@ -68,14 +113,17 @@
     
             // Function to populate states dropdown (unchanged)
             function populateStates() {
-                var select = document.getElementById('inputState');
-                states.forEach(function(state) {
-                    var option = document.createElement('option');
-                    option.textContent = state;
-                    option.value = state;
-                    select.appendChild(option);
-                });
-            }
+              var select = document.getElementById('inputState');
+
+              // Using stateTuples array
+              stateTuples.forEach(function(tuple) {
+                  var option = document.createElement('option');
+                  option.textContent = tuple[1]; // State name
+                  option.value = tuple[0]; // State abbreviation
+                  select.appendChild(option);
+              });
+          }
+
     
             // Revised function to populate courses dropdown
             function populateCourses() {
@@ -142,35 +190,51 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('inputState').addEventListener('change', function() {
-                var selectedState = this.value;
-                var filteredCourses = courses.filter(function(course) {
-                    return course.state === selectedState;
-                });
+          document.getElementById('inputState').addEventListener('change', function() {
+              var selectedState = this.value;
+              var filteredCourses;
 
-                var courseSelect = document.getElementById('inputCourse');
-                courseSelect.innerHTML = ''; // Clear existing options
+              // Check if "All" is selected
+              if (selectedState === "All") {
+                  // Use the entire courses array
+                  filteredCourses = courses;
+              } else {
+                  // Apply filtering for a specific state
+                  filteredCourses = courses.filter(function(course) {
+                      return course.state === selectedState;
+                  });
+              }
 
-                filteredCourses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name;
-                    option.value = course.name;
-                    courseSelect.appendChild(option);
-                });
-            });
+              var courseSelect = document.getElementById('inputCourse');
+              courseSelect.innerHTML = ''; // Clear existing options
 
-            document.getElementById('inputCourse').addEventListener('change', function() {
-                var selectedCourseName = this.value;
-                var selectedCourse = courses.find(function(course) {
-                    return course.name === selectedCourseName;
-                });
+              filteredCourses.forEach(function(course) {
+                  var option = document.createElement('option');
+                  option.textContent = course.name;
+                  option.value = course.name;
+                  courseSelect.appendChild(option);
+              });
+          });
 
-                if (selectedCourse) {
-                    document.getElementById('inputState').value = selectedCourse.state;
-                }
-            });
+          document.getElementById('inputCourse').addEventListener('change', function() {
+              var selectedCourseName = this.value;
 
-        });
+              if (selectedCourseName === "Course Not Listed") {
+                  // Show a popup when "Course Not Listed" is selected
+                  alert("Please request a course by providing additional details.");
+                  // You can replace the above line with code to show a custom modal/dialog if needed
+              } else {
+                  // Existing logic for when a course is selected
+                  var selectedCourse = courses.find(function(course) {
+                      return course.name === selectedCourseName;
+                  });
+
+                  if (selectedCourse) {
+                      document.getElementById('inputState').value = selectedCourse.state;
+                  }
+              }
+          });
+      });
 
     </script>
 
