@@ -465,7 +465,6 @@
         }
     </style>
     <script>
-        // Function to show toast message
         function showToast() {
             var toast = document.getElementById("toast");
             toast.className = "show";
@@ -513,51 +512,53 @@
             window.location.href = 'settings.html'; 
         }
     </script>
-    <script>
-        // Example array of disc objects
-        const discs = [
-            { id: 1, name: 'Neon Orange Shark', type: 'Midrange', owner: 'Deck, C.', location: 'Tranquility, NJ', date: '11.03.2023', imageUrl: './assets/santa_cruz_driver.png' },
-            { id: 2, name: 'Red Star Leopard', type: 'Fairway Driver', owner: 'Nichols, A.', location: 'Doc Cramer, NJ', date: '11.08.2023', imageUrl: './assets/star leopard.jpg'},
-            { id: 3, name: 'Orange Star Destroyer', type: 'Distance Driver', owner: 'Nichols, A.', location: 'Stafford Woods, NJ', date: '10.03.2023', imageUrl: './assets/santa_cruz_driver.png' },
-            { id: 4, name: 'Red Zone', type: 'Putt/Approach', owner: 'Deck, C.', location: 'Alcyon Woods, NJ', date: '11.14.2023', imageUrl: './assets/star leopard.jpg' },
-        ];
+    <script type="module">
+        import found_discs from './mock-data/discs.js';
+
+        const imageURLs = ['./assets/santa_cruz_driver.png', './assets/star leopard.jpg'];
 
         function createDiscCards(discs) {
             const container = document.querySelector('.grid-of-cards');
-            container.innerHTML = discs.map(disc => `
-        <div class="card-container">
-            <div class="disc-info">
-                <img src="${disc.imageUrl}" loading="lazy" alt="${disc.name}" class="image">
-                <div class="w-layout-grid grid">
-                    <div class="div-block">
-                        <i class="fa-regular fa-address-card disc-icon"></i>
-                        <div class="text-block">${disc.name}</div>
+            container.innerHTML = discs.map(disc => {
+                // Generate a random index based on the length of imageURLs array
+                const randomIndex = Math.floor(Math.random() * imageURLs.length);
+                // Select a random image URL
+                const randomImageUrl = imageURLs[randomIndex];
+
+                return `
+                    <div class="card-container">
+                        <div class="disc-info">
+                            <img src="${randomImageUrl}" loading="lazy" alt="${disc.Disc}" class="image">
+                            <div class="w-layout-grid grid">
+                                <div class="div-block">
+                                    <i class="fa-regular fa-address-card disc-icon"></i>
+                                    <div class="text-block">${disc.Disc}</div>
+                                </div>
+                                <div class="div-block">
+                                    <i class="fa-solid fa-barcode disc-icon"></i>
+                                    <div class="text-block">${disc.Color}</div>
+                                </div>
+                                <div class="div-block">
+                                    <i class="fa-regular fa-user disc-icon"></i>
+                                    <div class="text-block">${disc.Name}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-info">
+                            <div class="div-block-2">
+                                <i class="fa-solid fa-map-pin image-5"></i>
+                                <div class="text-block-2">${disc.Course}</div>
+                            </div>
+                            <button class="btn">Claim Disc</button>
+                        </div>
                     </div>
-                    <div class="div-block">
-                        <i class="fa-solid fa-barcode disc-icon"></i>
-                        <div class="text-block">${disc.type}</div>
-                    </div>
-                    <div class="div-block">
-                        <i class="fa-regular fa-user disc-icon"></i>
-                        <div class="text-block">${disc.owner}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="sub-info">
-                <div class="div-block-2">
-                    <i class="fa-solid fa-map-pin image-5"></i>
-                    <div class="text-block-2">${disc.location}</div>
-                </div>
-                <button class="btn">Claim Disc</button>
-            </div>
-        </div>
-    `).join('');
+                `;
+            }).join('');
         }
 
 
-
         // Call the function on page load
-        document.addEventListener('DOMContentLoaded', () => createDiscCards(discs));
+        document.addEventListener('DOMContentLoaded', () => createDiscCards(found_discs));
     </script>
     <script>
         function goToRescueFlow() {
@@ -614,7 +615,7 @@
         <div class="discs">
             <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
             <div class="w-layout-grid grid-of-cards">
-                <div id="w-node-_17c7294b-a06b-de45-0738-941d0231ec7d-c5a415d0" class="card-container">
+                <!-- <div id="w-node-_17c7294b-a06b-de45-0738-941d0231ec7d-c5a415d0" class="card-container">
                     <div class="disc-info"><img src="./assets/santa_cruz_driver.png" loading="lazy" alt=""
                             class="image">
                         <div class="w-layout-grid grid">
@@ -639,7 +640,7 @@
                         </div>
                         <button class="btn">Claim Disc</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
