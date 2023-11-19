@@ -248,6 +248,19 @@
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+
+        .select-brand-dropdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            margin: auto;
+            text-align-last: center; /* For Firefox */
+            text-align: center;      /* For other browsers */
+            -moz-appearance: none;   /* For Firefox */
+            -webkit-appearance: none; /* For Chrome and Safari */
+            appearance: none;        /* Standard syntax */
+        } 
     </style>
 
 
@@ -279,10 +292,12 @@
             <div class="input-dropdown-wrapper">
                 <input type="text" placeholder="TYPE THE BRAND OF DISC" />
                 <div class="circle-or">OR</div>
-                <select id="selectBrand" aria-label="Choose a Brand">
-                  <option>SELECT BRAND</option>
-                  <!-- More options here -->
-                </select>
+                <select id="selectBrand" aria-label="Choose a Brand" class="select-brand-dropdown">
+                    <option value="" disabled selected>Select Brand</option>
+                    <option value="discraft">Discraft</option>
+                    <!-- More options here -->
+                  </select>
+                  
               </div>              
               
             <button class="stepbutton text-white mb-3 mt-3">Show Me The Discs</button>
