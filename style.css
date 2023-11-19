@@ -90,7 +90,7 @@ h4.confirmd {
 }
 
 .rescue h3 {
-  font-size: 3.2rem;
+  font-size: 3rem;
 }
 
 .rescue h3 span {
@@ -136,7 +136,7 @@ button.rememberbtn {
   left: 47%;
   right: 0;
   position: absolute;
-  bottom: 56px;
+  bottom: 50px;
   min-width: 300px;
 }
 
@@ -146,7 +146,7 @@ button.rememberbtn {
 }
 
 .wizardbox p {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--primary-white);
   max-width: 550px;
@@ -203,7 +203,6 @@ footer {
 }
 
 .main-section h3.where {
-  margin-top: 200px;
   font-size: 2rem;
   letter-spacing: .03em;
   font-weight: 500;
@@ -211,7 +210,7 @@ footer {
 
 .select-box select {
   border-radius: 0;
-  padding: 12px 6px;
+  padding: 10px 6px;
   font-size: 16px;
   border: 2px solid var(--secondary-blue);;
   background-image: none;
@@ -259,7 +258,7 @@ footer {
   }
 
   .rescue h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
   .footer-content {
@@ -296,6 +295,7 @@ footer {
 
   .wizardbox img {
     width: 42px;
+    padding-top: 35px;
   }
 
   .wizardbox p {
@@ -305,7 +305,7 @@ footer {
 
   .wizardbox {
     left: 30px;
-    bottom: 37px;
+    bottom: 32px;
   }
 
   .wizardbox {
