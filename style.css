@@ -101,7 +101,7 @@ h4.confirmd {
 .main-section button.stepbutton {
   background-color: var(--primary-red);
   width: 50%;
-  max-width: 250px;
+  max-width: 200px;
   padding: 4px 0;
   border: none;
   font-size: 18px;
@@ -136,17 +136,18 @@ button.rememberbtn {
   left: 47%;
   right: 0;
   position: absolute;
-  bottom: 50px;
-  min-width: 300px;
+  bottom: 40px;
+  min-width: 400px;
 }
 
 .wizardbox img {
   width: 80px;
   max-width: 60px !important;
+  padding-top: 15px;
 }
 
 .wizardbox p {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--primary-white);
   max-width: 550px;
@@ -270,7 +271,16 @@ footer {
   }
 
   .wizardbox {
-    bottom: 47px;
+    bottom: 40px;
+    min-width: 300px;
+  }
+
+  .wizardbox p {
+    font-size: 16px;
+  }
+
+  .wizardbox img {
+    padding-top: 30px;
   }
 }
 
@@ -301,11 +311,13 @@ footer {
   .wizardbox p {
     padding-right: 24px;
     padding-bottom: 2px;
+    font-size: 14px;
   }
 
   .wizardbox {
     left: 30px;
     bottom: 32px;
+    min-width: 300px;
   }
 
   .wizardbox {
