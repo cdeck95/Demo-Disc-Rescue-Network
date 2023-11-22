@@ -99,6 +99,9 @@ img.weblogo {
 .chat-box img {
   width: .75rem;
   transform: translate(5px, -1px);
+  /* transform: rotate(180deg); */
+  /* -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); */
 }
 
 h4.confirmd {
@@ -136,6 +139,18 @@ h4.confirmd {
   padding: 4px 0;
   border: none;
   font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.main-section button.failurebutton {
+  background-color: var(--primary-red);
+  width: 80%;
+  max-width: 400px;
+  padding: 8px 4px;
+  border: none;
+  min-height: 50px;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -290,7 +305,7 @@ footer {
   }
 
   .rescue h3 {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 
   .footer-content {

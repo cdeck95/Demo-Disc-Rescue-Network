@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
     <script>
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
@@ -49,23 +50,8 @@
         function openSettings() { 
             window.location.href = 'settings.html'; 
         }
-        
-        function skipStep() { 
-            window.location.href = 'rescueFlowFailure.html'; 
-        }
 
-        function searchDiscs() {
-            const disc_found = false;
-            if(disc_found){
-                window.location.href = 'rescueFlowSuccess.html';
-            } else {
-                window.location.href = 'rescueFlowFailure.html'; 
-
-            }
-        }
     </script>
-
-
 </head>
 
 <body>
@@ -81,25 +67,17 @@
                 </div>
             </div>
             <div class="rescue d-flex align-items-center flex-column text-center mb-2">
-                <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
-                <h3 class="m-0 text-white">5 <span class="overtext">/ 5</span></h3>
+                <h3 class="m-0 text-white">0/10 RESCUE FLOW <span class="fw-light">wizard</span></h3>
+                <h2 class="m-0 text-white">So maybe it's not <span class="overtext">Perfect</span>.</h2>
             </div>
 
-            <h3 class="mt-3 mb-3 text-white text-center mb-3 where">
-                Shoot for the <span class="missingtext-blue">Moon</span>.
-                <span class="line-break"></span>
-                <span class="smaller-text">Last minute hail mary to save the flow...</span>
-            </h3>
-
-            <div class="col-10 pe-0 mb-4 mt-4" style="padding: 2; margin: auto; text-align: center;">
-                <input type="text" class="form-control" placeholder="What Color Is it?!" style="height: 55px !important" pattern="[a-zA-Z-]+">
-            </div>  
+            <p class="text-white px-4 mt-5 mb-5" style="font-size: .9rem; font-weight: unset;"; >But it never gives up. Submit the information you used in the
+                wizard to report your disc lost and be notified if the wizard finds it, so it can reunite you.</p>
+            </span>
             
-             
-
-            <button class="stepbutton text-white mb-3" onclick="searchDiscs()">Show me the discs</button>
+            <button class="failurebutton text-white mb-4 mt-2">Report my Disc Lost and Help the Wizard</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light" onclick="skipStep()">This is just sad now</button>
+                <button class="rememberbtn fw-light">Fine, I'll do it myself</button>
             </div>
 
 
