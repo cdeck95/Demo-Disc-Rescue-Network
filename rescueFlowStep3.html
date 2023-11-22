@@ -58,37 +58,7 @@
             window.location.href = 'rescueFlowStep4.html'; 
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('inputState').addEventListener('change', function() {
-                var selectedState = this.value;
-                var filteredCourses = courses.filter(function(course) {
-                    return course.state === selectedState;
-                });
-
-                var courseSelect = document.getElementById('inputCourse');
-                courseSelect.innerHTML = ''; // Clear existing options
-
-                filteredCourses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name;
-                    option.value = course.name;
-                    courseSelect.appendChild(option);
-                });
-            });
-
-            document.getElementById('inputCourse').addEventListener('change', function() {
-                var selectedCourseName = this.value;
-                var selectedCourse = courses.find(function(course) {
-                    return course.name === selectedCourseName;
-                });
-
-                if (selectedCourse) {
-                    document.getElementById('inputState').value = selectedCourse.state;
-                }
-            });
-
-        });
-
+        
     </script>
 
 <style>

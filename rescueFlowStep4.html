@@ -72,15 +72,7 @@
         font-family: 'Bebas Neue', sans-serif;
         }
 
-        .where .line-break {
-            display: block; /* Makes the span behave like a line break */
-            margin: 0; /* Removes any default margin */
-        }
-
-        .where .smaller-text {
-            display: block; /* Ensures this text appears on a new line */
-            margin-top: -5px; /* Adjusts the space above this line, set as needed */
-        }
+      
 
         .input-dropdown-wrapper {
             display: flex;
@@ -283,13 +275,13 @@
                 <h3 class="m-0 text-white">4 <span class="overtext">/ 5</span></h3>
             </div>
 
-            <h3 class="mt-3 mb-3 text-white text-center mb-3 where">
+            <h3 class="mt-4 mb-4 text-white text-center mb-3 where">
                 Let's Widen Our <span class="missingtext-blue">Stance</span>.
                 <span class="line-break"></span>
                 <span class="smaller-text">We probably just couldn't read the handwriting...</span>
             </h3>
 
-            <div class="input-dropdown-wrapper">
+            <div class="input-dropdown-wrapper mt-2">
                 <input type="text" placeholder="TYPE THE BRAND OF DISC" />
                 <div class="circle-or">OR</div>
                 <select id="selectBrand" aria-label="Choose a Brand" class="select-brand-dropdown">
@@ -300,9 +292,9 @@
                   
               </div>              
               
-            <button class="stepbutton text-white mb-3 mt-3">Show Me The Discs</button>
+            <button class="stepbutton text-white mb-3 mt-4" onClick="searchDiscs()">Show Me The Discs</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light">Don't Know It</button>
+                <button class="rememberbtn fw-light" onClick="skipStep()">Don't Know It</button>
             </div>
 
 
@@ -346,12 +338,6 @@
                         </span>
                         <span>SEARCH ALL</span>
                     </a>
-                    <!-- <div class="wizardbox d-flex align-items-center">
-                        <img src="./assets/arrow-down.png" alt="arrow">
-                        <p>if you don’t want to use the wizard you can always just enter
-                            the information manually on our search page</p>
-                    </div> -->
-
                 </div>
                 <div class="col-2 ">
                     <a class=" d-flex align-items-center flex-column" href="/store.html">

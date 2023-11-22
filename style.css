@@ -46,6 +46,37 @@ body {
   font-display: swap;
 }
 
+.where .line-break {
+  display: block; /* Makes the span behave like a line break */
+  margin: 0; /* Removes any default margin */
+}
+
+.where .smaller-text {
+  display: block; /* Ensures this text appears on a new line */
+  margin-top: -5px; /* Adjusts the space above this line, set as needed */
+}
+
+@media (max-width: 767px) {
+  .form-control {
+      width: 90% !important; 
+  }
+}
+
+.form-control::placeholder {
+  color: var(--primary-blue);
+  text-align: center;
+}
+
+.form-control {
+  border: 2px solid var(--secondary-blue) !important; 
+  width: 90% !important;
+  max-width: 500px !important;
+  border-radius: 0 !important;
+  height: 60px !important;
+  margin: 0 auto !important;
+  display: block !important;
+}
+
 .main-section {
   background-color: var(--primary-blue);
   height: 100vh;

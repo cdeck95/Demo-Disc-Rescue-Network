@@ -140,59 +140,10 @@
             window.location.href = 'rescueFlowStep3.html'; 
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('inputState').addEventListener('change', function() {
-                var selectedState = this.value;
-                var filteredCourses = courses.filter(function(course) {
-                    return course.state === selectedState;
-                });
-
-                var courseSelect = document.getElementById('inputCourse');
-                courseSelect.innerHTML = ''; // Clear existing options
-
-                filteredCourses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name;
-                    option.value = course.name;
-                    courseSelect.appendChild(option);
-                });
-            });
-
-            document.getElementById('inputCourse').addEventListener('change', function() {
-                var selectedCourseName = this.value;
-                var selectedCourse = courses.find(function(course) {
-                    return course.name === selectedCourseName;
-                });
-
-                if (selectedCourse) {
-                    document.getElementById('inputState').value = selectedCourse.state;
-                }
-            });
-
-        });
+        
 
     </script>
     <style>
-        @media (max-width: 767px) {
-            .form-control {
-                width: 90% !important; 
-            }
-        }
-
-        .form-control::placeholder {
-            color: var(--primary-blue);
-        }
-
-        .form-control {
-            border: 2px solid var(--secondary-blue) !important; 
-            width: 90% !important;
-            max-width: 500px !important;
-            border-radius: 0 !important;
-            height: 60px !important;
-            margin: 0 auto !important;
-            display: block !important;
-        }
-
         .select-box {
             height: 100%; 
             display: flex; 

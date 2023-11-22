@@ -132,36 +132,7 @@
             window.location.href = 'settings.html'; 
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('inputState').addEventListener('change', function() {
-                var selectedState = this.value;
-                var filteredCourses = courses.filter(function(course) {
-                    return course.state === selectedState;
-                });
-
-                var courseSelect = document.getElementById('inputCourse');
-                courseSelect.innerHTML = ''; // Clear existing options
-
-                filteredCourses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name;
-                    option.value = course.name;
-                    courseSelect.appendChild(option);
-                });
-            });
-
-            document.getElementById('inputCourse').addEventListener('change', function() {
-                var selectedCourseName = this.value;
-                var selectedCourse = courses.find(function(course) {
-                    return course.name === selectedCourseName;
-                });
-
-                if (selectedCourse) {
-                    document.getElementById('inputState').value = selectedCourse.state;
-                }
-            });
-
-        });
+       
 
     </script>
 
@@ -182,31 +153,24 @@
             </div>
             <div class="rescue d-flex align-items-center flex-column text-center mb-2">
                 <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
-                <h3 class="m-0 text-white">1 <span class="overtext">/ 5</span></h3>
+                <h3 class="m-0 text-white">5 <span class="overtext">/ 5</span></h3>
             </div>
 
-            <h3 class="mt-3 text-white text-center mb-3 where">WHERE'D IT GO <span class="missingtext">MISSING?</span>
+            <h3 class="mt-3 mb-3 text-white text-center mb-3 where">
+                Shoot for the <span class="missingtext-blue">Moon</span>.
+                <span class="line-break"></span>
+                <span class="smaller-text">Last minute hail mary to save the flow...</span>
             </h3>
 
-            <div class="row mb-4 select-box">
-                <div class="col-4 pe-0 arrow one">
-                    <select id="inputState" class="form-select">
-                        <option selected>STATE</option>
-                        <!-- States options will be populated by JavaScript -->
-                    </select>
-                </div>
-                
-                <!-- Disc Golf Courses Dropdown -->
-                <div class="col-8 arrow">
-                    <select id="inputCourse" class="form-select">
-                        <option selected>SELECT A COURSE</option>
-                        <!-- Courses options will be populated by JavaScript -->
-                    </select>
-                </div>                
-            </div>
-            <button class="stepbutton text-white mb-3">NEXT STEP</button>
+            <div class="col-10 pe-0 mb-4 mt-4" style="padding: 2; margin: auto; text-align: center;">
+                <input type="text" class="form-control" placeholder="What Color Is it?!" style="height: 55px !important" pattern="[a-zA-Z-]+">
+            </div>  
+            
+             
+
+            <button class="stepbutton text-white mb-3">Show me the discs</button>
             <div class="pb-5">
-                <button class="rememberbtn fw-light">DON’T REMEMBER</button>
+                <button class="rememberbtn fw-light">This is just sad now</button>
             </div>
 
 
@@ -250,11 +214,6 @@
                         </span>
                         <span>SEARCH ALL</span>
                     </a>
-                    <div class="wizardbox d-flex align-items-center">
-                        <img src="./assets/arrow-down.png" alt="arrow">
-                        <p>if you don’t want to use the wizard you can always just enter
-                            the information manually on our search page</p>
-                    </div>
 
                 </div>
                 <div class="col-2 ">
