@@ -11,7 +11,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            text-align: center;
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style> 
     <script>
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
@@ -20,7 +56,6 @@
             const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
             const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
             const fab = document.getElementById('fab'); // Get the 'X' span by its ID
-
 
             // Toggle the active class on the overlay and the FAB menu
             overlay.classList.toggle('active');
@@ -50,10 +85,47 @@
         function openSettings() { 
             window.location.href = 'settings.html'; 
         }
+    </script>
+    <script>
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
+    
+        // Get the value of the "color" query parameter from the URL
+        const colorValue = getQueryParam('color');
+    
+        // Check if the colorValue is not null (which means it exists in the URL)
+        if (colorValue !== null) {
+            // Use the colorValue as needed on this page
+            console.log(`The color value is: ${colorValue}`);
+            // You can replace the console.log statement with code to use the colorValue.
+        }
+    </script>
+    <script>
+        // Function to open the modal dialog
+        function openParameterModal() {
+            const parameterModal = document.getElementById('parameterModal');
+            const parameterList = document.getElementById('parameterList');
+            
+            // Retrieve the "color" query parameter from the URL
+            const colorValue = getQueryParam('color');
 
+            // Construct the content for the modal
+            parameterList.innerHTML = `<p>Color: ${colorValue}</p>`;
+            
+            // Display the modal
+            parameterModal.style.display = 'block';
+        }
+
+        // Function to close the modal dialog
+        function closeParameterModal() {
+            const parameterModal = document.getElementById('parameterModal');
+            parameterModal.style.display = 'none';
+        }
     </script>
 </head>
-
 <body>
     <section class="main-section text-center">
         <div class="container">
@@ -75,7 +147,7 @@
                 wizard to report your disc lost and be notified if the wizard finds it, so it can reunite you.</p>
             </span>
             
-            <button class="failurebutton text-white mb-4 mt-2">Report my Disc Lost and Help the Wizard</button>
+            <button class="failurebutton text-white mb-4 mt-2" onclick="openParameterModal()">Report my Disc Lost and Help the Wizard</button>
             <div class="pb-5">
                 <button class="rememberbtn fw-light">Fine, I'll do it myself</button>
             </div>
@@ -158,7 +230,15 @@
 
 
 
-    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <!-- Modal Dialog -->
+    <div id="parameterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeParameterModal()">&times;</span>
+            <h2>Parameters</h2>
+            <div id="parameterList"></div>
+        </div>
+    </div>
+
 </body>
 
 </html>

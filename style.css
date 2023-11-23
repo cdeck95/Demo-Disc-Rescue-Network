@@ -56,9 +56,27 @@ body {
   margin-top: -5px; /* Adjusts the space above this line, set as needed */
 }
 
+.select-box {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 @media (max-width: 767px) {
   .form-control {
       width: 90% !important; 
+  }
+
+  .select-box {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1400px) {
+
+  .select-box {
+    max-width: 70%;
+    margin: 0 auto;
   }
 }
 
@@ -169,11 +187,6 @@ button.rememberbtn {
 .container {
   max-width: 1080px;
   position: relative;
-}
-
-.select-box {
-  max-width: 260px;
-  margin: 0 auto;
 }
 
 .wizardbox {
@@ -372,11 +385,6 @@ footer {
 
   .btnaction img.btnlogo {
     width: 24px;
-  }
-
-  .select-box {
-    max-width: 280px;
-    margin: 0 auto;
   }
 
   button.btnaction {

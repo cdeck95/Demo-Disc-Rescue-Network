@@ -51,18 +51,28 @@
         }
         
         function skipStep() { 
-            window.location.href = 'rescueFlowFailure.html'; 
+            // Get the input value
+            const colorInputValue = document.getElementById('colorInput').value;
+
+            // Redirect to the success page with the input value as a query parameter
+            window.location.href = `rescueFlowFailure.html?color=${encodeURIComponent(colorInputValue)}`;
         }
 
         function searchDiscs() {
-            const disc_found = false;
-            if(disc_found){
-                window.location.href = 'rescueFlowSuccess.html';
-            } else {
-                window.location.href = 'rescueFlowFailure.html'; 
+            // Get the input value
+            const colorInputValue = document.getElementById('colorInput').value;
 
+            // Check if a disc is found (you can modify this condition)
+            const disc_found = false; // Change this condition as needed
+
+            if (disc_found) {
+                // Redirect to the success page with the input value as a query parameter
+                window.location.href = `rescueFlowSuccess.html?color=${encodeURIComponent(colorInputValue)}`;
+            } else {
+                window.location.href = 'rescueFlowFailure.html';
             }
         }
+
     </script>
 
 
@@ -92,7 +102,7 @@
             </h3>
 
             <div class="col-10 pe-0 mb-4 mt-4" style="padding: 2; margin: auto; text-align: center;">
-                <input type="text" class="form-control" placeholder="What Color Is it?!" style="height: 55px !important" pattern="[a-zA-Z-]+">
+                <input type="text" class="form-control" id="colorInput" placeholder="What Color Is it?!" style="height: 55px !important" pattern="[a-zA-Z-]+">
             </div>  
             
              

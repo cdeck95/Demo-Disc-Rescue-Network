@@ -181,12 +181,48 @@
             window.location.href = 'settings.html'; 
         }
 
-        function goToStep2() { 
-            window.location.href = 'rescueFlowStep2.html'; 
+        function skipStep() { 
+            // Get the input value
+            const courseInputValue = document.getElementById('inputCourse').value;
+            const stateInputValue = document.getElementById('inputState').value;
+            
+            if (courseInputValue === "Course Not Listed") {
+                // Show a popup when "Course Not Listed" is selected
+                alert("Please request a course by providing additional details.");
+                return;
+            } else if (courseInputValue === "SELECT A COURSE") {
+                //replace "select a course" with null
+                window.location.href = `rescueFlowStep2.html?state=null?course=null`;
+                return;
+            } else {
+                // Existing logic for when a course is selected
+                var selectedCourse = courses.find(function(course) {
+                    return course.name === courseInputValue;
+                });
+
+                if (selectedCourse) {
+                    document.getElementById('inputState').value = selectedCourse.state;
+                }
+            }
+
+            // Redirect to the success page with the input value as a query parameter
+            window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}?course=${encodeURIComponent(courseInputValue)}`;
         }
 
-        function skipStep() { 
-            window.location.href = 'rescueFlowStep2.html'; 
+        function searchDiscs() {
+            // Get the input value
+            const courseInputValue = document.getElementById('inputCourse').value;
+            const stateInputValue = document.getElementById('inputState').value;
+
+            // Check if a disc is found (you can modify this condition)
+            const disc_found = false; // Change this condition as needed
+
+            if (disc_found) {
+                // Redirect to the success page with disc information as query parameters
+                window.location.href = `rescueFlowSuccess.html?state=${encodeURIComponent(stateInputValue)}?course=${encodeURIComponent(courseInputValue)}`;
+            } else {
+                window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}?course=${encodeURIComponent(courseInputValue)}`;
+            }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -277,7 +313,7 @@
                     </select>
                 </div>                
             </div>
-            <button class="stepbutton text-white mb-3" onClick="goToStep2()">NEXT STEP</button>
+            <button class="stepbutton text-white mb-3" onClick="searchDiscs()">NEXT STEP</button>
             <div class="pb-4">
                 <button class="rememberbtn fw-light" onClick="skipStep()">DON’T REMEMBER</button>
             </div>
