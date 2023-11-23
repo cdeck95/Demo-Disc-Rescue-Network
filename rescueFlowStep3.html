@@ -50,12 +50,60 @@
             window.location.href = 'settings.html'; 
         }
 
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
+
         function skipStep() { 
-            window.location.href = 'rescueFlowStep4.html'; 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = getQueryParam('phone');
+            console.log(phoneInputValue);
+
+            let firstInitialInputValue = document.getElementById('inputInitial').value;
+            let lastNameInputValue = document.getElementById('inputName').value;
+
+            if(firstInitialInputValue == '' || firstInitialInputValue == 'First Initial') {
+                firstInitialInputValue = '';
+            }
+
+            if(lastNameInputValue == '') {
+                lastNameInputValue = '';
+            }
+
+            window.location.href = `rescueFlowStep4.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}`;
         }
 
         function searchName() { 
-            window.location.href = 'rescueFlowStep4.html'; 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = getQueryParam('phone');
+            console.log(phoneInputValue);
+
+            const firstInitialInputValue = document.getElementById('inputInitial').value;
+            const lastNameInputValue = document.getElementById('inputName').value;
+
+            // Check if a disc is found (you can modify this condition)
+            const disc_found = false; // Change this condition as needed
+
+            if (disc_found) {
+                // Redirect to the success page with disc information as query parameters
+                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+            } else {
+                window.location.href = `rescueFlowStep4.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}`;
+            }
         }
 
         
@@ -70,6 +118,7 @@
 
     .form-control::placeholder {
         color: var(--primary-blue);
+        text-align: left !important;
     }
 
     .form-control {
@@ -132,7 +181,7 @@
 
             <div class="row mb-4 select-box d-flex justify-content-center align-items-center" style="height: 100%; width: 100%">
                 <div class="col-4 pe-0 arrow one">
-                    <select id="inputState" class="form-select" style>
+                    <select id="inputInitial" class="form-select" style>
                         <option selected>First Initial</option>
                         <option>A</option>
                         <option>B</option>
@@ -164,7 +213,7 @@
                 </div>
                 
                     <div class="col-8 pe-0" style="padding: 2;">
-                        <input type="text" class="form-control" placeholder="Enter Last Name" pattern="[a-zA-Z-]+">
+                        <input type="text" class="form-control" id="inputName" placeholder="Enter Last Name" pattern="[a-zA-Z\-]+">
                     </div>                
                 </div>            
             </div>

@@ -570,3 +570,15 @@ footer {
   object-fit: contain;
   z-index: 12;
 }
+
+.input-dropdown-wrapper input:focus {
+  margin-right: 2px !important
+}
+
+.input-dropdown-wrapper input:active {
+  margin-right: 2px !important
+}
+
+.input-dropdown-wrapper select:focus {
+  margin: 0px;
+}

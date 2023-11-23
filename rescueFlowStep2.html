@@ -11,88 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
-    <script>
-        var states = [
-                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware",
-                "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
-                "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi",
-                "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", 
-                "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
-                "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", 
-                "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-            ]
-    
-            var courses = [
-            { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
-            { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
-            { name: "Flip City", city: "Shelby", state: "Michigan" },
-            { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
-            { name: "Idlewild", city: "Burlington", state: "Kentucky" },
-            { name: "The Beast", city: "Waco", state: "Texas" },
-            { name: "DeLaveaga", city: "Santa Cruz", state: "California" },
-            { name: "Hornets Nest", city: "Charlotte", state: "North Carolina" },
-            { name: "Fountain Hills", city: "Fountain Hills", state: "Arizona" },
-            { name: "Rollin Ridge", city: "Reedsville", state: "Wisconsin" },
-            { name: "S.Y. Wilson Arlington Sports Complex", city: "Arlington", state: "Tennessee" },
-            { name: "10-3 at CB", city: "Mt. Crested Butte", state: "Colorado" },
-            { name: "1000 Acres Ranch Disc Golf Course", city: "Stony Creek", state: "New York" },
-            { name: "2022 Lucky Disc Golf Open Freeman North", city: "Idaho Falls", state: "Idaho" },
-            { name: "3 Creeks", city: "Rising Sun", state: "Maryland" },
-            { name: "50 Acre Park", city: "Evergreen", state: "Illinois" },
-            { name: "501 Disc Golf", city: "Warren", state: "Massachusetts" },
-            { name: "65th Infantry Veterans Disc Golf Course", city: "Kissimmee", state: "Florida" },
-            { name: "A. J. Jolly Park", city: "Alexandria", state: "Kentucky" },
-            { name: "Stafford Woods", city: "Voorhees", state: "New Jersey" },
-            { name: "Bellevue State Park", city: "Bellevue", state: "Delaware" },
-            { name: "Inverness Disc Golf Park", city: "Inverness", state: "Florida" },
-            { name: "Girdwood Forest Fair Park", city: "Girdwood", state: "Alaska" },
-            { name: "Windy Ridge Disc Golf at Mitchusson Park", city: "Huntsville", state: "Arkansas" },
-            { name: "North Landing", city: "Virginia Beach", state: "Virginia" }
-        ];
-
-        window.onload = function() {
-            // Placeholder names for remaining states not already in 'courses'
-            var remainingStates = [
-                "Alabama", "Connecticut", "Georgia", "Hawaii", "Iowa", "Kansas", "Louisiana", "Maine", "Mississippi", 
-                "Montana", "Nebraska", "Nevada", "New Hampshire", "New Mexico", "North Dakota", "Ohio", "Oklahoma", 
-                "Oregon", "Rhode Island", "South Carolina", "South Dakota", "Utah", "Vermont", "Washington", "West Virginia", 
-                "Wyoming"
-            ];
-            remainingStates.forEach(function(state) {
-                if (!courses.some(course => course.state === state)) {
-                    courses.push({ name: state + " Disc Golf Course", city: state + " City", state: state });
-                }
-            });
-    
-            // Function to populate states dropdown (unchanged)
-            function populateStates() {
-                var select = document.getElementById('inputState');
-                states.forEach(function(state) {
-                    var option = document.createElement('option');
-                    option.textContent = state;
-                    option.value = state;
-                    select.appendChild(option);
-                });
-            }
-    
-            // Revised function to populate courses dropdown
-            function populateCourses() {
-                var select = document.getElementById('inputCourse');
-                courses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name; // Only display the course name
-                    option.value = course.name; // You can change this if you need to store a different value
-                    select.appendChild(option);
-                });
-            }
-    
-            // Call the functions to populate the dropdowns
-            populateStates();
-            populateCourses();
-        };
-    
-    </script>
     <script>
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
@@ -132,12 +50,46 @@
             window.location.href = 'settings.html'; 
         }
 
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
+
         function skipStep() { 
-            window.location.href = 'rescueFlowStep3.html'; 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            let phoneInputValue = document.getElementById('inputPhone').value;
+            if (phoneInputValue == '') {
+                phoneInputValue = '';
+            }
+
+            window.location.href = `rescueFlowStep3.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}`;
         }
 
         function searchPhoneNumber() { 
-            window.location.href = 'rescueFlowStep3.html'; 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = document.getElementById('inputPhone').value;
+
+            // Check if a disc is found (you can modify this condition)
+            const disc_found = false; // Change this condition as needed
+
+            if (disc_found) {
+                // Redirect to the success page with disc information as query parameters
+                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+            } else {
+                window.location.href = `rescueFlowStep3.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}`;
+            }
         }
 
         
@@ -177,7 +129,7 @@
 
             <div class="row mb-4 select-box d-flex justify-content-center align-items-center" style="height: 100%">
                 <div class="col-12 col-md-10 col-lg-8" style="padding: 0;">
-                    <input type="tel" class="form-control" placeholder="PHONE NUMBER WRITTEN ON THE DISC" inputmode="numeric">
+                    <input type="tel" class="form-control" id="inputPhone" placeholder="PHONE NUMBER WRITTEN ON THE DISC" inputmode="numeric">
                 </div>                
             </div>
             

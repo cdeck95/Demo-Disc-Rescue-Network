@@ -49,30 +49,68 @@
         function openSettings() { 
             window.location.href = 'settings.html'; 
         }
-        
-        function skipStep() { 
-            // Get the input value
-            const colorInputValue = document.getElementById('colorInput').value;
 
-            // Redirect to the success page with the input value as a query parameter
-            window.location.href = `rescueFlowFailure.html?color=${encodeURIComponent(colorInputValue)}`;
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
         }
 
-        function searchDiscs() {
-            // Get the input value
+        function skipStep() { 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = getQueryParam('phone');
+            console.log(phoneInputValue);
+
+            const firstInitialInputValue = getQueryParam('initial');
+            console.log(firstInitialInputValue);
+            const lastNameInputValue = getQueryParam('name');
+            console.log(lastNameInputValue);
+
+            const discBrandInputValue= getQueryParam('brand');
+            console.log(discBrandInputValue);
+
+            const colorInputValue = document.getElementById('colorInput').value;          
+
+            window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(discBrandInputValue)}&color=${encodeURIComponent(colorInputValue)}`;
+        }
+
+        function searchDiscs() { 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = getQueryParam('phone');
+            console.log(phoneInputValue);
+
+            const firstInitialInputValue = getQueryParam('initial');
+            console.log(firstInitialInputValue);
+            const lastNameInputValue = getQueryParam('name');
+            console.log(lastNameInputValue);
+
+            const discBrandInputValue= getQueryParam('brand');
+            console.log(discBrandInputValue);
+
             const colorInputValue = document.getElementById('colorInput').value;
 
             // Check if a disc is found (you can modify this condition)
             const disc_found = false; // Change this condition as needed
 
             if (disc_found) {
-                // Redirect to the success page with the input value as a query parameter
-                window.location.href = `rescueFlowSuccess.html?color=${encodeURIComponent(colorInputValue)}`;
+                // Redirect to the success page with disc information as query parameters
+                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
             } else {
-                window.location.href = 'rescueFlowFailure.html';
+                window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(discBrandInputValue)}&color=${encodeURIComponent(colorInputValue)}`;
             }
         }
-
     </script>
 
 

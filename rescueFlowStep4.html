@@ -49,16 +49,101 @@
         function openSettings() { 
             window.location.href = 'settings.html'; 
         }
+        
+
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
 
         function skipStep() { 
-            window.location.href = 'rescueFlowStep5.html'; 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = getQueryParam('phone');
+            console.log(phoneInputValue);
+
+            const firstInitialInputValue = getQueryParam('initial');
+            console.log(firstInitialInputValue);
+            const lastNameInputValue = getQueryParam('name');
+            console.log(lastNameInputValue);
+
+            const discBrandInput = document.getElementById('inputBrand').value;
+            const discBrandSelect = document.getElementById('selectBrand').value;
+
+            // Determine which element is populated and get its value
+            let populatedBrandValue = '';
+            if (discBrandInput !== '') {
+                populatedBrandValue = discBrandInput;
+            } else if (discBrandSelect !== '') {
+                populatedBrandValue = discBrandSelect;
+            }
+
+            window.location.href = `rescueFlowStep5.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(populatedBrandValue)}`;
         }
 
         function searchDiscs() { 
-            window.location.href = 'rescueFlowStep5.html'; 
+            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            console.log(stateInputValue);
+
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            const phoneInputValue = getQueryParam('phone');
+            console.log(phoneInputValue);
+
+            const firstInitialInputValue = getQueryParam('initial');
+            console.log(firstInitialInputValue);
+            const lastNameInputValue = getQueryParam('name');
+            console.log(lastNameInputValue);
+
+            const discBrandInput = document.getElementById('inputBrand').value;
+            const discBrandSelect = document.getElementById('selectBrand').value;
+
+            // Determine which element is populated and get its value
+            let populatedBrandValue = '';
+            if (discBrandInput !== '') {
+                populatedBrandValue = discBrandInput;
+            } else if (discBrandSelect !== '') {
+                populatedBrandValue = discBrandSelect;
+            }
+
+            // Check if a disc is found (you can modify this condition)
+            const disc_found = false; // Change this condition as needed
+
+            if (disc_found) {
+                // Redirect to the success page with disc information as query parameters
+                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+            } else {
+                window.location.href = `rescueFlowStep5.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(populatedBrandValue)}`;
+            }
         }
     </script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get references to the input and select elements
+            const inputBrand = document.getElementById('inputBrand');
+            const selectBrand = document.getElementById('selectBrand');
+    
+            // Add event listeners to both input and select elements
+            inputBrand.addEventListener('input', function () {
+                // If input is populated, clear the select value
+                selectBrand.selectedIndex = 0;
+            });
+    
+            selectBrand.addEventListener('change', function () {
+                // If select is populated, clear the input value
+                inputBrand.value = '';
+            });
+        });
+    </script>
+    
     <style>
 
         :root {
@@ -254,10 +339,7 @@
             appearance: none;        /* Standard syntax */
         } 
     </style>
-
-
 </head>
-
 <body>
     <section class="main-section text-center">
         <div class="container">
@@ -282,11 +364,11 @@
             </h3>
 
             <div class="input-dropdown-wrapper mt-2">
-                <input type="text" placeholder="TYPE THE BRAND OF DISC" />
+                <input type="text" id="inputBrand" placeholder="TYPE THE BRAND OF DISC" />
                 <div class="circle-or">OR</div>
                 <select id="selectBrand" aria-label="Choose a Brand" class="select-brand-dropdown">
                     <option value="" disabled selected>Select Brand</option>
-                    <option value="discraft">Discraft</option>
+                    <option value="Discraft">Discraft</option>
                     <!-- More options here -->
                   </select>
                   

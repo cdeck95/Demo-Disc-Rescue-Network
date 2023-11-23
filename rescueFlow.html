@@ -190,9 +190,9 @@
                 // Show a popup when "Course Not Listed" is selected
                 alert("Please request a course by providing additional details.");
                 return;
-            } else if (courseInputValue === "SELECT A COURSE") {
+            } else if (courseInputValue === "SELECT A COURSE" || courseInputValue === "" || courseInputValue === null || courseInputValue === undefined || courseInputValue === "STATE") {
                 //replace "select a course" with null
-                window.location.href = `rescueFlowStep2.html?state=null?course=null`;
+                window.location.href = `rescueFlowStep2.html?state=&course=`;
                 return;
             } else {
                 // Existing logic for when a course is selected
@@ -206,7 +206,7 @@
             }
 
             // Redirect to the success page with the input value as a query parameter
-            window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}?course=${encodeURIComponent(courseInputValue)}`;
+            window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}`;
         }
 
         function searchDiscs() {
@@ -219,9 +219,9 @@
 
             if (disc_found) {
                 // Redirect to the success page with disc information as query parameters
-                window.location.href = `rescueFlowSuccess.html?state=${encodeURIComponent(stateInputValue)}?course=${encodeURIComponent(courseInputValue)}`;
+                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
             } else {
-                window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}?course=${encodeURIComponent(courseInputValue)}`;
+                window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}`;
             }
         }
 

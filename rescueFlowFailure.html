@@ -92,16 +92,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(parameterName);
         }
-    
-        // Get the value of the "color" query parameter from the URL
-        const colorValue = getQueryParam('color');
-    
-        // Check if the colorValue is not null (which means it exists in the URL)
-        if (colorValue !== null) {
-            // Use the colorValue as needed on this page
-            console.log(`The color value is: ${colorValue}`);
-            // You can replace the console.log statement with code to use the colorValue.
-        }
     </script>
     <script>
         // Function to open the modal dialog
@@ -109,15 +99,29 @@
             const parameterModal = document.getElementById('parameterModal');
             const parameterList = document.getElementById('parameterList');
             
-            // Retrieve the "color" query parameter from the URL
+            const stateInputValue = getQueryParam('state');
+            const courseInputValue = getQueryParam('course');
+            const phoneInputValue = getQueryParam('phone');
+            const firstInitialInputValue = getQueryParam('initial');
+            const lastNameInputValue = getQueryParam('name');
+            const discBrandInputValue = getQueryParam('brand');
             const colorValue = getQueryParam('color');
 
             // Construct the content for the modal
-            parameterList.innerHTML = `<p>Color: ${colorValue}</p>`;
+            parameterList.innerHTML = `
+                <p>State: ${stateInputValue}</p>
+                <p>Course: ${courseInputValue}</p>
+                <p>Phone: ${phoneInputValue}</p>
+                <p>First Initial: ${firstInitialInputValue}</p>
+                <p>Last Name: ${lastNameInputValue}</p>
+                <p>Disc Brand: ${discBrandInputValue}</p>
+                <p>Color: ${colorValue}</p>
+            `;
             
             // Display the modal
             parameterModal.style.display = 'block';
         }
+
 
         // Function to close the modal dialog
         function closeParameterModal() {
