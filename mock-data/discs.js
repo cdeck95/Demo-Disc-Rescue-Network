@@ -2766,19 +2766,19 @@ function loadDiscs(){
                             '<div class="course-box">'+
                                 '<div class="course-box-detail">'+
                                     '<div class="course-image">'+
-                                        '<img src="images/course-image.png" alt="image">'+
+                                        '<img src="../assets/course-image.png" alt="image">'+
                                     '</div>'+
                                     '<div class="course-list">'+
                                        '<ul>'+
-                                            '<li><img src="images/course-icon.png" alt="icon"><span>'+discs_list[index]['Color']+'</span></li>'+
-                                            '<li><img src="images/course-icon1.png" alt="icon"><span>'+discs_list[index]['Disc']+'</span></li>'+
-                                            '<li><img src="images/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
+                                            '<li><img src="../assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Color']+'</span></li>'+
+                                            '<li><img src="../assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Disc']+'</span></li>'+
+                                            '<li><img src="../assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
                                         '</ul>'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="course-bottom">'+
                                     '<div class="course-dis">'+
-                                        '<img src="images/rose-icon.png" alt="icon">'+
+                                        '<img src="../assets/rose-icon.png" alt="icon">'+
                                         '<span>'+discs_list[index]['Course']+'</span>'+
                                     '</div>'+
                                     '<div class="course-button">'+
