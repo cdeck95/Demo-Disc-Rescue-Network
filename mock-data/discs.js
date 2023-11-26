@@ -2771,7 +2771,7 @@ function loadDiscs(){
                                     '<div class="course-list">'+
                                        '<ul>'+
                                             '<li><img src="../assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Color']+'</span></li>'+
-                                            '<li><img src="../assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Disc']+'</span></li>'+
+                                            '<li><img src="../assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Brand']+ ' ' + discs_list[index]['Disc']+'</span></li>'+
                                             '<li><img src="../assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
                                         '</ul>'+
                                     '</div>'+
