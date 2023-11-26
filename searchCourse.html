@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Course</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style-2.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@400;500;600&family=Martian+Mono:wght@300;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="main-section text-center">
+        <div class="container">
+            <div class="d-flex align-items-center flex-column text-center mb-2">
+                <img class="weblogo" src="./assets/logo.png" alt="logo">
+
+                <div class="chat-box d-flex align-items-center mt-1">
+                    <img class="me-2" src="./assets/chat.svg" alt="chat">
+                    <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+                    <h4 class="m-0 confirmd">CONFIRMED</h4>
+                </div>
+            </div>
+            <div class="rescue d-flex align-items-center flex-column text-center mb-2">
+                <h3 class="m-0 text-white">ALL LOST <span class="fw-light">DISCS</span></h3>
+                <p class="course-name">FOR COURSE NAME HERE</p>
+            </div>
+            <div class="filter-button">
+                <button class="filter-btn" id="filter-btn">FIlters</button>
+            </div>
+            <div class="course-section">
+                <div class="row"></div>
+            </div>
+            <div class="load-more">
+                <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a>
+            </div>
+        </div>
+    </section>
+    <div class="asidebar">
+        <div class="sidebar-header">
+            <h2>FILTER AND SORT</h2>
+        </div>
+        <div class="filter-body">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Disc Brand
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul>
+                        <li>
+                            <label class="filter-checkbox">Discraft
+                                <input type="checkbox" name="filter_brand" value="Discraft">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Innova
+                                <input type="checkbox" name="filter_brand" value="Innova">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">MVP
+                                <input type="checkbox" name="filter_brand" value="MVP">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Birdie
+                                <input type="checkbox" name="filter_brand" value="Birdie">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Lone Star
+                                <input type="checkbox" name="filter_brand" value="Lone Star">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Discmania
+                                <input type="checkbox" name="filter_brand" value="Discmania">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Axiom
+                                <input type="checkbox" name="filter_brand" value="Axiom">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Dynamic Discs
+                                <input type="checkbox" name="filter_brand" value="Dynamic Discs">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Gateway
+                                <input type="checkbox" name="filter_brand" value="Gateway">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Kastaplast
+                                <input type="checkbox" name="filter_brand" value="Kastaplast">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Latitude 64
+                                <input type="checkbox" name="filter_brand" value="Latitude 64">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Prodigy
+                                <input type="checkbox" name="filter_brand" value="Prodigy">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Westside
+                                <input type="checkbox" name="filter_brand" value="Westside">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="filter-checkbox">Other
+                                <input type="checkbox" name="filter_brand" value="Other">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Disc Color
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>
+                                <label class="filter-checkbox">Green
+                                    <input type="checkbox" name="filter_color" value="Green">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Yellow
+                                    <input type="checkbox" name="filter_color" value="Yellow">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Red
+                                    <input type="checkbox" name="filter_color" value="Red">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Blue
+                                    <input type="checkbox" name="filter_color" value="Blue">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Purple
+                                    <input type="checkbox" name="filter_color" value="Purple">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Clear
+                                    <input type="checkbox" name="filter_color" value="Clear">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">White
+                                    <input type="checkbox" name="filter_color" value="White">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Sparkle
+                                    <input type="checkbox" name="filter_color" value="Sparkle">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Orange
+                                    <input type="checkbox" name="filter_color" value="Orange">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Pink
+                                    <input type="checkbox" name="filter_color" value="Pink">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Glow
+                                    <input type="checkbox" name="filter_color" value="Glow">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Brown
+                                    <input type="checkbox" name="filter_color" value="Brown">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="filter-checkbox">Other
+                                    <input type="checkbox" name="filter_color" value="Other">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="filter-footer">
+                <a href="javascript:void(0);" class="filter-search" onclick="loadDiscs();">Filter and Search</a>
+                <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content row">
+                <div class="col-2 ">
+                    <a class="d-flex align-items-center flex-column" href="#">
+                        <span class="img">
+                            <img src="./assets/home.png" alt="home">
+                        </span>
+                        <span>HOME</span>
+                    </a>
+                </div>
+                <div class="col-2 ">
+                    <a class="d-flex align-items-center flex-column" href="#">
+                        <span class="img">
+                            <img class="search" src="./assets/search.png" alt="home" width="18">
+                        </span>
+                        <span>SEARCH ALL</span>
+                    </a>
+
+                </div>
+                <div class="col-2 ">
+                    <a class=" d-flex align-items-center flex-column" href="#">
+                        <span class="img">
+                            <img src="./assets/disk-store.png" alt="home">
+                        </span>
+                        <span>DISC STORE</span>
+                    </a>
+
+                </div>
+                <div class="col-2">
+                    <a class="d-flex align-items-center flex-column" href="#">
+                        <span class="img">
+                            <img src="./assets/courses.png" alt="home">
+                        </span>
+                        <span>COURSES</span>
+                    </a>
+
+                </div>
+            </div>
+            <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="mock-data/discs.js"></script>
+</body>
+
+</html>

@@ -179,7 +179,7 @@
             window.location.href = 'settings.html'; 
         }
 
-        function searchDiscs() {
+        function searchCourse() {
             // Get the input value
             const courseInputValue = document.getElementById('inputCourse').value;
             const stateInputValue = document.getElementById('inputState').value;
@@ -189,6 +189,7 @@
 
             alert("Implement Search Function.");
 
+            window.location.href = 'searchCourse.html'; 
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -278,7 +279,7 @@
                     </select>
                 </div>                
             </div>
-            <button class="stepbutton text-white mt-3 mb-3" style="padding: 16px 8px; font-size: 16px; max-width: 80%; width: 80% !important" onClick="searchDiscs()">Search all discs at the selected course</button>
+            <button class="stepbutton text-white mt-3 mb-3" style="padding: 16px 8px; font-size: 16px; max-width: 80%; width: 80% !important" onClick="searchCourse()">Search all discs at the selected course</button>
         </div>
     </section>
 
