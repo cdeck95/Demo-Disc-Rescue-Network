@@ -185,7 +185,7 @@
         <div class="sidebar-header">
             <h2>FILTER AND SORT</h2>
         </div>
-        <div class="filter-body">
+        <!-- <div class="filter-body">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
@@ -195,7 +195,7 @@
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <ul id="brandList"> <!-- This is where the list items will be appended -->
+                        <ul id="brandList"> 
                         </ul>
                     </div>
                     </div>
@@ -208,7 +208,7 @@
                   </h2>
                   <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <ul id="colorList"> <!-- This is where the list items will be appended -->
+                        <ul id="colorList"> 
                         </ul>
                     </div>
                   </div>
@@ -218,7 +218,42 @@
                 <a href="javascript:void(0);" class="filter-search" onclick="loadDiscs();">Filter and Search</a>
                 <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
             </div>
+        </div> -->
+        <div class="filter-body">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Disc Brand
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                            <ul id="brandList"> <!-- This is where the list items will be appended -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            Disc Color
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                        <div class="accordion-body">
+                            <ul id="colorList"> <!-- This is where the list items will be appended -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-footer">
+                <a href="javascript:void(0);" class="filter-search" onclick="loadDiscs();">Filter and Search</a>
+                <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
+            </div>
         </div>
+        
     </div>
    
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
