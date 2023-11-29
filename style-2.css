@@ -485,6 +485,7 @@ footer {
 .course-box .course-box-detail {
   display: flex;
   align-items: center;
+  max-height: 65px;
 }
 
 .course-box-detail .course-image img {
@@ -494,7 +495,7 @@ footer {
 }
 
 .course-box-detail .course-image {
-  width: 75px;
+  /* width: 75px; */
   border: 2px solid var(--primary-white);
 }
 
@@ -510,6 +511,7 @@ footer {
   margin: 0;
   list-style: none;
   text-align: left;
+  max-height: 66px;
 }
 
 .course-box-detail .course-list ul li {
@@ -520,6 +522,11 @@ footer {
   align-items: center;
   font-size: 9px;
   font-family: 'Lato', sans-serif;
+  max-height: 22px;
+  height: 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1;
 }
 
 .course-box-detail .course-list ul li img {
