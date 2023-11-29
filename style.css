@@ -173,6 +173,18 @@ h4.confirmd {
   letter-spacing: 1px;
 }
 
+.failurebutton:hover {
+  cursor: pointer;
+  background-color: var(--primary-blue) !important;
+  border: 2px solid var(--primary-white) !important;
+}
+
+.stepbutton:hover {
+  cursor: pointer;
+  background-color: var(--primary-blue) !important;
+  border: 2px solid var(--primary-white) !important;
+}
+
 button.rememberbtn {
   width: 40%;
   max-width: 150px;
@@ -182,6 +194,20 @@ button.rememberbtn {
   color: var(--primary-white);
   font-size: 16px;
   letter-spacing: .08em;
+}
+
+button:hover {
+  cursor: pointer;
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-red);
+  color: var(--primary-white);
+}
+
+.rememberbtn:hover  {
+  cursor: pointer;
+  border: 2px solid var(--primary-white);
+  background-color: var(--primary-red);
+  color: var(--primary-white);
 }
 
 .container {

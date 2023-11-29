@@ -2740,14 +2740,15 @@ var found_discs = [
 var filter_brand = filter_color = [];
 $(document).ready(function(){
     loadDiscs();
-    $("#filter-btn").click(function(event){
-        event.stopPropagation(); // Prevent the event from propagating
+    $(document).on('click','#filter-btn',function(e){
+        e.preventDefault(); // Prevent the event from propagating
         $(".asidebar").toggleClass("open-sidebar");
+        $(".main-wrapper").toggleClass("open-sidebar");
     });
 
-    $(".main-section, .footer").click(function(){
-        $(".asidebar").removeClass("open-sidebar");
-    });
+    // $(".main-section, .footer").click(function(){
+    //     $(".asidebar").removeClass("open-sidebar");
+    // });
 });
 
 function loadDiscs(){
@@ -2766,23 +2767,23 @@ function loadDiscs(){
                             '<div class="course-box">'+
                                 '<div class="course-box-detail">'+
                                     '<div class="course-image">'+
-                                        '<img src="../assets/course-image.png" alt="image">'+
+                                        '<img src="./assets/course-image.png" alt="image">'+
                                     '</div>'+
                                     '<div class="course-list">'+
                                        '<ul>'+
-                                            '<li><img src="../assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Color']+'</span></li>'+
-                                            '<li><img src="../assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Brand']+ ' ' + discs_list[index]['Disc']+'</span></li>'+
-                                            '<li><img src="../assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
+                                            '<li><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
+                                            '<li><img src="./assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Color']+ " " + discs_list[index]['Disc']+'</span></li>'+
+                                            '<li><img src="./assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
                                         '</ul>'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="course-bottom">'+
                                     '<div class="course-dis">'+
-                                        '<img src="../assets/rose-icon.png" alt="icon">'+
+                                        '<img src="./assets/rose-icon.png" alt="icon">'+
                                         '<span>'+discs_list[index]['Course']+'</span>'+
                                     '</div>'+
                                     '<div class="course-button">'+
-                                        '<a href="#" class="course-btn">Claim Dist</a>'+
+                                        '<a href="#" class="course-btn">Claim Disc</a>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
@@ -2797,6 +2798,9 @@ function loadDiscs(){
     else{
         $('.main-section .load-more').removeClass('hidden');
     }
+
+    $(".asidebar").removeClass("open-sidebar");
+    $(".main-wrapper").removeClass("open-sidebar");
 }
 
 function filterDiscs(discItem){

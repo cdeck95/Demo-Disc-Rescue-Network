@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+  --primary-blue: #005daa;
+  --secondary-blue: #228de5;
+  --primary-black: #000000;
+  --primary-red: #d31245;
+  --primary-white: #FFFFFF;
+  --primary-grey: #e3e3e3;
+  --primary-green: #55de1f;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
 body {
   font-family: "Bebas Neue", sans-serif;
 }
 
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('fonts/BebasNeue-Thin.eot');
-  src: url('fonts/BebasNeue-Thin.eot?#iefix') format('embedded-opentype'),
-    url('fonts/BebasNeue-Thin.woff2') format('woff2'),
-    url('fonts/BebasNeue-Thin.woff') format('woff');
+  src: url('../fonts/BebasNeue-Thin.eot');
+  src: url('../fonts/BebasNeue-Thin.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BebasNeue-Thin.woff2') format('woff2'),
+    url('../fonts/BebasNeue-Thin.woff') format('woff');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -16,10 +28,10 @@ body {
 
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('fonts/BebasNeueLight.eot');
-  src: url('fonts/BebasNeueLight.eot?#iefix') format('embedded-opentype'),
-    url('fonts/BebasNeueLight.woff2') format('woff2'),
-    url('fonts/BebasNeueLight.woff') format('woff');
+  src: url('../fonts/BebasNeueLight.eot');
+  src: url('../fonts/BebasNeueLight.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BebasNeueLight.woff2') format('woff2'),
+    url('../fonts/BebasNeueLight.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -27,19 +39,38 @@ body {
 
 @font-face {
   font-family: 'Bebas Neue';
-  src: url('fonts/BebasNeueRegular.eot');
-  src: url('fonts/BebasNeueRegular.eot?#iefix') format('embedded-opentype'),
-    url('fonts/BebasNeueRegular.woff2') format('woff2'),
-    url('fonts/BebasNeueRegular.woff') format('woff');
+  src: url('../fonts/BebasNeueRegular.eot');
+  src: url('../fonts/BebasNeueRegular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BebasNeueRegular.woff2') format('woff2'),
+    url('../fonts/BebasNeueRegular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-.main-section {
-  background-color: #005daa;
-  height: 100vh;
+body {
+  background-color: var(--primary-blue);
 }
+
+.main-wrapper {
+  transition: 0.5s;
+  right: 0;
+  position: relative;
+  height: 100vh;
+
+}
+
+.main-wrapper.open-sidebar {
+  right: 210px;
+  transition: 0.5s;
+}
+
+.main-section {
+  background-color: var(--primary-blue);
+  padding-bottom: 20px;
+}
+
+
 
 img.weblogo {
   width: 90px;
@@ -47,7 +78,7 @@ img.weblogo {
 }
 
 .main-section .overtext {
-  color: #218de6;
+  color: var(--secondary-blue);
 }
 
 .chat-box h4 {
@@ -60,26 +91,28 @@ img.weblogo {
 }
 
 h4.confirmd {
-  color: #55de1f;
+  color: var(--primary-green);
 }
 
 .main-section .missingtext {
-  color: #ce1547;
+  color: var(--primary-red);
 }
 
 .rescue h3 {
   font-size: 30px;
   letter-spacing: 0.5px;
 }
+
 p.course-name {
   margin: 0;
   font-size: 15px;
-  color: #fff;
+  color: var(--primary-white);
   font-weight: 300;
   letter-spacing: 0.5px;
 }
 
-.disc-item.hidden,.load-more.hidden {
+.disc-item.hidden,
+.load-more.hidden {
   display: none;
 }
 
@@ -93,7 +126,7 @@ p.course-name {
 }
 
 .main-section button.stepbutton {
-  background-color: #ce1547;
+  background-color: var(--primary-red);
   width: 140px;
   padding: 4px 0;
   border: none;
@@ -106,7 +139,26 @@ button.rememberbtn {
   width: 110px;
   padding: 4px 0;
   border: 2px solid white;
-  background-color: #005daa;
+  background-color: var(--primary-blue);
+  color: white;
+  font-size: 14px;
+}
+
+.main-section button.stepbutton:hove {
+  background-color: var(--primary-red);
+  width: 140px;
+  padding: 4px 0;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+button.rememberbtn {
+  width: 110px;
+  padding: 4px 0;
+  border: 2px solid white;
+  background-color: var(--primary-blue);
   color: white;
   font-size: 14px;
 }
@@ -145,7 +197,7 @@ button.rememberbtn {
 }
 
 footer {
-  background-color: #218de5;
+  background-color: var(--secondary-blue);
   position: relative;
 }
 
@@ -158,8 +210,8 @@ footer {
 }
 
 button.btnaction {
-  background-color: #ce1547;
-  border: 5px solid #005daa;
+  background-color: var(--primary-red);
+  border: 5px solid var(--primary-blue);
   border-radius: 100%;
   padding: 10px;
   position: absolute;
@@ -200,10 +252,10 @@ footer {
   border-radius: 0;
   padding: 6px 6px;
   font-size: 12px;
-  border: 3px solid #268cdf;
+  border: 3px solid var(--secondary-blue);
   background-image: none;
   position: relative;
-  color: #268cdf;
+  color: var(--secondary-blue);
 }
 
 .select-box .arrow {
@@ -216,7 +268,7 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 6px 6px 0 6px;
-  border-color: #218de5 transparent transparent transparent;
+  border-color: var(--secondary-blue) transparent transparent transparent;
   position: absolute;
   right: 21px;
   top: 15px;
@@ -231,17 +283,20 @@ footer {
 .footer-content {
   justify-content: space-between;
 }
+
 .filter-button {
   text-align: right;
   margin-bottom: 5px;
 }
+
 .filter-button .filter-btn {
   position: relative;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: var(--primary-white);
   padding: 0 15px;
 }
+
 .filter-button .filter-btn:after {
   position: absolute;
   content: '';
@@ -250,189 +305,216 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 6px 4px 0 4px;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--primary-white) transparent transparent transparent;
   top: 43%;
   right: 0;
   transform: translateY(-50%);
 }
+
 .asidebar {
   position: fixed;
   right: 0;
   top: 0;
   z-index: 9;
-  height: 100vh;
-  border-left: 2px solid #d31245;
+  height: 100%;
+  transition: 0.5s;
+  border-left: 2px solid var(--primary-red);;
   width: 0;
   visibility: hidden;
+  background: var(--primary-grey);
 }
-.asidebar.open-sidebar{
+
+.asidebar.open-sidebar {
   width: 300px;
   visibility: visible;
+  transition: 0.5s;
 }
+
 .sidebar-header {
-  background: #d31245;
+  background: var(--primary-red);;
   text-align: center;
   padding: 15px 0;
 }
-.sidebar-header {
-  background: #d31245;
-  text-align: center;
-  padding: 20px 0;
-}
+
 .sidebar-header h2 {
   margin: 0;
-  color: #fff;
+  color: var(--primary-white);
+  font-size: 22px;
 }
+
 .filter-body {
-  background: #e3e3e3;
+  background: var(--primary-grey);
   overflow: hidden;
   overflow-y: auto;
   height: calc(100vh - 75px);
-  padding: 30px 20px;
+  padding: 20px 12px;
 }
+
 .filter-body::-webkit-scrollbar {
   width: 5px;
 }
+
 .filter-body::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: var(--primary-grey);
 }
- 
+
 .filter-body::-webkit-scrollbar-thumb {
-  background: #d31245; 
+  background: var(--primary-red);
 }
+
 .filter-body::-webkit-scrollbar-thumb:hover {
-  background: #d31245; 
+  background: var(--primary-red);
 }
+
 .filter-body .accordion {
   border-radius: 0;
   border: 0;
   box-shadow: none;
 }
 
-.filter-body .accordion .accordion-button::after{
+.filter-body .accordion .accordion-button::after {
   content: '';
   display: inline-block;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 10px 8px 0 8px;
-  border-color: #005da9 transparent transparent transparent;
+  border-width: 7px 6px 0 6px;
+  border-color: var(--primary-blue) transparent transparent transparent;
   transform: var(--bs-accordion-btn-icon-transform);
 }
-.filter-body .accordion .accordion-button:not(.collapsed)::after{
+
+.filter-body .accordion .accordion-button:not(.collapsed)::after {
   transform: inherit;
 }
+
 .filter-body .accordion .accordion-header .accordion-button {
   background: transparent;
   box-shadow: none;
   border: 0;
   padding: 0;
-  color: #000;
-  font-size: 26px;
+  color: var(--primary-black);
+  font-size: 20px;
 }
+
 .filter-body .accordion .accordion-item {
   border: 0;
   background: transparent;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
+
 .filter-body .accordion .accordion-item .accordion-body ul {
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
   overflow-y: auto;
-  height: 102px;
+  height: 200px;
 }
+
 .filter-body .accordion .accordion-item .accordion-body ul::-webkit-scrollbar {
   width: 5px;
 }
+
 .filter-body .accordion .accordion-item .accordion-body ul::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: var(--primary-white);
 }
- 
+
 .filter-body .accordion .accordion-item .accordion-body ul::-webkit-scrollbar-thumb {
-  background: #005da9; 
+  background: var(--primary-blue);
 }
+
 .filter-body .accordion .accordion-item .accordion-body ul::-webkit-scrollbar-thumb:hover {
-  background: #005da9; 
+  background: var(--primary-blue);
 }
+
 .filter-body .accordion .accordion-item .accordion-body ul li {
   font-weight: 400;
   font-size: 20px;
-  padding: 2px 0 2px 5px;
+  padding: 0px 0 0px 5px;
   position: relative;
 }
+
 .filter-body .accordion .accordion-item .accordion-body {
   padding: 0;
 }
+
 .filter-footer .filter-search {
   width: 100%;
   text-align: center;
-  color: #fff;
-  background: #d31e47;
+  color: var(--primary-white);
+  background: var(--primary-red);;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 1.2;
-  padding: 15px 0;
-  border: 1px solid #d31e47;
-  margin-bottom: 25px;
+  padding: 10px 0;
+  border: 1px solid var(--primary-red);;
+  margin-bottom: 12px;
 }
+
 .filter-footer .filter-reset {
-  border: 2px solid #005da9;
+  border: 2px solid var(--primary-blue);;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  padding: 10px 0;
-  font-size: 25px;
+  padding: 6px 0;
+  font-size: 20px;
   line-height: 1.2;
 }
+
 .course-box .course-box-detail {
   display: flex;
   align-items: center;
 }
+
 .course-box-detail .course-image img {
   width: 70px;
   height: 70px;
   object-fit: cover;
 }
+
 .course-box-detail .course-image {
   width: 75px;
-  border: 2px solid #fff;
+  border: 2px solid var(--primary-white);
 }
+
 .course-box-detail .course-list {
-  background: #fff;
-  border: 1px solid #fff;
+  background: var(--primary-white);
+  border: 1px solid var(--primary-white);
   border-left: 0;
   width: calc(100% - 74px);
 }
+
 .course-box-detail .course-list ul {
   padding: 0;
   margin: 0;
   list-style: none;
   text-align: left;
 }
+
 .course-box-detail .course-list ul li {
   padding: 2px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--primary-grey);
   display: flex;
   align-items: center;
   font-size: 10px;
   font-family: 'Lato', sans-serif;
 }
+
 .course-box-detail .course-list ul li img {
   margin-right: 6px;
   width: 10px;
 }
+
 .course-button .course-btn {
   width: 100%;
   text-align: center;
-  color: #fff;
-  background: #d31e47;
+  color: var(--primary-white);
+  background: var(--primary-red);;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -441,30 +523,34 @@ footer {
   line-height: 1.2;
   padding: 6px 10px;
   letter-spacing: 0.6px;
-  border: 1px solid #d31e47;
+  border: 1px solid var(--primary-red);;
   white-space: nowrap;
 }
+
 .course-bottom {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 5px 0 0;
 }
+
 .course-bottom .course-dis {
-  color: #fff;
+  color: var(--primary-white);
   font-size: 13px;
 }
+
 .course-bottom .course-dis img {
   margin-right: 5px;
   width: 15px;
 }
+
 .course-section .course-box {
   margin-bottom: 16px;
 }
+
 .load-more .more-btn {
   text-align: center;
-  color: #fff;
-  background: #228de5;
+  color: var(--primary-white);
+  background: var(--secondary-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -473,40 +559,43 @@ footer {
   line-height: 1.2;
   padding: 0 5px;
   letter-spacing: 0.6px;
-  border: 10px solid #228de5;
-  max-width: 130px;
+  border: 6px solid var(--secondary-blue);
+  max-width: 110px;
   margin: 0 auto;
 }
+
 .course-section {
-  overflow: hidden;
   padding: 0 10px;
-  overflow-y: auto;
-  max-height: 365px;
   margin-bottom: 10px;
+  height: calc(100vh - 385px);
+  overflow: hidden;
+  overflow-y: auto;
 }
+
 .course-section::-webkit-scrollbar {
   width: 5px;
 }
 
 .course-section::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: var(--primary-blue);
 }
- 
+
 .course-section::-webkit-scrollbar-thumb {
-  background: #d31245; 
+  background: var(--primary-red);
 }
 
 .course-section::-webkit-scrollbar-thumb:hover {
-  background: #d31245; 
-}
+  background: var(--primary-red);
+
 
 .filter-checkbox {
   display: block;
   position: relative;
-  padding-left: 25px;
+  padding-left: 20px;
   margin-bottom: 0;
   cursor: pointer;
   user-select: none;
+  font-size: 15px;
 }
 
 /* Hide the browser's default checkbox */
@@ -523,16 +612,16 @@ footer {
   position: absolute;
   top: 50%;
   left: 0;
-  height: 15px;
-  width: 15px;
+  height: 12px;
+  width: 12px;
   transform: translateY(-50%);
-  border: 1px solid #005da9;
-  background: #005da9;
+  border: 1px solid var(--primary-blue);;
+  background: var(--primary-blue);;
 }
 
 /* When the checkbox is checked, add a blue background */
-.filter-checkbox input:checked ~ .checkmark {
-  background-color: #005da9;
+.filter-checkbox input:checked~.checkmark {
+  background-color: var(--primary-blue);;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -543,15 +632,15 @@ footer {
 }
 
 /* Show the checkmark when checked */
-.filter-checkbox input:checked ~ .checkmark:after {
+.filter-checkbox input:checked~.checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
 .filter-checkbox .checkmark:after {
-  left: 4px;
-  width: 5px;
-  height: 10px;
+  left: 3px;
+  width: 4px;
+  height: 9px;
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
@@ -584,13 +673,23 @@ footer {
   .wizardbox {
     bottom: 47px;
   }
+
+  .asidebar.open-sidebar {
+    width: 175px;
+  }
+
+  .main-wrapper.open-sidebar {
+    right: 180px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .container {
     max-width: 400px;
   }
-
+  .course-section {
+    height: calc(100vh - 380px);
+}
   .footer-content .col-2:nth-child(2) {
     margin-right: 32px;
   }
@@ -657,24 +756,33 @@ footer {
     padding: 3px 0;
     font-size: 18px;
   }
+
   .course-section .row {
     margin: 0 -3px;
   }
+
   .course-section .row .col-6 {
     padding: 0 3px;
   }
+
   .course-box-detail .course-list {
     width: calc(100% - 70px);
   }
+
   .course-box-detail .course-image img {
     width: 66px;
     height: 66px;
   }
+
   .course-box-detail .course-image {
     width: 70px;
   }
-  .course-section {
-    margin-bottom: 20px;
-    max-height: 420px;
+}
+
+@media (max-width: 389px) {
+  .course-button .course-btn {
+    font-size: 12px;
+    padding: 4px 8px;
   }
+}
 }
