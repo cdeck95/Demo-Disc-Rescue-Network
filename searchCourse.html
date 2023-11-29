@@ -48,6 +48,42 @@
             window.location.href = 'settings.html'; 
         }
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var brands = ['Discraft', 'Innova', 'Dynamic Discs', 'Latitude 64']; // Add more brands as needed
+            var brandList = document.getElementById('brandList');
+
+            brands.forEach(function(brand) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <label class="filter-checkbox">
+                        <input type="checkbox" name="filter_brand" value="${brand}">
+                        <span class="checkmark"></span>
+                        ${brand}
+                    </label>
+                `;
+                brandList.appendChild(listItem);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var colors = ['Green', 'Blue', 'Red', 'Yellow']; // Add more colors as needed
+            var colorList = document.getElementById('colorList');
+
+            colors.forEach(function(color) {
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <label class="filter-checkbox">
+                        <input type="checkbox" name="filter_color" value="${color}">
+                        <span class="checkmark"></span>
+                        ${color}
+                    </label>
+                `;
+                colorList.appendChild(listItem);
+            });
+        });
+
+    </script>
 </head>
 
 <body>
@@ -159,94 +195,10 @@
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <ul>
-                        <li>
-                            <label class="filter-checkbox">Discraft
-                                <input type="checkbox" name="filter_brand" value="Discraft">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Innova
-                                <input type="checkbox" name="filter_brand" value="Innova">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">MVP
-                                <input type="checkbox" name="filter_brand" value="MVP">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Birdie
-                                <input type="checkbox" name="filter_brand" value="Birdie">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Lone Star
-                                <input type="checkbox" name="filter_brand" value="Lone Star">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Discmania
-                                <input type="checkbox" name="filter_brand" value="Discmania">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Axiom
-                                <input type="checkbox" name="filter_brand" value="Axiom">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Dynamic Discs
-                                <input type="checkbox" name="filter_brand" value="Dynamic Discs">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Gateway
-                                <input type="checkbox" name="filter_brand" value="Gateway">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Kastaplast
-                                <input type="checkbox" name="filter_brand" value="Kastaplast">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Latitude 64
-                                <input type="checkbox" name="filter_brand" value="Latitude 64">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Prodigy
-                                <input type="checkbox" name="filter_brand" value="Prodigy">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Westside
-                                <input type="checkbox" name="filter_brand" value="Westside">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="filter-checkbox">Other
-                                <input type="checkbox" name="filter_brand" value="Other">
-                                <span class="checkmark"></span>
-                            </label>
-                        </li>
-                      </ul>
+                        <ul id="brandList"> <!-- This is where the list items will be appended -->
+                        </ul>
                     </div>
-                  </div>
+                    </div>
                 </div>
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingTwo">
@@ -256,85 +208,7 @@
                   </h2>
                   <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <ul>
-                            <li>
-                                <label class="filter-checkbox">Green
-                                    <input type="checkbox" name="filter_color" value="Green">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Yellow
-                                    <input type="checkbox" name="filter_color" value="Yellow">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Red
-                                    <input type="checkbox" name="filter_color" value="Red">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Blue
-                                    <input type="checkbox" name="filter_color" value="Blue">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Purple
-                                    <input type="checkbox" name="filter_color" value="Purple">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Clear
-                                    <input type="checkbox" name="filter_color" value="Clear">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">White
-                                    <input type="checkbox" name="filter_color" value="White">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Sparkle
-                                    <input type="checkbox" name="filter_color" value="Sparkle">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Orange
-                                    <input type="checkbox" name="filter_color" value="Orange">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Pink
-                                    <input type="checkbox" name="filter_color" value="Pink">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Glow
-                                    <input type="checkbox" name="filter_color" value="Glow">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Brown
-                                    <input type="checkbox" name="filter_color" value="Brown">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="filter-checkbox">Other
-                                    <input type="checkbox" name="filter_color" value="Other">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </li>
+                        <ul id="colorList"> <!-- This is where the list items will be appended -->
                         </ul>
                     </div>
                   </div>
