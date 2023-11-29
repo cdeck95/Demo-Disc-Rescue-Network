@@ -49,7 +49,120 @@
         }
     </script>
     <script>
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+
+            var filter_brand = filter_color = [];
+            var filter_course = getQueryParam("course") ? [getQueryParam("course")] : [];
+            console.log(filter_course);
+            $(document).ready(function(){
+                loadDiscs();
+                $(document).on('click','#filter-btn',function(e){
+                    e.preventDefault(); // Prevent the event from propagating
+                    $(".asidebar").toggleClass("open-sidebar");
+                    $(".main-wrapper").toggleClass("open-sidebar");
+                });
+
+                // $(".main-section, .footer").click(function(){
+                //     $(".asidebar").removeClass("open-sidebar");
+                // });
+            });
+            function loadDiscs(){
+                var disc_item = '';
+                filter_brand =  $("input[name=filter_brand]:checked").map(function(){
+                                        return $(this).val();
+                                    }).get();
+                filter_color =  $("input[name=filter_color]:checked").map(function(){
+                                        return $(this).val();
+                                    }).get();
+                discs_list    = found_discs.filter(filterDiscs);
+
+                $.each(discs_list, function(index, value) {
+                
+                    disc_item += '<div class="col-6 disc-item'+(index > 5 ? ' hidden' : '')+'">'+
+                                        '<div class="course-box">'+
+                                            '<div class="course-box-detail">'+
+                                                '<div class="course-image">'+
+                                                    '<img src="./assets/course-image.png" alt="image">'+
+                                                '</div>'+
+                                                '<div class="course-list">'+
+                                                '<ul>'+
+                                                        '<li><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
+                                                        '<li><img src="./assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Color']+ " " + discs_list[index]['Disc']+'</span></li>'+
+                                                        '<li><img src="./assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
+                                                    '</ul>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="course-bottom">'+
+                                                '<div class="course-dis">'+
+                                                    '<img src="./assets/rose-icon.png" alt="icon">'+
+                                                    '<span>'+discs_list[index]['Course']+'</span>'+
+                                                '</div>'+
+                                                '<div class="course-button">'+
+                                                    '<a href="#" class="course-btn">Claim Disc</a>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>';
+                });
+
+                $('.course-section .row').html(disc_item);
+
+                if(discs_list.length < 6){
+                    $('.main-section .load-more').addClass('hidden');
+                }
+                else{
+                    $('.main-section .load-more').removeClass('hidden');
+                }
+
+                $(".asidebar").removeClass("open-sidebar");
+                $(".main-wrapper").removeClass("open-sidebar");
+
+                // Check if there are hidden discs left
+                if ($('.disc-item.hidden').length === 0) {
+                    $('.load-more .more-btn').hide(); // Hide Load More button
+                    $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
+                } else {
+                    $('.load-more .more-btn').show(); // Show Load More button
+                    $('.load-more .no-more-discs').addClass('hidden'); // Hide the message
+                }
+            }
+
+            function filterDiscs(discItem){
+                // First, check if the disc matches the selected course(s)
+                if (filter_course.length && $.inArray(discItem['Course'], filter_course) < 0) {
+                    return false; // If it doesn't match any selected course, exclude it immediately
+                }
+
+                // Then, check for brand and color filters
+                return (!filter_brand.length || $.inArray(discItem['Brand'], filter_brand) >= 0) &&
+                    (!filter_color.length || $.inArray(discItem['Color'], filter_color) >= 0);
+            }
+
+
+            function resetFilters(){
+                $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
+                loadDiscs();
+            }
+
+        });
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseInputValue = getQueryParam('course');
+            console.log(courseInputValue);
+
+            // Update the course name in the HTML
+            const courseNameElement = document.querySelector('.course-name');
+            if (courseNameElement && courseInputValue) {
+                courseNameElement.textContent = courseInputValue;
+            }
+
             var brands = ['Discraft', 'Innova', 'Dynamic Discs', 'Latitude 64']; // Add more brands as needed
             var brandList = document.getElementById('brandList');
 
@@ -101,7 +214,7 @@
                 </div>
                 <div class="rescue d-flex align-items-center flex-column text-center mb-2">
                     <h3 class="m-0 text-white">ALL LOST <span class="fw-light">DISCS</span></h3>
-                    <p class="course-name">FOR COURSE NAME HERE</p>
+                    <p class="course-name"></p> <!-- Course name will be displayed here -->
                 </div>
                 <div class="filter-button">
                     <button class="filter-btn" id="filter-btn">Filters</button>
@@ -110,6 +223,7 @@
                     <div class="row"></div>
                     <div class="load-more">
                         <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a>
+                        <div class="no-more-discs hidden">That's all we have for now!</div>
                     </div>
                 </div>
             </div>

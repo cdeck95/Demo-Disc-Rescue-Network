@@ -187,7 +187,8 @@
 
             alert("Implement Search Function.");
 
-            window.location.href = 'searchCourse.html'; 
+            window.location.href = `searchCourse.html?course=${encodeURIComponent(courseInputValue)}`;
+
         }
 
         document.addEventListener('DOMContentLoaded', function() {

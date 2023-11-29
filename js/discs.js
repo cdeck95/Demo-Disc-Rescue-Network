@@ -161,7 +161,7 @@ var found_discs = [
     },
     {
         "ID": 11,
-        "Course": "Blue Ribbon Pines",
+        "Course": "Tranquility Trails",
         "Name": "NTM",
         "Disc": "Resistor",
         "PhoneNumber": "1712",
@@ -2737,77 +2737,4 @@ var found_discs = [
     }
 ];
 
-var filter_brand = filter_color = [];
-$(document).ready(function(){
-    loadDiscs();
-    $(document).on('click','#filter-btn',function(e){
-        e.preventDefault(); // Prevent the event from propagating
-        $(".asidebar").toggleClass("open-sidebar");
-        $(".main-wrapper").toggleClass("open-sidebar");
-    });
-
-    // $(".main-section, .footer").click(function(){
-    //     $(".asidebar").removeClass("open-sidebar");
-    // });
-});
-
-function loadDiscs(){
-    var disc_item = '';
-    filter_brand =  $("input[name=filter_brand]:checked").map(function(){
-                              return $(this).val();
-                        }).get();
-    filter_color =  $("input[name=filter_color]:checked").map(function(){
-                              return $(this).val();
-                        }).get();
-    discs_list    = found_discs.filter(filterDiscs);
-
-    $.each(discs_list, function(index, value) {
-      
-          disc_item += '<div class="col-6 disc-item'+(index > 5 ? ' hidden' : '')+'">'+
-                            '<div class="course-box">'+
-                                '<div class="course-box-detail">'+
-                                    '<div class="course-image">'+
-                                        '<img src="./assets/course-image.png" alt="image">'+
-                                    '</div>'+
-                                    '<div class="course-list">'+
-                                       '<ul>'+
-                                            '<li><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
-                                            '<li><img src="./assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Color']+ " " + discs_list[index]['Disc']+'</span></li>'+
-                                            '<li><img src="./assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
-                                        '</ul>'+
-                                    '</div>'+
-                                '</div>'+
-                                '<div class="course-bottom">'+
-                                    '<div class="course-dis">'+
-                                        '<img src="./assets/rose-icon.png" alt="icon">'+
-                                        '<span>'+discs_list[index]['Course']+'</span>'+
-                                    '</div>'+
-                                    '<div class="course-button">'+
-                                        '<a href="#" class="course-btn">Claim Disc</a>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>';
-    });
-
-    $('.course-section .row').html(disc_item);
-
-    if(discs_list.length < 6){
-        $('.main-section .load-more').addClass('hidden');
-    }
-    else{
-        $('.main-section .load-more').removeClass('hidden');
-    }
-
-    $(".asidebar").removeClass("open-sidebar");
-    $(".main-wrapper").removeClass("open-sidebar");
-}
-
-function filterDiscs(discItem){
-    return (!filter_brand.length || ($.inArray(discItem['Brand'],filter_brand) >=0)) && (!filter_color.length || ($.inArray(discItem['Color'],filter_color) >=0));
-}
-
-function resetFilters(){
-    $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
-    loadDiscs();
-}
+// export default found_discs;
