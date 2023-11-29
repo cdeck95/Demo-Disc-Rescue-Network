@@ -82,6 +82,46 @@
                                     }).get();
                 discs_list    = found_discs.filter(filterDiscs);
 
+                // Extract unique brands from the filtered discs
+                var uniqueBrands = new Set(discs_list.map(disc => disc.Brand));
+                var brands = Array.from(uniqueBrands);
+
+                // Now, use 'brands' to populate your brand list as you did before
+                var brandList = document.getElementById('brandList');
+                brandList.innerHTML = ''; // Clear existing list items, if any
+
+                brands.forEach(function(brand) {
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <label class="filter-checkbox">
+                            <input type="checkbox" name="filter_brand" value="${brand}">
+                            <span class="checkmark"></span>
+                            <span class="filter-text">${brand}</span>
+                        </label>
+                    `;
+                    brandList.appendChild(listItem);
+                });
+
+                // Extract unique colors
+                var uniqueColors = new Set(discs_list.map(disc => disc.Color));
+                var colors = Array.from(uniqueColors);
+
+                // Populate color list
+                var colorList = document.getElementById('colorList');
+                colorList.innerHTML = ''; // Clear existing list items, if any
+
+                colors.forEach(function(color) {
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <label class="filter-checkbox">
+                            <input type="checkbox" name="filter_color" value="${color}">
+                            <span class="checkmark"></span>
+                            <span class="filter-text">${color}</span>
+                        </label>
+                    `;
+                    colorList.appendChild(listItem);
+                });
+
                 $.each(discs_list, function(index, value) {
                 
                     disc_item += '<div class="col-6 disc-item'+(index > 5 ? ' hidden' : '')+'">'+
@@ -92,7 +132,7 @@
                                                 '</div>'+
                                                 '<div class="course-list">'+
                                                 '<ul>'+
-                                                        '<li><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
+                                                        '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
                                                         '<li><img src="./assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Color']+ " " + discs_list[index]['Disc']+'</span></li>'+
                                                         '<li><img src="./assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
                                                     '</ul>'+
@@ -152,49 +192,22 @@
 
         });
 
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const courseInputValue = getQueryParam('course');
-            console.log(courseInputValue);
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var colors = ['Green', 'Blue', 'Red', 'Yellow']; // Add more colors as needed
+        //     var colorList = document.getElementById('colorList');
 
-            // Update the course name in the HTML
-            const courseNameElement = document.querySelector('.course-name');
-            if (courseNameElement && courseInputValue) {
-                courseNameElement.textContent = courseInputValue;
-            }
-
-            var brands = ['Discraft', 'Innova', 'Dynamic Discs', 'Latitude 64']; // Add more brands as needed
-            var brandList = document.getElementById('brandList');
-
-            brands.forEach(function(brand) {
-                var listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <label class="filter-checkbox">
-                        <input type="checkbox" name="filter_brand" value="${brand}">
-                        <span class="checkmark"></span>
-                        <span class="filter-text">${brand}</span>
-                    </label>
-                `;
-                brandList.appendChild(listItem);
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var colors = ['Green', 'Blue', 'Red', 'Yellow']; // Add more colors as needed
-            var colorList = document.getElementById('colorList');
-
-            colors.forEach(function(color) {
-                var listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <label class="filter-checkbox">
-                        <input type="checkbox" name="filter_color" value="${color}">
-                        <span class="checkmark"></span>
-                        <span class="filter-text">${color}</span>
-                    </label>
-                `;
-                colorList.appendChild(listItem);
-            });
-        });
+        //     colors.forEach(function(color) {
+        //         var listItem = document.createElement('li');
+        //         listItem.innerHTML = `
+        //             <label class="filter-checkbox">
+        //                 <input type="checkbox" name="filter_color" value="${color}">
+        //                 <span class="checkmark"></span>
+        //                 <span class="filter-text">${color}</span>
+        //             </label>
+        //         `;
+        //         colorList.appendChild(listItem);
+        //     });
+        // });
 
     </script>
 </head>
