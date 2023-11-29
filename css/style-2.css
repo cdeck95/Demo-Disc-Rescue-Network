@@ -70,7 +70,15 @@ body {
   padding-bottom: 20px;
 }
 
-
+.logo-fab {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  object-fit: contain;
+  z-index: 12;
+}
 
 img.weblogo {
   width: 90px;
