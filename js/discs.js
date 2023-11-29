@@ -209,7 +209,7 @@ var found_discs = [
     },
     {
         "ID": 14,
-        "Course": "3 Creeks",
+        "Course": "Tranquility Trails",
         "Name": "Tyler",
         "Disc": "Trace",
         "PhoneNumber": "2734",
@@ -257,7 +257,7 @@ var found_discs = [
     },
     {
         "ID": 17,
-        "Course": "501 Disc Golf",
+        "Course": "Tranquility Trails",
         "Name": "R. Sipia",
         "Disc": "Orbital",
         "PhoneNumber": "3547",
@@ -321,7 +321,7 @@ var found_discs = [
     },
     {
         "ID": 21,
-        "Course": "501 Disc Golf",
+        "Course": "Tranquility Trails",
         "Name": "H. S.",
         "Disc": "Diamond",
         "PhoneNumber": "8059",
@@ -353,7 +353,7 @@ var found_discs = [
     },
     {
         "ID": 23,
-        "Course": "65th Infantry Veterans Disc Golf Course",
+        "Course": "Tranquility Trails",
         "Name": "A. Redcay",
         "Disc": "Giant",
         "PhoneNumber": "0099",
@@ -433,7 +433,7 @@ var found_discs = [
     },
     {
         "ID": 28,
-        "Course": "Rollin Ridge",
+        "Course": "Tranquility Trails",
         "Name": "J. Conley",
         "Disc": "Trace",
         "PhoneNumber": "2734",
@@ -449,7 +449,7 @@ var found_discs = [
     },
     {
         "ID": 29,
-        "Course": "Inverness Disc Golf Park",
+        "Course": "Tranquility Trails",
         "Name": "AR",
         "Disc": "Avenger ss",
         "PhoneNumber": "0209",

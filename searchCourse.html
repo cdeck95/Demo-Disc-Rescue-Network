@@ -164,13 +164,13 @@
                 $(".main-wrapper").removeClass("open-sidebar");
 
                 // Check if there are hidden discs left
-                if ($('.disc-item.hidden').length === 0) {
-                    $('.load-more .more-btn').hide(); // Hide Load More button
-                    $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
-                } else {
-                    $('.load-more .more-btn').show(); // Show Load More button
-                    $('.load-more .no-more-discs').addClass('hidden'); // Hide the message
-                }
+                // if ($('.disc-item.hidden').length === 0) {
+                //     $('.load-more .more-btn').hide(); // Hide Load More button
+                //     $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
+                // } else {
+                //     $('.load-more .more-btn').show(); // Show Load More button
+                //     $('.load-more .no-more-discs').addClass('hidden'); // Hide the message
+                // }
             }
 
             function filterDiscs(discItem){
@@ -190,25 +190,18 @@
                 loadDiscs();
             }
 
+
         });
 
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     var colors = ['Green', 'Blue', 'Red', 'Yellow']; // Add more colors as needed
-        //     var colorList = document.getElementById('colorList');
+        function loadMoreDiscs() {
+                $('.disc-item.hidden').removeClass('hidden'); // Reveal hidden discs
 
-        //     colors.forEach(function(color) {
-        //         var listItem = document.createElement('li');
-        //         listItem.innerHTML = `
-        //             <label class="filter-checkbox">
-        //                 <input type="checkbox" name="filter_color" value="${color}">
-        //                 <span class="checkmark"></span>
-        //                 <span class="filter-text">${color}</span>
-        //             </label>
-        //         `;
-        //         colorList.appendChild(listItem);
-        //     });
-        // });
-
+                // Check if there are hidden discs left
+                if ($('.disc-item.hidden').length === 0) {
+                    $('.load-more .more-btn').hide(); // Hide Load More button
+                    $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
+                }
+            }
     </script>
 </head>
 
@@ -235,7 +228,8 @@
                 <div class="course-section">
                     <div class="row"></div>
                     <div class="load-more">
-                        <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a>
+                        <!-- <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a> -->
+                        <a href="javascript:void(0);" onclick="loadMoreDiscs();" class="more-btn">Load More</a>
                         <div class="no-more-discs hidden">That's all we have for now!</div>
                     </div>
                 </div>
