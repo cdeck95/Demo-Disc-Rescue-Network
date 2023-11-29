@@ -336,6 +336,8 @@ footer {
   width: 300px;
   visibility: visible;
   transition: 0.5s;
+  z-index: 100;
+  max-width: 40%;
 }
 
 .sidebar-header {
