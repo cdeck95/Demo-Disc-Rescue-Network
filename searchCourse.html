@@ -194,14 +194,16 @@
         });
 
         function loadMoreDiscs() {
-                $('.disc-item.hidden').removeClass('hidden'); // Reveal hidden discs
+            // Show the next 6 hidden discs
+            $('.disc-item.hidden').slice(0, 6).removeClass('hidden');
 
-                // Check if there are hidden discs left
-                if ($('.disc-item.hidden').length === 0) {
-                    $('.load-more .more-btn').hide(); // Hide Load More button
-                    $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
-                }
+            // Check if there are hidden discs left
+            if ($('.disc-item.hidden').length === 0) {
+                $('.load-more .more-btn').hide(); // Hide Load More button
+                $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
             }
+        }
+
     </script>
 </head>
 

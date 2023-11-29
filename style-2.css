@@ -124,6 +124,12 @@ p.course-name {
   display: none;
 }
 
+.no-more-discs {
+  color: var(--primary-white);
+  font-weight: 300;
+  font-size: 1rem;
+}
+
 .rescue h3 span {
   font-weight: 100 !important;
   font-family: 'Bebas Neue';
