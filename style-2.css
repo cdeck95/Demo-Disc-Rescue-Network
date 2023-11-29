@@ -620,13 +620,21 @@ footer {
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  top: 50%;
+  top: 44%; /* unsure why this works but it wasnt centering the text so i adjusted the checkbox */
   left: 0;
   height: 12px;
   width: 12px;
   transform: translateY(-50%);
   border: 1px solid var(--primary-blue);;
   background: var(--primary-blue);;
+}
+
+.filter-text {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  margin: auto;
+  justify-content: start;
 }
 
 /* When the checkbox is checked, add a blue background */
