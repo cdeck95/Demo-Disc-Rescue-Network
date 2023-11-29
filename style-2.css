@@ -596,7 +596,7 @@ footer {
 
 .course-section::-webkit-scrollbar-thumb:hover {
   background: var(--primary-red);
-
+}
 
 .filter-checkbox {
   display: block;
@@ -794,5 +794,4 @@ footer {
     font-size: 12px;
     padding: 4px 8px;
   }
-}
 }
