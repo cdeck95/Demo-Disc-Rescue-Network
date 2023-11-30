@@ -57,9 +57,7 @@ body {
   right: 0;
   position: relative;
   height: 100vh;
-  max-height: calc(100vh - 70px);
-  overflow: hidden;
-  overflow-y: hidden;
+
 }
 
 .main-wrapper.open-sidebar {
