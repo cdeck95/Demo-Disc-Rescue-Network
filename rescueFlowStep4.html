@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="js/discs.js"></script>
     <script>
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
@@ -139,7 +140,39 @@
                 // If select is populated, clear the input value
                 inputBrand.value = '';
             });
+
+            var courseName = getQueryParam("course");
+            if (courseName) {
+                var discsForCourse = found_discs.filter(disc => disc.Course === courseName);
+                var uniqueBrandsForCourse = new Set(discsForCourse.map(disc => disc.Brand));
+                var brandsForCourse = Array.from(uniqueBrandsForCourse);
+                populateBrandDropdown(brandsForCourse);
+            }
         });
+
+        function populateBrandDropdown(brands) {
+            var selectBrand = document.getElementById('selectBrand');
+            selectBrand.innerHTML = '<option value="" disabled selected>Select Brand</option>'; // Reset dropdown
+
+            brands.forEach(function(brand) {
+                var option = document.createElement('option');
+                option.value = brand;
+                option.textContent = brand;
+                selectBrand.appendChild(option);
+            });
+        }
+
+
+        function filterDiscs(discItem){
+            // First, check if the disc matches the selected course(s)
+            if (filter_course.length && $.inArray(discItem['Course'], filter_course) < 0) {
+                return false; // If it doesn't match any selected course, exclude it immediately
+            }
+
+            // Then, check for brand and color filters
+            return (!filter_brand.length || $.inArray(discItem['Brand'], filter_brand) >= 0) &&
+                (!filter_color.length || $.inArray(discItem['Color'], filter_color) >= 0);
+        }
     </script>
     
     <style>
@@ -188,7 +221,7 @@
         }
 
         .input-dropdown-wrapper input {
-            margin-right: 2px;
+            margin-right: 1px;
             flex-basis: 55%;
             border-radius: 0px;
             text-align: left;
@@ -197,10 +230,11 @@
 
         .input-dropdown-wrapper select {
             flex-basis: 45%;
+            margin-left: 1px !important;
         }
 
         /* Style the 'OR' circle for smaller devices */
-        .input-dropdown-wrapper .circle-or {
+        /* .input-dropdown-wrapper .circle-or {
             background-color: var(--secondary-blue);
             color: white;
             border: 2px solid transparent;
@@ -221,7 +255,39 @@
             top: calc(50%); 
             transform: translate(-55%, -50%);
             z-index: 1;
-        }
+        } */
+
+        .input-dropdown-wrapper .circle-or {
+    background-color: var(--secondary-blue);
+    color: white;
+    border: 2px solid transparent;
+    font-size: 14px; /* Adjust as needed */
+    font-weight: 300; /* Changed from 100 to normal */
+    letter-spacing: normal; /* Adjust as needed */
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: absolute;
+    left: 55%;
+    top: 50%; 
+    transform: translate(-55%, -50%);
+    z-index: 1;
+    margin-left: .5px;
+}
+
+/* Adjustments for larger screens */
+@media (min-width: 768px) {
+    .input-dropdown-wrapper .circle-or {
+        width: 30px; 
+        height: 30px;
+        font-size: 18px; /* Adjust as needed */
+    }
+}
+
 
         .input-dropdown-wrapper select {
             -webkit-appearance: none;
@@ -250,12 +316,11 @@
             align-self: center;
             margin: auto;
         }
-
-        /* Adjustments for larger screens */
+/* 
         @media (min-width: 768px) {
         .input-dropdown-wrapper {
-            font-size: 16px; /* Larger base font size for larger devices */
-            padding: 0px; /* Larger padding for larger devices */
+            font-size: 16px; 
+            padding: 0px; 
         }
 
         .input-dropdown-wrapper .circle-or {
@@ -266,7 +331,7 @@
             top: calc(50%); 
             transform: translate(-55%, -50%);
         }
-        }
+        } */
 
         .input-dropdown-wrapper input::placeholder {
             color: var(--primary-blue); 
