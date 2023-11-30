@@ -543,11 +543,11 @@
                             <div class="w-layout-grid grid">
                                 <div class="div-block">
                                     <i class="fa-regular fa-address-card disc-icon"></i>
-                                    <div class="text-block">${disc.Disc}</div>
+                                    <div class="text-block">${disc.Color} ${disc.Disc}</div>
                                 </div>
                                 <div class="div-block">
                                     <i class="fa-solid fa-barcode disc-icon"></i>
-                                    <div class="text-block">${disc.Color}</div>
+                                    <div class="text-block">${disc.Brand}</div>
                                 </div>
                                 <div class="div-block">
                                     <i class="fa-regular fa-user disc-icon"></i>
@@ -573,11 +573,15 @@
     </script>
     <script>
         function goToRescueFlow() {
-            window.location.href = 'rescueFlow.html'; // Replace with your destination URL
+            window.location.href = 'rescueFlow.html'; 
+        }
+
+        function refresh() {
+            window.location.href = '/';
         }
 
         function searchAllCourses() {
-            window.location.href = 'searchInventory.html'; // Replace with your destination URL
+            window.location.href = 'courses.html'; 
         }
     </script>
     <script src="js/discs.js"></script>
@@ -609,7 +613,7 @@
         </div>
 
         <div class="logo-container">
-            <img src="./assets/DRN_App_Main.png" alt="Disc Rescue Network Logo" class="logo">
+            <img src="./assets/DRN_App_Main.png" alt="Disc Rescue Network Logo" class="logo" onclick="refresh()">
         </div>
 
         <div class="btn-container">
@@ -655,7 +659,7 @@
         <div class="container">
             <div class="footer-content row">
                 <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/">
+                    <a class="d-flex align-items-center flex-column" href="/home.html">
                         <span class="img">
                             <img src="./assets/home.png" alt="home">
                         </span>
