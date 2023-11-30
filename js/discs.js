@@ -1627,7 +1627,7 @@ var found_discs = [
         "DateClaimed": "2023-10-06",
         "Status": "Claimed",
         "Comments": "comments",
-        "Color": "color here",
+        "Color": "",
         "PickupDeadline": "2023-12-05",
         "Brand": "Lonestar"
     },
@@ -1787,7 +1787,7 @@ var found_discs = [
         "DateClaimed": "2023-10-12",
         "Status": "Claimed",
         "Comments": "testing",
-        "Color": "na",
+        "Color": "",
         "PickupDeadline": "2023-12-11",
         "Brand": "Lonestar"
     },

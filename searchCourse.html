@@ -136,7 +136,10 @@
                 });
 
                 // Extract unique colors
-                var uniqueColors = new Set(discs_list.map(disc => disc.Color));
+                var uniqueColors = new Set(discs_list
+                    .map(disc => disc.Color)
+                    .filter(color => color && color.trim().length > 0)
+                );                
                 var colors = Array.from(uniqueColors);
 
                 // Populate color list
