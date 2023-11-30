@@ -196,12 +196,12 @@ button.rememberbtn {
   letter-spacing: .08em;
 }
 
-button:hover {
+/* button:hover {
   cursor: pointer;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-red);
   color: var(--primary-white);
-}
+} */
 
 .rememberbtn:hover  {
   cursor: pointer;

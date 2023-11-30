@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="./style-2.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@400;500;600&family=Martian+Mono:wght@300;600&display=swap"
         rel="stylesheet">
@@ -59,10 +60,15 @@
         var filter_course = getQueryParam("course") ? [getQueryParam("course")] : [];
         console.log(filter_course);
 
+        document.addEventListener('DOMContentLoaded', function() {
+            var courseNameElement = document.getElementById('courseName');
+            if (filter_course.length > 0 && courseNameElement) {
+                courseNameElement.textContent = filter_course[0];
+            }
+        });
+
        
         document.addEventListener('DOMContentLoaded', function() {
-
-            
             $(document).ready(function(){
                 loadDiscs();
                 $(document).on('click','#filter-btn',function(e){
@@ -145,7 +151,10 @@
                 // Populate color list
                 var colorList = document.getElementById('colorList');
                 colorList.innerHTML = ''; // Clear existing list items, if any
-
+                var uniqueColors = new Set(discs_list
+    .map(disc => disc.Color)
+    .filter(color => color && color.trim().length > 0) // Add this line to filter out null or empty strings
+);
                 colors.forEach(function(color) {
                     var listItem = document.createElement('li');
                     listItem.innerHTML = `
@@ -220,7 +229,7 @@
                 </div>
                 <div class="rescue d-flex align-items-center flex-column text-center mb-2">
                     <h3 class="m-0 text-white">ALL LOST <span class="fw-light">DISCS</span></h3>
-                    <p class="course-name"></p> <!-- Course name will be displayed here -->
+                    <p class="course-name" id="courseName"></p> <!-- Course name will be displayed here -->
                 </div>
                 <div class="filter-button">
                     <button class="filter-btn" id="filter-btn">Filters</button>
