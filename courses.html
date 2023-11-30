@@ -65,7 +65,7 @@
             ["Wisconsin", "WI"],
             ["Wyoming", "WY"]
         ];    
-            var courses = [
+        var courses = [
             { name: "Course Not Listed", city: "NA", state: "NA" },
             { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
             { name: "Tranquility Trails", city: "Woolwich", state: "New Jersey" },
@@ -216,17 +216,21 @@
                   filteredCourses = courses;
               } else {
                   // Apply filtering for a specific state
+                  console.log("filtering...");
+                  console.log(selectedState);
                   filteredCourses = courses.filter(function(course) {
                       return course.state === selectedState;
                   });
+                  console.log(filteredCourses);
               }
 
               var courseSelect = document.getElementById('inputCourse');
-              courseSelect.HTML = ''; // Clear existing options
+              courseSelect.innerHTML = ''; // Clear existing options
 
               filteredCourses.forEach(function(course) {
                   var option = document.createElement('option');
                   option.textContent = course.name;
+                  console.log(course.name);
                   option.value = course.name;
                   courseSelect.appendChild(option);
               });
@@ -241,6 +245,8 @@
                   // You can replace the above line with code to show a custom modal/dialog if needed
               } else {
                   // Existing logic for when a course is selected
+
+                  console.log("selected course: " + selectedCourseName);
                   var selectedCourse = courses.find(function(course) {
                       return course.name === selectedCourseName;
                   });
