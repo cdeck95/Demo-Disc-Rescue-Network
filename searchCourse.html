@@ -55,11 +55,14 @@
             return urlParams.get(parameterName);
         }
 
+        var filter_brand = filter_color = [];
+        var filter_course = getQueryParam("course") ? [getQueryParam("course")] : [];
+        console.log(filter_course);
+
+       
         document.addEventListener('DOMContentLoaded', function() {
 
-            var filter_brand = filter_color = [];
-            var filter_course = getQueryParam("course") ? [getQueryParam("course")] : [];
-            console.log(filter_course);
+            
             $(document).ready(function(){
                 loadDiscs();
                 $(document).on('click','#filter-btn',function(e){
@@ -72,7 +75,37 @@
                 //     $(".asidebar").removeClass("open-sidebar");
                 // });
             });
-            function loadDiscs(){
+        });
+
+        function filterDiscs(discItem){
+                // First, check if the disc matches the selected course(s)
+                if (filter_course.length && $.inArray(discItem['Course'], filter_course) < 0) {
+                    return false; // If it doesn't match any selected course, exclude it immediately
+                }
+
+                // Then, check for brand and color filters
+                return (!filter_brand.length || $.inArray(discItem['Brand'], filter_brand) >= 0) &&
+                    (!filter_color.length || $.inArray(discItem['Color'], filter_color) >= 0);
+            }
+
+
+            function resetFilters(){
+                $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
+                loadDiscs();
+            }
+
+        function loadMoreDiscs() {
+            // Show the next 6 hidden discs
+            $('.disc-item.hidden').slice(0, 6).removeClass('hidden');
+
+            // Check if there are hidden discs left
+            if ($('.disc-item.hidden').length === 0) {
+                $('.load-more .more-btn').hide(); // Hide Load More button
+                $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
+            }
+        }
+
+        function loadDiscs(){
                 var disc_item = '';
                 filter_brand =  $("input[name=filter_brand]:checked").map(function(){
                                         return $(this).val();
@@ -162,47 +195,9 @@
 
                 $(".asidebar").removeClass("open-sidebar");
                 $(".main-wrapper").removeClass("open-sidebar");
-
-                // Check if there are hidden discs left
-                // if ($('.disc-item.hidden').length === 0) {
-                //     $('.load-more .more-btn').hide(); // Hide Load More button
-                //     $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
-                // } else {
-                //     $('.load-more .more-btn').show(); // Show Load More button
-                //     $('.load-more .no-more-discs').addClass('hidden'); // Hide the message
-                // }
-            }
-
-            function filterDiscs(discItem){
-                // First, check if the disc matches the selected course(s)
-                if (filter_course.length && $.inArray(discItem['Course'], filter_course) < 0) {
-                    return false; // If it doesn't match any selected course, exclude it immediately
-                }
-
-                // Then, check for brand and color filters
-                return (!filter_brand.length || $.inArray(discItem['Brand'], filter_brand) >= 0) &&
-                    (!filter_color.length || $.inArray(discItem['Color'], filter_color) >= 0);
             }
 
 
-            function resetFilters(){
-                $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
-                loadDiscs();
-            }
-
-
-        });
-
-        function loadMoreDiscs() {
-            // Show the next 6 hidden discs
-            $('.disc-item.hidden').slice(0, 6).removeClass('hidden');
-
-            // Check if there are hidden discs left
-            if ($('.disc-item.hidden').length === 0) {
-                $('.load-more .more-btn').hide(); // Hide Load More button
-                $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
-            }
-        }
 
     </script>
 </head>
