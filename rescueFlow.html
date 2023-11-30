@@ -185,7 +185,7 @@
             const courseInputValue = document.getElementById('inputCourse').value;
             const stateInputValue = document.getElementById('inputState').value;
             
-            if (courseInputValue === "Course Not Listed") {
+            if (courseInputValue.toLowerCase() === "course not listed") {
                 // Show a popup when "Course Not Listed" is selected
                 alert("Please request a course by providing additional details.");
                 return;
@@ -210,8 +210,20 @@
 
         function searchDiscs() {
             // Get the input value
-            const courseInputValue = document.getElementById('inputCourse').value;
-            const stateInputValue = document.getElementById('inputState').value;
+            let courseInputValue = document.getElementById('inputCourse').value;
+            let stateInputValue = document.getElementById('inputState').value;
+
+            console.log(courseInputValue);
+            console.log(stateInputValue);
+
+            if (courseInputValue.toLowerCase() == '' || courseInputValue.toLowerCase() == 'select a course') {
+                courseInputValue = '';
+            }
+
+            if(stateInputValue.toLowerCase() == 'state') {
+                stateInputValue = '';
+            }
+            
 
             // Check if a disc is found (you can modify this condition)
             const disc_found = false; // Change this condition as needed

@@ -90,8 +90,17 @@
             const phoneInputValue = getQueryParam('phone');
             console.log(phoneInputValue);
 
-            const firstInitialInputValue = document.getElementById('inputInitial').value;
-            const lastNameInputValue = document.getElementById('inputName').value;
+            let firstInitialInputValue = document.getElementById('inputInitial').value;
+            let lastNameInputValue = document.getElementById('inputName').value;
+
+            
+            if(firstInitialInputValue == '' || firstInitialInputValue == 'First Initial') {
+                firstInitialInputValue = '';
+            }
+
+            if(lastNameInputValue == '') {
+                lastNameInputValue = '';
+            }
 
             // Check if a disc is found (you can modify this condition)
             const disc_found = false; // Change this condition as needed
