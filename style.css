@@ -513,7 +513,7 @@ footer {
 }
 
 .fab-menu-item:nth-child(1) {
-  left: -5%;
+  left: 0%;
   top: 20%;
   transform: translate(-50%, 0);
   color: var(--secondary-blue);
