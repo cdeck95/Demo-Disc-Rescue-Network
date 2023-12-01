@@ -127,6 +127,10 @@
             window.location.href = '/';
         }
 
+        function claimDisc(discID) {
+            window.location.href = `/claimDisc.html?id=${encodeURIComponent(discID)}`;
+        }
+
         function loadDiscs(){
                 var disc_item = '';
                 filter_brand =  $("input[name=filter_brand]:checked").map(function(){
@@ -205,7 +209,7 @@
                                                     '<span>'+discs_list[index]['Course']+'</span>'+
                                                 '</div>'+
                                                 '<div class="course-button">'+
-                                                    '<a href="#" class="course-btn">Claim Disc</a>'+
+                                                    `<a href="#" class="course-btn" onclick="claimDisc('${discs_list[index]['ID']}')">Claim Disc</a>`+
                                                 '</div>'+
                                             '</div>'+
                                         '</div>'+

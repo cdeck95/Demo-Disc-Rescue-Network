@@ -91,9 +91,21 @@
             }
         }
 
+        function goBack() {
+            if (document.referrer.startsWith(window.location.origin)) {
+                window.history.back();
+            } else {
+                // Handle the case when there is no history to go back to
+                // For example, redirect to a different page or display an error message
+                console.log("No page on the same domain to go back to.");
+            }
+        }
         
-
-    </script>
+        function refresh() {
+            window.location.href = '/';
+        }
+        
+        </script>
     <style>
         .select-box {
             height: 100%; 
@@ -101,17 +113,18 @@
             justify-content: center; 
             align-items: center; 
         }
-
-    </style>
+        
+        </style>
 
 </head>
 
 <body>
     <section class="main-section text-center">
         <div class="container">
+            <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
             <div class="d-flex align-items-center flex-column text-center mb-3">
                 <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
-
+                
                 <div class="chat-box d-flex align-items-center mt-3">
                     <img class="me-2" src="./assets/chat.svg" alt="chat">
                     <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
@@ -122,7 +135,7 @@
                 <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
                 <h3 class="m-0 text-white">2 <span class="overtext">/ 5</span></h3>
             </div>
-
+            
             <h3 class="mt-3 text-white text-center mb-3 where">New Phone, <span class="missingtext">Who Dis?</span>
             </h3>
 

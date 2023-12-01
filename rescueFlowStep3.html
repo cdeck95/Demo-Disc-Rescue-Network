@@ -12,6 +12,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <script>
+        function goBack() {
+                if (document.referrer.startsWith(window.location.origin)) {
+                    window.history.back();
+                } else {
+                    // Handle the case when there is no history to go back to
+                    // For example, redirect to a different page or display an error message
+                    console.log("No page on the same domain to go back to.");
+                }
+            }
+    
+            function refresh() {
+                window.location.href = '/';
+            }
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
             const fabMenuContainer = document.getElementById('fabMenuContainer');
@@ -165,6 +178,8 @@
 <body>
     <section class="main-section text-center">
         <div class="container">
+            <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
+            
             <div class="d-flex align-items-center flex-column text-center mb-3">
                 <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
 
