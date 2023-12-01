@@ -84,15 +84,17 @@
         });
 
         function filterDiscs(discItem){
-                // First, check if the disc matches the selected course(s)
-                if (filter_course.length && $.inArray(discItem['Course'], filter_course) < 0) {
-                    return false; // If it doesn't match any selected course, exclude it immediately
-                }
-
-                // Then, check for brand and color filters
-                return (!filter_brand.length || $.inArray(discItem['Brand'], filter_brand) >= 0) &&
-                    (!filter_color.length || $.inArray(discItem['Color'], filter_color) >= 0);
+            // Check if the disc matches the selected course(s)
+            if (filter_course.length && !filter_course.includes(discItem['Course'])) {
+                return false; // If it doesn't match any selected course, exclude it
             }
+
+            // Check for brand and color filters
+            let brandMatch = filter_brand.length === 0 || filter_brand.includes(discItem['Brand']);
+            let colorMatch = filter_color.length === 0 || filter_color.includes(discItem['Color']);
+
+            return brandMatch && colorMatch;
+        }
 
 
             function resetFilters(){
@@ -109,6 +111,20 @@
                 $('.load-more .more-btn').hide(); // Hide Load More button
                 $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
             }
+        }
+
+        function goBack() {
+            if (document.referrer.startsWith(window.location.origin)) {
+                window.history.back();
+            } else {
+                // Handle the case when there is no history to go back to
+                // For example, redirect to a different page or display an error message
+                console.log("No page on the same domain to go back to.");
+            }
+        }
+
+        function refresh() {
+            window.location.href = '/';
         }
 
         function loadDiscs(){
@@ -196,6 +212,16 @@
                                     '</div>';
                 });
 
+                // Re-check the brand checkboxes based on the current filters
+                $("input[name=filter_brand]").each(function() {
+                    $(this).prop("checked", filter_brand.includes($(this).val()));
+                });
+
+                // Re-check the color checkboxes based on the current filters
+                $("input[name=filter_color]").each(function() {
+                    $(this).prop("checked", filter_color.includes($(this).val()));
+                });
+
                 $('.course-section .row').html(disc_item);
 
                 if(discs_list.length < 6){
@@ -218,6 +244,7 @@
     <div class="main-wrapper">
         <section class="main-section text-center" style="padding-bottom: 20px !important;">
             <div class="container">
+                <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
                 <div class="d-flex align-items-center flex-column text-center mb-2">
                     <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
     
