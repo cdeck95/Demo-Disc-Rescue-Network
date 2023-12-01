@@ -546,7 +546,7 @@ footer {
 
 .fab-menu-item:nth-child(3) {
   top: 20%;
-  right: -135px;
+  right: -120px;
   transform: translate(-50%, 0);
   color: var(--secondary-blue);
   display: flex;
