@@ -20,7 +20,7 @@ body {
   margin: auto;
   padding: 0;
   max-width: 1300px;
-  background-color: var(--primary-grey);
+  background-color: var(--primary-blue);
 
 }
 
@@ -109,6 +109,7 @@ body {
 .main-section {
   background-color: var(--primary-blue);
   height: 100%;
+  width: 100%;
 }
 
 img.weblogo {
