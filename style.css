@@ -14,11 +14,14 @@ body {
   overflow-y: hidden;
   height: 100dvh;
   width: 100dvw;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
   padding: 0;
   max-width: 1300px;
+  background-color: var(--primary-grey);
+
 }
 
 @font-face {

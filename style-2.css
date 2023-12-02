@@ -607,7 +607,7 @@ footer {
 
 .course-section {
   /* padding: 0 10px; */
-  padding: 5px;
+  padding: 10px;
   padding-bottom: 40px;
   margin-bottom: 10px;
   height: calc(100dvh - 385px);
@@ -751,7 +751,7 @@ footer {
   .course-section {
     height: calc(100dvh - 330px);
   }
-  
+
   .footer-content .col-2:nth-child(2) {
     margin-right: 32px;
   }
