@@ -748,7 +748,7 @@ footer {
     overflow: hidden;
   }
   .course-section {
-    height: calc(100dvh - 385px);
+    height: calc(100dvh - 350px);
     padding-bottom: 40px;
 }
   .footer-content .col-2:nth-child(2) {
