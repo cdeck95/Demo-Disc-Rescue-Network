@@ -16,6 +16,7 @@ body {
   width: 100dvw;
   margin: 0;
   padding: 0;
+  max-width: 1300px;
 }
 
 @font-face {
