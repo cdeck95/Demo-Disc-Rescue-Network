@@ -1,0 +1,27 @@
+{
+    "name": "Disc Rescue Network",
+    "short_name": "DRN",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1B73B5",
+    "description": "A platform for disc rescue and recovery.",
+    "icons": [
+      {
+        "src": "./assets/Color_Logo_Blue.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "./assets/Color_Logo_Blue.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "./assets/Color_Logo_Blue.png",
+        "sizes": "any",
+        "type": "image/png"
+      }
+
+    ]
+  }
+  
