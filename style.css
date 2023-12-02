@@ -14,7 +14,9 @@ body {
   overflow-y: hidden;
   height: 100dvh;
   width: 100dvw;
-  margin: 0;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   padding: 0;
   max-width: 1300px;
 }

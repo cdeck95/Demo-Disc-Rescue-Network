@@ -747,10 +747,11 @@ footer {
     max-height: calc(100dvh - 70px);
     overflow: hidden;
   }
+
   .course-section {
-    height: calc(100dvh - 350px);
-    padding-bottom: 40px;
-}
+    height: calc(100dvh - 330px);
+  }
+  
   .footer-content .col-2:nth-child(2) {
     margin-right: 32px;
   }
