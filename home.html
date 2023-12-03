@@ -474,6 +474,87 @@
             margin-right: 10px;
             padding: 5px 5px;
         }
+
+        /* Popup styles */
+.popup {
+    display: flex;
+    position: fixed; 
+    z-index: 1001; 
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.popup h2 {
+    color: var(--primary-white);
+    font-size: 1.8rem;
+}
+
+.popup p {
+    color: var(--primary-white);
+    font-size: 1rem;
+}
+
+.popup .redText {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+/* Popup Content */
+.popup-content {
+    background-color: var(--primary-blue);
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid var(--primary-blue);
+    width: 90%; 
+    border-radius: 0px;
+    border: 3px solid var(--secondary-blue);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Close Button */
+.close {
+    color: var(--secondary-blue);
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--primary-black);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Button styles */
+#findMyDisc {
+    background-color: var(--primary-red); 
+    color: var(--primary-white);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 0px;
+    min-width: 200px;
+}
     </style>
     <script>
         function showToast() {
@@ -579,6 +660,37 @@
             window.location.href = 'courses.html'; 
         }
     </script>
+    <script>
+        // When the user clicks on the element with class "rescue-flow", open the popup
+        function showPopup() {
+              var popup = document.getElementById('popup');
+              popup.style.display = 'flex'; // Changed to 'flex' to use flexbox for centering
+          }
+        document.addEventListener('DOMContentLoaded', function() {
+          
+      
+          // Get the element with the ID "close" that closes the popup
+          var closeBtn = document.getElementById('close');
+      
+          // When the user clicks on the element with ID "close", close the popup
+          if (closeBtn) {
+            closeBtn.onclick = function() {
+                var popup = document.getElementById('popup');
+                popup.style.display = 'none';
+            };
+          }
+      
+          // When the user clicks anywhere outside of the popup content, close it
+          window.onclick = function(event) {
+              var popup = document.getElementById('popup');
+              if (event.target == popup) {
+                  popup.style.display = 'none';
+              }
+          }
+        });
+      </script>
+      
+    
     <script src="js/discs.js"></script>
 
 </head>
@@ -614,7 +726,7 @@
         <div class="btn-container">
             <div class="box">
                 <button class="btn" onclick="goToRescueFlow()">FIND MY DISC</button>
-                <div class="btn-description">GO THROUGH THE <span class="rescue-flow" onclick="showToast()">RESCUE
+                <div class="btn-description">GO THROUGH THE <span class="rescue-flow" onclick="showPopup()">RESCUE
                         FLOW</span> TO FIND YOUR DISC</div>
             </div>
             <div class="box-2">
@@ -698,7 +810,14 @@
     </div>
 
 
-    <div id="toast">Button is clicked</div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="close">&times;</span>
+            <h2>WHAT IS THE <span class="redText">RESCUE FLOW</span>?</h2>
+            <p>THE RESCUE FLOW IS A SIMPLE 5 STEP PROCESS USED TO LOCATE YOUR LOST DISC. AT EACH STAGE WE GATHER SOME INFORMATION FROM YOU THAT COULD HAVE BEEN REPORTED BY VOLUNTEERS TO FIND YOUR DISC IN OUR SYSTEM. THE FLOW WILL TAKE YOU THROUGH THE SYSTEM WE DESIGNED TO EASILY, AND QUICKLY, FIND YOUR DISC IF IT’S IN THE NETWORK OR REPORT IT IF IT ISN’T.</p>
+            <button id="findMyDisc">FIND MY DISC</button>
+        </div>
+    </div>
 
 </body>
 
