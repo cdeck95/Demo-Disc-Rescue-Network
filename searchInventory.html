@@ -4,177 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disc Rescue Network - Search Inventory</title>
+    <title>DRN Inventory - Search All</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style-2.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <style>
-       :root {
-    --primary-blue: #005daa;
-    --secondary-blue: #228de5;
-    --primary-black: #000000;
-    --primary-red: #d31245;
-    --primary-white: #FFFFFF;
-    --primary-grey: #e3e3e3;
-    --primary-green: #55de1f;
-    font-family: 'Bebas Neue', sans-serif;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    margin-left: 20vw;
-    background-color: var(--primary-blue);
-    width: 80vw;
-    height: 100vh;
-    font-family: var(--font-family);
-}
-
-header {
-    background-color: var(--primary-blue);
-    color: var(--primary-white);
-    padding: 10px;
-    text-align: right;
-}
-
-main {
-    text-align: center;
-    color: var(--primary-white);
-}
-
-.hero {
-    background-color: var(--primary-blue);
-    padding: 20px 0;
-}
-
-.hero h1 {
-    background: transparent;
-    color: var(--primary-red);
-    font-size: 3em;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-}
-
-.hero p {
-    color: var(--primary-grey);
-    font-size: 1.2em;
-    font-weight: normal;
-    margin-top: 20px;
-    padding: 0 10%;
-    text-align: left;
-}
-
-.personal-details h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.personal-details p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    text-align: left;
-    padding: 0 10%;
-}
-
-input[type="text"] {
-    background-color: var(--primary-white);
-    color: var(--primary-black);
-    font-size: 1em;
-}
-
-button {
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 0 10px;
-    transition: background-color 0.3s ease;
-}
-
-/* button:hover {
-    opacity: 0.8;
-} */
-
-button[type="submit"] {
-    background-color: var(--primary-red);
-}
-
-.additional-info {
-    background-color: var(--primary-blue);
-    color: var(--primary-white);
-    padding: 20px;
-    margin-top: 20px;
-}
-
-.additional-info p {
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-}
-
-
-        .page-container {
-            margin: auto;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: auto;
-        }
-        .status {
-            display: flex;
-            align-items: center;
-            font-size: 0.65em;
-            padding: 10px;
-            padding-top: 15px;
-            white-space: nowrap;
-            font-weight: 400;
-            text-align: left;
-        }
-
-        .status-text {
-            color: var(--primary-black);
-            margin-left: 2px;
-        }
-
-        .status-icon,
-        .status-code {
-            color: var(--primary-green);
-            margin-left: 2px;
-            text-align: left;
-        }
-
-
-
-.rotated-header {
-  position: fixed;
-  top: 45%; /* Centered horizontally after rotation */
-  left: 14%; /* Centered vertically after rotation */
-  transform: translate(-50%, -50%) rotate(-90deg); /* Centers and rotates the text */
-  transform-origin: center center; /* Ensures the rotation happens around the center */
-  font-size: 22vh; /* Scales the text based on the viewport height */
-  font-weight: bold;
-  color: transparent;
-  -webkit-text-stroke: 0.5px var(--secondary-blue); /* Adjust the color as needed */
-  white-space: nowrap;
-  user-select: none;
-}
-
-
-        
-    </style>
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@400;500;600&family=Martian+Mono:wght@300;600&display=swap"
+        rel="stylesheet">
     <script>
         function toggleFabMenu() {
             const overlay = document.getElementById('overlay');
@@ -212,41 +49,217 @@ button[type="submit"] {
             window.location.href = 'settings.html'; 
         }
     </script>
+    <script>
+        // Function to get the value of a query parameter from the URL
+        function getQueryParam(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
+
+        var filter_brand = filter_color = [];
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            $(document).ready(function(){
+                loadDiscs();
+                $(document).on('click','#filter-btn',function(e){
+                    e.preventDefault(); // Prevent the event from propagating
+                    $(".asidebar").toggleClass("open-sidebar");
+                    $(".main-wrapper").toggleClass("open-sidebar");
+                });
+
+                // $(".main-section, .footer").click(function(){
+                //     $(".asidebar").removeClass("open-sidebar");
+                // });
+            });
+        });
+
+        function filterDiscs(discItem){
+            // Check for brand and color filters
+            let brandMatch = filter_brand.length === 0 || filter_brand.includes(discItem['Brand']);
+            let colorMatch = filter_color.length === 0 || filter_color.includes(discItem['Color']);
+
+            return brandMatch && colorMatch;
+        }
+
+
+            function resetFilters(){
+                $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
+                loadDiscs();
+            }
+
+        function loadMoreDiscs() {
+            // Show the next 6 hidden discs
+            $('.disc-item.hidden').slice(0, 6).removeClass('hidden');
+
+            // Check if there are hidden discs left
+            if ($('.disc-item.hidden').length === 0) {
+                $('.load-more .more-btn').hide(); // Hide Load More button
+                $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
+            }
+        }
+
+        function goBack() {
+            if (document.referrer.startsWith(window.location.origin)) {
+                window.history.back();
+            } else {
+                // Handle the case when there is no history to go back to
+                // For example, redirect to a different page or display an error message
+                console.log("No page on the same domain to go back to.");
+            }
+        }
+
+        function refresh() {
+            window.location.href = '/';
+        }
+
+        function claimDisc(discID) {
+            window.location.href = `/claimDisc.html?id=${encodeURIComponent(discID)}`;
+        }
+
+        function loadDiscs(){
+                var disc_item = '';
+                filter_brand =  $("input[name=filter_brand]:checked").map(function(){
+                                        return $(this).val();
+                                    }).get();
+                filter_color =  $("input[name=filter_color]:checked").map(function(){
+                                        return $(this).val();
+                                    }).get();
+                discs_list    = found_discs.filter(filterDiscs);
+
+                // Extract unique brands from the filtered discs
+                var uniqueBrands = new Set(discs_list.map(disc => disc.Brand));
+                var brands = Array.from(uniqueBrands);
+
+                // Now, use 'brands' to populate your brand list as you did before
+                var brandList = document.getElementById('brandList');
+                brandList.innerHTML = ''; // Clear existing list items, if any
+
+                brands.forEach(function(brand) {
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <label class="filter-checkbox">
+                            <input type="checkbox" name="filter_brand" value="${brand}">
+                            <span class="checkmark"></span>
+                            <span class="filter-text">${brand}</span>
+                        </label>
+                    `;
+                    brandList.appendChild(listItem);
+                });
+
+                // Extract unique colors
+                var uniqueColors = new Set(discs_list
+                    .map(disc => disc.Color)
+                    .filter(color => color && color.trim().length > 0)
+                );                
+                var colors = Array.from(uniqueColors);
+
+                // Populate color list
+                var colorList = document.getElementById('colorList');
+                colorList.innerHTML = ''; // Clear existing list items, if any
+                var uniqueColors = new Set(discs_list
+    .map(disc => disc.Color)
+    .filter(color => color && color.trim().length > 0) // Add this line to filter out null or empty strings
+);
+                colors.forEach(function(color) {
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <label class="filter-checkbox">
+                            <input type="checkbox" name="filter_color" value="${color}">
+                            <span class="checkmark"></span>
+                            <span class="filter-text">${color}</span>
+                        </label>
+                    `;
+                    colorList.appendChild(listItem);
+                });
+
+                $.each(discs_list, function(index, value) {
+                
+                    disc_item += '<div class="col-6 disc-item'+(index > 5 ? ' hidden' : '')+'">'+
+                                        '<div class="course-box">'+
+                                            '<div class="course-box-detail">'+
+                                                '<div class="course-image">'+
+                                                    '<img src="./assets/course-image.png" alt="image">'+
+                                                '</div>'+
+                                                '<div class="course-list">'+
+                                                '<ul>'+
+                                                        '<li><img src="./assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Color']+ " " + discs_list[index]['Disc']+'</span></li>'+
+                                                        '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
+                                                        '<li><img src="./assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
+                                                    '</ul>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div class="course-bottom">'+
+                                                '<div class="course-dis">'+
+                                                    '<img src="./assets/rose-icon.png" alt="icon">'+
+                                                    '<span>'+discs_list[index]['Course']+'</span>'+
+                                                '</div>'+
+                                                '<div class="course-button">'+
+                                                    `<a href="#" class="course-btn" onclick="claimDisc('${discs_list[index]['ID']}')">Claim Disc</a>`+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>';
+                });
+
+                // Re-check the brand checkboxes based on the current filters
+                $("input[name=filter_brand]").each(function() {
+                    $(this).prop("checked", filter_brand.includes($(this).val()));
+                });
+
+                // Re-check the color checkboxes based on the current filters
+                $("input[name=filter_color]").each(function() {
+                    $(this).prop("checked", filter_color.includes($(this).val()));
+                });
+
+                $('.course-section .row').html(disc_item);
+
+                if(discs_list.length < 6){
+                    $('.main-section .load-more').addClass('hidden');
+                }
+                else{
+                    $('.main-section .load-more').removeClass('hidden');
+                }
+
+                $(".asidebar").removeClass("open-sidebar");
+                $(".main-wrapper").removeClass("open-sidebar");
+            }
+
+
+
+    </script>
 </head>
 
-<body>
-    <header>
-        <div class="opt-in-status">
-            <span>OPT IN STATUS CONFIRMED</span>
-        </div>
-    </header>
-
-    <main>
-        <section class="hero">
-            <div class="rotated-header">
-                RESCUE FLOW
+<body style="overflow: hidden;">
+    <div class="main-wrapper" style="height: 100%; width: 100%; overflow: hidden;">
+        <section class="main-section text-center" style="padding-bottom: 20px !important; overflow: hidden;">
+            <div class="container" style="overflow: hidden;">
+                <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
+                <div class="d-flex align-items-center flex-column text-center mb-2">
+                    <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
+    
+                    <div class="chat-box d-flex align-items-center mt-1">
+                        <img class="me-2" src="./assets/chat.svg" alt="chat">
+                        <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+                        <h4 class="m-0 confirmd">CONFIRMED</h4>
+                    </div>
+                </div>
+                <div class="rescue d-flex align-items-center flex-column text-center mb-2">
+                    <h3 class="m-0 text-white">ALL LOST <span class="fw-light">DISCS</span></h3>
+                </div>
+                <div class="filter-button">
+                    <button class="filter-btn" id="filter-btn">Filters</button>
+                </div>
+                <div class="course-section">
+                    <div class="row"></div>
+                    <div class="load-more">
+                        <!-- <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a> -->
+                        <a href="javascript:void(0);" onclick="loadMoreDiscs();" class="more-btn">Load More</a>
+                        <div class="no-more-discs hidden">That's all we have for now!</div>
+                    </div>
+                </div>
             </div>
-            <h1>LET'S GET STARTED</h1>
-            <p>In order to find your disc in our system we're going to take you through the Rescue Flow! This easy guided process will gather some information from you and search it against our system. Don't worry, if we can't find your disc in the flow, you can always <span style="text-decoration: underline;">search the inventory</span> or <span style="text-decoration: underline;">report your disc lost</span> right here in the app.</p>
         </section>
-
-        <section class="personal-details">
-            <h2>PERSONAL DETAILS</h2>
-            <p>Our volunteers notate all personal information written on the discs. None of this information is required to move forward, so don't stress if you don't have it, don't know it, or didn't even do it. </p>
-            <form>
-                <input type="text" placeholder="First Name or Initial On Disc">
-                <input type="text" placeholder="Last Name or Initial On Disc">
-                <input type="text" placeholder="Phone Number or Any Partial Digits on Disc">
-                <button type="button">CLEAR BOXES</button>
-                <button type="submit">IS IT IN THERE?</button>
-            </form>
-        </section>
-
-        <section class="additional-info">
-            <p>IF YOU DON’T WANNA GO THROUGH THE WHOLE FLOW YOU CAN ALWAYS JUST SEARCH THE DATABASE YOURSELF</p>
-        </section>
-    </main>
-
+    </div>
     <div class="fab-menu-container" id="fabMenuContainer">
         <div class="fab-menu" id="fabMenu">
 
@@ -265,6 +278,7 @@ button[type="submit"] {
         </div>
     </div>
 
+
     <footer class="footer">
         <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
         <div class="container">
@@ -278,7 +292,7 @@ button[type="submit"] {
                     </a>
                 </div>
                 <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="#">
+                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
                         <span class="img">
                             <img class="search" src="./assets/search.png" alt="home" width="18">
                         </span>
@@ -303,7 +317,6 @@ button[type="submit"] {
                     </a>
                 </div>
             </div>
-<!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
         </div>
     </footer>
 
@@ -313,7 +326,50 @@ button[type="submit"] {
             <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
         </button>
     </div>
-
+    <div class="asidebar">
+        <div class="sidebar-header">
+            <h2>FILTER AND SORT</h2>
+        </div>
+        <div class="filter-body">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Disc Brand
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                        <div class="accordion-body">
+                            <ul id="brandList"> <!-- This is where the list items will be appended -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            Disc Color
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                        <div class="accordion-body">
+                            <ul id="colorList"> <!-- This is where the list items will be appended -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-footer">
+                <a href="javascript:void(0);" class="filter-search" onclick="loadDiscs();">Filter and Search</a>
+                <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
+            </div>
+        </div>
+        
+    </div>
+   
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/discs.js"></script>
 </body>
 
-</html> 
+</html>
