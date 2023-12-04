@@ -57,6 +57,16 @@ body {
   font-display: swap;
 }
 
+.newsletterButton {
+  background-color: var(--primary-red);
+  width: 80%;
+  padding: 12px 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
 .where .line-break {
   display: block; /* Makes the span behave like a line break */
   margin: 0; /* Removes any default margin */
