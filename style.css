@@ -103,7 +103,7 @@ body {
 
 .form-control::placeholder {
   color: var(--primary-blue);
-  text-align: center;
+  text-align: left;
 }
 
 .form-control {
