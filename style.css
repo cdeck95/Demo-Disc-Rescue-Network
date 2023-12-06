@@ -459,7 +459,8 @@ footer {
 
 .fab {
   background-color: var(--primary-red);
-  border: none;
+  /* border: none; */
+  border: 3px solid #e3e3e3;
   border-radius: 50%;
   color: var(--primary-white);
   cursor: pointer;
@@ -473,6 +474,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .fab-menu-container {

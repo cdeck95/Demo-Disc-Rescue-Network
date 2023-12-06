@@ -586,11 +586,13 @@
                 // Menu is active, show 'X' and hide logo
                 fabLogo.style.display = 'none'; // Hide the logo
                 fabClose.style.display = 'block'; // Show the 'X'
+                fab.style.border = 'none'; // Hide the border
 
             } else {
                 // Menu is not active, hide 'X' and show logo
                 fabLogo.style.display = 'block'; // Show the logo
                 fabClose.style.display = 'none'; // Hide the 'X'
+                fab.style.border = '2px solid #e3e3e3'; // Show the border
             }
         }
 
@@ -717,7 +719,7 @@
             <div class="location">
                 <div class="location-info">
                     <i class="fa-solid fa-location-dot location-icon"></i>
-                    <span class="location-state">NEW JERSEY</span>
+                    <span class="location-state">NO COURSE SELECTED</span>
                 </div>
                 <div class="location-change">CHANGE</div>
             </div>
