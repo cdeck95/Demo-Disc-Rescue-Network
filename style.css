@@ -264,16 +264,47 @@ button.rememberbtn {
 
 footer {
   background-color: var(--secondary-blue);
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 13px 0 9px;
+  overflow: visible; /* Ensure pseudo-element is visible outside the bounds */
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: -5px; /* Align with the top of the footer */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  width: 73px; /* Width of the semi-circle, adjust as needed */
+  height: 50px; /* Height of the semi-circle, adjust as needed */
+  background-color: var(--primary-blue); /* Background color of main-section */
+  border-top-left-radius: 8px; 
+  border-top-right-radius: 8px; 
+  border-bottom-left-radius: 36.5px; /* Half the width, creating a semi-circle */
+  border-bottom-right-radius: 36.5px; /* Half the width, creating a semi-circle */
+  z-index: -1;
+}
+
+.footer-content .col-2 {
+  position: relative; 
+}
+
+.footer-content span {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary-white);
+}
+
+.footer-content img {
+  max-width: 25px;
 }
 
 .btnaction img.btnlogo {
   width: 35px;
 }
 
-.footer-content .col-2 {
-  position: relative;
-}
 
 button.btnaction {
   background-color: var(--primary-red);
@@ -292,23 +323,7 @@ span.img {
   min-height: 29px;
 }
 
-.footer-content span {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--primary-white);
-}
 
-.footer-content img {
-  max-width: 25px;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 13px 0 9px;
-}
 
 .fab-menu-item {
   cursor: pointer;
@@ -459,8 +474,8 @@ footer {
 
 .fab {
   background-color: var(--primary-red);
-  /* border: none; */
-  border: 3px solid #e3e3e3;
+  border: none;
+  /* border: 3px solid #e3e3e3; */
   border-radius: 50%;
   color: var(--primary-white);
   cursor: pointer;
