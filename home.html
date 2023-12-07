@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disc Rescue Network - Home</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -366,6 +366,42 @@
             display: flex;
         }
 
+        .course-list {
+            background: var(--primary-white);
+            border: 1px solid var(--primary-white);
+            border-left: 0;
+            width: calc(100%);
+        }
+
+        .disc-info .course-list ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: left;
+            max-height: 100px;
+        }
+
+        .disc-info .course-list ul li {
+            padding: 2px;
+            border-bottom: 1px solid var(--primary-grey);
+            border-right: 1px solid var(--primary-grey);
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-family: 'Lato', sans-serif;
+            max-height: 33px;
+            height: 33px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1;
+        }
+
+        .disc-info .course-list ul li img {
+            margin-right: 10px;
+            padding-left: 4px;
+            width: 14px;
+        }
+
         .image {
             width: 115px;
             height: 115px;
@@ -627,23 +663,19 @@
                         <div class="disc-info">
                             <img src="${randomImageUrl}" loading="lazy" alt="${disc.Disc}" class="image">
                             <div class="w-layout-grid grid">
-                                <div class="div-block">
-                                    <i class="fa-regular fa-address-card disc-icon"></i>
-                                    <div class="text-block">${disc.Color} ${disc.Disc}</div>
+                                <div class="course-list">
+                                    <ul>
+                                        <li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>${disc.Color} ${disc.Disc}</span></li>
+                                        <li><img src="./assets/course-icon.png" alt="icon"><span>${disc.Brand}</span></li>
+                                        <li><img src="./assets/course-icon2.png" alt="icon"><span>${disc.Name}</span></li>
+                                    </ul>
                                 </div>
-                                <div class="div-block">
-                                    <i class="fa-solid fa-barcode disc-icon"></i>
-                                    <div class="text-block">${disc.Brand}</div>
-                                </div>
-                                <div class="div-block">
-                                    <i class="fa-regular fa-user disc-icon"></i>
-                                    <div class="text-block">${disc.Name}</div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="sub-info">
                             <div class="div-block-2">
-                                <i class="fa-solid fa-map-pin image-5"></i>
+                                <img src="./assets/basket_icon.png" style="color: var(--primary-blue); margin-right: 5px; width: 14px" alt="icon">
                                 <div class="text-block-2">${disc.Course}</div>
                             </div>
                             <button class="btn">Claim Disc</button>
