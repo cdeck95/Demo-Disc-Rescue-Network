@@ -67,9 +67,14 @@
                     $(".main-wrapper").toggleClass("open-sidebar");
                 });
 
-                // $(".main-section, .footer").click(function(){
-                //     $(".asidebar").removeClass("open-sidebar");
-                // });
+                $('.main-wrapper').click(function(event) {
+                    // Check if the filter section is open
+                    if ($('.asidebar').hasClass('open-sidebar') && !$(event.target).closest('.asidebar, #filter-btn').length) {
+                        // Toggle the filter sidebar to close it
+                        $(".asidebar").removeClass("open-sidebar");
+                        $(".main-wrapper").removeClass("open-sidebar");
+                    }
+                });
             });
         });
 
