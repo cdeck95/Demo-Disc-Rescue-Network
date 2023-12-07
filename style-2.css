@@ -465,11 +465,11 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 20px;
-  line-height: 1.2;
-  padding: 10px 0;
+  font-size: 16px;
+  line-height: 1;
+  padding: 12px 8px;
   border: 1px solid var(--primary-red);;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .filter-footer .filter-reset {
@@ -479,9 +479,9 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  padding: 6px 0;
-  font-size: 20px;
-  line-height: 1.2;
+  font-size: 16px;
+  line-height: 1;
+  padding: 12px 8px;
 }
 
 .course-box .course-box-detail {
