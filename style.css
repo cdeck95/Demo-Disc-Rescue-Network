@@ -231,6 +231,7 @@ img.weblogo {
           background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
           justify-content: center;
           align-items: center;
+          
       }
       
       .popup h2 {
@@ -255,6 +256,7 @@ img.weblogo {
       
       /* Popup Content */
       .popup-content {
+        max-width: 1080px;
           background-color: var(--primary-blue);
           position: relative;
           margin: auto;
