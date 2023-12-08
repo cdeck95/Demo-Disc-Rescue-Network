@@ -329,7 +329,41 @@
             document.getElementById('colorList').addEventListener('change', function() {
                 showOtherInput(this.value, 'colorOtherInput');
             });
+
+            var modal = document.getElementById("popup");
+            var btnPhone = document.getElementById("choosePhone");
+            var btnEmail = document.getElementById("chooseEmail");
+            var span = document.getElementById("close");
+
+            // Open the modal
+            modal.style.display = "flex";
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Handling button actions
+            btnPhone.onclick = function() {
+                document.getElementById('inputPhone').style.display = 'block';
+                document.getElementById('inputEmail').style.display = 'none !important';
+                modal.style.display = "none";
+            }
+
+            btnEmail.onclick = function() {
+                document.getElementById('inputEmail').style.display = 'block';
+                document.getElementById('inputPhone').style.display = 'none !important';
+                modal.style.display = "none";
+            }
         };
+        
 
         function showOtherInput(selectedValue, inputId) {
             // Check if 'other' is selected
@@ -339,11 +373,7 @@
                 document.getElementById(inputId).style.display = 'none';
             }
         }
-
-      
     </script>
-
-
 </head>
 
 <body>
@@ -408,9 +438,9 @@
                         <!-- Color options will be populated by JavaScript -->
                     </select>     
                 </div>
-                <div class="col-8 pe-0" style="padding: 0px">
-                    <input type="tel" class="form-control" id="inputPhone" style="height: 55px !important;" placeholder="Phone Number Written On the Disc" inputmode="numeric">   
-                               
+                <div class="col-8 pe-0" style="padding: 0px; ">
+                    <input type="tel" class="form-control" id="inputPhone" style="height: 55px !important; display:none !important;" placeholder="Phone Number Written On the Disc" inputmode="numeric">   
+                    <input type="email" class="form-control" id="inputEmail" style="height: 55px !important; display:none !important;" placeholder="Email Address">                              
                 </div>           
             </div>
 
@@ -523,6 +553,18 @@
             <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
             <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
         </button>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="close">&times;</span>
+            <h2>WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF COMMUNICATION?</h2>
+            <p>If you wrote your phone number on your disc, we recommend using this as your preferred method.</p>
+            <div class="d-flex flex-row" style="width: 80%">
+                <button id="choosePhone" class="secondary-btn" style="margin-right: 10px;">Phone</button>
+                <button id="chooseEmail" class="warning-btn">Email</button>
+            </div>
+        </div>
     </div>
 
     
