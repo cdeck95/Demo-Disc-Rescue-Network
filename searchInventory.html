@@ -58,10 +58,17 @@
         
         var filter_brand = filter_color = filter_disc = [];
         var currentSort = 'desc'; // Global variable to track current sort state
+
+        // Function to update the sortedLabel text
+        function updateSortedLabel() {
+            var sortedText = currentSort === 'desc' ? 'Found Date: Newest to Oldest' : 'Found Date: Oldest to Newest';
+            $('#sortedLabel').text(sortedText); // Update the text of sortedLabel
+        }
        
         document.addEventListener('DOMContentLoaded', function() {
             $(document).ready(function(){
                 loadDiscs();
+                updateSortedLabel(); // Update the label when the page loads
                 $(document).on('click','#filter-btn',function(e){
                     e.preventDefault(); // Prevent the event from propagating
                     $(".asidebar").toggleClass("open-sidebar");
@@ -83,6 +90,7 @@
                 currentSort = this.checked ? 'asc' : 'desc';
                 console.log('Changed sort state to: ' + currentSort)
 
+                updateSortedLabel(); // Update the label when the sort changes
                 loadDiscs();
             });
 
@@ -101,6 +109,7 @@
         function resetFilters(){
             $("input[name=filter_brand]:checked, input[name=filter_color]:checked, input[name=filter_disc]:checked").prop("checked",false); 
             loadDiscs();
+            closeSidebar();
         }
 
         function loadMoreDiscs() {
@@ -130,6 +139,16 @@
 
         function claimDisc(discID) {
             window.location.href = `/claimDisc.html?id=${encodeURIComponent(discID)}`;
+        }
+
+        function closeSidebar() {
+            $(".asidebar").removeClass("open-sidebar");
+            $(".main-wrapper").removeClass("open-sidebar");
+        }
+
+        function filterSubmitted() {
+            loadDiscs();
+            closeSidebar();
         }
 
 
@@ -273,8 +292,8 @@
                 $('.main-section .load-more').removeClass('hidden');
             }
 
-            $(".asidebar").removeClass("open-sidebar");
-            $(".main-wrapper").removeClass("open-sidebar");
+            // $(".asidebar").removeClass("open-sidebar");
+            // $(".main-wrapper").removeClass("open-sidebar");
         }
     </script>
     <style>
@@ -321,6 +340,7 @@
                 </div>
                 <div class="rescue d-flex align-items-center flex-column text-center mb-2">
                     <h3 class="m-0 text-white">ALL LOST <span class="fw-light">DISCS</span></h3>
+                    <p class="course-name" id="sortedLabel"></p> <!-- Course name will be displayed here -->
                 </div>
                 <div class="filter-button">
                     <button class="filter-btn" id="filter-btn">Filters</button>
@@ -458,7 +478,7 @@
                 </div>            
             </div>
             <div class="filter-footer">
-                <a href="javascript:void(0);" class="filter-search" onclick="loadDiscs();">Filter and Search</a>
+                <a href="javascript:void(0);" class="filter-search" onclick="filterSubmitted();">Filter and Search</a>
                 <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
             </div>
         </div>

@@ -108,10 +108,22 @@
         }
 
 
-            function resetFilters(){
-                $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
-                loadDiscs();
-            }
+        function resetFilters(){
+            $("input[name=filter_brand]:checked,input[name=filter_color]:checked").prop("checked",false);
+            loadDiscs();
+            closeSidebar();
+        }
+
+        function filterSubmitted() {
+            loadDiscs();
+            closeSidebar();
+        }
+        
+        function closeSidebar() {
+            $(".asidebar").removeClass("open-sidebar");
+            $(".main-wrapper").removeClass("open-sidebar");
+        }
+
 
         function loadMoreDiscs() {
             // Show the next 6 hidden discs
@@ -276,8 +288,8 @@
                     $('.main-section .load-more').removeClass('hidden');
                 }
 
-                $(".asidebar").removeClass("open-sidebar");
-                $(".main-wrapper").removeClass("open-sidebar");
+                // $(".asidebar").removeClass("open-sidebar");
+                // $(".main-wrapper").removeClass("open-sidebar");
             }
 
 
@@ -438,7 +450,7 @@
                 </div>    
             </div>
             <div class="filter-footer">
-                <a href="javascript:void(0);" class="filter-search" onclick="loadDiscs();">Filter and Search</a>
+                <a href="javascript:void(0);" class="filter-search" onclick="filterSubmitted();">Filter and Search</a>
                 <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
             </div>
         </div>
