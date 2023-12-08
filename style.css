@@ -57,6 +57,10 @@ body {
   font-display: swap;
 }
 
+a {
+  text-decoration: none;
+}
+
 .newsletterButton {
   background-color: var(--primary-red);
   width: 90%;
