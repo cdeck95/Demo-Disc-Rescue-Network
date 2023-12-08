@@ -437,7 +437,7 @@
         /* Style the scrollbar */
         .grid-of-cards::-webkit-scrollbar {
             width: 10px; /* Adjust the width of the scrollbar */
-            height: 30px;
+            height: 40px;
             padding-left: 20px; /* Add padding on the left */
             padding-right: 20px; /* Add padding on the right */
             box-sizing: border-box; /* Ensure padding does not increase the total width */
@@ -450,10 +450,13 @@
         .grid-of-cards::-webkit-scrollbar-thumb {
             background: red; /* Color of the scrollbar thumb */
             border-radius: 1px; /* Optional: Rounds the corners of the scrollbar thumb */
+            width: 40px;
         }
 
         .grid-of-cards::-webkit-scrollbar-button {
-            display: none;
+            /* display: none; */
+            width: 100px;
+            margin: auto;
         }
 
         .text-block-2 {
