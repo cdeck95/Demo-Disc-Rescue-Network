@@ -337,9 +337,9 @@ h4.confirmd {
 
 .main-section button.stepbutton {
   background-color: var(--primary-red);
-  width: 50%;
+  width: 60%;
   max-width: 200px;
-  padding: 4px 0;
+  padding: 8px 4px;
   border: none;
   font-size: 18px;
   font-weight: 500;
@@ -371,9 +371,9 @@ h4.confirmd {
 }
 
 button.rememberbtn {
-  width: 40%;
-  max-width: 150px;
-  padding: 4px 0;
+  width: 50%;
+  max-width: 200px;
+  padding: 6px 4px;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-blue);
   color: var(--primary-white);
@@ -689,7 +689,7 @@ span.img {
   }
 
   .rescue h3 {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
   }
 
   .footer-content {

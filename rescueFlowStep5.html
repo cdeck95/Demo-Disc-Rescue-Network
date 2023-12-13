@@ -113,15 +113,37 @@
             const colorInputValue = document.getElementById('colorInput').value;
 
             // Check if a disc is found (you can modify this condition)
-            const disc_found = false; // Change this condition as needed
+            var disc_found = false; // Change this condition as needed
+
+            if (colorInputValue.toLowerCase() === "blue") {
+                disc_found = true;
+            }
 
             if (disc_found) {
                 // Redirect to the success page with disc information as query parameters
-                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+                // window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+                showPopup();
             } else {
                 window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(discBrandInputValue)}&color=${encodeURIComponent(colorInputValue)}`;
             }
         }
+
+        function showPopup() {
+            // Get the popup element by its ID
+            var popup = document.getElementById("popup");
+
+            // Make the popup visible by changing its style
+            popup.style.display = "flex";
+        }
+
+        // Add an event listener to the close button
+        document.getElementById("close").addEventListener("click", function() {
+            // Get the popup element by its ID
+            var popup = document.getElementById("popup");
+
+            // Hide the popup by changing its style
+            popup.style.display = "none";
+        });
     </script>
 
 
@@ -236,7 +258,17 @@
     </div>
 
     
-
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="close">&times;</span>
+            <h2>WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF COMMUNICATION?</h2>
+            <p>If you wrote your phone number on your disc, we recommend using this as your preferred method.</p>
+            <div class="d-flex flex-row" style="width: 80%">
+                <button id="choosePhone" class="secondary-btn" style="margin-right: 10px;">Phone</button>
+                <button id="chooseEmail" class="warning-btn">Email</button>
+            </div>
+        </div>
+    </div>
 
 
 
