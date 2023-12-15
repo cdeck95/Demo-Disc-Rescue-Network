@@ -65,28 +65,86 @@
 
     <script>
         // Function to parse query parameters from the URL
-        function parseQueryParameters() {
-            const query = window.location.search.substring(1);
-            const pairs = query.split('&');
-            const params = {};
+        // function parseQueryParameters() {
+        //     const query = window.location.search.substring(1);
+        //     const pairs = query.split('&');
+        //     const params = {};
 
-            for (const pair of pairs) {
-                const parts = pair.split('=');
-                const key = decodeURIComponent(parts[0]);
-                const value = decodeURIComponent(parts[1]);
-                params[key] = value;
+        //     for (const pair of pairs) {
+        //         const parts = pair.split('=');
+        //         const key = decodeURIComponent(parts[0]);
+        //         const value = decodeURIComponent(parts[1]);
+        //         params[key] = value;
+        //     }
+
+        //     return params;
+        // }
+
+        function parseQueryParameters() {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const params = {};
+                for (const [key, value] of urlParams.entries()) {
+                    params[key] = value;
+                }
+                return params;
             }
 
-            return params;
-        }
+        var discID = -1;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parse query parameters
+            const queryParams = parseQueryParameters();
+            const communicationMethodLabel = queryParams.communicationMethodLabel || '';
 
-        // Get the query parameters
-        const queryParams = parseQueryParameters();
+            // Update the elements with the parsed value
+            document.getElementById('communicationMethodLabel').textContent = communicationMethodLabel;
+            document.getElementById('verifyPickupDate').textContent = queryParams.pickupDate || '';
+            document.getElementById('verifyPickupLocation').textContent = queryParams.pickupLocation || '';
+            document.getElementById('verifyContactInfoForRelease').textContent = queryParams.contactInfo || '';
 
-        // Update the HTML elements with the retrieved values
-        document.getElementById('pickupDate').textContent = queryParams.pickupDate || '';
-        document.getElementById('pickupLocation').textContent = queryParams.pickupLocation || '';
-        document.getElementById('contactInfoForRelease').textContent = queryParams.contactInfo || '';
+            discID = queryParams.id || -1;
+
+            //search the found_discs array from /js/discs.js for the discID that was passed in the URL & display the disc info in the popup-verify
+            const matchingDisc = found_discs.find(disc => disc.ID === parseInt(discID));
+
+            if (matchingDisc) {
+                const discInfoHTML = `
+                    <div class="disc-item">
+                        <div class="course-box">
+                            <div class="course-box-detail">
+                                <div class="course-image" style="border: 2px solid var(--primary-red)">
+                                    <img src="./assets/course-image.png" alt="image">
+                                </div>
+                                <div class="course-list">
+                                    <ul>
+                                        <li style="border-top: 1px solid var(--primary-grey);">
+                                            <img src="./assets/course-icon1.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/course-icon.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Brand}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/Courses_Red_Icon.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Course}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+
+                // Insert the HTML content into the "discInfoVerify" element
+                const discInfoVerifyElement = document.getElementById('discInfoVerify');
+                discInfoVerifyElement.innerHTML = discInfoHTML;
+
+            } else {
+                // Handle the case when the disc is not found
+                console.log('Disc not found with ID:', discID);
+            }
+        });
+
     </script>
 </head>
 
@@ -107,11 +165,11 @@
                 <h2 class="m-0 text-white" style="font-size: 3rem; color: var(--primary-green) !important">NAILED <span class="fw-light" style="font-weight: 300 !important; font-size: 3rem; color: var(--primary-white) !important" >IT!</span></h2>
             </div>
 
-            <div class="d-flex align-items-center flex-column text-center mt-4 mb-0 p-3">
-                <h3 class="m-0 text-white" style="font-size: 1.5rem; color: var(--primary-white) !important">You have successfully claimed your disc and you've been opted in to receiving messages.</h3>
+            <div class="d-flex align-items-center flex-column text-center mt-2 mb-0 p-2">
+                <h3 class="mb-2 text-white" style="font-size: 1.15rem; color: var(--primary-white) !important">You have successfully claimed your disc and you've been opted in to receiving messages.</h3>
             </div>
 
-            <!-- <div class="verify-info">
+            <div class="verify-info">
                 <div class="verify-row">
                     <label>Pickup Date:</label>
                     <span id="verifyPickupDate" class="fw-light"></span>
@@ -128,7 +186,7 @@
                 <div class="verify-row mt-4" id="discInfoVerify" style="color: var(--primary-black) !important; width: 65%; max-width: 400px;">
                     <!-- disc info will be populated here -->
                 </div>
-            </div> -->
+            </div>
         </div>
     </section>
 
@@ -197,6 +255,7 @@
             <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
         </button>
     </div>
+    <script src="js/discs.js"></script>
 </body>
 
 </html>

@@ -87,11 +87,15 @@
             const pickupLocation = document.getElementById('verifyPickupLocation').textContent;
             const contactInfo = document.getElementById('verifyContactInfoForRelease').textContent;
 
-            // Construct the query string with the pickup details
-            const queryString = `?id=${encodeURIComponent(discID)}&pickupDate=${encodeURIComponent(pickupDate)}&pickupLocation=${encodeURIComponent(pickupLocation)}&contactInfo=${encodeURIComponent(contactInfo)}`;
+            const queryParams = new URLSearchParams();
+            queryParams.append('id', discID); 
+            queryParams.append('pickupDate', pickupDate); 
+            queryParams.append('pickupLocation', pickupLocation); 
+            queryParams.append('contactInfo', contactInfo); 
+            queryParams.append('communicationMethodLabel', document.getElementById('communicationMethodLabel').textContent);
 
-            // Construct the URL with the query string and navigate to claimDiscSuccess.html
-            const url = 'claimDiscSuccess.html' + queryString;
+            const queryString = queryParams.toString();
+            const url = `claimDiscSuccess.html?${queryString}`;
             window.location.href = url;
         }
 
