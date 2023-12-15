@@ -257,6 +257,7 @@ a {
   height: 60px !important;
   margin: 0 auto !important;
   display: block !important;
+  color: var(--primary-blue);
 }
 
 .main-section {
@@ -467,6 +468,30 @@ h4.confirmd {
   font-family: 'Bebas Neue';
 }
 
+.stepbutton {
+  background-color: var(--primary-red);
+  width: 80%;
+  /* max-width: 200px; */
+  padding: 8px 4px;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.failurebutton {
+  background-color: var(--primary-red);
+  width: 80%;
+  max-width: 400px;
+  padding: 8px 4px;
+  border: none;
+  min-height: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
 .main-section button.stepbutton {
   background-color: var(--primary-red);
   width: 60%;
@@ -503,13 +528,13 @@ h4.confirmd {
 }
 
 button.rememberbtn {
-  width: 50%;
-  max-width: 200px;
-  padding: 6px 4px;
+  width: 65%;
+  /* max-width: 200px; */
+  padding: 4px;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-blue);
   color: var(--primary-white);
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: .08em;
 }
 

@@ -79,6 +79,22 @@
             return urlParams.get(parameterName);
         }
 
+        function claimDisc() {
+            console.log(`Claiming disc with ID ${discID}...`);
+            
+            // Get the pickup details from the HTML elements
+            const pickupDate = document.getElementById('verifyPickupDate').textContent;
+            const pickupLocation = document.getElementById('verifyPickupLocation').textContent;
+            const contactInfo = document.getElementById('verifyContactInfoForRelease').textContent;
+
+            // Construct the query string with the pickup details
+            const queryString = `?id=${encodeURIComponent(discID)}&pickupDate=${encodeURIComponent(pickupDate)}&pickupLocation=${encodeURIComponent(pickupLocation)}&contactInfo=${encodeURIComponent(contactInfo)}`;
+
+            // Construct the URL with the query string and navigate to claimDiscSuccess.html
+            const url = 'claimDiscSuccess.html' + queryString;
+            window.location.href = url;
+        }
+
     
     </script>
     <script>
@@ -160,6 +176,10 @@
             const matchingDisc = found_discs.find(disc => disc.ID === parseInt(discID));
 
             if (matchingDisc) {
+
+                // Show the popup
+                var popupVerify = document.getElementById("popup-verify");
+                popupVerify.style.display = "flex";
 
                 const discInfoHTML = `
                     <div class="disc-item">
@@ -464,8 +484,8 @@
         </div>
     </div>
 
-    <div id="popup-verify" class="popup">
-        <div class="popup-content" id="popup-verify-content">
+    <div id="popup-verify" class="popup" style="flex-direction: column;">
+        <div class="popup-content" id="popup-verify-content" style="margin: unset !important;">
             <span class="close" id="close" onclick="closePopupVerify()">&times;</span>
             <h2 style="font-size: 3rem;">Verify Your <span class="fw-light">INFO</span></h2>
             <div class="verify-info">
@@ -488,6 +508,13 @@
             </div>
             <div id="loading-bar" class="loading-bar"></div>
         </div>
+
+        <div class="d-flex justify-content-center align-items-center mt-2 mb-2" style="flex-direction: column; width: 100%; background: transparent; justify-content: flex-start; margin: auto;">
+            <button class="stepbutton text-white mt-2 mb-3" onClick="claimDisc()">Perfect! Give me my disc back!</button>
+            <button class="rememberbtn fw-light" onClick="closePopupVerify()">Need to adjust some pickup information</button>
+        </div>
+
+        
     </div>
 
     
