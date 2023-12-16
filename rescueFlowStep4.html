@@ -178,10 +178,19 @@
         });
 
         var courseName = getQueryParam("course");
-        if (courseName) {
+        console.log(courseName);
+        if (courseName != "null") {
+          console.log("Course name is not null");
           var discsForCourse = found_discs.filter(
             (disc) => disc.Course === courseName
           );
+          var uniqueBrandsForCourse = new Set(
+            discsForCourse.map((disc) => disc.Brand)
+          );
+          var brandsForCourse = Array.from(uniqueBrandsForCourse);
+          populateBrandDropdown(brandsForCourse);
+        } else {
+          var discsForCourse = found_discs;
           var uniqueBrandsForCourse = new Set(
             discsForCourse.map((disc) => disc.Brand)
           );

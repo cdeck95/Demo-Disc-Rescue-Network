@@ -233,7 +233,7 @@ a {
   width: 90% !important;
   max-width: 500px !important;
   border-radius: 0 !important;
-  height: 60px !important;
+  height: 50px !important;
   margin: 0 auto !important;
   display: block !important;
   color: var(--primary-blue);
@@ -469,7 +469,7 @@ h4.confirmd {
 .main-section button.stepbutton {
   background-color: var(--primary-red);
   width: 60%;
-  max-width: 200px;
+  max-width: 250px;
   padding: 8px 4px;
   border: none;
   font-size: 18px;
@@ -534,7 +534,7 @@ button.rememberbtn {
 
 .rememberbtn:hover {
   cursor: pointer;
-  border: 2px solid var(--primary-white);
+  border: 2px solid var(--primary-red);
   background-color: var(--primary-red);
   color: var(--primary-white);
 }
@@ -604,6 +604,7 @@ span.img {
   background-image: none;
   position: relative;
   color: var(--primary-blue);
+  height: 50px !important;
 }
 
 .select-box .arrow {
