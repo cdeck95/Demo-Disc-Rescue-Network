@@ -145,6 +145,10 @@
       function refresh() {
         window.location.href = "/";
       }
+
+      function goToInventory() {
+        window.location.href = "/searchInventory.html";
+      }
     </script>
   </head>
   <body>
@@ -201,7 +205,9 @@
           Report my Disc Lost and Help the Wizard
         </button>
         <div class="pb-5">
-          <button class="rememberbtn fw-light">Fine, I'll do it myself</button>
+          <button class="rememberbtn fw-light" onclick="goToInventory()">
+            Fine, I'll do it myself
+          </button>
         </div>
       </div>
     </section>

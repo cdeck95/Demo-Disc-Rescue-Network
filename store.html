@@ -111,36 +111,37 @@
         window.location.href = "/";
       }
 
-      function submitEmail() {
-        alert("submitEmail");
-      }
+      function signUp() {
+        var input = document.getElementById("inputContact").value;
+        var errorMessageElement = document.getElementById("error");
+        var successMessageElement = document.getElementById("success");
+        var submitButton = document.getElementById("submitButton");
 
-      function validateContact(input) {
-        // Regular expression patterns for email and phone number
-        var emailPattern = /\S+@\S+\.\S+/;
-        var phonePattern = /^\d{10}$/; // Adjust the regex to suit the phone number format you need
+        // Regular expression for validating an email address
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        // Regular expression for validating a phone number (basic validation)
+        var phonePattern = /^[0-9]{10,15}$/;
 
         if (emailPattern.test(input)) {
-          console.log("The input is a valid email address.");
-          return true;
-        } else if (phonePattern.test(input.replace(/\D/g, ""))) {
-          // Remove non-digit characters before test
-          console.log("The input is a valid phone number.");
-          return true;
+          console.log("Input is an email address.");
+          errorMessageElement.style.display = "none";
+          successMessageElement.style.display = "block";
+          submitButton.style.display = "none";
+        } else if (phonePattern.test(input)) {
+          console.log("Input is a phone number.");
+          errorMessageElement.style.display = "none";
+          successMessageElement.style.display = "block";
+          submitButton.style.display = "none";
         } else {
-          console.log(
-            "The input is neither a valid email address nor a valid phone number."
-          );
-          return false;
+          console.log("Input is neither a valid email nor a phone number.");
+          errorMessageElement.textContent =
+            "Please enter a valid email or phone number.";
+          errorMessageElement.style.display = "block";
+          successMessageElement.style.display = "none";
+          submitButton.style.display = "block";
         }
       }
-
-      // Attach an event listener to your input field
-      document
-        .getElementById("inputContact")
-        .addEventListener("change", function () {
-          validateContact(this.value);
-        });
     </script>
   </head>
 
@@ -216,15 +217,24 @@
               id="inputContact"
               placeholder="Phone Number or Email for Notification"
             />
+            <div
+              id="error"
+              style="color: var(--primary-red); display: none"
+            ></div>
+            <div
+              id="success"
+              style="color: var(--primary-green); display: none"
+            >
+              Success! You are opted in for notifications.
+            </div>
+            <button
+              class="newsletterButton text-white mt-2 mb-3"
+              onClick="signUp()"
+            >
+              Get notified when the deals are live
+            </button>
           </div>
         </div>
-
-        <button
-          class="newsletterButton text-white mb-3"
-          onClick="searchPhoneNumber()"
-        >
-          Get notified when the deals are live
-        </button>
       </div>
     </section>
 
