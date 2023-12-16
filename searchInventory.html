@@ -1,493 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DRN Inventory - Search All</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style-2.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./style-2.css" />
+    <link rel="stylesheet" href="./globals.css" />
+
+    <!-- <link rel="stylesheet" href="./style.css"> -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@400;500;600&family=Martian+Mono:wght@300;600&display=swap"
-        rel="stylesheet">
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@400;500;600&family=Martian+Mono:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        function toggleFabMenu() {
-            const overlay = document.getElementById('overlay');
-            const fabMenuContainer = document.getElementById('fabMenuContainer');
-            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
-            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
-            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
-            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+      function toggleFabMenu() {
+        const overlay = document.getElementById("overlay");
+        const fabMenuContainer = document.getElementById("fabMenuContainer");
+        const fabLogo = document.getElementById("fabLogo"); // Get the logo by its ID
+        const fabClose = document.getElementById("fabClose"); // Get the 'X' span by its ID
+        const fabContainer = document.getElementById("fabContainer"); // Get the 'X' span by its ID
+        const fab = document.getElementById("fab"); // Get the 'X' span by its ID
 
+        // Toggle the active class on the overlay and the FAB menu
+        overlay.classList.toggle("active");
+        fabMenuContainer.classList.toggle("active");
 
-            // Toggle the active class on the overlay and the FAB menu
-            overlay.classList.toggle('active');
-            fabMenuContainer.classList.toggle('active');
-
-            // Check if the menu is active or not
-            if (fabMenuContainer.classList.contains('active')) {
-                // Menu is active, show 'X' and hide logo
-                fabLogo.style.display = 'none'; // Hide the logo
-                fabClose.style.display = 'block'; // Show the 'X'
-
-            } else {
-                // Menu is not active, hide 'X' and show logo
-                fabLogo.style.display = 'block'; // Show the logo
-                fabClose.style.display = 'none'; // Hide the 'X'
-            }
+        // Check if the menu is active or not
+        if (fabMenuContainer.classList.contains("active")) {
+          // Menu is active, show 'X' and hide logo
+          fabLogo.style.display = "none"; // Hide the logo
+          fabClose.style.display = "block"; // Show the 'X'
+        } else {
+          // Menu is not active, hide 'X' and show logo
+          fabLogo.style.display = "block"; // Show the logo
+          fabClose.style.display = "none"; // Hide the 'X'
         }
+      }
 
-        function reportLostDisc() { 
-            window.location.href = 'reportLostDisc.html'; 
-        }
-        function requestCourse() { 
-            window.location.href = 'requestCourse.html'; 
-        }
-        function openSettings() { 
-            window.location.href = 'settings.html'; 
-        }
+      function reportLostDisc() {
+        window.location.href = "reportLostDisc.html";
+      }
+      function requestCourse() {
+        window.location.href = "requestCourse.html";
+      }
+      function openSettings() {
+        window.location.href = "settings.html";
+      }
     </script>
     <script>
-        // Function to get the value of a query parameter from the URL
-        function getQueryParam(parameterName) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(parameterName);
-        }
-        
-        var filter_brand = filter_color = filter_disc = [];
-        var currentSort = 'desc'; // Global variable to track current sort state
+      // Function to get the value of a query parameter from the URL
+      function getQueryParam(parameterName) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(parameterName);
+      }
 
-        // Function to update the sortedLabel text
-        function updateSortedLabel() {
-            var sortedText = currentSort === 'desc' ? 'Found Date: Newest to Oldest' : 'Found Date: Oldest to Newest';
-            $('#sortedLabel').text(sortedText); // Update the text of sortedLabel
-        }
-       
-        document.addEventListener('DOMContentLoaded', function() {
-            $(document).ready(function(){
-                loadDiscs();
-                updateSortedLabel(); // Update the label when the page loads
-                $(document).on('click','#filter-btn',function(e){
-                    e.preventDefault(); // Prevent the event from propagating
-                    $(".asidebar").toggleClass("open-sidebar");
-                    $(".main-wrapper").toggleClass("open-sidebar");
-                });
+      var filter_brand = (filter_color = filter_disc = []);
+      var currentSort = "desc"; // Global variable to track current sort state
 
-                $('.main-wrapper').click(function(event) {
-                    // Check if the filter section is open
-                    if ($('.asidebar').hasClass('open-sidebar') && !$(event.target).closest('.asidebar, #filter-btn').length) {
-                        // Toggle the filter sidebar to close it
-                        $(".asidebar").removeClass("open-sidebar");
-                        $(".main-wrapper").removeClass("open-sidebar");
-                    }
-                });
-            });
+      // Function to update the sortedLabel text
+      function updateSortedLabel() {
+        var sortedText =
+          currentSort === "desc"
+            ? "Found Date: Newest to Oldest"
+            : "Found Date: Oldest to Newest";
+        $("#sortedLabel").text(sortedText); // Update the text of sortedLabel
+      }
 
-            $('#sortToggle').change(function() {
-                console.log('Current sort state: ' +  currentSort)
-                currentSort = this.checked ? 'asc' : 'desc';
-                console.log('Changed sort state to: ' + currentSort)
+      document.addEventListener("DOMContentLoaded", function () {
+        $(document).ready(function () {
+          loadDiscs();
+          updateSortedLabel(); // Update the label when the page loads
+          $(document).on("click", "#filter-btn", function (e) {
+            e.preventDefault(); // Prevent the event from propagating
+            $(".asidebar").toggleClass("open-sidebar");
+            $(".main-wrapper").toggleClass("open-sidebar");
+          });
 
-                updateSortedLabel(); // Update the label when the sort changes
-                loadDiscs();
-            });
-
+          $(".main-wrapper").click(function (event) {
+            // Check if the filter section is open
+            if (
+              $(".asidebar").hasClass("open-sidebar") &&
+              !$(event.target).closest(".asidebar, #filter-btn").length
+            ) {
+              // Toggle the filter sidebar to close it
+              $(".asidebar").removeClass("open-sidebar");
+              $(".main-wrapper").removeClass("open-sidebar");
+            }
+          });
         });
 
-        function filterDiscs(discItem){
-            // Check for brand and color filters
-            let brandMatch = filter_brand.length === 0 || filter_brand.includes(discItem['Brand']);
-            let colorMatch = filter_color.length === 0 || filter_color.includes(discItem['Color']);
-            let discMatch = filter_disc.length === 0 || filter_disc.includes(discItem['Disc']); 
+        $("#sortToggle").change(function () {
+          console.log("Current sort state: " + currentSort);
+          currentSort = this.checked ? "asc" : "desc";
+          console.log("Changed sort state to: " + currentSort);
 
-            return brandMatch && colorMatch && discMatch;
+          updateSortedLabel(); // Update the label when the sort changes
+          loadDiscs();
+        });
+      });
+
+      function filterDiscs(discItem) {
+        // Check for brand and color filters
+        let brandMatch =
+          filter_brand.length === 0 || filter_brand.includes(discItem["Brand"]);
+        let colorMatch =
+          filter_color.length === 0 || filter_color.includes(discItem["Color"]);
+        let discMatch =
+          filter_disc.length === 0 || filter_disc.includes(discItem["Disc"]);
+
+        return brandMatch && colorMatch && discMatch;
+      }
+
+      function resetFilters() {
+        $(
+          "input[name=filter_brand]:checked, input[name=filter_color]:checked, input[name=filter_disc]:checked"
+        ).prop("checked", false);
+        loadDiscs();
+        closeSidebar();
+      }
+
+      function loadMoreDiscs() {
+        // Show the next 6 hidden discs
+        $(".disc-item.hidden").slice(0, 6).removeClass("hidden");
+
+        // Check if there are hidden discs left
+        if ($(".disc-item.hidden").length === 0) {
+          $(".load-more .more-btn").hide(); // Hide Load More button
+          $(".load-more .no-more-discs").removeClass("hidden"); // Show the message
         }
+      }
 
-
-        function resetFilters(){
-            $("input[name=filter_brand]:checked, input[name=filter_color]:checked, input[name=filter_disc]:checked").prop("checked",false); 
-            loadDiscs();
-            closeSidebar();
+      function goBack() {
+        if (document.referrer.startsWith(window.location.origin)) {
+          window.history.back();
+        } else {
+          // Handle the case when there is no history to go back to
+          // For example, redirect to a different page or display an error message
+          console.log("No page on the same domain to go back to.");
         }
+      }
 
-        function loadMoreDiscs() {
-            // Show the next 6 hidden discs
-            $('.disc-item.hidden').slice(0, 6).removeClass('hidden');
+      function refresh() {
+        window.location.href = "/";
+      }
 
-            // Check if there are hidden discs left
-            if ($('.disc-item.hidden').length === 0) {
-                $('.load-more .more-btn').hide(); // Hide Load More button
-                $('.load-more .no-more-discs').removeClass('hidden'); // Show the message
-            }
-        }
+      function claimDisc(discID) {
+        window.location.href = `/claimDisc.html?id=${encodeURIComponent(
+          discID
+        )}`;
+      }
 
-        function goBack() {
-            if (document.referrer.startsWith(window.location.origin)) {
-                window.history.back();
-            } else {
-                // Handle the case when there is no history to go back to
-                // For example, redirect to a different page or display an error message
-                console.log("No page on the same domain to go back to.");
-            }
-        }
+      function closeSidebar() {
+        $(".asidebar").removeClass("open-sidebar");
+        $(".main-wrapper").removeClass("open-sidebar");
+      }
 
-        function refresh() {
-            window.location.href = '/';
-        }
+      function filterSubmitted() {
+        loadDiscs();
+        closeSidebar();
+      }
 
-        function claimDisc(discID) {
-            window.location.href = `/claimDisc.html?id=${encodeURIComponent(discID)}`;
-        }
+      function loadDiscs() {
+        var disc_item = "";
+        filter_brand = $("input[name=filter_brand]:checked")
+          .map(function () {
+            return $(this).val();
+          })
+          .get();
+        filter_color = $("input[name=filter_color]:checked")
+          .map(function () {
+            return $(this).val();
+          })
+          .get();
+        filter_disc = $("input[name=filter_disc]:checked")
+          .map(function () {
+            return $(this).val();
+          })
+          .get();
+        discs_list = found_discs.filter(filterDiscs);
 
-        function closeSidebar() {
-            $(".asidebar").removeClass("open-sidebar");
-            $(".main-wrapper").removeClass("open-sidebar");
-        }
+        // Extract unique brands from the filtered discs
+        var uniqueBrands = new Set(discs_list.map((disc) => disc.Brand));
+        var brands = Array.from(uniqueBrands).sort();
 
-        function filterSubmitted() {
-            loadDiscs();
-            closeSidebar();
-        }
+        // Now, use 'brands' to populate your brand list as you did before
+        var brandList = document.getElementById("brandList");
+        brandList.innerHTML = ""; // Clear existing list items, if any
 
-
-        function loadDiscs(){
-            var disc_item = '';
-            filter_brand =  $("input[name=filter_brand]:checked").map(function(){
-                                    return $(this).val();
-                                }).get();
-            filter_color =  $("input[name=filter_color]:checked").map(function(){
-                                    return $(this).val();
-                                }).get();
-            filter_disc =  $("input[name=filter_disc]:checked").map(function(){
-                    return $(this).val();
-                }).get();
-            discs_list    = found_discs.filter(filterDiscs);
-
-            // Extract unique brands from the filtered discs
-            var uniqueBrands = new Set(discs_list.map(disc => disc.Brand));
-            var brands = Array.from(uniqueBrands).sort();
-
-            // Now, use 'brands' to populate your brand list as you did before
-            var brandList = document.getElementById('brandList');
-            brandList.innerHTML = ''; // Clear existing list items, if any
-
-            brands.forEach(function(brand) {
-                var listItem = document.createElement('li');
-                listItem.innerHTML = `
+        brands.forEach(function (brand) {
+          var listItem = document.createElement("li");
+          listItem.innerHTML = `
                     <label class="filter-checkbox">
                         <input type="checkbox" name="filter_brand" value="${brand}">
                         <span class="checkmark"></span>
                         <span class="filter-text">${brand}</span>
                     </label>
                 `;
-                brandList.appendChild(listItem);
-            });
+          brandList.appendChild(listItem);
+        });
 
-            // Extract unique colors
-            var uniqueColors = new Set(discs_list
-                .map(disc => disc.Color)
-                .filter(color => color && color.trim().length > 0)
-            );                
-            var colors = Array.from(uniqueColors).sort();
+        // Extract unique colors
+        var uniqueColors = new Set(
+          discs_list
+            .map((disc) => disc.Color)
+            .filter((color) => color && color.trim().length > 0)
+        );
+        var colors = Array.from(uniqueColors).sort();
 
-            // Populate color list
-            var colorList = document.getElementById('colorList');
-            colorList.innerHTML = ''; // Clear existing list items, if any
-            var uniqueColors = new Set(discs_list
-                .map(disc => disc.Color)
-                .filter(color => color && color.trim().length > 0) // Add this line to filter out null or empty strings
-            );
+        // Populate color list
+        var colorList = document.getElementById("colorList");
+        colorList.innerHTML = ""; // Clear existing list items, if any
+        var uniqueColors = new Set(
+          discs_list
+            .map((disc) => disc.Color)
+            .filter((color) => color && color.trim().length > 0) // Add this line to filter out null or empty strings
+        );
 
-            colors.forEach(function(color) {
-                var listItem = document.createElement('li');
-                listItem.innerHTML = `
+        colors.forEach(function (color) {
+          var listItem = document.createElement("li");
+          listItem.innerHTML = `
                     <label class="filter-checkbox">
                         <input type="checkbox" name="filter_color" value="${color}">
                         <span class="checkmark"></span>
                         <span class="filter-text">${color}</span>
                     </label>
                 `;
-                colorList.appendChild(listItem);
-            });
+          colorList.appendChild(listItem);
+        });
 
-            // Extract unique discs
-            var uniqueDiscs = new Set(discs_list.map(disc => disc.Disc));
-            var discs = Array.from(uniqueDiscs).sort();
+        // Extract unique discs
+        var uniqueDiscs = new Set(discs_list.map((disc) => disc.Disc));
+        var discs = Array.from(uniqueDiscs).sort();
 
-            // Populate disc list
-            var discList = document.getElementById('discList'); 
-            discList.innerHTML = ''; // Clear existing list items, if any
+        // Populate disc list
+        var discList = document.getElementById("discList");
+        discList.innerHTML = ""; // Clear existing list items, if any
 
-            discs.forEach(function(disc) {
-                var listItem = document.createElement('li');
-                listItem.innerHTML = `
+        discs.forEach(function (disc) {
+          var listItem = document.createElement("li");
+          listItem.innerHTML = `
                     <label class="filter-checkbox">
                         <input type="checkbox" name="filter_disc" value="${disc}">
                         <span class="checkmark"></span>
                         <span class="filter-text">${disc}</span>
                     </label>
                 `;
-                discList.appendChild(listItem);
-            });
+          discList.appendChild(listItem);
+        });
 
-            if (currentSort === 'asc') {
-                discs_list.sort((a, b) => new Date(a.DateFound) - new Date(b.DateFound));
-            } else {
-                discs_list.sort((a, b) => new Date(b.DateFound) - new Date(a.DateFound));
-            }
-
-
-            $.each(discs_list, function(index, value) {
-            
-                disc_item += '<div class="col-6 disc-item'+(index > 5 ? ' hidden' : '')+'">'+
-                                    '<div class="course-box">'+
-                                        '<div class="course-box-detail">'+
-                                            '<div class="course-image">'+
-                                                '<img src="./assets/course-image.png" alt="image">'+
-                                            '</div>'+
-                                            '<div class="course-list">'+
-                                            '<ul>'+
-                                                    '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>'+discs_list[index]['Color']+ " " + discs_list[index]['Disc']+'</span></li>'+
-                                                    '<li><img src="./assets/course-icon.png" alt="icon"><span>'+discs_list[index]['Brand']+'</span></li>'+
-                                                    '<li><img src="./assets/course-icon2.png" alt="icon"><span>'+discs_list[index]['Name']+'</span></li>'+
-                                                '</ul>'+
-                                            '</div>'+
-                                        '</div>'+
-                                        '<div class="course-bottom">'+
-                                            '<div class="course-dis">'+
-                                                '<img src="./assets/rose-icon.png" alt="icon">'+
-                                                '<span>'+discs_list[index]['Course']+'</span>'+
-                                            '</div>'+
-                                            '<div class="course-button">'+
-                                                `<a href="#" class="course-btn" onclick="claimDisc('${discs_list[index]['ID']}')">Claim Disc</a>`+
-                                            '</div>'+
-                                        '</div>'+
-                                    '</div>'+
-                                '</div>';
-            });
-
-            // Re-check the brand checkboxes based on the current filters
-            $("input[name=filter_brand]").each(function() {
-                $(this).prop("checked", filter_brand.includes($(this).val()));
-            });
-
-            // Re-check the color checkboxes based on the current filters
-            $("input[name=filter_color]").each(function() {
-                $(this).prop("checked", filter_color.includes($(this).val()));
-            });
-            
-            // Re-check the disc checkboxes based on the current filters
-            $("input[name=filter_disc]").each(function() {
-                $(this).prop("checked", filter_disc.includes($(this).val()));
-            });
-
-            $('.course-section .row').html(disc_item);
-
-            if(discs_list.length < 6){
-                $('.main-section .load-more').addClass('hidden');
-            }
-            else{
-                $('.main-section .load-more').removeClass('hidden');
-            }
-
-            // $(".asidebar").removeClass("open-sidebar");
-            // $(".main-wrapper").removeClass("open-sidebar");
+        if (currentSort === "asc") {
+          discs_list.sort(
+            (a, b) => new Date(a.DateFound) - new Date(b.DateFound)
+          );
+        } else {
+          discs_list.sort(
+            (a, b) => new Date(b.DateFound) - new Date(a.DateFound)
+          );
         }
+
+        $.each(discs_list, function (index, value) {
+          disc_item +=
+            '<div class="col-6 disc-item' +
+            (index > 5 ? " hidden" : "") +
+            '">' +
+            '<div class="course-box">' +
+            '<div class="course-box-detail">' +
+            '<div class="course-image">' +
+            '<img src="./assets/course-image.png" alt="image">' +
+            "</div>" +
+            '<div class="course-list">' +
+            "<ul>" +
+            '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>' +
+            discs_list[index]["Color"] +
+            " " +
+            discs_list[index]["Disc"] +
+            "</span></li>" +
+            '<li><img src="./assets/course-icon.png" alt="icon"><span>' +
+            discs_list[index]["Brand"] +
+            "</span></li>" +
+            '<li><img src="./assets/course-icon2.png" alt="icon"><span>' +
+            discs_list[index]["Name"] +
+            "</span></li>" +
+            "</ul>" +
+            "</div>" +
+            "</div>" +
+            '<div class="course-bottom">' +
+            '<div class="course-dis">' +
+            '<img src="./assets/rose-icon.png" alt="icon">' +
+            "<span>" +
+            discs_list[index]["Course"] +
+            "</span>" +
+            "</div>" +
+            '<div class="course-button">' +
+            `<a href="#" class="course-btn" onclick="claimDisc('${discs_list[index]["ID"]}')">Claim Disc</a>` +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
+        });
+
+        // Re-check the brand checkboxes based on the current filters
+        $("input[name=filter_brand]").each(function () {
+          $(this).prop("checked", filter_brand.includes($(this).val()));
+        });
+
+        // Re-check the color checkboxes based on the current filters
+        $("input[name=filter_color]").each(function () {
+          $(this).prop("checked", filter_color.includes($(this).val()));
+        });
+
+        // Re-check the disc checkboxes based on the current filters
+        $("input[name=filter_disc]").each(function () {
+          $(this).prop("checked", filter_disc.includes($(this).val()));
+        });
+
+        $(".course-section .row").html(disc_item);
+
+        if (discs_list.length < 6) {
+          $(".main-section .load-more").addClass("hidden");
+        } else {
+          $(".main-section .load-more").removeClass("hidden");
+        }
+
+        // $(".asidebar").removeClass("open-sidebar");
+        // $(".main-wrapper").removeClass("open-sidebar");
+      }
     </script>
     <style>
-        footer {
-            background-color: var(--secondary-blue);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 13px 0 9px;
-            overflow: visible; /* Ensure pseudo-element is visible outside the bounds */
-        }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -5px; /* Align with the top of the footer */
-            left: 50%; /* Center horizontally */
-            transform: translateX(-50%);
-            width: 73px; /* Width of the semi-circle, adjust as needed */
-            height: 50px; /* Height of the semi-circle, adjust as needed */
-            background-color: var(--primary-blue); /* Background color of main-section */
-            border-top-left-radius: 8px; 
-            border-top-right-radius: 8px; 
-            border-bottom-left-radius: 36.5px; /* Half the width, creating a semi-circle */
-            border-bottom-right-radius: 36.5px; /* Half the width, creating a semi-circle */
-            z-index: -1;
-        }
+      footer {
+        background-color: var(--secondary-blue);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 13px 0 9px;
+        overflow: visible; /* Ensure pseudo-element is visible outside the bounds */
+      }
+      footer::before {
+        content: "";
+        position: absolute;
+        top: -5px; /* Align with the top of the footer */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%);
+        width: 73px; /* Width of the semi-circle, adjust as needed */
+        height: 50px; /* Height of the semi-circle, adjust as needed */
+        background-color: var(
+          --primary-blue
+        ); /* Background color of main-section */
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 36.5px; /* Half the width, creating a semi-circle */
+        border-bottom-right-radius: 36.5px; /* Half the width, creating a semi-circle */
+        z-index: -1;
+      }
     </style>
-</head>
+  </head>
 
-<body style="overflow: hidden;">
-    <div class="main-wrapper" style="height: 100%; width: 100%; overflow: hidden;">
-        <section class="main-section text-center" style="padding-bottom: 20px !important; overflow: hidden;">
-            <div class="container" style="overflow: hidden;">
-                <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
-                <div class="d-flex align-items-center flex-column text-center mb-2">
-                    <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
-    
-                    <div class="chat-box d-flex align-items-center mt-1">
-                        <img class="me-2" src="./assets/chat.svg" alt="chat">
-                        <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
-                        <h4 class="m-0 confirmd">CONFIRMED</h4>
-                    </div>
-                </div>
-                <div class="rescue d-flex align-items-center flex-column text-center mb-2">
-                    <h3 class="m-0 text-white">ALL LOST <span class="fw-light">DISCS</span></h3>
-                    <p class="course-name" id="sortedLabel"></p> <!-- Course name will be displayed here -->
-                </div>
-                <div class="filter-button">
-                    <button class="filter-btn" id="filter-btn">Filters</button>
-                </div>
-                <div class="course-section">
-                    <div class="row"></div>
-                    <div class="load-more">
-                        <!-- <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a> -->
-                        <a href="javascript:void(0);" onclick="loadMoreDiscs();" class="more-btn">Load More</a>
-                        <div class="no-more-discs hidden">That's all we have for now!</div>
-                    </div>
-                </div>
+  <body style="overflow: hidden">
+    <div
+      class="main-wrapper"
+      style="height: 100%; width: 100%; overflow: hidden"
+    >
+      <section
+        class="main-section text-center"
+        style="padding-bottom: 20px !important; overflow: hidden"
+      >
+        <div class="container" style="overflow: hidden">
+          <i
+            class="fa fa-arrow-left"
+            style="
+              position: absolute;
+              top: 30px;
+              left: 20px;
+              font-size: 30px;
+              color: white;
+              padding: 5px;
+            "
+            aria-hidden="true"
+            onclick="goBack()"
+          ></i>
+          <div class="d-flex align-items-center flex-column text-center mb-2">
+            <img
+              class="weblogo"
+              src="./assets/logo.png"
+              alt="logo"
+              onclick="refresh()"
+            />
+
+            <div class="chat-box d-flex align-items-center mt-1">
+              <img class="me-2" src="./assets/chat.svg" alt="chat" />
+              <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+              <h4 class="m-0 confirmd">CONFIRMED</h4>
             </div>
-        </section>
+          </div>
+          <div
+            class="rescue d-flex align-items-center flex-column text-center mb-2"
+          >
+            <h3 class="m-0 text-white">
+              ALL LOST <span class="fw-light">DISCS</span>
+            </h3>
+            <p class="course-name" id="sortedLabel"></p>
+            <!-- Course name will be displayed here -->
+          </div>
+          <div class="filter-button">
+            <button class="filter-btn" id="filter-btn">Filters</button>
+          </div>
+          <div class="course-section">
+            <div class="row"></div>
+            <div class="load-more">
+              <!-- <a href="javascript:void(0);" onclick="$('.disc-item.hidden').removeClass('hidden');" class="more-btn">Load More</a> -->
+              <a
+                href="javascript:void(0);"
+                onclick="loadMoreDiscs();"
+                class="more-btn"
+                >Load More</a
+              >
+              <div class="no-more-discs hidden">
+                That's all we have for now!
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     <div class="fab-menu-container" id="fabMenuContainer">
-        <div class="fab-menu" id="fabMenu">
-
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text-left" href="/reportLostDisc.html" style="text-decoration: none;">Report <br /> Lost Disc</a>
-                <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text" href="/requestCourse.html" style="text-decoration: none;">Request a Course</a>
-                <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <i class="fa-solid fa-gear" onclick="openSettings()"></i>
-                <a class="fab-menu-item-text-right" href="/settings.html" style="text-decoration: none;">Settings</a>
-            </div>
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text-left"
+            href="/reportLostDisc.html"
+            style="text-decoration: none"
+            >Report <br />
+            Lost Disc</a
+          >
+          <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
         </div>
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text"
+            href="/requestCourse.html"
+            style="text-decoration: none"
+            >Request a Course</a
+          >
+          <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+          <a
+            class="fab-menu-item-text-right"
+            href="/settings.html"
+            style="text-decoration: none"
+            >Settings</a
+          >
+        </div>
+      </div>
     </div>
 
-
     <footer class="footer">
-        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
-        <div class="container">
-            <div class="footer-content row">
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/home.html">
-                        <span class="img">
-                            <img src="./assets/home.png" alt="home">
-                        </span>
-                        <span>HOME</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
-                        <span class="img">
-                            <img class="search" src="./assets/search.png" alt="home" width="18">
-                        </span>
-                        <span>SEARCH ALL</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class=" d-flex align-items-center flex-column" href="/store.html">
-                        <span class="img">
-                            <img src="./assets/disk-store.png" alt="home">
-                        </span>
-                        <span>DISC STORE</span>
-                    </a>
-
-                </div>
-                <div class="col-2">
-                    <a class="d-flex align-items-center flex-column" href="/courses.html">
-                        <span class="img">
-                            <img src="./assets/courses.png" alt="home">
-                        </span>
-                        <span>COURSES</span>
-                    </a>
-                </div>
-            </div>
+      <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+      <div class="container">
+        <div class="footer-content row">
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/home.html">
+              <span class="img">
+                <img src="./assets/home.png" alt="home" />
+              </span>
+              <span>HOME</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/searchInventory.html"
+            >
+              <span class="img">
+                <img
+                  class="search"
+                  src="./assets/search.png"
+                  alt="home"
+                  width="18"
+                />
+              </span>
+              <span>SEARCH ALL</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/store.html">
+              <span class="img">
+                <img src="./assets/disk-store.png" alt="home" />
+              </span>
+              <span>DISC STORE</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/courses.html"
+            >
+              <span class="img">
+                <img src="./assets/courses.png" alt="home" />
+              </span>
+              <span>COURSES</span>
+            </a>
+          </div>
         </div>
+      </div>
     </footer>
 
     <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
-        <button class="fab" id="fab">
-            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
-            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
-        </button>
+      <button class="fab" id="fab">
+        <img
+          src="./assets/app_center_btn_logo.png"
+          alt="Disc Rescue Network Logo"
+          class="logo-fab"
+          id="fabLogo"
+        />
+        <span id="fabClose" style="display: none; z-index: 15">X</span>
+        <!-- Hidden by default -->
+      </button>
     </div>
     <div class="asidebar">
-        <div class="sidebar-header">
-            <h2>FILTER AND SORT</h2>
+      <div class="sidebar-header">
+        <h2>FILTER AND SORT</h2>
+      </div>
+      <div class="filter-body">
+        <div class="sort-toggle">
+          <label class="switch-label">Desc</label>
+          <label class="switch">
+            <input type="checkbox" id="sortToggle" />
+            <span class="slider round"></span>
+          </label>
+          <label class="switch-label">Asc</label>
         </div>
-        <div class="filter-body">
-            <div class="sort-toggle">
-                <label class="switch-label">Desc</label>
-                <label class="switch">
-                    <input type="checkbox" id="sortToggle">
-                    <span class="slider round"></span>
-                </label>
-                <label class="switch-label">Asc</label>
+
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Disc Brand
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+            >
+              <div class="accordion-body">
+                <ul id="brandList">
+                  <!-- This is where the list items will be appended -->
+                </ul>
+              </div>
             </div>
-            
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Disc Brand
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                        <div class="accordion-body">
-                            <ul id="brandList"> <!-- This is where the list items will be appended -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                            Disc Color
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
-                        <div class="accordion-body">
-                            <ul id="colorList"> <!-- This is where the list items will be appended -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                            Disc Name
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree">
-                        <div class="accordion-body">
-                            <ul id="discList"> <!-- This is where the list items will be appended -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>            
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="true"
+                aria-controls="collapseTwo"
+              >
+                Disc Color
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingTwo"
+            >
+              <div class="accordion-body">
+                <ul id="colorList">
+                  <!-- This is where the list items will be appended -->
+                </ul>
+              </div>
             </div>
-            <div class="filter-footer">
-                <a href="javascript:void(0);" class="filter-search" onclick="filterSubmitted();">Filter and Search</a>
-                <a href="javascript:void(0);" class="filter-reset" onclick="resetFilters();">Reset Filters</a>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="true"
+                aria-controls="collapseThree"
+              >
+                Disc Name
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingThree"
+            >
+              <div class="accordion-body">
+                <ul id="discList">
+                  <!-- This is where the list items will be appended -->
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-        
+        <div class="filter-footer">
+          <a
+            href="javascript:void(0);"
+            class="filter-search"
+            onclick="filterSubmitted();"
+            >Filter and Search</a
+          >
+          <a
+            href="javascript:void(0);"
+            class="filter-reset"
+            onclick="resetFilters();"
+            >Reset Filters</a
+          >
+        </div>
+      </div>
     </div>
-   
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/discs.js"></script>
-</body>
-
+  </body>
 </html>
