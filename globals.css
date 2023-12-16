@@ -331,3 +331,25 @@ input:checked + .slider:before {
   color: var(--primary-white);
   border: 1px solid var(--primary-white);
 }
+
+#findMyDisc {
+  background-color: var(--primary-red);
+  color: var(--primary-white);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 2px solid var(--primary-red);
+  border-radius: 0px;
+  min-width: 200px;
+}
+
+#findMyDisc:hover {
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  border: 2px solid var(--primary-white);
+}

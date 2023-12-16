@@ -369,6 +369,41 @@
         window.location.href = "/";
       }
     </script>
+    <script>
+      // When the user clicks on the element with class "rescue-flow", open the popup
+      function showPopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "flex"; // Changed to 'flex' to use flexbox for centering
+      }
+
+      function closePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        showPopup();
+
+        // Get the element with the ID "close" that closes the popup
+        var closeBtn = document.getElementById("close");
+
+        // When the user clicks on the element with ID "close", close the popup
+        if (closeBtn) {
+          closeBtn.onclick = function () {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+          };
+        }
+
+        // When the user clicks anywhere outside of the popup content, close it
+        window.onclick = function (event) {
+          var popup = document.getElementById("popup");
+          if (event.target == popup) {
+            popup.style.display = "none";
+          }
+        };
+      });
+    </script>
   </head>
 
   <body>
@@ -549,6 +584,86 @@
       </button>
     </div>
 
-    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close" id="close">&times;</span>
+        <h2>This is a <span class="redText">Demo</span></h2>
+        <p style="font-size: 18px; text-align: left">
+          Hi There! As this is a demo application, there is not real data
+          within. As you go through the flow, we will tell you what to input to
+          trigger a "found your disc!" popup. <br />
+          <br />
+          For this first step, select <span class="redText">NJ</span> &
+          <span class="redText">Tranqulity Trails</span> for best results.
+        </p>
+        <button id="findMyDisc" onClick="closePopup()">Let's Do it!</button>
+      </div>
+    </div>
+
+    <div id="popup-verify" class="popup" style="flex-direction: column">
+      <div
+        class="popup-content"
+        id="popup-verify-content"
+        style="margin: unset !important"
+      >
+        <span class="close" id="close" onclick="closePopupVerify()"
+          >&times;</span
+        >
+        <h2 style="font-size: 3rem">
+          Verify Your <span class="fw-light">INFO</span>
+        </h2>
+        <div class="verify-info">
+          <div class="verify-row">
+            <label>Pickup Date:</label>
+            <span id="verifyPickupDate" class="fw-light"></span>
+          </div>
+          <div class="verify-row">
+            <label id="pickupLocationLabel">Pickup Location:</label>
+            <span id="verifyPickupLocation" class="fw-light"></span>
+          </div>
+          <div class="verify-row">
+            <label id="communicationMethodLabel"></label>
+            <span id="verifyContactInfoForRelease" class="fw-light"></span>
+          </div>
+
+          <div
+            class="verify-row mt-4"
+            id="discInfoVerify"
+            style="
+              color: var(--primary-black) !important;
+              width: 65%;
+              max-width: 400px;
+            "
+          >
+            <!-- disc info will be populated here -->
+          </div>
+        </div>
+        <div id="loading-bar" class="loading-bar"></div>
+      </div>
+
+      <div
+        class="d-flex justify-content-center align-items-center mt-2 mb-2"
+        style="
+          flex-direction: column;
+          width: 100%;
+          background: transparent;
+          justify-content: flex-start;
+          margin: auto;
+        "
+      >
+        <button class="stepbutton text-white mt-2 mb-3" onClick="claimDisc()">
+          Perfect! Give me my disc back!
+        </button>
+        <button
+          class="rememberbtn fw-light"
+          style="width: 65%; max-width: unset"
+          onClick="closePopupVerify()"
+        >
+          Need to adjust some pickup information
+        </button>
+      </div>
+    </div>
+
+    <script src="js/discs.js"></script>
   </body>
 </html>
