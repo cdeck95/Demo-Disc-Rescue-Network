@@ -1,279 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DRN Rescue Flow - Step 5</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./globals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        function goBack() {
-                if (document.referrer.startsWith(window.location.origin)) {
-                    window.history.back();
-                } else {
-                    // Handle the case when there is no history to go back to
-                    // For example, redirect to a different page or display an error message
-                    console.log("No page on the same domain to go back to.");
-                }
-            }
-    
-            function refresh() {
-                window.location.href = '/';
-            }
-        function toggleFabMenu() {
-            const overlay = document.getElementById('overlay');
-            const fabMenuContainer = document.getElementById('fabMenuContainer');
-            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
-            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
-            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
-            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+      function goBack() {
+        if (document.referrer.startsWith(window.location.origin)) {
+          window.history.back();
+        } else {
+          // Handle the case when there is no history to go back to
+          // For example, redirect to a different page or display an error message
+          console.log("No page on the same domain to go back to.");
+        }
+      }
 
+      function refresh() {
+        window.location.href = "/";
+      }
+      function toggleFabMenu() {
+        const overlay = document.getElementById("overlay");
+        const fabMenuContainer = document.getElementById("fabMenuContainer");
+        const fabLogo = document.getElementById("fabLogo"); // Get the logo by its ID
+        const fabClose = document.getElementById("fabClose"); // Get the 'X' span by its ID
+        const fabContainer = document.getElementById("fabContainer"); // Get the 'X' span by its ID
+        const fab = document.getElementById("fab"); // Get the 'X' span by its ID
 
-            // Toggle the active class on the overlay and the FAB menu
-            overlay.classList.toggle('active');
-            fabMenuContainer.classList.toggle('active');
+        // Toggle the active class on the overlay and the FAB menu
+        overlay.classList.toggle("active");
+        fabMenuContainer.classList.toggle("active");
 
-            // Check if the menu is active or not
-            if (fabMenuContainer.classList.contains('active')) {
-                // Menu is active, show 'X' and hide logo
-                fabLogo.style.display = 'none'; // Hide the logo
-                fabClose.style.display = 'block'; // Show the 'X'
+        // Check if the menu is active or not
+        if (fabMenuContainer.classList.contains("active")) {
+          // Menu is active, show 'X' and hide logo
+          fabLogo.style.display = "none"; // Hide the logo
+          fabClose.style.display = "block"; // Show the 'X'
+        } else {
+          // Menu is not active, hide 'X' and show logo
+          fabLogo.style.display = "block"; // Show the logo
+          fabClose.style.display = "none"; // Hide the 'X'
+        }
+      }
 
-            } else {
-                // Menu is not active, hide 'X' and show logo
-                fabLogo.style.display = 'block'; // Show the logo
-                fabClose.style.display = 'none'; // Hide the 'X'
-            }
+      function reportLostDisc() {
+        window.location.href = "reportLostDisc.html";
+      }
+      function requestCourse() {
+        window.location.href = "requestCourse.html";
+      }
+      function openSettings() {
+        window.location.href = "settings.html";
+      }
+
+      // Function to get the value of a query parameter from the URL
+      function getQueryParam(parameterName) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(parameterName);
+      }
+
+      function skipStep() {
+        // Retrieve the "color" query parameter from the URL
+        const stateInputValue = getQueryParam("state");
+        console.log(stateInputValue);
+
+        const courseInputValue = getQueryParam("course");
+        console.log(courseInputValue);
+
+        const phoneInputValue = getQueryParam("phone");
+        console.log(phoneInputValue);
+
+        const firstInitialInputValue = getQueryParam("initial");
+        console.log(firstInitialInputValue);
+        const lastNameInputValue = getQueryParam("name");
+        console.log(lastNameInputValue);
+
+        const discBrandInputValue = getQueryParam("brand");
+        console.log(discBrandInputValue);
+
+        const colorInputValue = document.getElementById("colorInput").value;
+
+        window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(
+          stateInputValue
+        )}&course=${encodeURIComponent(
+          courseInputValue
+        )}&phone=${encodeURIComponent(
+          phoneInputValue
+        )}&initial=${encodeURIComponent(
+          firstInitialInputValue
+        )}&name=${encodeURIComponent(
+          lastNameInputValue
+        )}&brand=${encodeURIComponent(
+          discBrandInputValue
+        )}&color=${encodeURIComponent(colorInputValue)}`;
+      }
+
+      function searchDiscs() {
+        // Retrieve the "color" query parameter from the URL
+        const stateInputValue = getQueryParam("state");
+        console.log(stateInputValue);
+
+        const courseInputValue = getQueryParam("course");
+        console.log(courseInputValue);
+
+        const phoneInputValue = getQueryParam("phone");
+        console.log(phoneInputValue);
+
+        const firstInitialInputValue = getQueryParam("initial");
+        console.log(firstInitialInputValue);
+        const lastNameInputValue = getQueryParam("name");
+        console.log(lastNameInputValue);
+
+        const discBrandInputValue = getQueryParam("brand");
+        console.log(discBrandInputValue);
+
+        const colorInputValue = document.getElementById("colorInput").value;
+
+        // Check if a disc is found (you can modify this condition)
+        var disc_found = false; // Change this condition as needed
+
+        if (colorInputValue.toLowerCase() === "blue") {
+          disc_found = true;
         }
 
-        function reportLostDisc() { 
-            window.location.href = 'reportLostDisc.html'; 
+        if (disc_found) {
+          // Redirect to the success page with disc information as query parameters
+          // window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+          showPopup();
+        } else {
+          window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(
+            stateInputValue
+          )}&course=${encodeURIComponent(
+            courseInputValue
+          )}&phone=${encodeURIComponent(
+            phoneInputValue
+          )}&initial=${encodeURIComponent(
+            firstInitialInputValue
+          )}&name=${encodeURIComponent(
+            lastNameInputValue
+          )}&brand=${encodeURIComponent(
+            discBrandInputValue
+          )}&color=${encodeURIComponent(colorInputValue)}`;
         }
-        function requestCourse() { 
-            window.location.href = 'requestCourse.html'; 
-        }
-        function openSettings() { 
-            window.location.href = 'settings.html'; 
-        }
+      }
 
-        // Function to get the value of a query parameter from the URL
-        function getQueryParam(parameterName) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(parameterName);
-        }
+      function showPopup() {
+        // Get the popup element by its ID
+        var popup = document.getElementById("popup");
 
-        function skipStep() { 
-            // Retrieve the "color" query parameter from the URL
-            const stateInputValue = getQueryParam('state');
-            console.log(stateInputValue);
+        // Make the popup visible by changing its style
+        popup.style.display = "flex";
+      }
 
-            const courseInputValue = getQueryParam('course');
-            console.log(courseInputValue);
+      // Add an event listener to the close button
+      document.getElementById("close").addEventListener("click", function () {
+        // Get the popup element by its ID
+        var popup = document.getElementById("popup");
 
-            const phoneInputValue = getQueryParam('phone');
-            console.log(phoneInputValue);
-
-            const firstInitialInputValue = getQueryParam('initial');
-            console.log(firstInitialInputValue);
-            const lastNameInputValue = getQueryParam('name');
-            console.log(lastNameInputValue);
-
-            const discBrandInputValue= getQueryParam('brand');
-            console.log(discBrandInputValue);
-
-            const colorInputValue = document.getElementById('colorInput').value;          
-
-            window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(discBrandInputValue)}&color=${encodeURIComponent(colorInputValue)}`;
-        }
-
-        function searchDiscs() { 
-            // Retrieve the "color" query parameter from the URL
-            const stateInputValue = getQueryParam('state');
-            console.log(stateInputValue);
-
-            const courseInputValue = getQueryParam('course');
-            console.log(courseInputValue);
-
-            const phoneInputValue = getQueryParam('phone');
-            console.log(phoneInputValue);
-
-            const firstInitialInputValue = getQueryParam('initial');
-            console.log(firstInitialInputValue);
-            const lastNameInputValue = getQueryParam('name');
-            console.log(lastNameInputValue);
-
-            const discBrandInputValue= getQueryParam('brand');
-            console.log(discBrandInputValue);
-
-            const colorInputValue = document.getElementById('colorInput').value;
-
-            // Check if a disc is found (you can modify this condition)
-            var disc_found = false; // Change this condition as needed
-
-            if (colorInputValue.toLowerCase() === "blue") {
-                disc_found = true;
-            }
-
-            if (disc_found) {
-                // Redirect to the success page with disc information as query parameters
-                // window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
-                showPopup();
-            } else {
-                window.location.href = `rescueFlowFailure.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}&phone=${encodeURIComponent(phoneInputValue)}&initial=${encodeURIComponent(firstInitialInputValue)}&name=${encodeURIComponent(lastNameInputValue)}&brand=${encodeURIComponent(discBrandInputValue)}&color=${encodeURIComponent(colorInputValue)}`;
-            }
-        }
-
-        function showPopup() {
-            // Get the popup element by its ID
-            var popup = document.getElementById("popup");
-
-            // Make the popup visible by changing its style
-            popup.style.display = "flex";
-        }
-
-        // Add an event listener to the close button
-        document.getElementById("close").addEventListener("click", function() {
-            // Get the popup element by its ID
-            var popup = document.getElementById("popup");
-
-            // Hide the popup by changing its style
-            popup.style.display = "none";
-        });
+        // Hide the popup by changing its style
+        popup.style.display = "none";
+      });
     </script>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <section class="main-section text-center">
-        <div class="container">
-            <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
+      <div class="container">
+        <i
+          class="fa fa-arrow-left"
+          style="
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            padding: 5px;
+          "
+          aria-hidden="true"
+          onclick="goBack()"
+        ></i>
 
-            <div class="d-flex align-items-center flex-column text-center mb-3">
-                <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
+        <div class="d-flex align-items-center flex-column text-center mb-3">
+          <img
+            class="weblogo"
+            src="./assets/logo.png"
+            alt="logo"
+            onclick="refresh()"
+          />
 
-                <div class="chat-box d-flex align-items-center mt-3">
-                    <img class="me-2" src="./assets/chat.svg" alt="chat">
-                    <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
-                    <h4 class="m-0 confirmd">CONFIRMED</h4>
-                </div>
-            </div>
-            <div class="rescue d-flex align-items-center flex-column text-center mb-2">
-                <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
-                <h3 class="m-0 text-white">5 <span class="overtext">/ 5</span></h3>
-            </div>
-
-            <h3 class="mt-3 mb-3 text-white text-center mb-3 where">
-                Shoot for the <span class="missingtext-blue">Moon</span>.
-                <span class="line-break"></span>
-                <span class="smaller-text">Last minute hail mary to save the flow...</span>
-            </h3>
-
-            <div class="col-10 pe-0 mb-4 mt-4" style="padding: 2; margin: auto; text-align: center;">
-                <input type="text" class="form-control" id="colorInput" placeholder="What Color Is it?!" style="height: 55px !important" pattern="[a-zA-Z-]+">
-            </div>  
-            
-             
-
-            <button class="stepbutton text-white mb-3" onclick="searchDiscs()">Show me the discs</button>
-            <div class="pb-5">
-                <button class="rememberbtn fw-light" onclick="skipStep()">This is just sad now</button>
-            </div>
-
-
+          <div class="chat-box d-flex align-items-center mt-3">
+            <img class="me-2" src="./assets/chat.svg" alt="chat" />
+            <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+            <h4 class="m-0 confirmd">CONFIRMED</h4>
+          </div>
         </div>
+        <div
+          class="rescue d-flex align-items-center flex-column text-center mb-2"
+        >
+          <h3 class="m-0 text-white">
+            RESCUE FLOW <span class="fw-light">wizard</span>
+          </h3>
+          <h3 class="m-0 text-white">5 <span class="overtext">/ 5</span></h3>
+        </div>
+
+        <h3 class="mt-3 mb-3 text-white text-center mb-3 where">
+          Shoot for the <span class="missingtext-blue">Moon</span>.
+          <span class="line-break"></span>
+          <span class="smaller-text"
+            >Last minute hail mary to save the flow...</span
+          >
+        </h3>
+
+        <div
+          class="col-10 pe-0 mb-4 mt-4"
+          style="padding: 2; margin: auto; text-align: center"
+        >
+          <input
+            type="text"
+            class="form-control"
+            id="colorInput"
+            placeholder="What Color Is it?!"
+            style="height: 55px !important"
+            pattern="[a-zA-Z-]+"
+          />
+        </div>
+
+        <button class="stepbutton text-white mb-3" onclick="searchDiscs()">
+          Show me the discs
+        </button>
+        <div class="pb-5">
+          <button class="rememberbtn fw-light" onclick="skipStep()">
+            This is just sad now
+          </button>
+        </div>
+      </div>
     </section>
 
     <div class="fab-menu-container" id="fabMenuContainer">
-        <div class="fab-menu" id="fabMenu">
-
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text-left" href="/reportLostDisc.html" style="text-decoration: none;">Report <br /> Lost Disc</a>
-                <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text" href="/requestCourse.html" style="text-decoration: none;">Request a Course</a>
-                <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <i class="fa-solid fa-gear" onclick="openSettings()"></i>
-                <a class="fab-menu-item-text-right" href="/settings.html" style="text-decoration: none;">Settings</a>
-            </div>
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text-left"
+            href="/reportLostDisc.html"
+            style="text-decoration: none"
+            >Report <br />
+            Lost Disc</a
+          >
+          <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
         </div>
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text"
+            href="/requestCourse.html"
+            style="text-decoration: none"
+            >Request a Course</a
+          >
+          <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+          <a
+            class="fab-menu-item-text-right"
+            href="/settings.html"
+            style="text-decoration: none"
+            >Settings</a
+          >
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
-        <div class="container">
-            <div class="footer-content row">
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/home.html">
-                        <span class="img">
-                            <img src="./assets/home.png" alt="home">
-                        </span>
-                        <span>HOME</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
-                        <span class="img">
-                            <img class="search" src="./assets/search.png" alt="home" width="18">
-                        </span>
-                        <span>SEARCH ALL</span>
-                    </a>
-
-                </div>
-                <div class="col-2 ">
-                    <a class=" d-flex align-items-center flex-column" href="/store.html">
-                        <span class="img">
-                            <img src="./assets/disk-store.png" alt="home">
-                        </span>
-                        <span>DISC STORE</span>
-                    </a>
-
-                </div>
-                <div class="col-2">
-                    <a class="d-flex align-items-center flex-column" href="/courses.html">
-                        <span class="img">
-                            <img src="./assets/courses.png" alt="home">
-                        </span>
-                        <span>COURSES</span>
-                    </a>
-                </div>
-            </div>
-<!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+      <div class="container">
+        <div class="footer-content row">
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/home.html">
+              <span class="img">
+                <img src="./assets/home.png" alt="home" />
+              </span>
+              <span>HOME</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/searchInventory.html"
+            >
+              <span class="img">
+                <img
+                  class="search"
+                  src="./assets/search.png"
+                  alt="home"
+                  width="18"
+                />
+              </span>
+              <span>SEARCH ALL</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/store.html">
+              <span class="img">
+                <img src="./assets/disk-store.png" alt="home" />
+              </span>
+              <span>DISC STORE</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/courses.html"
+            >
+              <span class="img">
+                <img src="./assets/courses.png" alt="home" />
+              </span>
+              <span>COURSES</span>
+            </a>
+          </div>
         </div>
+        <!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      </div>
     </footer>
 
     <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
-        <button class="fab" id="fab">
-            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
-            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
-        </button>
+      <button class="fab" id="fab">
+        <img
+          src="./assets/app_center_btn_logo.png"
+          alt="Disc Rescue Network Logo"
+          class="logo-fab"
+          id="fabLogo"
+        />
+        <span id="fabClose" style="display: none; z-index: 15">X</span>
+        <!-- Hidden by default -->
+      </button>
     </div>
 
-    
     <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" id="close">&times;</span>
-            <h2>WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF COMMUNICATION?</h2>
-            <p>If you wrote your phone number on your disc, we recommend using this as your preferred method.</p>
-            <div class="d-flex flex-row" style="width: 80%">
-                <button id="choosePhone" class="secondary-btn" style="margin-right: 10px;">Phone</button>
-                <button id="chooseEmail" class="warning-btn">Email</button>
-            </div>
+      <div class="popup-content">
+        <span class="close" id="close">&times;</span>
+        <h2>
+          WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF
+          COMMUNICATION?
+        </h2>
+        <p>
+          If you wrote your phone number on your disc, we recommend using this
+          as your preferred method.
+        </p>
+        <div class="d-flex flex-row" style="width: 80%">
+          <button
+            id="choosePhone"
+            class="secondary-btn"
+            style="margin-right: 10px"
+          >
+            Phone
+          </button>
+          <button id="chooseEmail" class="warning-btn">Email</button>
         </div>
+      </div>
     </div>
-
-
-
 
     <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
-</body>
-
+  </body>
 </html>

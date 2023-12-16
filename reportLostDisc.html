@@ -1,726 +1,1003 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DRN Inventory - Report Lost Disc</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./globals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
+      :root {
         --primary-blue: #005daa;
         --secondary-blue: #228de5;
         --primary-black: #000000;
         --primary-red: #d31245;
-        --primary-white: #FFFFFF;
+        --primary-white: #ffffff;
         --primary-grey: #e3e3e3;
         --primary-green: #55de1f;
-        font-family: 'Bebas Neue', sans-serif;
-        }
+        font-family: "Bebas Neue", sans-serif;
+      }
 
-        .loading-bar {
-            width: 0;
-            height: 10px;
-            background-color: var(--primary-green);
-            animation: loading 2s linear forwards;
-            margin-top: 10px;
-        }
+      .loading-bar {
+        width: 0;
+        height: 10px;
+        background-color: var(--primary-green);
+        animation: loading 2s linear forwards;
+        margin-top: 10px;
+      }
 
-        @keyframes loading {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
+      @keyframes loading {
+        from {
+          width: 0;
         }
+        to {
+          width: 100%;
+        }
+      }
     </style>
     <script>
-        var stateTuples = [
-          ["All", "All"],
-            ["Alabama", "AL"],
-            ["Alaska", "AK"],
-            ["Arizona", "AZ"],
-            ["Arkansas", "AR"],
-            ["California", "CA"],
-            ["Colorado", "CO"],
-            ["Connecticut", "CT"],
-            ["Delaware", "DE"],
-            ["Florida", "FL"],
-            ["Georgia", "GA"],
-            ["Hawaii", "HI"],
-            ["Idaho", "ID"],
-            ["Illinois", "IL"],
-            ["Indiana", "IN"],
-            ["Iowa", "IA"],
-            ["Kansas", "KS"],
-            ["Kentucky", "KY"],
-            ["Louisiana", "LA"],
-            ["Maine", "ME"],
-            ["Maryland", "MD"],
-            ["Massachusetts", "MA"],
-            ["Michigan", "MI"],
-            ["Minnesota", "MN"],
-            ["Mississippi", "MS"],
-            ["Missouri", "MO"],
-            ["Montana", "MT"],
-            ["Nebraska", "NE"],
-            ["Nevada", "NV"],
-            ["New Hampshire", "NH"],
-            ["New Jersey", "NJ"],
-            ["New Mexico", "NM"],
-            ["New York", "NY"],
-            ["North Carolina", "NC"],
-            ["North Dakota", "ND"],
-            ["Ohio", "OH"],
-            ["Oklahoma", "OK"],
-            ["Oregon", "OR"],
-            ["Pennsylvania", "PA"],
-            ["Rhode Island", "RI"],
-            ["South Carolina", "SC"],
-            ["South Dakota", "SD"],
-            ["Tennessee", "TN"],
-            ["Texas", "TX"],
-            ["Utah", "UT"],
-            ["Vermont", "VT"],
-            ["Virginia", "VA"],
-            ["Washington", "WA"],
-            ["West Virginia", "WV"],
-            ["Wisconsin", "WI"],
-            ["Wyoming", "WY"]
-        ];    
-        var courses = [
-            { name: "Course Not Listed", city: "NA", state: "NA" },
-            { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
-            { name: "Tranquility Trails", city: "Woolwich", state: "New Jersey" },
-            { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
-            { name: "Flip City", city: "Shelby", state: "Michigan" },
-            { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
-            { name: "Idlewild", city: "Burlington", state: "Kentucky" },
-            { name: "The Beast", city: "Waco", state: "Texas" },
-            { name: "DeLaveaga", city: "Santa Cruz", state: "California" },
-            { name: "Hornets Nest", city: "Charlotte", state: "North Carolina" },
-            { name: "Fountain Hills", city: "Fountain Hills", state: "Arizona" },
-            { name: "Rollin Ridge", city: "Reedsville", state: "Wisconsin" },
-            { name: "S.Y. Wilson Arlington Sports Complex", city: "Arlington", state: "Tennessee" },
-            { name: "10-3 at CB", city: "Mt. Crested Butte", state: "Colorado" },
-            { name: "1000 Acres Ranch Disc Golf Course", city: "Stony Creek", state: "New York" },
-            { name: "2022 Lucky Disc Golf Open Freeman North", city: "Idaho Falls", state: "Idaho" },
-            { name: "3 Creeks", city: "Rising Sun", state: "Maryland" },
-            { name: "50 Acre Park", city: "Evergreen", state: "Illinois" },
-            { name: "501 Disc Golf", city: "Warren", state: "Massachusetts" },
-            { name: "65th Infantry Veterans Disc Golf Course", city: "Kissimmee", state: "Florida" },
-            { name: "A. J. Jolly Park", city: "Alexandria", state: "Kentucky" },
-            { name: "Stafford Woods", city: "Voorhees", state: "New Jersey" },
-            { name: "Bellevue State Park", city: "Bellevue", state: "Delaware" },
-            { name: "Inverness Disc Golf Park", city: "Inverness", state: "Florida" },
-            { name: "Girdwood Forest Fair Park", city: "Girdwood", state: "Alaska" },
-            { name: "Windy Ridge Disc Golf at Mitchusson Park", city: "Huntsville", state: "Arkansas" },
-            { name: "North Landing", city: "Virginia Beach", state: "Virginia" }
-        ];
+      var stateTuples = [
+        ["All", "All"],
+        ["Alabama", "AL"],
+        ["Alaska", "AK"],
+        ["Arizona", "AZ"],
+        ["Arkansas", "AR"],
+        ["California", "CA"],
+        ["Colorado", "CO"],
+        ["Connecticut", "CT"],
+        ["Delaware", "DE"],
+        ["Florida", "FL"],
+        ["Georgia", "GA"],
+        ["Hawaii", "HI"],
+        ["Idaho", "ID"],
+        ["Illinois", "IL"],
+        ["Indiana", "IN"],
+        ["Iowa", "IA"],
+        ["Kansas", "KS"],
+        ["Kentucky", "KY"],
+        ["Louisiana", "LA"],
+        ["Maine", "ME"],
+        ["Maryland", "MD"],
+        ["Massachusetts", "MA"],
+        ["Michigan", "MI"],
+        ["Minnesota", "MN"],
+        ["Mississippi", "MS"],
+        ["Missouri", "MO"],
+        ["Montana", "MT"],
+        ["Nebraska", "NE"],
+        ["Nevada", "NV"],
+        ["New Hampshire", "NH"],
+        ["New Jersey", "NJ"],
+        ["New Mexico", "NM"],
+        ["New York", "NY"],
+        ["North Carolina", "NC"],
+        ["North Dakota", "ND"],
+        ["Ohio", "OH"],
+        ["Oklahoma", "OK"],
+        ["Oregon", "OR"],
+        ["Pennsylvania", "PA"],
+        ["Rhode Island", "RI"],
+        ["South Carolina", "SC"],
+        ["South Dakota", "SD"],
+        ["Tennessee", "TN"],
+        ["Texas", "TX"],
+        ["Utah", "UT"],
+        ["Vermont", "VT"],
+        ["Virginia", "VA"],
+        ["Washington", "WA"],
+        ["West Virginia", "WV"],
+        ["Wisconsin", "WI"],
+        ["Wyoming", "WY"],
+      ];
+      var courses = [
+        { name: "Course Not Listed", city: "NA", state: "NA" },
+        { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
+        { name: "Tranquility Trails", city: "Woolwich", state: "New Jersey" },
+        { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
+        { name: "Flip City", city: "Shelby", state: "Michigan" },
+        { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
+        { name: "Idlewild", city: "Burlington", state: "Kentucky" },
+        { name: "The Beast", city: "Waco", state: "Texas" },
+        { name: "DeLaveaga", city: "Santa Cruz", state: "California" },
+        { name: "Hornets Nest", city: "Charlotte", state: "North Carolina" },
+        { name: "Fountain Hills", city: "Fountain Hills", state: "Arizona" },
+        { name: "Rollin Ridge", city: "Reedsville", state: "Wisconsin" },
+        {
+          name: "S.Y. Wilson Arlington Sports Complex",
+          city: "Arlington",
+          state: "Tennessee",
+        },
+        { name: "10-3 at CB", city: "Mt. Crested Butte", state: "Colorado" },
+        {
+          name: "1000 Acres Ranch Disc Golf Course",
+          city: "Stony Creek",
+          state: "New York",
+        },
+        {
+          name: "2022 Lucky Disc Golf Open Freeman North",
+          city: "Idaho Falls",
+          state: "Idaho",
+        },
+        { name: "3 Creeks", city: "Rising Sun", state: "Maryland" },
+        { name: "50 Acre Park", city: "Evergreen", state: "Illinois" },
+        { name: "501 Disc Golf", city: "Warren", state: "Massachusetts" },
+        {
+          name: "65th Infantry Veterans Disc Golf Course",
+          city: "Kissimmee",
+          state: "Florida",
+        },
+        { name: "A. J. Jolly Park", city: "Alexandria", state: "Kentucky" },
+        { name: "Stafford Woods", city: "Voorhees", state: "New Jersey" },
+        { name: "Bellevue State Park", city: "Bellevue", state: "Delaware" },
+        {
+          name: "Inverness Disc Golf Park",
+          city: "Inverness",
+          state: "Florida",
+        },
+        {
+          name: "Girdwood Forest Fair Park",
+          city: "Girdwood",
+          state: "Alaska",
+        },
+        {
+          name: "Windy Ridge Disc Golf at Mitchusson Park",
+          city: "Huntsville",
+          state: "Arkansas",
+        },
+        { name: "North Landing", city: "Virginia Beach", state: "Virginia" },
+      ];
 
-        // Placeholder names for remaining states not already in 'courses'
-        var remainingStates = [
-            "Alabama", "Connecticut", "Georgia", "Hawaii", "Iowa", "Kansas", "Louisiana", "Maine", "Mississippi", 
-            "Montana", "Nebraska", "Nevada", "New Hampshire", "New Mexico", "North Dakota", "Ohio", "Oklahoma", 
-            "Oregon", "Rhode Island", "South Carolina", "South Dakota", "Utah", "Vermont", "Washington", "West Virginia", 
-            "Wyoming"
-        ];
-        
-        // Function to populate states dropdown (unchanged)
-        function populateStates() {
-            remainingStates.forEach(function(state) {
-                if (!courses.some(course => course.state === state)) {
-                    courses.push({ name: state + " Disc Golf Course", city: state + " City", state: state });
-                }
+      // Placeholder names for remaining states not already in 'courses'
+      var remainingStates = [
+        "Alabama",
+        "Connecticut",
+        "Georgia",
+        "Hawaii",
+        "Iowa",
+        "Kansas",
+        "Louisiana",
+        "Maine",
+        "Mississippi",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Mexico",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Utah",
+        "Vermont",
+        "Washington",
+        "West Virginia",
+        "Wyoming",
+      ];
+
+      // Function to populate states dropdown (unchanged)
+      function populateStates() {
+        remainingStates.forEach(function (state) {
+          if (!courses.some((course) => course.state === state)) {
+            courses.push({
+              name: state + " Disc Golf Course",
+              city: state + " City",
+              state: state,
             });
-            var select = document.getElementById('inputState');
+          }
+        });
+        var select = document.getElementById("inputState");
 
-            // Using stateTuples array
-            stateTuples.forEach(function(tuple) {
-                var option = document.createElement('option');
-                option.textContent = tuple[1]; // State name
-                option.value = tuple[0]; // State abbreviation
-                select.appendChild(option);
-            });
-        }
-        // Revised function to populate courses dropdown
-        function populateCourses() {
-            var select = document.getElementById('inputCourse');
-            courses.forEach(function(course) {
-                var option = document.createElement('option');
-                option.textContent = course.name; // Only display the course name
-                option.value = course.name; // You can change this if you need to store a different value
-                select.appendChild(option);
-            });
-        }
+        // Using stateTuples array
+        stateTuples.forEach(function (tuple) {
+          var option = document.createElement("option");
+          option.textContent = tuple[1]; // State name
+          option.value = tuple[0]; // State abbreviation
+          select.appendChild(option);
+        });
+      }
+      // Revised function to populate courses dropdown
+      function populateCourses() {
+        var select = document.getElementById("inputCourse");
+        courses.forEach(function (course) {
+          var option = document.createElement("option");
+          option.textContent = course.name; // Only display the course name
+          option.value = course.name; // You can change this if you need to store a different value
+          select.appendChild(option);
+        });
+      }
 
-        document.addEventListener('DOMContentLoaded', function() {
-          document.getElementById('inputState').addEventListener('change', function() {
-              var selectedState = this.value;
-              var filteredCourses;
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("inputState")
+          .addEventListener("change", function () {
+            var selectedState = this.value;
+            var filteredCourses;
 
-              // Check if "All" is selected
-              if (selectedState === "All") {
-                  // Use the entire courses array
-                  filteredCourses = courses;
-              } else {
-                  // Apply filtering for a specific state
-                  console.log("filtering...");
-                  console.log(selectedState);
-                  filteredCourses = courses.filter(function(course) {
-                      return course.state === selectedState;
-                  });
-                  console.log(filteredCourses);
-              }
-
-              var courseSelect = document.getElementById('inputCourse');
-              courseSelect.innerHTML = ''; // Clear existing options
-
-              filteredCourses.forEach(function(course) {
-                  var option = document.createElement('option');
-                  option.textContent = course.name;
-                  console.log(course.name);
-                  option.value = course.name;
-                  courseSelect.appendChild(option);
+            // Check if "All" is selected
+            if (selectedState === "All") {
+              // Use the entire courses array
+              filteredCourses = courses;
+            } else {
+              // Apply filtering for a specific state
+              console.log("filtering...");
+              console.log(selectedState);
+              filteredCourses = courses.filter(function (course) {
+                return course.state === selectedState;
               });
+              console.log(filteredCourses);
+            }
+
+            var courseSelect = document.getElementById("inputCourse");
+            courseSelect.innerHTML = ""; // Clear existing options
+
+            filteredCourses.forEach(function (course) {
+              var option = document.createElement("option");
+              option.textContent = course.name;
+              console.log(course.name);
+              option.value = course.name;
+              courseSelect.appendChild(option);
+            });
           });
 
-          document.getElementById('inputCourse').addEventListener('change', function() {
-              var selectedCourseName = this.value;
+        document
+          .getElementById("inputCourse")
+          .addEventListener("change", function () {
+            var selectedCourseName = this.value;
 
-              if (selectedCourseName === "Course Not Listed") {
-                  // Show a popup when "Course Not Listed" is selected
-                  alert("Please request a course by providing additional details.");
-                  // You can replace the above line with code to show a custom modal/dialog if needed
-              } else {
-                  // Existing logic for when a course is selected
+            if (selectedCourseName === "Course Not Listed") {
+              // Show a popup when "Course Not Listed" is selected
+              alert("Please request a course by providing additional details.");
+              // You can replace the above line with code to show a custom modal/dialog if needed
+            } else {
+              // Existing logic for when a course is selected
 
-                  console.log("selected course: " + selectedCourseName);
-                  var selectedCourse = courses.find(function(course) {
-                      return course.name === selectedCourseName;
-                  });
+              console.log("selected course: " + selectedCourseName);
+              var selectedCourse = courses.find(function (course) {
+                return course.name === selectedCourseName;
+              });
 
-                  if (selectedCourse) {
-                      document.getElementById('inputState').value = selectedCourse.state;
-                  }
+              if (selectedCourse) {
+                document.getElementById("inputState").value =
+                  selectedCourse.state;
               }
+            }
           });
       });
-    
     </script>
     <script>
-        function toggleFabMenu() {
-            const overlay = document.getElementById('overlay');
-            const fabMenuContainer = document.getElementById('fabMenuContainer');
-            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
-            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
-            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
-            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+      function toggleFabMenu() {
+        const overlay = document.getElementById("overlay");
+        const fabMenuContainer = document.getElementById("fabMenuContainer");
+        const fabLogo = document.getElementById("fabLogo"); // Get the logo by its ID
+        const fabClose = document.getElementById("fabClose"); // Get the 'X' span by its ID
+        const fabContainer = document.getElementById("fabContainer"); // Get the 'X' span by its ID
+        const fab = document.getElementById("fab"); // Get the 'X' span by its ID
 
+        // Toggle the active class on the overlay and the FAB menu
+        overlay.classList.toggle("active");
+        fabMenuContainer.classList.toggle("active");
 
-            // Toggle the active class on the overlay and the FAB menu
-            overlay.classList.toggle('active');
-            fabMenuContainer.classList.toggle('active');
+        // Check if the menu is active or not
+        if (fabMenuContainer.classList.contains("active")) {
+          // Menu is active, show 'X' and hide logo
+          fabLogo.style.display = "none"; // Hide the logo
+          fabClose.style.display = "block"; // Show the 'X'
+        } else {
+          // Menu is not active, hide 'X' and show logo
+          fabLogo.style.display = "block"; // Show the logo
+          fabClose.style.display = "none"; // Hide the 'X'
+        }
+      }
 
-            // Check if the menu is active or not
-            if (fabMenuContainer.classList.contains('active')) {
-                // Menu is active, show 'X' and hide logo
-                fabLogo.style.display = 'none'; // Hide the logo
-                fabClose.style.display = 'block'; // Show the 'X'
+      function reportLostDisc() {
+        window.location.href = "reportLostDisc.html";
+      }
+      function requestCourse() {
+        window.location.href = "requestCourse.html";
+      }
+      function openSettings() {
+        window.location.href = "settings.html";
+      }
 
-            } else {
-                // Menu is not active, hide 'X' and show logo
-                fabLogo.style.display = 'block'; // Show the logo
-                fabClose.style.display = 'none'; // Hide the 'X'
-            }
+      function goBack() {
+        if (document.referrer.startsWith(window.location.origin)) {
+          window.history.back();
+        } else {
+          // Handle the case when there is no history to go back to
+          // For example, redirect to a different page or display an error message
+          console.log("No page on the same domain to go back to.");
+        }
+      }
+
+      function refresh() {
+        window.location.href = "/";
+      }
+
+      function verifyInfo() {
+        // Get the button element
+        // var button = document.querySelector('.newsletterButton');
+
+        // Change button text to spinner
+        // button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processing...';
+
+        // Get the input values
+        const inputInitial = document.getElementById("inputInitial").value;
+        const inputName = document.getElementById("inputName").value;
+        const selectedColor = document.getElementById("colorList").value;
+        const inputPhone = document.getElementById("inputPhone").value;
+        const inputEmail = document.getElementById("inputEmail").value;
+        const inputDiscName = document.getElementById("inputDiscName").value;
+        const selectedState = document.getElementById("inputState").value;
+        const selectedCourse = document.getElementById("inputCourse").value;
+
+        // Format the phone number
+        const formattedPhone = formatPhoneNumber(inputPhone);
+
+        // Convert the state to its abbreviation
+        const stateAbbreviation = getStateAbbreviation(selectedState);
+
+        // Populate the placeholder elements in the popup
+        document.getElementById(
+          "verifyName"
+        ).textContent = `${inputInitial}. ${inputName}`;
+        document.getElementById("verifyPhone").textContent =
+          formattedPhone || inputEmail; // Use either phone or email
+        document.getElementById(
+          "verifyColorDiscName"
+        ).textContent = `${selectedColor} ${inputDiscName} (${
+          document.getElementById("brandList").value
+        })`;
+        // document.getElementById('verifyBrand').textContent = document.getElementById('brandList').value;
+        document.getElementById(
+          "verifyCourseState"
+        ).textContent = `${selectedCourse}, ${stateAbbreviation}`;
+
+        // Show the popup
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "flex";
+
+        // After timeout, change the button text to checkmark - 2 second delay
+        // setTimeout(function () {
+        //     button.innerHTML = '<i class="fa fa-check"></i> Request Submitted';
+        // }, 2000);
+      }
+
+      function formatPhoneNumber(phoneNumber) {
+        // Remove all non-numeric characters from the phone number
+        const numericPhoneNumber = phoneNumber.replace(/\D/g, "");
+
+        // Check if the phone number has 10 digits, assuming it's a US phone number
+        if (numericPhoneNumber.length === 10) {
+          // Format it as (XXX) XXX-XXXX
+          return numericPhoneNumber.replace(
+            /(\d{3})(\d{3})(\d{4})/,
+            "($1) $2-$3"
+          );
         }
 
-        function reportLostDisc() { 
-            window.location.href = 'reportLostDisc.html'; 
-        }
-        function requestCourse() { 
-            window.location.href = 'requestCourse.html'; 
-        }
-        function openSettings() { 
-            window.location.href = 'settings.html'; 
-        }
+        // If the phone number doesn't have 10 digits, return it as is
+        return phoneNumber;
+      }
 
-        function goBack() {
-            if (document.referrer.startsWith(window.location.origin)) {
-                window.history.back();
-            } else {
-                // Handle the case when there is no history to go back to
-                // For example, redirect to a different page or display an error message
-                console.log("No page on the same domain to go back to.");
-            }
-        }
+      function getStateAbbreviation(stateName) {
+        // Find the corresponding abbreviation in the stateTuples array
+        const stateTuple = stateTuples.find((tuple) => tuple[0] === stateName);
+        return stateTuple ? stateTuple[1] : stateName; // Return abbreviation or the input name if not found
+      }
 
-        function refresh() {
-            window.location.href = '/';
-        }
+      function closePopupVerify() {
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "none";
+      }
 
-        function verifyInfo() {
-            // Get the button element
-            // var button = document.querySelector('.newsletterButton');
+      var filter_brand = (filter_color = filter_disc = []);
 
-            // Change button text to spinner
-            // button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processing...';
+      function populateBrandList() {
+        var select = document.getElementById("brandList");
+        var uniqueBrands = new Set(); // Use a Set to store unique brands
 
-            // Get the input values
-            const inputInitial= document.getElementById('inputInitial').value;
-            const inputName = document.getElementById('inputName').value;
-            const selectedColor = document.getElementById('colorList').value;
-            const inputPhone = document.getElementById('inputPhone').value;
-            const inputEmail = document.getElementById('inputEmail').value;
-            const inputDiscName = document.getElementById('inputDiscName').value;
-            const selectedState = document.getElementById('inputState').value;
-            const selectedCourse = document.getElementById('inputCourse').value;
+        // Extract unique brands from found_discs
+        found_discs.forEach(function (disc) {
+          if (disc.Brand && disc.Brand.indexOf("/") === -1) {
+            uniqueBrands.add(disc.Brand); // Assuming each disc has a 'Brand' property
+          }
+        });
 
-            // Format the phone number
-            const formattedPhone = formatPhoneNumber(inputPhone);
+        // Iterate over unique brands and create dropdown options
+        uniqueBrands.forEach(function (brand) {
+          var option = document.createElement("option");
+          option.textContent = brand; // Brand name as the option text
+          option.value = brand; // Brand name as the option value
+          select.appendChild(option);
+        });
 
-            // Convert the state to its abbreviation
-            const stateAbbreviation = getStateAbbreviation(selectedState);
+        // Add 'Other' option
+        var otherOption = document.createElement("option");
+        otherOption.textContent = "Other";
+        otherOption.value = "other";
+        select.appendChild(otherOption);
+      }
 
-            // Populate the placeholder elements in the popup
-            document.getElementById('verifyName').textContent = `${inputInitial}. ${inputName}`;
-            document.getElementById('verifyPhone').textContent = formattedPhone || inputEmail; // Use either phone or email
-            document.getElementById('verifyColorDiscName').textContent = `${selectedColor} ${inputDiscName} (${document.getElementById('brandList').value})`;
-            // document.getElementById('verifyBrand').textContent = document.getElementById('brandList').value;
-            document.getElementById('verifyCourseState').textContent = `${selectedCourse}, ${stateAbbreviation}`;
+      function populateColorList() {
+        var select = document.getElementById("colorList");
+        var uniqueColors = new Set(); // Use a Set to store unique colors
 
-            // Show the popup
-            var popupVerify = document.getElementById("popup-verify");
-            popupVerify.style.display = "flex";
+        // Extract unique colors from found_discs
+        found_discs.forEach(function (disc) {
+          if (disc.Color && disc.Color.indexOf("/") === -1) {
+            uniqueColors.add(disc.Color); // Assuming each disc has a 'Color' property
+          }
+        });
 
-            // After timeout, change the button text to checkmark - 2 second delay
-            // setTimeout(function () {
-            //     button.innerHTML = '<i class="fa fa-check"></i> Request Submitted';
-            // }, 2000); 
-        }
+        // Iterate over unique colors and create dropdown options
+        uniqueColors.forEach(function (color) {
+          var option = document.createElement("option");
+          option.textContent = color; // Color name as the option text
+          option.value = color; // Color name as the option value
+          select.appendChild(option);
+        });
 
-        function formatPhoneNumber(phoneNumber) {
-            // Remove all non-numeric characters from the phone number
-            const numericPhoneNumber = phoneNumber.replace(/\D/g, '');
+        // Add 'Other' option
+        var otherOption = document.createElement("option");
+        otherOption.textContent = "Other";
+        otherOption.value = "other";
+        select.appendChild(otherOption);
+      }
 
-            // Check if the phone number has 10 digits, assuming it's a US phone number
-            if (numericPhoneNumber.length === 10) {
-                // Format it as (XXX) XXX-XXXX
-                return numericPhoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-            }
+      window.addEventListener("resize", updateButtonText);
 
-            // If the phone number doesn't have 10 digits, return it as is
-            return phoneNumber;
-        }
+      window.onload = function () {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.animation = "none";
 
-        function getStateAbbreviation(stateName) {
-            // Find the corresponding abbreviation in the stateTuples array
-            const stateTuple = stateTuples.find(tuple => tuple[0] === stateName);
-            return stateTuple ? stateTuple[1] : stateName; // Return abbreviation or the input name if not found
-        }
+        updateButtonText();
 
-        function closePopupVerify() {
-            var popupVerify = document.getElementById("popup-verify");
-            popupVerify.style.display = "none";
-        }
+        populateBrandList();
+        populateColorList();
 
-        var filter_brand = filter_color = filter_disc = [];
+        // Call the functions to populate the dropdowns
+        populateStates();
+        populateCourses();
 
-        function populateBrandList() {
-            var select = document.getElementById('brandList');
-            var uniqueBrands = new Set(); // Use a Set to store unique brands
+        // Add event listener for brand dropdown
+        document
+          .getElementById("brandList")
+          .addEventListener("change", function () {
+            showOtherInput(this.value, "brandOtherInput");
+          });
 
-            // Extract unique brands from found_discs
-            found_discs.forEach(function(disc) {
-                if (disc.Brand && disc.Brand.indexOf('/') === -1) {
-                    uniqueBrands.add(disc.Brand); // Assuming each disc has a 'Brand' property
-                }
-            });
+        // Add event listener for color dropdown
+        document
+          .getElementById("colorList")
+          .addEventListener("change", function () {
+            showOtherInput(this.value, "colorOtherInput");
+          });
 
-            // Iterate over unique brands and create dropdown options
-            uniqueBrands.forEach(function(brand) {
-                var option = document.createElement('option');
-                option.textContent = brand; // Brand name as the option text
-                option.value = brand; // Brand name as the option value
-                select.appendChild(option);
-            });
+        var modal = document.getElementById("popup");
+        var btnPhone = document.getElementById("choosePhone");
+        var btnEmail = document.getElementById("chooseEmail");
+        var span = document.getElementById("close");
 
-            // Add 'Other' option
-            var otherOption = document.createElement('option');
-            otherOption.textContent = 'Other';
-            otherOption.value = 'other';
-            select.appendChild(otherOption);
-        }
+        // Open the modal
+        modal.style.display = "flex";
 
-        function populateColorList() {
-            var select = document.getElementById('colorList');
-            var uniqueColors = new Set(); // Use a Set to store unique colors
-
-            // Extract unique colors from found_discs
-            found_discs.forEach(function(disc) {
-                if (disc.Color && disc.Color.indexOf('/') === -1) {
-                    uniqueColors.add(disc.Color); // Assuming each disc has a 'Color' property
-                }
-            });
-
-            // Iterate over unique colors and create dropdown options
-            uniqueColors.forEach(function(color) {
-                var option = document.createElement('option');
-                option.textContent = color; // Color name as the option text
-                option.value = color; // Color name as the option value
-                select.appendChild(option);
-            });
-
-            // Add 'Other' option
-            var otherOption = document.createElement('option');
-            otherOption.textContent = 'Other';
-            otherOption.value = 'other';
-            select.appendChild(otherOption);
-        }
-
-        window.addEventListener('resize', updateButtonText);
-
-        window.onload = function() {
-            const loadingBar = document.getElementById('loading-bar');
-            loadingBar.style.animation = 'none';
-
-            updateButtonText();
-
-            populateBrandList();
-            populateColorList();
-
-            // Call the functions to populate the dropdowns
-            populateStates();
-            populateCourses();
-
-            // Add event listener for brand dropdown
-            document.getElementById('brandList').addEventListener('change', function() {
-                showOtherInput(this.value, 'brandOtherInput');
-            });
-
-            // Add event listener for color dropdown
-            document.getElementById('colorList').addEventListener('change', function() {
-                showOtherInput(this.value, 'colorOtherInput');
-            });
-
-            var modal = document.getElementById("popup");
-            var btnPhone = document.getElementById("choosePhone");
-            var btnEmail = document.getElementById("chooseEmail");
-            var span = document.getElementById("close");
-
-            // Open the modal
-            modal.style.display = "flex";
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            // Handling button actions
-            btnPhone.onclick = function() {
-                document.getElementById('inputPhone').style.display = 'block';
-                document.getElementById('inputEmail').style.display = 'none !important';
-                modal.style.display = "none";
-                communicationMethodLabel.textContent = 'Phone Number:';
-            }
-
-            btnEmail.onclick = function() {
-                document.getElementById('inputEmail').style.display = 'block';
-                document.getElementById('inputPhone').style.display = 'none !important';
-                modal.style.display = "none";
-                communicationMethodLabel.textContent = 'Email Address:';
-            }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
         };
-        
 
-        function showOtherInput(selectedValue, inputId) {
-            // Check if 'other' is selected
-            if (selectedValue === 'other') {
-                document.getElementById(inputId).style.display = 'block';
-            } else {
-                document.getElementById(inputId).style.display = 'none';
-            }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
+
+        // Handling button actions
+        btnPhone.onclick = function () {
+          document.getElementById("inputPhone").style.display = "block";
+          document.getElementById("inputEmail").style.display =
+            "none !important";
+          modal.style.display = "none";
+          communicationMethodLabel.textContent = "Phone Number:";
+        };
+
+        btnEmail.onclick = function () {
+          document.getElementById("inputEmail").style.display = "block";
+          document.getElementById("inputPhone").style.display =
+            "none !important";
+          modal.style.display = "none";
+          communicationMethodLabel.textContent = "Email Address:";
+        };
+      };
+
+      function showOtherInput(selectedValue, inputId) {
+        // Check if 'other' is selected
+        if (selectedValue === "other") {
+          document.getElementById(inputId).style.display = "block";
+        } else {
+          document.getElementById(inputId).style.display = "none";
         }
+      }
 
-        function submitDisc() {
-            // Simulate a 2-second loading animation
-            const loadingBar = document.getElementById('loading-bar');
-            //loadingBar.style.animation = 'none';
-            setTimeout(function() {
-                loadingBar.style.animation = 'loading 2s linear forwards';
-                // After the loading animation, you can perform any necessary actions
-                setTimeout(function() {
-                    // Once your processing is done, you can close the popup
-                    const popupVerify = document.getElementById('popup-verify');
-                    popupVerify.style.display = 'none';
-                    // Navigate to "reportLostDiscSuccess.html"
-                    window.location.href = 'reportLostDiscSuccess.html';
-                }, 2000); // 2-second delay
-            }, 100); // Delay to start loading animation
+      function submitDisc() {
+        // Simulate a 2-second loading animation
+        const loadingBar = document.getElementById("loading-bar");
+        //loadingBar.style.animation = 'none';
+        setTimeout(function () {
+          loadingBar.style.animation = "loading 2s linear forwards";
+          // After the loading animation, you can perform any necessary actions
+          setTimeout(function () {
+            // Once your processing is done, you can close the popup
+            const popupVerify = document.getElementById("popup-verify");
+            popupVerify.style.display = "none";
+            // Navigate to "reportLostDiscSuccess.html"
+            window.location.href = "reportLostDiscSuccess.html";
+          }, 2000); // 2-second delay
+        }, 100); // Delay to start loading animation
+      }
+
+      function updateButtonText() {
+        const submitDiscButton = document.getElementById("submitDisc");
+        const requestEditsButton = document.getElementById("requestEdits");
+
+        if (window.innerWidth < 600) {
+          submitDiscButton.textContent = "Looks good!"; // New text for mobile
+          requestEditsButton.textContent = "Oops! Go back"; // New text for mobile
+        } else {
+          submitDiscButton.textContent =
+            "All good! Let's get my disc rescued please"; // Default text
+          requestEditsButton.textContent = "Sorry! Need to edit something!"; // Default text
         }
-
-        function updateButtonText() {
-            const submitDiscButton = document.getElementById('submitDisc');
-            const requestEditsButton = document.getElementById('requestEdits');
-
-            if (window.innerWidth < 600) {
-                submitDiscButton.textContent = "Looks good!"; // New text for mobile
-                requestEditsButton.textContent = "Oops! Go back"; // New text for mobile
-            } else {
-                submitDiscButton.textContent = "All good! Let's get my disc rescued please"; // Default text
-                requestEditsButton.textContent = "Sorry! Need to edit something!"; // Default text
-            }
-        }
-
+      }
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="main-section text-center">
-        <div class="container" id="container">
-            <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
-            <div class="d-flex align-items-center flex-column text-center mb-2">
-                <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
+      <div class="container" id="container">
+        <i
+          class="fa fa-arrow-left"
+          style="
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            padding: 5px;
+          "
+          aria-hidden="true"
+          onclick="goBack()"
+        ></i>
+        <div class="d-flex align-items-center flex-column text-center mb-2">
+          <img
+            class="weblogo"
+            src="./assets/logo.png"
+            alt="logo"
+            onclick="refresh()"
+          />
 
-                <div class="chat-box d-flex align-items-center mt-3">
-                    <img class="me-2" src="./assets/chat.svg" alt="chat">
-                    <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
-                    <h4 class="m-0 confirmd">CONFIRMED</h4>
-                </div>
-            </div>
-            <div class="rescue d-flex align-items-center flex-column text-center mt-0 mb-0">
-                <h3 class="m-0 text-white" style="font-size: 3rem;">Enter The <span class="fw-light" style="font-weight: 300 !important; font-size: 3rem;" >Network</span></h3>
-            </div>
-
-            <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap;">
-                <div class="col-4 pe-0 arrow one" style="padding: 0px">
-                    <select id="inputInitial" class="form-select" style="height: 55px !important">
-                        <option selected>First Initial</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
-                        <option>F</option>
-                        <option>G</option>
-                        <option>H</option>
-                        <option>I</option>
-                        <option>J</option>
-                        <option>K</option>
-                        <option>L</option>
-                        <option>M</option>
-                        <option>N</option>
-                        <option>O</option>
-                        <option>P</option>
-                        <option>Q</option>
-                        <option>R</option>
-                        <option>S</option>
-                        <option>T</option>
-                        <option>U</option>
-                        <option>V</option>
-                        <option>W</option>
-                        <option>X</option>
-                        <option>Y</option>
-                        <option>Z</option>
-                    </select>
-                </div>
-                
-                <div class="col-8" style="padding: 0px; margin-left: 10px !important;">
-                    <input type="text" class="form-control" id="inputName" placeholder="Last Name" pattern="[a-zA-Z\-]+" style="height: 55px !important; max-width: 1080px !important; width: 100% !important;">
-                </div>                
-            </div>    
-            
-            <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap;">
-                <div class="col-4 pe-0 arrow one" style="padding: 0px">
-                    <select id="colorList" class="form-select" style="height: 55px !important;">
-                        <option selected>COLOR</option>
-                        <!-- Color options will be populated by JavaScript -->
-                    </select>     
-                </div>
-                <div class="col-8 pe-0" style="padding: 0px; margin-left: 10px !important;">
-                    <input type="tel" class="form-control" id="inputPhone" style="height: 55px !important; max-width: 1080px !important; width: 100% !important; display: none !important;" placeholder="Phone Number Written On the Disc" inputmode="numeric">   
-                    <input type="email" class="form-control" id="inputEmail" style="height: 55px !important; max-width: 1080px !important; width: 100% !important; display: none !important;" placeholder="Email Address">                              
-                </div>           
-            </div>
-
-            <div class="row mt-2 mb-2 select-box" id="colorOtherInput" style="display:none; flex-wrap: nowrap;">
-                <div class="col-12 pe-0" style="padding: 0px">
-                    <input type="text" class="form-control" id="inputOtherColor" placeholder="Enter other color">
-                </div>
-            </div>
-        
-            <div class="row mt-2 mb-2 select-box" style="padding: 0px !important; flex-wrap: nowrap;">
-                <div class="col-4 pe-0 arrow one" style="padding: 0px">
-                    <select id="brandList" class="form-select" style="height: 55px !important;">
-                        <option selected>BRAND</option>
-                        <!-- Brand options will be populated by JavaScript -->
-                    </select>  
-                </div>
-
-                <div class="col-8 pe-0" style="padding: 0px; margin-left: 10px !important;">
-                    <input type="text" class="form-control placeholder-text" id="inputDiscName" placeholder="Enter Disc Name" style="height: 55px !important; max-width: 1080px !important; width: 100% !important; text-align: left;">
-                </div>
-            </div>
-
-            <div class="row mt-2 mb-2 select-box" id="brandOtherInput" style="display:none; flex-wrap: nowrap;">
-                <div class="col-12 pe-0" style="padding: 0px">
-                    <input type="text" class="form-control" placeholder="Enter other brand" id="inputOtherBrand">
-                </div>
-            </div>
-
-            <div class="row mt-2 mb-2 select-box" style="padding: 0px !important; flex-wrap: nowrap;">
-                <div class="col-4 pe-0 arrow one" style="padding: 0px">
-                    <select id="inputState" class="form-select" style="height: 55px !important">
-                        <option selected>STATE</option>
-                        <!-- States options will be populated by JavaScript -->
-                    </select>
-                </div>
-                
-                <div class="col-8 arrow" style="padding: 0px; margin-left: 10px !important;">
-                    <select id="inputCourse" class="form-select" style="height: 55px !important; max-width: 1080px !important; width: 100% !important">
-                        <option selected>SELECT A COURSE</option>
-                        <!-- Courses options will be populated by JavaScript -->
-                    </select>
-                </div>                 
-            </div>
-            <button class="newsletterButton text-white mt-3 mb-3" style="width: 85%; height: 55px !important; margin-left: 5px" onClick="verifyInfo()">Enter your disc into the rescue network</button>
+          <div class="chat-box d-flex align-items-center mt-3">
+            <img class="me-2" src="./assets/chat.svg" alt="chat" />
+            <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+            <h4 class="m-0 confirmd">CONFIRMED</h4>
+          </div>
         </div>
+        <div
+          class="rescue d-flex align-items-center flex-column text-center mt-0 mb-0"
+        >
+          <h3 class="m-0 text-white" style="font-size: 3rem">
+            Enter The
+            <span
+              class="fw-light"
+              style="font-weight: 300 !important; font-size: 3rem"
+              >Network</span
+            >
+          </h3>
+        </div>
+
+        <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap">
+          <div class="col-4 pe-0 arrow one" style="padding: 0px">
+            <select
+              id="inputInitial"
+              class="form-select"
+              style="height: 55px !important"
+            >
+              <option selected>First Initial</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+              <option>E</option>
+              <option>F</option>
+              <option>G</option>
+              <option>H</option>
+              <option>I</option>
+              <option>J</option>
+              <option>K</option>
+              <option>L</option>
+              <option>M</option>
+              <option>N</option>
+              <option>O</option>
+              <option>P</option>
+              <option>Q</option>
+              <option>R</option>
+              <option>S</option>
+              <option>T</option>
+              <option>U</option>
+              <option>V</option>
+              <option>W</option>
+              <option>X</option>
+              <option>Y</option>
+              <option>Z</option>
+            </select>
+          </div>
+
+          <div class="col-8" style="padding: 0px; margin-left: 10px !important">
+            <input
+              type="text"
+              class="form-control"
+              id="inputName"
+              placeholder="Last Name"
+              pattern="[a-zA-Z\-]+"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+              "
+            />
+          </div>
+        </div>
+
+        <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap">
+          <div class="col-4 pe-0 arrow one" style="padding: 0px">
+            <select
+              id="colorList"
+              class="form-select"
+              style="height: 55px !important"
+            >
+              <option selected>COLOR</option>
+              <!-- Color options will be populated by JavaScript -->
+            </select>
+          </div>
+          <div
+            class="col-8 pe-0"
+            style="padding: 0px; margin-left: 10px !important"
+          >
+            <input
+              type="tel"
+              class="form-control"
+              id="inputPhone"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+                display: none !important;
+              "
+              placeholder="Phone Number Written On the Disc"
+              inputmode="numeric"
+            />
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+                display: none !important;
+              "
+              placeholder="Email Address"
+            />
+          </div>
+        </div>
+
+        <div
+          class="row mt-2 mb-2 select-box"
+          id="colorOtherInput"
+          style="display: none; flex-wrap: nowrap"
+        >
+          <div class="col-12 pe-0" style="padding: 0px">
+            <input
+              type="text"
+              class="form-control"
+              id="inputOtherColor"
+              placeholder="Enter other color"
+            />
+          </div>
+        </div>
+
+        <div
+          class="row mt-2 mb-2 select-box"
+          style="padding: 0px !important; flex-wrap: nowrap"
+        >
+          <div class="col-4 pe-0 arrow one" style="padding: 0px">
+            <select
+              id="brandList"
+              class="form-select"
+              style="height: 55px !important"
+            >
+              <option selected>BRAND</option>
+              <!-- Brand options will be populated by JavaScript -->
+            </select>
+          </div>
+
+          <div
+            class="col-8 pe-0"
+            style="padding: 0px; margin-left: 10px !important"
+          >
+            <input
+              type="text"
+              class="form-control placeholder-text"
+              id="inputDiscName"
+              placeholder="Enter Disc Name"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+                text-align: left;
+              "
+            />
+          </div>
+        </div>
+
+        <div
+          class="row mt-2 mb-2 select-box"
+          id="brandOtherInput"
+          style="display: none; flex-wrap: nowrap"
+        >
+          <div class="col-12 pe-0" style="padding: 0px">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter other brand"
+              id="inputOtherBrand"
+            />
+          </div>
+        </div>
+
+        <div
+          class="row mt-2 mb-2 select-box"
+          style="padding: 0px !important; flex-wrap: nowrap"
+        >
+          <div class="col-4 pe-0 arrow one" style="padding: 0px">
+            <select
+              id="inputState"
+              class="form-select"
+              style="height: 55px !important"
+            >
+              <option selected>STATE</option>
+              <!-- States options will be populated by JavaScript -->
+            </select>
+          </div>
+
+          <div
+            class="col-8 arrow"
+            style="padding: 0px; margin-left: 10px !important"
+          >
+            <select
+              id="inputCourse"
+              class="form-select"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+              "
+            >
+              <option selected>SELECT A COURSE</option>
+              <!-- Courses options will be populated by JavaScript -->
+            </select>
+          </div>
+        </div>
+        <button
+          class="newsletterButton text-white mt-3 mb-3"
+          style="width: 85%; height: 55px !important; margin-left: 5px"
+          onClick="verifyInfo()"
+        >
+          Enter your disc into the rescue network
+        </button>
+      </div>
     </section>
 
     <div class="fab-menu-container" id="fabMenuContainer">
-        <div class="fab-menu" id="fabMenu">
-
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text-left" href="/reportLostDisc.html" style="text-decoration: none;">Report <br /> Lost Disc</a>
-                <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text" href="/requestCourse.html" style="text-decoration: none;">Request a Course</a>
-                <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <i class="fa-solid fa-gear" onclick="openSettings()"></i>
-                <a class="fab-menu-item-text-right" href="/settings.html" style="text-decoration: none;">Settings</a>
-            </div>
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text-left"
+            href="/reportLostDisc.html"
+            style="text-decoration: none"
+            >Report <br />
+            Lost Disc</a
+          >
+          <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
         </div>
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text"
+            href="/requestCourse.html"
+            style="text-decoration: none"
+            >Request a Course</a
+          >
+          <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+          <a
+            class="fab-menu-item-text-right"
+            href="/settings.html"
+            style="text-decoration: none"
+            >Settings</a
+          >
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
-        <div class="container">
-            <div class="footer-content row">
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/home.html">
-                        <span class="img">
-                            <img src="./assets/home.png" alt="home">
-                        </span>
-                        <span>HOME</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
-                        <span class="img">
-                            <img class="search" src="./assets/search.png" alt="home" width="18">
-                        </span>
-                        <span>SEARCH ALL</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class=" d-flex align-items-center flex-column" href="/store.html">
-                        <span class="img">
-                            <img src="./assets/disk-store.png" alt="home">
-                        </span>
-                        <span>DISC STORE</span>
-                    </a>
-
-                </div>
-                <div class="col-2">
-                    <a class="d-flex align-items-center flex-column" href="/courses.html">
-                        <span class="img">
-                            <img src="./assets/courses.png" alt="home">
-                        </span>
-                        <span>COURSES</span>
-                    </a>
-                </div>
-            </div>
-<!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+      <div class="container">
+        <div class="footer-content row">
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/home.html">
+              <span class="img">
+                <img src="./assets/home.png" alt="home" />
+              </span>
+              <span>HOME</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/searchInventory.html"
+            >
+              <span class="img">
+                <img
+                  class="search"
+                  src="./assets/search.png"
+                  alt="home"
+                  width="18"
+                />
+              </span>
+              <span>SEARCH ALL</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/store.html">
+              <span class="img">
+                <img src="./assets/disk-store.png" alt="home" />
+              </span>
+              <span>DISC STORE</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/courses.html"
+            >
+              <span class="img">
+                <img src="./assets/courses.png" alt="home" />
+              </span>
+              <span>COURSES</span>
+            </a>
+          </div>
         </div>
+        <!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      </div>
     </footer>
 
     <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
-        <button class="fab" id="fab">
-            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
-            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
-        </button>
+      <button class="fab" id="fab">
+        <img
+          src="./assets/app_center_btn_logo.png"
+          alt="Disc Rescue Network Logo"
+          class="logo-fab"
+          id="fabLogo"
+        />
+        <span id="fabClose" style="display: none; z-index: 15">X</span>
+        <!-- Hidden by default -->
+      </button>
     </div>
 
     <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" id="close">&times;</span>
-            <h2>WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF COMMUNICATION?</h2>
-            <p>If you wrote your phone number on your disc, we recommend using this as your preferred method.</p>
-            <div class="d-flex flex-row" style="width: 80%">
-                <button id="choosePhone" class="secondary-btn" style="margin-right: 10px;">Phone</button>
-                <button id="chooseEmail" class="warning-btn">Email</button>
-            </div>
+      <div class="popup-content">
+        <span class="close" id="close">&times;</span>
+        <h2>
+          WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF
+          COMMUNICATION?
+        </h2>
+        <p>
+          If you wrote your phone number on your disc, we recommend using this
+          as your preferred method.
+        </p>
+        <div class="d-flex flex-row" style="width: 80%">
+          <button
+            id="choosePhone"
+            class="secondary-btn"
+            style="margin-right: 10px"
+          >
+            Phone
+          </button>
+          <button id="chooseEmail" class="warning-btn">Email</button>
         </div>
+      </div>
     </div>
 
     <div id="popup-verify" class="popup">
-        <div class="popup-content" id="popup-verify-content">
-            <span class="close" id="close" onclick="closePopupVerify()">&times;</span>
-            <h2 style="font-size: 3rem;">Verify Your <span class="fw-light">INFO</span></h2>
-            <div class="verify-info">
-                <div class="verify-row">
-                    <label>Name:</label>
-                    <span id="verifyName" class="fw-light"></span>
-                </div>
-                <div class="verify-row">
-                    <label id="communicationMethodLabel">Phone:</label>
-                    <span id="verifyPhone" class="fw-light"></span>
-                </div>
-                <div class="verify-row">
-                    <label>Disc:</label>
-                    <span id="verifyColorDiscName" class="fw-light"></span>
-                </div>
-                <!-- <div class="verify-row">
+      <div class="popup-content" id="popup-verify-content">
+        <span class="close" id="close" onclick="closePopupVerify()"
+          >&times;</span
+        >
+        <h2 style="font-size: 3rem">
+          Verify Your <span class="fw-light">INFO</span>
+        </h2>
+        <div class="verify-info">
+          <div class="verify-row">
+            <label>Name:</label>
+            <span id="verifyName" class="fw-light"></span>
+          </div>
+          <div class="verify-row">
+            <label id="communicationMethodLabel">Phone:</label>
+            <span id="verifyPhone" class="fw-light"></span>
+          </div>
+          <div class="verify-row">
+            <label>Disc:</label>
+            <span id="verifyColorDiscName" class="fw-light"></span>
+          </div>
+          <!-- <div class="verify-row">
                     <label>Brand:</label>
                     <span id="verifyBrand" class="fw-light"></span>
                 </div> -->
-                <div class="verify-row">
-                    <label>Course:</label>
-                    <span id="verifyCourseState" class="fw-light"></span>
-                </div>
-            </div>
-            <div class="d-flex flex-row" style="width: 100%; margin-top: 5%;">
-                <button id="submitDisc" class="warning-btn" style="margin-right: 10px; max-height: 60px; max-width: 400px; font-size: 1rem;" onclick="submitDisc();">All good! Let's get my disc rescued please</button>
-                <button id="requestEdits" class="secondary-btn" style="margin-right: 10px; max-height: 60px; max-width: 400px; font-size: 1rem;" onclick="closePopupVerify()">Sorry! Need to edit something!</button>
-            </div>
-
-            <div id="loading-bar" class="loading-bar"></div>
+          <div class="verify-row">
+            <label>Course:</label>
+            <span id="verifyCourseState" class="fw-light"></span>
+          </div>
         </div>
+        <div class="d-flex flex-row" style="width: 100%; margin-top: 5%">
+          <button
+            id="submitDisc"
+            class="warning-btn"
+            style="
+              margin-right: 10px;
+              max-height: 60px;
+              max-width: 400px;
+              font-size: 1rem;
+            "
+            onclick="submitDisc();"
+          >
+            All good! Let's get my disc rescued please
+          </button>
+          <button
+            id="requestEdits"
+            class="secondary-btn"
+            style="
+              margin-right: 10px;
+              max-height: 60px;
+              max-width: 400px;
+              font-size: 1rem;
+            "
+            onclick="closePopupVerify()"
+          >
+            Sorry! Need to edit something!
+          </button>
+        </div>
+
+        <div id="loading-bar" class="loading-bar"></div>
+      </div>
     </div>
 
-    
-
-
-
-
-
     <script src="js/discs.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,433 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DRN Rescue Flow - Step 1</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./globals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
 
     <script>
-        
-        var stateTuples = [
-          ["All", "All"],
-    ["Alabama", "AL"],
-    ["Alaska", "AK"],
-    ["Arizona", "AZ"],
-    ["Arkansas", "AR"],
-    ["California", "CA"],
-    ["Colorado", "CO"],
-    ["Connecticut", "CT"],
-    ["Delaware", "DE"],
-    ["Florida", "FL"],
-    ["Georgia", "GA"],
-    ["Hawaii", "HI"],
-    ["Idaho", "ID"],
-    ["Illinois", "IL"],
-    ["Indiana", "IN"],
-    ["Iowa", "IA"],
-    ["Kansas", "KS"],
-    ["Kentucky", "KY"],
-    ["Louisiana", "LA"],
-    ["Maine", "ME"],
-    ["Maryland", "MD"],
-    ["Massachusetts", "MA"],
-    ["Michigan", "MI"],
-    ["Minnesota", "MN"],
-    ["Mississippi", "MS"],
-    ["Missouri", "MO"],
-    ["Montana", "MT"],
-    ["Nebraska", "NE"],
-    ["Nevada", "NV"],
-    ["New Hampshire", "NH"],
-    ["New Jersey", "NJ"],
-    ["New Mexico", "NM"],
-    ["New York", "NY"],
-    ["North Carolina", "NC"],
-    ["North Dakota", "ND"],
-    ["Ohio", "OH"],
-    ["Oklahoma", "OK"],
-    ["Oregon", "OR"],
-    ["Pennsylvania", "PA"],
-    ["Rhode Island", "RI"],
-    ["South Carolina", "SC"],
-    ["South Dakota", "SD"],
-    ["Tennessee", "TN"],
-    ["Texas", "TX"],
-    ["Utah", "UT"],
-    ["Vermont", "VT"],
-    ["Virginia", "VA"],
-    ["Washington", "WA"],
-    ["West Virginia", "WV"],
-    ["Wisconsin", "WI"],
-    ["Wyoming", "WY"]
-];    
-            var courses = [
-            { name: "Course Not Listed", city: "NA", state: "NA" },
-            { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
-            { name: "Tranquility Trails", city: "Woolwich", state: "New Jersey" },
-            { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
-            { name: "Flip City", city: "Shelby", state: "Michigan" },
-            { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
-            { name: "Idlewild", city: "Burlington", state: "Kentucky" },
-            { name: "The Beast", city: "Waco", state: "Texas" },
-            { name: "DeLaveaga", city: "Santa Cruz", state: "California" },
-            { name: "Hornets Nest", city: "Charlotte", state: "North Carolina" },
-            { name: "Fountain Hills", city: "Fountain Hills", state: "Arizona" },
-            { name: "Rollin Ridge", city: "Reedsville", state: "Wisconsin" },
-            { name: "S.Y. Wilson Arlington Sports Complex", city: "Arlington", state: "Tennessee" },
-            { name: "10-3 at CB", city: "Mt. Crested Butte", state: "Colorado" },
-            { name: "1000 Acres Ranch Disc Golf Course", city: "Stony Creek", state: "New York" },
-            { name: "2022 Lucky Disc Golf Open Freeman North", city: "Idaho Falls", state: "Idaho" },
-            { name: "3 Creeks", city: "Rising Sun", state: "Maryland" },
-            { name: "50 Acre Park", city: "Evergreen", state: "Illinois" },
-            { name: "501 Disc Golf", city: "Warren", state: "Massachusetts" },
-            { name: "65th Infantry Veterans Disc Golf Course", city: "Kissimmee", state: "Florida" },
-            { name: "A. J. Jolly Park", city: "Alexandria", state: "Kentucky" },
-            { name: "Stafford Woods", city: "Voorhees", state: "New Jersey" },
-            { name: "Bellevue State Park", city: "Bellevue", state: "Delaware" },
-            { name: "Inverness Disc Golf Park", city: "Inverness", state: "Florida" },
-            { name: "Girdwood Forest Fair Park", city: "Girdwood", state: "Alaska" },
-            { name: "Windy Ridge Disc Golf at Mitchusson Park", city: "Huntsville", state: "Arkansas" },
-            { name: "North Landing", city: "Virginia Beach", state: "Virginia" }
+      var stateTuples = [
+        ["All", "All"],
+        ["Alabama", "AL"],
+        ["Alaska", "AK"],
+        ["Arizona", "AZ"],
+        ["Arkansas", "AR"],
+        ["California", "CA"],
+        ["Colorado", "CO"],
+        ["Connecticut", "CT"],
+        ["Delaware", "DE"],
+        ["Florida", "FL"],
+        ["Georgia", "GA"],
+        ["Hawaii", "HI"],
+        ["Idaho", "ID"],
+        ["Illinois", "IL"],
+        ["Indiana", "IN"],
+        ["Iowa", "IA"],
+        ["Kansas", "KS"],
+        ["Kentucky", "KY"],
+        ["Louisiana", "LA"],
+        ["Maine", "ME"],
+        ["Maryland", "MD"],
+        ["Massachusetts", "MA"],
+        ["Michigan", "MI"],
+        ["Minnesota", "MN"],
+        ["Mississippi", "MS"],
+        ["Missouri", "MO"],
+        ["Montana", "MT"],
+        ["Nebraska", "NE"],
+        ["Nevada", "NV"],
+        ["New Hampshire", "NH"],
+        ["New Jersey", "NJ"],
+        ["New Mexico", "NM"],
+        ["New York", "NY"],
+        ["North Carolina", "NC"],
+        ["North Dakota", "ND"],
+        ["Ohio", "OH"],
+        ["Oklahoma", "OK"],
+        ["Oregon", "OR"],
+        ["Pennsylvania", "PA"],
+        ["Rhode Island", "RI"],
+        ["South Carolina", "SC"],
+        ["South Dakota", "SD"],
+        ["Tennessee", "TN"],
+        ["Texas", "TX"],
+        ["Utah", "UT"],
+        ["Vermont", "VT"],
+        ["Virginia", "VA"],
+        ["Washington", "WA"],
+        ["West Virginia", "WV"],
+        ["Wisconsin", "WI"],
+        ["Wyoming", "WY"],
+      ];
+      var courses = [
+        { name: "Course Not Listed", city: "NA", state: "NA" },
+        { name: "Maple Hill", city: "Leicester", state: "Massachusetts" },
+        { name: "Tranquility Trails", city: "Woolwich", state: "New Jersey" },
+        { name: "Blue Ribbon Pines", city: "East Bethel", state: "Minnesota" },
+        { name: "Flip City", city: "Shelby", state: "Michigan" },
+        { name: "Fox Run Meadows", city: "Smugglers' Notch", state: "Vermont" },
+        { name: "Idlewild", city: "Burlington", state: "Kentucky" },
+        { name: "The Beast", city: "Waco", state: "Texas" },
+        { name: "DeLaveaga", city: "Santa Cruz", state: "California" },
+        { name: "Hornets Nest", city: "Charlotte", state: "North Carolina" },
+        { name: "Fountain Hills", city: "Fountain Hills", state: "Arizona" },
+        { name: "Rollin Ridge", city: "Reedsville", state: "Wisconsin" },
+        {
+          name: "S.Y. Wilson Arlington Sports Complex",
+          city: "Arlington",
+          state: "Tennessee",
+        },
+        { name: "10-3 at CB", city: "Mt. Crested Butte", state: "Colorado" },
+        {
+          name: "1000 Acres Ranch Disc Golf Course",
+          city: "Stony Creek",
+          state: "New York",
+        },
+        {
+          name: "2022 Lucky Disc Golf Open Freeman North",
+          city: "Idaho Falls",
+          state: "Idaho",
+        },
+        { name: "3 Creeks", city: "Rising Sun", state: "Maryland" },
+        { name: "50 Acre Park", city: "Evergreen", state: "Illinois" },
+        { name: "501 Disc Golf", city: "Warren", state: "Massachusetts" },
+        {
+          name: "65th Infantry Veterans Disc Golf Course",
+          city: "Kissimmee",
+          state: "Florida",
+        },
+        { name: "A. J. Jolly Park", city: "Alexandria", state: "Kentucky" },
+        { name: "Stafford Woods", city: "Voorhees", state: "New Jersey" },
+        { name: "Bellevue State Park", city: "Bellevue", state: "Delaware" },
+        {
+          name: "Inverness Disc Golf Park",
+          city: "Inverness",
+          state: "Florida",
+        },
+        {
+          name: "Girdwood Forest Fair Park",
+          city: "Girdwood",
+          state: "Alaska",
+        },
+        {
+          name: "Windy Ridge Disc Golf at Mitchusson Park",
+          city: "Huntsville",
+          state: "Arkansas",
+        },
+        { name: "North Landing", city: "Virginia Beach", state: "Virginia" },
+      ];
+
+      window.onload = function () {
+        // Placeholder names for remaining states not already in 'courses'
+        var remainingStates = [
+          "Alabama",
+          "Connecticut",
+          "Georgia",
+          "Hawaii",
+          "Iowa",
+          "Kansas",
+          "Louisiana",
+          "Maine",
+          "Mississippi",
+          "Montana",
+          "Nebraska",
+          "Nevada",
+          "New Hampshire",
+          "New Mexico",
+          "North Dakota",
+          "Ohio",
+          "Oklahoma",
+          "Oregon",
+          "Rhode Island",
+          "South Carolina",
+          "South Dakota",
+          "Utah",
+          "Vermont",
+          "Washington",
+          "West Virginia",
+          "Wyoming",
         ];
-
-        window.onload = function() {
-            // Placeholder names for remaining states not already in 'courses'
-            var remainingStates = [
-                "Alabama", "Connecticut", "Georgia", "Hawaii", "Iowa", "Kansas", "Louisiana", "Maine", "Mississippi", 
-                "Montana", "Nebraska", "Nevada", "New Hampshire", "New Mexico", "North Dakota", "Ohio", "Oklahoma", 
-                "Oregon", "Rhode Island", "South Carolina", "South Dakota", "Utah", "Vermont", "Washington", "West Virginia", 
-                "Wyoming"
-            ];
-            remainingStates.forEach(function(state) {
-                if (!courses.some(course => course.state === state)) {
-                    courses.push({ name: state + " Disc Golf Course", city: state + " City", state: state });
-                }
+        remainingStates.forEach(function (state) {
+          if (!courses.some((course) => course.state === state)) {
+            courses.push({
+              name: state + " Disc Golf Course",
+              city: state + " City",
+              state: state,
             });
-    
-            // Function to populate states dropdown (unchanged)
-            function populateStates() {
-              var select = document.getElementById('inputState');
-
-              // Using stateTuples array
-              stateTuples.forEach(function(tuple) {
-                  var option = document.createElement('option');
-                  option.textContent = tuple[1]; // State name
-                  option.value = tuple[0]; // State abbreviation
-                  select.appendChild(option);
-              });
           }
+        });
 
-    
-            // Revised function to populate courses dropdown
-            function populateCourses() {
-                var select = document.getElementById('inputCourse');
-                courses.forEach(function(course) {
-                    var option = document.createElement('option');
-                    option.textContent = course.name; // Only display the course name
-                    option.value = course.name; // You can change this if you need to store a different value
-                    select.appendChild(option);
-                });
-            }
-    
-            // Call the functions to populate the dropdowns
-            populateStates();
-            populateCourses();
-        };
-    
+        // Function to populate states dropdown (unchanged)
+        function populateStates() {
+          var select = document.getElementById("inputState");
+
+          // Using stateTuples array
+          stateTuples.forEach(function (tuple) {
+            var option = document.createElement("option");
+            option.textContent = tuple[1]; // State name
+            option.value = tuple[0]; // State abbreviation
+            select.appendChild(option);
+          });
+        }
+
+        // Revised function to populate courses dropdown
+        function populateCourses() {
+          var select = document.getElementById("inputCourse");
+          courses.forEach(function (course) {
+            var option = document.createElement("option");
+            option.textContent = course.name; // Only display the course name
+            option.value = course.name; // You can change this if you need to store a different value
+            select.appendChild(option);
+          });
+        }
+
+        // Call the functions to populate the dropdowns
+        populateStates();
+        populateCourses();
+      };
     </script>
     <script>
-        function toggleFabMenu() {
-            const overlay = document.getElementById('overlay');
-            const fabMenuContainer = document.getElementById('fabMenuContainer');
-            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
-            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
-            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
-            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+      function toggleFabMenu() {
+        const overlay = document.getElementById("overlay");
+        const fabMenuContainer = document.getElementById("fabMenuContainer");
+        const fabLogo = document.getElementById("fabLogo"); // Get the logo by its ID
+        const fabClose = document.getElementById("fabClose"); // Get the 'X' span by its ID
+        const fabContainer = document.getElementById("fabContainer"); // Get the 'X' span by its ID
+        const fab = document.getElementById("fab"); // Get the 'X' span by its ID
 
+        // Toggle the active class on the overlay and the FAB menu
+        overlay.classList.toggle("active");
+        fabMenuContainer.classList.toggle("active");
 
-            // Toggle the active class on the overlay and the FAB menu
-            overlay.classList.toggle('active');
-            fabMenuContainer.classList.toggle('active');
-
-            // Check if the menu is active or not
-            // Check if the menu is active or not
-            if (fabMenuContainer.classList.contains('active')) {
-                // Menu is active, show 'X' and hide logo
-                fabLogo.style.display = 'none'; // Hide the logo
-                fabClose.style.display = 'block'; // Show the 'X'
-
-            } else {
-                // Menu is not active, hide 'X' and show logo
-                fabLogo.style.display = 'block'; // Show the logo
-                fabClose.style.display = 'none'; // Hide the 'X'
-            }
+        // Check if the menu is active or not
+        // Check if the menu is active or not
+        if (fabMenuContainer.classList.contains("active")) {
+          // Menu is active, show 'X' and hide logo
+          fabLogo.style.display = "none"; // Hide the logo
+          fabClose.style.display = "block"; // Show the 'X'
+        } else {
+          // Menu is not active, hide 'X' and show logo
+          fabLogo.style.display = "block"; // Show the logo
+          fabClose.style.display = "none"; // Hide the 'X'
         }
+      }
 
-        function reportLostDisc() { 
-            window.location.href = 'reportLostDisc.html'; 
-        }
-        function requestCourse() { 
-            window.location.href = 'requestCourse.html'; 
-        }
-        function openSettings() { 
-            window.location.href = 'settings.html'; 
-        }
+      function reportLostDisc() {
+        window.location.href = "reportLostDisc.html";
+      }
+      function requestCourse() {
+        window.location.href = "requestCourse.html";
+      }
+      function openSettings() {
+        window.location.href = "settings.html";
+      }
 
-        function skipStep() { 
-            // Get the input value
-            const courseInputValue = document.getElementById('inputCourse').value;
-            const stateInputValue = document.getElementById('inputState').value;
-            
-            if (courseInputValue.toLowerCase() === "course not listed") {
-                // Show a popup when "Course Not Listed" is selected
-                alert("Please request a course by providing additional details.");
-                return;
-            } else if (courseInputValue === "SELECT A COURSE" || courseInputValue === "" || courseInputValue === null || courseInputValue === undefined || courseInputValue === "STATE") {
-                //replace "select a course" with null
-                window.location.href = `rescueFlowStep2.html?state=&course=`;
-                return;
-            } else {
-                // Existing logic for when a course is selected
-                var selectedCourse = courses.find(function(course) {
-                    return course.name === courseInputValue;
-                });
+      function skipStep() {
+        // Get the input value
+        const courseInputValue = document.getElementById("inputCourse").value;
+        const stateInputValue = document.getElementById("inputState").value;
 
-                if (selectedCourse) {
-                    document.getElementById('inputState').value = selectedCourse.state;
-                }
-            }
-
-            // Redirect to the success page with the input value as a query parameter
-            window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}`;
-        }
-
-        function searchDiscs() {
-            // Get the input value
-            let courseInputValue = document.getElementById('inputCourse').value;
-            let stateInputValue = document.getElementById('inputState').value;
-
-            console.log(courseInputValue);
-            console.log(stateInputValue);
-
-            if (courseInputValue.toLowerCase() == '' || courseInputValue.toLowerCase() == 'select a course') {
-                courseInputValue = '';
-            }
-
-            if(stateInputValue.toLowerCase() == 'state') {
-                stateInputValue = '';
-            }
-            
-
-            // Check if a disc is found (you can modify this condition)
-            const disc_found = false; // Change this condition as needed
-
-            if (disc_found) {
-                // Redirect to the success page with disc information as query parameters
-                window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
-            } else {
-                window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(stateInputValue)}&course=${encodeURIComponent(courseInputValue)}`;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-          document.getElementById('inputState').addEventListener('change', function() {
-              var selectedState = this.value;
-              var filteredCourses;
-
-              // Check if "All" is selected
-              if (selectedState === "All") {
-                  // Use the entire courses array
-                  filteredCourses = courses;
-              } else {
-                  // Apply filtering for a specific state
-                  filteredCourses = courses.filter(function(course) {
-                      return course.state === selectedState;
-                  });
-              }
-
-              var courseSelect = document.getElementById('inputCourse');
-              courseSelect.innerHTML = ''; // Clear existing options
-
-              filteredCourses.forEach(function(course) {
-                  var option = document.createElement('option');
-                  option.textContent = course.name;
-                  option.value = course.name;
-                  courseSelect.appendChild(option);
-              });
+        if (courseInputValue.toLowerCase() === "course not listed") {
+          // Show a popup when "Course Not Listed" is selected
+          alert("Please request a course by providing additional details.");
+          return;
+        } else if (
+          courseInputValue === "SELECT A COURSE" ||
+          courseInputValue === "" ||
+          courseInputValue === null ||
+          courseInputValue === undefined ||
+          courseInputValue === "STATE"
+        ) {
+          //replace "select a course" with null
+          window.location.href = `rescueFlowStep2.html?state=&course=`;
+          return;
+        } else {
+          // Existing logic for when a course is selected
+          var selectedCourse = courses.find(function (course) {
+            return course.name === courseInputValue;
           });
 
-          document.getElementById('inputCourse').addEventListener('change', function() {
-              var selectedCourseName = this.value;
+          if (selectedCourse) {
+            document.getElementById("inputState").value = selectedCourse.state;
+          }
+        }
 
-              if (selectedCourseName === "Course Not Listed") {
-                  // Show a popup when "Course Not Listed" is selected
-                  alert("Please request a course by providing additional details.");
-                  // You can replace the above line with code to show a custom modal/dialog if needed
-              } else {
-                  // Existing logic for when a course is selected
-                  var selectedCourse = courses.find(function(course) {
-                      return course.name === selectedCourseName;
-                  });
+        // Redirect to the success page with the input value as a query parameter
+        window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(
+          stateInputValue
+        )}&course=${encodeURIComponent(courseInputValue)}`;
+      }
 
-                  if (selectedCourse) {
-                      document.getElementById('inputState').value = selectedCourse.state;
-                  }
+      function searchDiscs() {
+        // Get the input value
+        let courseInputValue = document.getElementById("inputCourse").value;
+        let stateInputValue = document.getElementById("inputState").value;
+
+        console.log(courseInputValue);
+        console.log(stateInputValue);
+
+        if (
+          courseInputValue.toLowerCase() == "" ||
+          courseInputValue.toLowerCase() == "select a course"
+        ) {
+          courseInputValue = "";
+        }
+
+        if (stateInputValue.toLowerCase() == "state") {
+          stateInputValue = "";
+        }
+
+        // Check if a disc is found (you can modify this condition)
+        const disc_found = false; // Change this condition as needed
+
+        if (disc_found) {
+          // Redirect to the success page with disc information as query parameters
+          window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+        } else {
+          window.location.href = `rescueFlowStep2.html?state=${encodeURIComponent(
+            stateInputValue
+          )}&course=${encodeURIComponent(courseInputValue)}`;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("inputState")
+          .addEventListener("change", function () {
+            var selectedState = this.value;
+            var filteredCourses;
+
+            // Check if "All" is selected
+            if (selectedState === "All") {
+              // Use the entire courses array
+              filteredCourses = courses;
+            } else {
+              // Apply filtering for a specific state
+              filteredCourses = courses.filter(function (course) {
+                return course.state === selectedState;
+              });
+            }
+
+            var courseSelect = document.getElementById("inputCourse");
+            courseSelect.innerHTML = ""; // Clear existing options
+
+            filteredCourses.forEach(function (course) {
+              var option = document.createElement("option");
+              option.textContent = course.name;
+              option.value = course.name;
+              courseSelect.appendChild(option);
+            });
+          });
+
+        document
+          .getElementById("inputCourse")
+          .addEventListener("change", function () {
+            var selectedCourseName = this.value;
+
+            if (selectedCourseName === "Course Not Listed") {
+              // Show a popup when "Course Not Listed" is selected
+              alert("Please request a course by providing additional details.");
+              // You can replace the above line with code to show a custom modal/dialog if needed
+            } else {
+              // Existing logic for when a course is selected
+              var selectedCourse = courses.find(function (course) {
+                return course.name === selectedCourseName;
+              });
+
+              if (selectedCourse) {
+                document.getElementById("inputState").value =
+                  selectedCourse.state;
               }
+            }
           });
       });
 
-        function goBack() {
-            if (document.referrer.startsWith(window.location.origin)) {
-                window.history.back();
-            } else {
-                // Handle the case when there is no history to go back to
-                // For example, redirect to a different page or display an error message
-                console.log("No page on the same domain to go back to.");
-            }
+      function goBack() {
+        if (document.referrer.startsWith(window.location.origin)) {
+          window.history.back();
+        } else {
+          // Handle the case when there is no history to go back to
+          // For example, redirect to a different page or display an error message
+          console.log("No page on the same domain to go back to.");
         }
+      }
 
-        function refresh() {
-            window.location.href = '/';
-        }
-
+      function refresh() {
+        window.location.href = "/";
+      }
     </script>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <section class="main-section text-center">
-        <div class="container">
-            <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
-            <div class="d-flex align-items-center flex-column text-center mb-2">
-                <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
+      <div class="container">
+        <i
+          class="fa fa-arrow-left"
+          style="
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            padding: 5px;
+          "
+          aria-hidden="true"
+          onclick="goBack()"
+        ></i>
+        <div class="d-flex align-items-center flex-column text-center mb-2">
+          <img
+            class="weblogo"
+            src="./assets/logo.png"
+            alt="logo"
+            onclick="refresh()"
+          />
 
-                <div class="chat-box d-flex align-items-center mt-3">
-                    <img class="me-2" src="./assets/chat.svg" alt="chat">
-                    <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
-                    <h4 class="m-0 confirmd">CONFIRMED</h4>
-                </div>
-            </div>
-            <div class="rescue d-flex align-items-center flex-column text-center mb-2">
-                <h3 class="m-0 text-white">RESCUE FLOW <span class="fw-light">wizard</span></h3>
-                <h3 class="m-0 text-white">1 <span class="overtext">/ 5</span></h3>
-            </div>
-
-            <h3 class="mt-0 mb-3 text-white text-center where">WHERE'D IT GO <span class="missingtext">MISSING?</span>
-            </h3>
-
-            <div class="row mb-3 select-box">
-                <div class="col-4 pe-0 arrow one">
-                    <select id="inputState" class="form-select">
-                        <option selected>STATE</option>
-                        <!-- States options will be populated by JavaScript -->
-                    </select>
-                </div>
-                
-                <!-- Disc Golf Courses Dropdown -->
-                <div class="col-8 arrow">
-                    <select id="inputCourse" class="form-select">
-                        <option selected>SELECT A COURSE</option>
-                        <!-- Courses options will be populated by JavaScript -->
-                    </select>
-                </div>                
-            </div>
-            <button class="stepbutton text-white mb-3" onClick="searchDiscs()">NEXT STEP</button>
-            <div class="pb-4">
-                <button class="rememberbtn fw-light" onClick="skipStep()">DON’T REMEMBER</button>
-            </div>
-
-
+          <div class="chat-box d-flex align-items-center mt-3">
+            <img class="me-2" src="./assets/chat.svg" alt="chat" />
+            <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+            <h4 class="m-0 confirmd">CONFIRMED</h4>
+          </div>
         </div>
+        <div
+          class="rescue d-flex align-items-center flex-column text-center mb-2"
+        >
+          <h3 class="m-0 text-white">
+            RESCUE FLOW <span class="fw-light">wizard</span>
+          </h3>
+          <h3 class="m-0 text-white">1 <span class="overtext">/ 5</span></h3>
+        </div>
+
+        <h3 class="mt-0 mb-3 text-white text-center where">
+          WHERE'D IT GO <span class="missingtext">MISSING?</span>
+        </h3>
+
+        <div class="row mb-3 select-box">
+          <div class="col-4 pe-0 arrow one">
+            <select id="inputState" class="form-select">
+              <option selected>STATE</option>
+              <!-- States options will be populated by JavaScript -->
+            </select>
+          </div>
+
+          <!-- Disc Golf Courses Dropdown -->
+          <div class="col-8 arrow">
+            <select id="inputCourse" class="form-select">
+              <option selected>SELECT A COURSE</option>
+              <!-- Courses options will be populated by JavaScript -->
+            </select>
+          </div>
+        </div>
+        <button class="stepbutton text-white mb-3" onClick="searchDiscs()">
+          NEXT STEP
+        </button>
+        <div class="pb-4">
+          <button class="rememberbtn fw-light" onClick="skipStep()">
+            DON’T REMEMBER
+          </button>
+        </div>
+      </div>
     </section>
 
     <div class="fab-menu-container" id="fabMenuContainer">
-        <div class="fab-menu" id="fabMenu">
-
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text-left" href="/reportLostDisc.html" style="text-decoration: none;">Report <br /> Lost Disc</a>
-                <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text" href="/requestCourse.html" style="text-decoration: none;">Request a Course</a>
-                <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <i class="fa-solid fa-gear" onclick="openSettings()"></i>
-                <a class="fab-menu-item-text-right" href="/settings.html" style="text-decoration: none;">Settings</a>
-            </div>
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text-left"
+            href="/reportLostDisc.html"
+            style="text-decoration: none"
+            >Report <br />
+            Lost Disc</a
+          >
+          <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
         </div>
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text"
+            href="/requestCourse.html"
+            style="text-decoration: none"
+            >Request a Course</a
+          >
+          <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+          <a
+            class="fab-menu-item-text-right"
+            href="/settings.html"
+            style="text-decoration: none"
+            >Settings</a
+          >
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
-        <div class="container">
-            <div class="footer-content row">
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/home.html">
-                        <span class="img">
-                            <img src="./assets/home.png" alt="home">
-                        </span>
-                        <span>HOME</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
-                        <span class="img">
-                            <img class="search" src="./assets/search.png" alt="home" width="18">
-                        </span>
-                        <span>SEARCH ALL</span>
-                    </a>
-                    <div class="wizardbox d-flex align-items-center">
-                        <img src="./assets/arrow-down.png" alt="arrow">
-                        <p>if you don’t want to use the wizard you can always just enter
-                            the information manually on our search page</p>
-                    </div>
-
-                </div>
-                <div class="col-2 ">
-                    <a class=" d-flex align-items-center flex-column" href="/store.html">
-                        <span class="img">
-                            <img src="./assets/disk-store.png" alt="home">
-                        </span>
-                        <span>DISC STORE</span>
-                    </a>
-
-                </div>
-                <div class="col-2">
-                    <a class="d-flex align-items-center flex-column" href="/courses.html">
-                        <span class="img">
-                            <img src="./assets/courses.png" alt="home">
-                        </span>
-                        <span>COURSES</span>
-                    </a>
-                </div>
+      <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+      <div class="container">
+        <div class="footer-content row">
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/home.html">
+              <span class="img">
+                <img src="./assets/home.png" alt="home" />
+              </span>
+              <span>HOME</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/searchInventory.html"
+            >
+              <span class="img">
+                <img
+                  class="search"
+                  src="./assets/search.png"
+                  alt="home"
+                  width="18"
+                />
+              </span>
+              <span>SEARCH ALL</span>
+            </a>
+            <div class="wizardbox d-flex align-items-center">
+              <img src="./assets/arrow-down.png" alt="arrow" />
+              <p>
+                if you don’t want to use the wizard you can always just enter
+                the information manually on our search page
+              </p>
             </div>
-<!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+          </div>
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/store.html">
+              <span class="img">
+                <img src="./assets/disk-store.png" alt="home" />
+              </span>
+              <span>DISC STORE</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/courses.html"
+            >
+              <span class="img">
+                <img src="./assets/courses.png" alt="home" />
+              </span>
+              <span>COURSES</span>
+            </a>
+          </div>
         </div>
+        <!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      </div>
     </footer>
 
     <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
-        <button class="fab" id="fab">
-            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
-            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
-        </button>
+      <button class="fab" id="fab">
+        <img
+          src="./assets/app_center_btn_logo.png"
+          alt="Disc Rescue Network Logo"
+          class="logo-fab"
+          id="fabLogo"
+        />
+        <span id="fabClose" style="display: none; z-index: 15">X</span>
+        <!-- Hidden by default -->
+      </button>
     </div>
 
-    
-
-
-
-
-
     <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
-</body>
-
+  </body>
 </html>
