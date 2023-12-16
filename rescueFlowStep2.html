@@ -60,6 +60,7 @@
       }
 
       function skipStep() {
+        closePopupVerify();
         // Retrieve the "color" query parameter from the URL
         const stateInputValue = getQueryParam("state");
         console.log(stateInputValue);
@@ -89,11 +90,52 @@
         const phoneInputValue = document.getElementById("inputPhone").value;
 
         // Check if a disc is found (you can modify this condition)
-        const disc_found = false; // Change this condition as needed
+        var disc_found = false; // Change this condition as needed
+
+        if (phoneInputValue == "999-123-4567") {
+          disc_found = true;
+        }
 
         if (disc_found) {
-          // Redirect to the success page with disc information as query parameters
-          window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+          var popupVerify = document.getElementById("popup-verify");
+          popupVerify.style.display = "flex";
+
+          //search the found_discs array from /js/discs.js for the discID that was passed in the URL & display the disc info in the popup-verify
+          const matchingDisc = found_discs.find(
+            (disc) => disc.PhoneNumber === "4567"
+          );
+          console.log(matchingDisc);
+          const discInfoHTML = `
+                    <div class="disc-item">
+                        <div class="course-box">
+                            <div class="course-box-detail">
+                                <div class="course-image" style="border: 2px solid var(--primary-red)">
+                                    <img src="./assets/course-image.png" alt="image">
+                                </div>
+                                <div class="course-list">
+                                    <ul>
+                                        <li style="border-top: 1px solid var(--primary-grey);">
+                                            <img src="./assets/course-icon1.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/course-icon.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Brand}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/Courses_Red_Icon.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Course}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+
+          // Insert the HTML content into the "discInfoVerify" element
+          const discInfoVerifyElement =
+            document.getElementById("discInfoVerify");
+          discInfoVerifyElement.innerHTML = discInfoHTML;
         } else {
           window.location.href = `rescueFlowStep3.html?state=${encodeURIComponent(
             stateInputValue
@@ -115,6 +157,36 @@
 
       function refresh() {
         window.location.href = "/";
+      }
+
+      function closePopupVerify() {
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "none";
+      }
+
+      function claimDisc() {
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "none";
+        window.location.href = "rescueFlowSuccess.html?disc=discinfo";
+      }
+
+      function formatPhoneNumber(inputField) {
+        var input = inputField.value;
+        input = input.replace(/\D/g, ""); // Remove all non-numeric characters
+
+        // Basic formatting for US numbers (you can modify this as needed)
+        if (input.length > 3 && input.length <= 6) {
+          input = input.slice(0, 3) + "-" + input.slice(3);
+        } else if (input.length > 6) {
+          input =
+            input.slice(0, 3) +
+            "-" +
+            input.slice(3, 6) +
+            "-" +
+            input.slice(6, 10);
+        }
+
+        inputField.value = input; // Set the formatted value back to the input field
       }
     </script>
     <style>
@@ -175,12 +247,19 @@
           style="height: 100%"
         >
           <div class="col-12 col-md-10 col-lg-8" style="padding: 0">
+            <!-- <div class="wizardbox d-flex align-items-center"> -->
+            <!-- <img src="./assets/arrow-down.png" alt="arrow" /> -->
+            <span class="m-0 text-white fw-light" style="font-size: 16px"
+              >*Enter 999-123-4567 to simulate</span
+            >
+            <!-- </div> -->
             <input
               type="tel"
               class="form-control"
               id="inputPhone"
               placeholder="PHONE NUMBER WRITTEN ON THE DISC"
               inputmode="numeric"
+              oninput="formatPhoneNumber(this)"
             />
           </div>
         </div>
@@ -302,6 +381,54 @@
       </button>
     </div>
 
-    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <div id="popup-verify" class="popup" style="flex-direction: column">
+      <div
+        class="popup-content"
+        id="popup-verify-content"
+        style="margin: unset !important"
+      >
+        <!-- <span class="close" id="close" onclick="closePopupVerify()"
+          >&times;</span
+        > -->
+        <div class="verify-info">
+          <div
+            class="verify-row m-0"
+            id="discInfoVerify"
+            style="
+              color: var(--primary-black) !important;
+              width: 65%;
+              max-width: 400px;
+            "
+          >
+            <!-- disc info will be populated here -->
+          </div>
+        </div>
+        <div id="loading-bar" class="loading-bar"></div>
+      </div>
+
+      <div
+        class="d-flex justify-content-center align-items-center mt-2 mb-2"
+        style="
+          flex-direction: column;
+          width: 100%;
+          background: transparent;
+          justify-content: flex-start;
+          margin: auto;
+        "
+      >
+        <button class="stepbutton text-white mt-2 mb-3" onClick="claimDisc()">
+          Perfect! Give me my disc back!
+        </button>
+        <button
+          class="rememberbtn fw-light"
+          style="width: 65%; max-width: unset"
+          onClick="skipStep()"
+        >
+          This is not mine
+        </button>
+      </div>
+    </div>
+
+    <script src="js/discs.js"></script>
   </body>
 </html>
