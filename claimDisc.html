@@ -1,191 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DRN Inventory - Claim Disc</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
+      :root {
         --primary-blue: #005daa;
         --secondary-blue: #228de5;
         --primary-black: #000000;
         --primary-red: #d31245;
-        --primary-white: #FFFFFF;
+        --primary-white: #ffffff;
         --primary-grey: #e3e3e3;
         --primary-green: #55de1f;
-        font-family: 'Bebas Neue', sans-serif;
-        }
+        font-family: "Bebas Neue", sans-serif;
+      }
 
-        .loading-bar {
-            width: 0;
-            height: 10px;
-            background-color: var(--primary-green);
-            animation: loading 2s linear forwards;
-            margin-top: 10px;
-        }
+      .loading-bar {
+        width: 0;
+        height: 10px;
+        background-color: var(--primary-green);
+        animation: loading 2s linear forwards;
+        margin-top: 10px;
+      }
 
-        @keyframes loading {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
+      @keyframes loading {
+        from {
+          width: 0;
         }
+        to {
+          width: 100%;
+        }
+      }
     </style>
     <script>
-        var pickupLocations = [
-            { id: 0, name: "Johns Simple Store Pickup", Date: "Wednesday", Location: "1234 Main Street, City, ST 12333" },
-            { id: 1, name: "Johns Simple Store Pickup", Date: "Thursday", Location: "1234 Main Street, City, ST 12333" },
-            { id: 2, name: "Johns Simple Store Pickup", Date: "Friday", Location: "1234 Main Street, City, ST 12333"  },
-            { id: 3, name: "Johns Simple Store Pickup", Date: "Saturday", Location: "1234 Main Street, City, ST 12333"  },
-            { id: 4, name: "Johns Simple Store Pickup", Date: "Sunday", Location: "1234 Main Street, City, ST 12333"  },
-            { id: 5, name: "Johns Simple Store Pickup", Date: "Monday", Location: "1234 Main Street, City, ST 12333"  },  
-            { id: 6, name: "Johns Simple Store Pickup", Date: "Tuesday", Location: "1234 Main Street, City, ST 12333"  }            
-        ];
+      var pickupLocations = [
+        {
+          id: 0,
+          name: "Johns Simple Store Pickup",
+          Date: "Wednesday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+        {
+          id: 1,
+          name: "Johns Simple Store Pickup",
+          Date: "Thursday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+        {
+          id: 2,
+          name: "Johns Simple Store Pickup",
+          Date: "Friday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+        {
+          id: 3,
+          name: "Johns Simple Store Pickup",
+          Date: "Saturday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+        {
+          id: 4,
+          name: "Johns Simple Store Pickup",
+          Date: "Sunday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+        {
+          id: 5,
+          name: "Johns Simple Store Pickup",
+          Date: "Monday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+        {
+          id: 6,
+          name: "Johns Simple Store Pickup",
+          Date: "Tuesday",
+          Location: "1234 Main Street, City, ST 12333",
+        },
+      ];
 
-        // Function to populate the pickup locations dropdown
-        function populatePickupLocations() {
-            var pickupLocationDropdown = document.getElementById('inputPickupLocation');
+      // Function to populate the pickup locations dropdown
+      function populatePickupLocations() {
+        var pickupLocationDropdown = document.getElementById(
+          "inputPickupLocation"
+        );
 
-            // Clear existing options
-            pickupLocationDropdown.innerHTML = '';
+        // Clear existing options
+        pickupLocationDropdown.innerHTML = "";
 
-            // Add the default option
-            var defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.text = 'Choose a Pickup Location';
-            pickupLocationDropdown.appendChild(defaultOption);
+        // Add the default option
+        var defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.text = "Choose a Pickup Location";
+        pickupLocationDropdown.appendChild(defaultOption);
 
-            // Add the pickup locations from the data
-            for (var i = 0; i < pickupLocations.length; i++) {
-                var option = document.createElement('option');
-                option.value = pickupLocations[i].id;
-                option.text = pickupLocations[i].name + ' (' + pickupLocations[i].Date + 's)';
-                pickupLocationDropdown.appendChild(option);
-            }
+        // Add the pickup locations from the data
+        for (var i = 0; i < pickupLocations.length; i++) {
+          var option = document.createElement("option");
+          option.value = pickupLocations[i].id;
+          option.text =
+            pickupLocations[i].name + " (" + pickupLocations[i].Date + "s)";
+          pickupLocationDropdown.appendChild(option);
         }
+      }
 
-         // Function to get the value of a query parameter from the URL
-         function getQueryParam(parameterName) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(parameterName);
-        }
+      // Function to get the value of a query parameter from the URL
+      function getQueryParam(parameterName) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(parameterName);
+      }
 
-        function claimDisc() {
-            console.log(`Claiming disc with ID ${discID}...`);
-            
-            // Get the pickup details from the HTML elements
-            const pickupDate = document.getElementById('verifyPickupDate').textContent;
-            const pickupLocation = document.getElementById('verifyPickupLocation').textContent;
-            const contactInfo = document.getElementById('verifyContactInfoForRelease').textContent;
+      function claimDisc() {
+        console.log(`Claiming disc with ID ${discID}...`);
 
-            const queryParams = new URLSearchParams();
-            queryParams.append('id', discID); 
-            queryParams.append('pickupDate', pickupDate); 
-            queryParams.append('pickupLocation', pickupLocation); 
-            queryParams.append('contactInfo', contactInfo); 
-            queryParams.append('communicationMethodLabel', document.getElementById('communicationMethodLabel').textContent);
+        // Get the pickup details from the HTML elements
+        const pickupDate =
+          document.getElementById("verifyPickupDate").textContent;
+        const pickupLocation = document.getElementById(
+          "verifyPickupLocation"
+        ).textContent;
+        const contactInfo = document.getElementById(
+          "verifyContactInfoForRelease"
+        ).textContent;
 
-            const queryString = queryParams.toString();
-            const url = `claimDiscSuccess.html?${queryString}`;
-            window.location.href = url;
-        }
+        const queryParams = new URLSearchParams();
+        queryParams.append("id", discID);
+        queryParams.append("pickupDate", pickupDate);
+        queryParams.append("pickupLocation", pickupLocation);
+        queryParams.append("contactInfo", contactInfo);
+        queryParams.append(
+          "communicationMethodLabel",
+          document.getElementById("communicationMethodLabel").textContent
+        );
 
-    
+        const queryString = queryParams.toString();
+        const url = `claimDiscSuccess.html?${queryString}`;
+        window.location.href = url;
+      }
     </script>
     <script>
-        function toggleFabMenu() {
-            const overlay = document.getElementById('overlay');
-            const fabMenuContainer = document.getElementById('fabMenuContainer');
-            const fabLogo = document.getElementById('fabLogo'); // Get the logo by its ID
-            const fabClose = document.getElementById('fabClose'); // Get the 'X' span by its ID
-            const fabContainer = document.getElementById('fabContainer'); // Get the 'X' span by its ID
-            const fab = document.getElementById('fab'); // Get the 'X' span by its ID
+      function toggleFabMenu() {
+        const overlay = document.getElementById("overlay");
+        const fabMenuContainer = document.getElementById("fabMenuContainer");
+        const fabLogo = document.getElementById("fabLogo"); // Get the logo by its ID
+        const fabClose = document.getElementById("fabClose"); // Get the 'X' span by its ID
+        const fabContainer = document.getElementById("fabContainer"); // Get the 'X' span by its ID
+        const fab = document.getElementById("fab"); // Get the 'X' span by its ID
 
+        // Toggle the active class on the overlay and the FAB menu
+        overlay.classList.toggle("active");
+        fabMenuContainer.classList.toggle("active");
 
-            // Toggle the active class on the overlay and the FAB menu
-            overlay.classList.toggle('active');
-            fabMenuContainer.classList.toggle('active');
-
-            // Check if the menu is active or not
-            if (fabMenuContainer.classList.contains('active')) {
-                // Menu is active, show 'X' and hide logo
-                fabLogo.style.display = 'none'; // Hide the logo
-                fabClose.style.display = 'block'; // Show the 'X'
-
-            } else {
-                // Menu is not active, hide 'X' and show logo
-                fabLogo.style.display = 'block'; // Show the logo
-                fabClose.style.display = 'none'; // Hide the 'X'
-            }
+        // Check if the menu is active or not
+        if (fabMenuContainer.classList.contains("active")) {
+          // Menu is active, show 'X' and hide logo
+          fabLogo.style.display = "none"; // Hide the logo
+          fabClose.style.display = "block"; // Show the 'X'
+        } else {
+          // Menu is not active, hide 'X' and show logo
+          fabLogo.style.display = "block"; // Show the logo
+          fabClose.style.display = "none"; // Hide the 'X'
         }
+      }
 
-        function reportLostDisc() { 
-            window.location.href = 'reportLostDisc.html'; 
+      function reportLostDisc() {
+        window.location.href = "reportLostDisc.html";
+      }
+      function requestCourse() {
+        window.location.href = "requestCourse.html";
+      }
+      function openSettings() {
+        window.location.href = "settings.html";
+      }
+
+      function goBack() {
+        if (document.referrer.startsWith(window.location.origin)) {
+          window.history.back();
+        } else {
+          // Handle the case when there is no history to go back to
+          // For example, redirect to a different page or display an error message
+          console.log("No page on the same domain to go back to.");
         }
-        function requestCourse() { 
-            window.location.href = 'requestCourse.html'; 
-        }
-        function openSettings() { 
-            window.location.href = 'settings.html'; 
-        }
+      }
 
-        function goBack() {
-            if (document.referrer.startsWith(window.location.origin)) {
-                window.history.back();
-            } else {
-                // Handle the case when there is no history to go back to
-                // For example, redirect to a different page or display an error message
-                console.log("No page on the same domain to go back to.");
-            }
-        }
+      function refresh() {
+        window.location.href = "/";
+      }
 
-        function refresh() {
-            window.location.href = '/';
-        }
+      function verifyInfo() {
+        // Get the button element
+        // var button = document.querySelector('.newsletterButton');
 
-        function verifyInfo() {
-            // Get the button element
-            // var button = document.querySelector('.newsletterButton');
+        // Change button text to spinner
+        // button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processing...';
 
-            // Change button text to spinner
-            // button.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Processing...';
+        // Get the input values
+        const inputInitial = document.getElementById("inputInitial").value;
+        const inputName = document.getElementById("inputName").value;
+        const inputPhone = document.getElementById("inputPhone").value;
+        const inputEmail = document.getElementById("inputEmail").value;
+        const inputPickupLocation = document.getElementById(
+          "inputPickupLocation"
+        ).value;
 
-            // Get the input values
-            const inputInitial = document.getElementById('inputInitial').value;
-            const inputName = document.getElementById('inputName').value;
-            const inputPhone = document.getElementById('inputPhone').value;
-            const inputEmail = document.getElementById('inputEmail').value;
-            const inputPickupLocation = document.getElementById('inputPickupLocation').value;
+        // Format the phone number
+        const formattedPhone = formatPhoneNumber(inputPhone);
 
-            // Format the phone number
-            const formattedPhone = formatPhoneNumber(inputPhone);
+        // Populate the placeholder elements in the popup
+        document.getElementById("verifyPickupDate").textContent =
+          pickupLocations[inputPickupLocation].Date;
+        document.getElementById("verifyPickupLocation").textContent =
+          `${pickupLocations[inputPickupLocation].name}` +
+          " " +
+          `${pickupLocations[inputPickupLocation].Location}`;
 
-            // Populate the placeholder elements in the popup
-            document.getElementById('verifyPickupDate').textContent = pickupLocations[inputPickupLocation].Date;
-            document.getElementById('verifyPickupLocation').textContent = `${pickupLocations[inputPickupLocation].name}` + ' ' + `${pickupLocations[inputPickupLocation].Location}`;
-            
-            discID = getQueryParam('id');
-            console.log(discID);
+        discID = getQueryParam("id");
+        console.log(discID);
 
-            //search the found_discs array from /js/discs.js for the discID that was passed in the URL & display the disc info in the popup-verify
-            const matchingDisc = found_discs.find(disc => disc.ID === parseInt(discID));
+        //search the found_discs array from /js/discs.js for the discID that was passed in the URL & display the disc info in the popup-verify
+        const matchingDisc = found_discs.find(
+          (disc) => disc.ID === parseInt(discID)
+        );
 
-            if (matchingDisc) {
+        if (matchingDisc) {
+          // Show the popup
+          var popupVerify = document.getElementById("popup-verify");
+          popupVerify.style.display = "flex";
 
-                // Show the popup
-                var popupVerify = document.getElementById("popup-verify");
-                popupVerify.style.display = "flex";
-
-                const discInfoHTML = `
+          const discInfoHTML = `
                     <div class="disc-item">
                         <div class="course-box">
                             <div class="course-box-detail">
@@ -212,322 +266,479 @@
                         </div>
                     </div>`;
 
-                // Insert the HTML content into the "discInfoVerify" element
-                const discInfoVerifyElement = document.getElementById('discInfoVerify');
-                discInfoVerifyElement.innerHTML = discInfoHTML;
-
-            } else {
-                // Handle the case when the disc is not found
-                console.log('Disc not found with ID:', discID);
-            }
-
-            // Show the popup
-            var popupVerify = document.getElementById("popup-verify");
-            popupVerify.style.display = "flex";
-
-            // Show either the "Phone Number For Release" or "Email For Release" label based on the communicationMethod
-            if (communicationMethod === "phone") {
-                document.getElementById('verifyContactInfoForRelease').textContent = formattedPhone;
-                console.log("Info: communicationMethod method is phone");
-            } else if (communicationMethod === "email") {
-                document.getElementById('verifyContactInfoForRelease').textContent = inputEmail;
-                console.log("Info: communicationMethod method is email");
-            } else {
-                console.log("Error: communicationMethod is not set.");
-            }
+          // Insert the HTML content into the "discInfoVerify" element
+          const discInfoVerifyElement =
+            document.getElementById("discInfoVerify");
+          discInfoVerifyElement.innerHTML = discInfoHTML;
+        } else {
+          // Handle the case when the disc is not found
+          console.log("Disc not found with ID:", discID);
         }
 
-        function formatPhoneNumber(phoneNumber) {
-            // Remove all non-numeric characters from the phone number
-            const numericPhoneNumber = phoneNumber.replace(/\D/g, '');
+        // Show the popup
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "flex";
 
-            // Check if the phone number has 10 digits, assuming it's a US phone number
-            if (numericPhoneNumber.length === 10) {
-                // Format it as (XXX) XXX-XXXX
-                return numericPhoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-            }
+        // Show either the "Phone Number For Release" or "Email For Release" label based on the communicationMethod
+        if (communicationMethod === "phone") {
+          document.getElementById("verifyContactInfoForRelease").textContent =
+            formattedPhone;
+          console.log("Info: communicationMethod method is phone");
+        } else if (communicationMethod === "email") {
+          document.getElementById("verifyContactInfoForRelease").textContent =
+            inputEmail;
+          console.log("Info: communicationMethod method is email");
+        } else {
+          console.log("Error: communicationMethod is not set.");
+        }
+      }
 
-            // If the phone number doesn't have 10 digits, return it as is
-            return phoneNumber;
+      function formatPhoneNumber(phoneNumber) {
+        // Remove all non-numeric characters from the phone number
+        const numericPhoneNumber = phoneNumber.replace(/\D/g, "");
+
+        // Check if the phone number has 10 digits, assuming it's a US phone number
+        if (numericPhoneNumber.length === 10) {
+          // Format it as (XXX) XXX-XXXX
+          return numericPhoneNumber.replace(
+            /(\d{3})(\d{3})(\d{4})/,
+            "($1) $2-$3"
+          );
         }
 
-        function closePopupVerify() {
-            var popupVerify = document.getElementById("popup-verify");
-            popupVerify.style.display = "none";
-        }
+        // If the phone number doesn't have 10 digits, return it as is
+        return phoneNumber;
+      }
 
-        var filter_brand = filter_color = filter_disc = [];
+      function closePopupVerify() {
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "none";
+      }
 
-        var communicationMethod = ""; 
-        var discID = -1;
+      var filter_brand = (filter_color = filter_disc = []);
 
-        //window.addEventListener('resize', updateButtonText);
+      var communicationMethod = "";
+      var discID = -1;
 
-        window.onload = function() {
-            const loadingBar = document.getElementById('loading-bar');
-            loadingBar.style.animation = 'none';
+      //window.addEventListener('resize', updateButtonText);
 
-            //updateButtonText();
-            populatePickupLocations();
+      window.onload = function () {
+        const loadingBar = document.getElementById("loading-bar");
+        loadingBar.style.animation = "none";
 
-            discID = getQueryParam('id');
-            console.log(discID);
+        //updateButtonText();
+        populatePickupLocations();
 
-            var modal = document.getElementById("popup");
-            var btnPhone = document.getElementById("choosePhone");
-            var btnEmail = document.getElementById("chooseEmail");
-            var span = document.getElementById("close");
+        discID = getQueryParam("id");
+        console.log(discID);
 
-            // Open the modal
-            modal.style.display = "flex";
+        var modal = document.getElementById("popup");
+        var btnPhone = document.getElementById("choosePhone");
+        var btnEmail = document.getElementById("chooseEmail");
+        var span = document.getElementById("close");
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
+        // Open the modal
+        modal.style.display = "flex";
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            // Handling button actions
-            btnPhone.onclick = function() {
-                document.getElementById('inputPhone').style.display = 'block';
-                document.getElementById('inputEmail').style.display = 'none !important';
-                modal.style.display = "none";
-                communicationMethodLabel.textContent = "Phone Number For Release: ";
-                communicationMethod = "phone"; 
-            }
-
-            btnEmail.onclick = function() {
-                document.getElementById('inputEmail').style.display = 'block';
-                document.getElementById('inputPhone').style.display = 'none !important';
-                modal.style.display = "none";
-                communicationMethodLabel.textContent = "Email For Release: ";
-                communicationMethod = "email"; 
-            }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
         };
 
-        function submitDisc() {
-            // Simulate a 2-second loading animation
-            const loadingBar = document.getElementById('loading-bar');
-            //loadingBar.style.animation = 'none';
-            setTimeout(function() {
-                loadingBar.style.animation = 'loading 2s linear forwards';
-                // After the loading animation, you can perform any necessary actions
-                setTimeout(function() {
-                    // Once your processing is done, you can close the popup
-                    const popupVerify = document.getElementById('popup-verify');
-                    popupVerify.style.display = 'none';
-                    // Navigate to "reportLostDiscSuccess.html"
-                    window.location.href = 'reportLostDiscSuccess.html';
-                }, 2000); // 2-second delay
-            }, 100); // Delay to start loading animation
-        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        };
 
+        // Handling button actions
+        btnPhone.onclick = function () {
+          document.getElementById("inputPhone").style.display = "block";
+          document.getElementById("inputEmail").style.display =
+            "none !important";
+          modal.style.display = "none";
+          communicationMethodLabel.textContent = "Phone Number For Release: ";
+          communicationMethod = "phone";
+        };
+
+        btnEmail.onclick = function () {
+          document.getElementById("inputEmail").style.display = "block";
+          document.getElementById("inputPhone").style.display =
+            "none !important";
+          modal.style.display = "none";
+          communicationMethodLabel.textContent = "Email For Release: ";
+          communicationMethod = "email";
+        };
+      };
+
+      function submitDisc() {
+        // Simulate a 2-second loading animation
+        const loadingBar = document.getElementById("loading-bar");
+        //loadingBar.style.animation = 'none';
+        setTimeout(function () {
+          loadingBar.style.animation = "loading 2s linear forwards";
+          // After the loading animation, you can perform any necessary actions
+          setTimeout(function () {
+            // Once your processing is done, you can close the popup
+            const popupVerify = document.getElementById("popup-verify");
+            popupVerify.style.display = "none";
+            // Navigate to "reportLostDiscSuccess.html"
+            window.location.href = "reportLostDiscSuccess.html";
+          }, 2000); // 2-second delay
+        }, 100); // Delay to start loading animation
+      }
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="main-section text-center">
-        <div class="container" id="container">
-            <i class="fa fa-arrow-left" style="position: absolute; top: 30px; left:20px; font-size: 30px; color: white; padding: 5px;" aria-hidden="true" onclick="goBack()"></i>
-            <div class="d-flex align-items-center flex-column text-center mb-2">
-                <img class="weblogo" src="./assets/logo.png" alt="logo" onclick="refresh()">
+      <div class="container" id="container">
+        <i
+          class="fa fa-arrow-left"
+          style="
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            padding: 5px;
+          "
+          aria-hidden="true"
+          onclick="goBack()"
+        ></i>
+        <div class="d-flex align-items-center flex-column text-center mb-2">
+          <img
+            class="weblogo"
+            src="./assets/logo.png"
+            alt="logo"
+            onclick="refresh()"
+          />
 
-                <div class="chat-box d-flex align-items-center mt-3">
-                    <img class="me-2" src="./assets/chat.svg" alt="chat">
-                    <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
-                    <h4 class="m-0 confirmd">CONFIRMED</h4>
-                </div>
-            </div>
-            <div class="rescue d-flex align-items-center flex-column text-center mt-0 mb-0">
-                <h3 class="m-0 text-white" style="font-size: 3rem;">Let's Get Your <span class="fw-light" style="font-weight: 300 !important; font-size: 3rem;" >Disc</span></h3>
-                <h4 class="text-white px-0 mt-0 mb-4" style="font-weight: unset;"; >Just Enter Some <span class="overtext">Info</span>.</h4>
-            </div>
-
-            <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap;">
-                <div class="col-4 pe-0 arrow one" style="padding: 0px">
-                    <select id="inputInitial" class="form-select" style="height: 55px !important">
-                        <option selected>First Initial</option>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
-                        <option>F</option>
-                        <option>G</option>
-                        <option>H</option>
-                        <option>I</option>
-                        <option>J</option>
-                        <option>K</option>
-                        <option>L</option>
-                        <option>M</option>
-                        <option>N</option>
-                        <option>O</option>
-                        <option>P</option>
-                        <option>Q</option>
-                        <option>R</option>
-                        <option>S</option>
-                        <option>T</option>
-                        <option>U</option>
-                        <option>V</option>
-                        <option>W</option>
-                        <option>X</option>
-                        <option>Y</option>
-                        <option>Z</option>
-                    </select>
-                </div>
-                
-                <div class="col-8" style="padding: 0px; padding-left: 10px !important;">
-                    <input type="text" class="form-control" id="inputName" placeholder="Last Name" pattern="[a-zA-Z\-]+" style="height: 55px !important; max-width: 1080px !important; width: 100% !important;">
-                </div>                
-            </div>    
-
-            <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap;">
-                <div class="col-12 pe-0" style="padding: 0px">
-                    <input type="tel" class="form-control" id="inputPhone" style="height: 55px !important; max-width: 1080px !important; width: 100% !important; display: none !important;" placeholder="Phone Number Written On the Disc" inputmode="numeric">   
-                    <input type="email" class="form-control" id="inputEmail" style="height: 55px !important; max-width: 1080px !important; width: 100% !important; display: none !important;" placeholder="Email Address">                              
-                </div>           
-            </div>
-            
-
-            <div class="row mt-2 mb-2 select-box" style="padding: 0px !important; flex-wrap: nowrap;">
-                <div class="col-12 pe-0 arrow one" style="padding: 0px">
-                    <select id="inputPickupLocation" class="form-select" style="height: 55px !important">
-                        <option selected>Choose a Pickup Location</option>
-                        <!-- Pickup Locations options will be populated by JavaScript -->
-                    </select>
-                </div>          
-            </div>
-            <div class="row mt-2 mb-2 select-box" style="padding: 0px !important; flex-wrap: nowrap;">
-                <button class="newsletterButton text-white mt-3 mb-3" style="width: 100%; height: 55px !important;" onClick="verifyInfo()">Schedule your Disc Pickup</button>
-            </div>
+          <div class="chat-box d-flex align-items-center mt-3">
+            <img class="me-2" src="./assets/chat.svg" alt="chat" />
+            <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+            <h4 class="m-0 confirmd">CONFIRMED</h4>
+          </div>
         </div>
+        <div
+          class="rescue d-flex align-items-center flex-column text-center mt-0 mb-0"
+        >
+          <h3 class="m-0 text-white" style="font-size: 3rem">
+            Let's Get Your
+            <span
+              class="fw-light"
+              style="font-weight: 300 !important; font-size: 3rem"
+              >Disc</span
+            >
+          </h3>
+          <h4 class="text-white px-0 mt-0 mb-4" style="font-weight: unset" ;>
+            Just Enter Some <span class="overtext">Info</span>.
+          </h4>
+        </div>
+
+        <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap">
+          <div class="col-4 pe-0 arrow one" style="padding: 0px">
+            <select
+              id="inputInitial"
+              class="form-select"
+              style="height: 55px !important"
+            >
+              <option selected>First Initial</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+              <option>D</option>
+              <option>E</option>
+              <option>F</option>
+              <option>G</option>
+              <option>H</option>
+              <option>I</option>
+              <option>J</option>
+              <option>K</option>
+              <option>L</option>
+              <option>M</option>
+              <option>N</option>
+              <option>O</option>
+              <option>P</option>
+              <option>Q</option>
+              <option>R</option>
+              <option>S</option>
+              <option>T</option>
+              <option>U</option>
+              <option>V</option>
+              <option>W</option>
+              <option>X</option>
+              <option>Y</option>
+              <option>Z</option>
+            </select>
+          </div>
+
+          <div
+            class="col-8"
+            style="padding: 0px; padding-left: 10px !important"
+          >
+            <input
+              type="text"
+              class="form-control"
+              id="inputName"
+              placeholder="Last Name"
+              pattern="[a-zA-Z\-]+"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+              "
+            />
+          </div>
+        </div>
+
+        <div class="row mt-2 mb-2 select-box" style="flex-wrap: nowrap">
+          <div class="col-12 pe-0" style="padding: 0px">
+            <input
+              type="tel"
+              class="form-control"
+              id="inputPhone"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+                display: none !important;
+              "
+              placeholder="Phone Number Written On the Disc"
+              inputmode="numeric"
+            />
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              style="
+                height: 55px !important;
+                max-width: 1080px !important;
+                width: 100% !important;
+                display: none !important;
+              "
+              placeholder="Email Address"
+            />
+          </div>
+        </div>
+
+        <div
+          class="row mt-2 mb-2 select-box"
+          style="padding: 0px !important; flex-wrap: nowrap"
+        >
+          <div class="col-12 pe-0 arrow one" style="padding: 0px">
+            <select
+              id="inputPickupLocation"
+              class="form-select"
+              style="height: 55px !important"
+            >
+              <option selected>Choose a Pickup Location</option>
+              <!-- Pickup Locations options will be populated by JavaScript -->
+            </select>
+          </div>
+        </div>
+        <div
+          class="row mt-2 mb-2 select-box"
+          style="padding: 0px !important; flex-wrap: nowrap"
+        >
+          <button
+            class="newsletterButton text-white mt-3 mb-3"
+            style="width: 100%; height: 55px !important"
+            onClick="verifyInfo()"
+          >
+            Schedule your Disc Pickup
+          </button>
+        </div>
+      </div>
     </section>
 
     <div class="fab-menu-container" id="fabMenuContainer">
-        <div class="fab-menu" id="fabMenu">
-
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text-left" href="/reportLostDisc.html" style="text-decoration: none;">Report <br /> Lost Disc</a>
-                <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <a class="fab-menu-item-text" href="/requestCourse.html" style="text-decoration: none;">Request a Course</a>
-                <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
-            </div>
-            <div class="fab-menu-item">
-                <i class="fa-solid fa-gear" onclick="openSettings()"></i>
-                <a class="fab-menu-item-text-right" href="/settings.html" style="text-decoration: none;">Settings</a>
-            </div>
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text-left"
+            href="/reportLostDisc.html"
+            style="text-decoration: none"
+            >Report <br />
+            Lost Disc</a
+          >
+          <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
         </div>
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text"
+            href="/requestCourse.html"
+            style="text-decoration: none"
+            >Request a Course</a
+          >
+          <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+          <a
+            class="fab-menu-item-text-right"
+            href="/settings.html"
+            style="text-decoration: none"
+            >Settings</a
+          >
+        </div>
+      </div>
     </div>
 
     <footer class="footer">
-        <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
-        <div class="container">
-            <div class="footer-content row">
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/home.html">
-                        <span class="img">
-                            <img src="./assets/home.png" alt="home">
-                        </span>
-                        <span>HOME</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class="d-flex align-items-center flex-column" href="/searchInventory.html">
-                        <span class="img">
-                            <img class="search" src="./assets/search.png" alt="home" width="18">
-                        </span>
-                        <span>SEARCH ALL</span>
-                    </a>
-                </div>
-                <div class="col-2 ">
-                    <a class=" d-flex align-items-center flex-column" href="/store.html">
-                        <span class="img">
-                            <img src="./assets/disk-store.png" alt="home">
-                        </span>
-                        <span>DISC STORE</span>
-                    </a>
-
-                </div>
-                <div class="col-2">
-                    <a class="d-flex align-items-center flex-column" href="/courses.html">
-                        <span class="img">
-                            <img src="./assets/courses.png" alt="home">
-                        </span>
-                        <span>COURSES</span>
-                    </a>
-                </div>
-            </div>
-<!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+      <div class="container">
+        <div class="footer-content row">
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/home.html">
+              <span class="img">
+                <img src="./assets/home.png" alt="home" />
+              </span>
+              <span>HOME</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/searchInventory.html"
+            >
+              <span class="img">
+                <img
+                  class="search"
+                  src="./assets/search.png"
+                  alt="home"
+                  width="18"
+                />
+              </span>
+              <span>SEARCH ALL</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/store.html">
+              <span class="img">
+                <img src="./assets/disk-store.png" alt="home" />
+              </span>
+              <span>DISC STORE</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/courses.html"
+            >
+              <span class="img">
+                <img src="./assets/courses.png" alt="home" />
+              </span>
+              <span>COURSES</span>
+            </a>
+          </div>
         </div>
+        <!-- <button class="btnaction"><img class="btnlogo" src="./assets/app_center_btn_logo.png" alt="btnlogo"></button> -->
+      </div>
     </footer>
 
     <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
-        <button class="fab" id="fab">
-            <img src="./assets/app_center_btn_logo.png" alt="Disc Rescue Network Logo" class="logo-fab" id="fabLogo">
-            <span id="fabClose" style="display: none; z-index: 15;">X</span> <!-- Hidden by default -->
-        </button>
+      <button class="fab" id="fab">
+        <img
+          src="./assets/app_center_btn_logo.png"
+          alt="Disc Rescue Network Logo"
+          class="logo-fab"
+          id="fabLogo"
+        />
+        <span id="fabClose" style="display: none; z-index: 15">X</span>
+        <!-- Hidden by default -->
+      </button>
     </div>
 
     <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close" id="close">&times;</span>
-            <h2>WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF COMMUNICATION?</h2>
-            <p>If you wrote your phone number on your disc, we recommend using this as your preferred method.</p>
-            <div class="d-flex flex-row" style="width: 80%">
-                <button id="choosePhone" class="secondary-btn" style="margin-right: 10px;">Phone</button>
-                <button id="chooseEmail" class="warning-btn">Email</button>
-            </div>
+      <div class="popup-content">
+        <span class="close" id="close">&times;</span>
+        <h2>
+          WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF
+          COMMUNICATION?
+        </h2>
+        <p>
+          If you wrote your phone number on your disc, we recommend using this
+          as your preferred method.
+        </p>
+        <div class="d-flex flex-row" style="width: 80%">
+          <button
+            id="choosePhone"
+            class="secondary-btn"
+            style="margin-right: 10px"
+          >
+            Phone
+          </button>
+          <button id="chooseEmail" class="warning-btn">Email</button>
         </div>
+      </div>
     </div>
 
-    <div id="popup-verify" class="popup" style="flex-direction: column;">
-        <div class="popup-content" id="popup-verify-content" style="margin: unset !important;">
-            <span class="close" id="close" onclick="closePopupVerify()">&times;</span>
-            <h2 style="font-size: 3rem;">Verify Your <span class="fw-light">INFO</span></h2>
-            <div class="verify-info">
-                <div class="verify-row">
-                    <label>Pickup Date:</label>
-                    <span id="verifyPickupDate" class="fw-light"></span>
-                </div>
-                <div class="verify-row">
-                    <label id="pickupLocationLabel">Pickup Location:</label>
-                    <span id="verifyPickupLocation" class="fw-light"></span>
-                </div>
-                <div class="verify-row">
-                    <label id="communicationMethodLabel"></label>
-                    <span id="verifyContactInfoForRelease" class="fw-light"></span>
-                </div>
+    <div id="popup-verify" class="popup" style="flex-direction: column">
+      <div
+        class="popup-content"
+        id="popup-verify-content"
+        style="margin: unset !important"
+      >
+        <span class="close" id="close" onclick="closePopupVerify()"
+          >&times;</span
+        >
+        <h2 style="font-size: 3rem">
+          Verify Your <span class="fw-light">INFO</span>
+        </h2>
+        <div class="verify-info">
+          <div class="verify-row">
+            <label>Pickup Date:</label>
+            <span id="verifyPickupDate" class="fw-light"></span>
+          </div>
+          <div class="verify-row">
+            <label id="pickupLocationLabel">Pickup Location:</label>
+            <span id="verifyPickupLocation" class="fw-light"></span>
+          </div>
+          <div class="verify-row">
+            <label id="communicationMethodLabel"></label>
+            <span id="verifyContactInfoForRelease" class="fw-light"></span>
+          </div>
 
-                <div class="verify-row mt-4" id="discInfoVerify" style="color: var(--primary-black) !important; width: 65%; max-width: 400px;">
-                    <!-- disc info will be populated here -->
-                </div>
-            </div>
-            <div id="loading-bar" class="loading-bar"></div>
+          <div
+            class="verify-row mt-4"
+            id="discInfoVerify"
+            style="
+              color: var(--primary-black) !important;
+              width: 65%;
+              max-width: 400px;
+            "
+          >
+            <!-- disc info will be populated here -->
+          </div>
         </div>
+        <div id="loading-bar" class="loading-bar"></div>
+      </div>
 
-        <div class="d-flex justify-content-center align-items-center mt-2 mb-2" style="flex-direction: column; width: 100%; background: transparent; justify-content: flex-start; margin: auto;">
-            <button class="stepbutton text-white mt-2 mb-3" onClick="claimDisc()">Perfect! Give me my disc back!</button>
-            <button class="rememberbtn fw-light" onClick="closePopupVerify()">Need to adjust some pickup information</button>
-        </div>
-
-        
+      <div
+        class="d-flex justify-content-center align-items-center mt-2 mb-2"
+        style="
+          flex-direction: column;
+          width: 100%;
+          background: transparent;
+          justify-content: flex-start;
+          margin: auto;
+        "
+      >
+        <button class="stepbutton text-white mt-2 mb-3" onClick="claimDisc()">
+          Perfect! Give me my disc back!
+        </button>
+        <button
+          class="rememberbtn fw-light"
+          style="width: 65%; max-width: unset"
+          onClick="closePopupVerify()"
+        >
+          Need to adjust some pickup information
+        </button>
+      </div>
     </div>
-
-    
-
-
-
-
 
     <script src="js/discs.js"></script>
-</body>
-
+  </body>
 </html>
