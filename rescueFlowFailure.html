@@ -125,9 +125,9 @@
     </script>
     <script>
       // Function to open the modal dialog
-      function openParameterModal() {
-        const parameterModal = document.getElementById("parameterModal");
-        const parameterList = document.getElementById("parameterList");
+      function reportLostDisc() {
+        // const parameterModal = document.getElementById("parameterModal");
+        // const parameterList = document.getElementById("parameterList");
 
         const stateInputValue = getQueryParam("state");
         const courseInputValue = getQueryParam("course");
@@ -137,19 +137,21 @@
         const discBrandInputValue = getQueryParam("brand");
         const colorValue = getQueryParam("color");
 
-        // Construct the content for the modal
-        parameterList.innerHTML = `
-                <p>State: ${stateInputValue}</p>
-                <p>Course: ${courseInputValue}</p>
-                <p>Phone: ${phoneInputValue}</p>
-                <p>First Initial: ${firstInitialInputValue}</p>
-                <p>Last Name: ${lastNameInputValue}</p>
-                <p>Disc Brand: ${discBrandInputValue}</p>
-                <p>Color: ${colorValue}</p>
-            `;
+        window.location.href = `/reportLostDisc.html?state=${stateInputValue}&course=${courseInputValue}&phone=${phoneInputValue}&initial=${firstInitialInputValue}&name=${lastNameInputValue}&brand=${discBrandInputValue}&color=${colorValue}`;
 
-        // Display the modal
-        parameterModal.style.display = "block";
+        // Construct the content for the modal
+        // parameterList.innerHTML = `
+        //         <p>State: ${stateInputValue}</p>
+        //         <p>Course: ${courseInputValue}</p>
+        //         <p>Phone: ${phoneInputValue}</p>
+        //         <p>First Initial: ${firstInitialInputValue}</p>
+        //         <p>Last Name: ${lastNameInputValue}</p>
+        //         <p>Disc Brand: ${discBrandInputValue}</p>
+        //         <p>Color: ${colorValue}</p>
+        //     `;
+
+        // // Display the modal
+        // parameterModal.style.display = "block";
       }
 
       // Function to close the modal dialog
@@ -226,7 +228,7 @@
 
         <button
           class="failurebutton text-white mb-4 mt-2"
-          onclick="openParameterModal()"
+          onclick="reportLostDisc()"
         >
           Report my Disc Lost and Help the Wizard
         </button>
