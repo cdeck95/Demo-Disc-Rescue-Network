@@ -157,6 +157,13 @@ a {
   overflow-y: auto;
 }
 
+.course-section-popup {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
 .course-section::-webkit-scrollbar {
   width: 5px;
 }

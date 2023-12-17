@@ -2686,12 +2686,12 @@ var found_discs = [
     Comments: "",
     Color: "Blue",
     PickupDeadline: "2024-01-15",
-    Brand: "Birdie",
+    Brand: "Discraft",
   },
   {
     ID: 171,
     Course: "S.Y. Wilson Arlington Sports Complex",
-    Name: "Andrew",
+    Name: "J. Doe",
     Disc: "Photon",
     PhoneNumber: "7473",
     Bin: 6,
@@ -2702,7 +2702,7 @@ var found_discs = [
     Comments: "",
     Color: "Red dye",
     PickupDeadline: "2024-01-15",
-    Brand: "Discraft",
+    Brand: "MVP",
   },
   {
     ID: 172,

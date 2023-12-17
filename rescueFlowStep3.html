@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Standard Favicon -->
     <link rel="icon" type="image/png" href="./assets/Color_Logo_Blue.png" />
-
     <!-- For Apple devices -->
     <link
       rel="apple-touch-icon"
       sizes="512x512"
       href="./assets/Color_Logo_Blue.png"
     />
-
     <!-- For general use, like on Android -->
     <link
       rel="icon"
@@ -26,7 +24,6 @@
       sizes="512x512"
       href="./assets/Color_Logo_Blue.png"
     />
-
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest" />
     <title>DRN Rescue Flow - Step 3</title>
@@ -161,11 +158,83 @@
         }
 
         // Check if a disc is found (you can modify this condition)
-        const disc_found = false; // Change this condition as needed
+        var disc_found = false; // Change this condition as needed
+
+        if (firstInitialInputValue == "J" && lastNameInputValue == "Doe") {
+          disc_found = true;
+        }
 
         if (disc_found) {
-          // Redirect to the success page with disc information as query parameters
-          window.location.href = `rescueFlowSuccess.html?disc=discinfo`;
+          var popupVerify = document.getElementById("popup-verify");
+          popupVerify.style.display = "flex";
+
+          //search the found_discs array from /js/discs.js for the any discs matching this name display the array of disc info in the popup-verify
+          const matchingDiscs = found_discs.filter(
+            (disc) => disc.Name === "J. Doe"
+          );
+          console.log(matchingDiscs);
+
+          if (matchingDiscs.length === 0) {
+            // Handle the case where no matching discs are found
+            console.log("No matching discs found");
+            window.location.href = `rescueFlowStep4.html?state=${encodeURIComponent(
+              stateInputValue
+            )}&course=${encodeURIComponent(
+              courseInputValue
+            )}&phone=${encodeURIComponent(
+              phoneInputValue
+            )}&initial=${encodeURIComponent(
+              firstInitialInputValue
+            )}&name=${encodeURIComponent(lastNameInputValue)}`;
+          } else {
+            const discInfoHTML = matchingDiscs
+              .map(
+                (matchingDisc) => `
+            <div class="col-6 disc-item" style="padding-right: 3.5px; padding-left: 3.5px;">
+                <div class="course-box">
+                    <div class="course-box-detail" style="margin-right: 2.5px; margin-left: 2.5px;">
+                        <div class="course-image" style="border: 2px solid var(--primary-red)">
+                            <img src="./assets/course-image.png" alt="image">
+                        </div>
+                        <div class="course-list">
+                            <ul>
+                                <li style="border-top: 1px solid var(--primary-grey); height: 24px !important; max-height: 24px !important">
+                                    <img src="./assets/course-icon1.png" alt="icon">
+                                    <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                </li>
+                                <li>
+                                    <img src="./assets/course-icon.png" alt="icon">
+                                    <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Brand}</span>
+                                </li>
+                                <li>
+                                    <img src="./assets/Courses_Red_Icon.png" alt="icon">
+                                    <span style="font-weight: 300 !important; opacity: .7 !important; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${matchingDisc.Course}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="course-bottom" style="margin-top: 10px">
+                      <div class="course-dis">
+                        
+                        <span>
+                        
+                        </span>
+                      </div>
+                      <div class="course-button">
+                        <a href="#" class="course-btn" onclick="claimDisc(${matchingDisc.ID})">Claim Disc</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        `
+              )
+              .join("");
+            // Insert the HTML content into the "discInfoVerify" element
+            const discInfoVerifyElement =
+              document.getElementById("discInfoVerify");
+            discInfoVerifyElement.innerHTML = discInfoHTML;
+          }
         } else {
           window.location.href = `rescueFlowStep4.html?state=${encodeURIComponent(
             stateInputValue
@@ -177,6 +246,22 @@
             firstInitialInputValue
           )}&name=${encodeURIComponent(lastNameInputValue)}`;
         }
+      }
+
+      function closePopupVerify() {
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "none";
+      }
+
+      function claimDisc(discID) {
+        var popupVerify = document.getElementById("popup-verify");
+        popupVerify.style.display = "none";
+        window.location.href = `claimDisc.html?id=${discID}`;
+      }
+
+      function openInventory() {
+        alert("implement param to search for similar discs");
+        window.location.href = "searchInventory.html";
       }
     </script>
 
@@ -273,6 +358,9 @@
           class="row mb-4 select-box d-flex justify-content-center align-items-center"
           style="height: 100%; width: 100%"
         >
+          <span class="m-0 text-white fw-light" style="font-size: 16px"
+            >*Enter J. Doe to simulate</span
+          >
           <div class="col-4 pe-0 arrow one">
             <select id="inputInitial" class="form-select" style>
               <option selected>First Initial</option>
@@ -430,6 +518,58 @@
       </button>
     </div>
 
-    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
+    <div id="popup-verify" class="popup" style="flex-direction: column">
+      <div
+        class="popup-content"
+        id="popup-verify-content"
+        style="margin: unset !important; padding: 10px 5px !important"
+      >
+        <!-- <span class="close" id="close" onclick="closePopupVerify()"
+          >&times;</span
+        > -->
+        <div
+          class="course-section-popup"
+          style="margin: 0px !important; width: 100%"
+        >
+          <div
+            class="row"
+            id="discInfoVerify"
+            style="
+              color: var(--primary-black) !important;
+              margin: 0px !important;
+              padding: 0px !important;
+              width: 100% !important;
+            "
+          >
+            <!-- disc info will be populated here -->
+          </div>
+        </div>
+        <div id="loading-bar" class="loading-bar"></div>
+      </div>
+
+      <div
+        class="d-flex justify-content-center align-items-center mt-2 mb-2"
+        style="
+          flex-direction: column;
+          width: 100%;
+          background: transparent;
+          justify-content: flex-start;
+          margin: auto;
+        "
+      >
+        <button class="stepbutton text-white mt-2 mb-3" onClick="skipStep()">
+          None of these are mine
+        </button>
+        <button
+          class="rememberbtn fw-light"
+          style="width: 65%; max-width: unset"
+          onClick="openInventory()"
+        >
+          Let me see more of these type of discs
+        </button>
+      </div>
+    </div>
+
+    <script src="js/discs.js"></script>
   </body>
 </html>
