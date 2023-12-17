@@ -211,9 +211,6 @@ img.weblogo {
 .chat-box img {
   width: 0.75rem;
   transform: translate(5px, -1px);
-  /* transform: rotate(180deg); */
-  /* -webkit-transform: scaleX(-1);
-  transform: scaleX(-1); */
 }
 
 .btn {
