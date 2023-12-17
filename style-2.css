@@ -1,53 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
-:root {
-  --primary-blue: #005daa;
-  --secondary-blue: #228de5;
-  --primary-black: #000000;
-  --primary-red: #d31245;
-  --primary-white: #ffffff;
-  --primary-grey: #e3e3e3;
-  --primary-green: #55de1f;
-  font-family: "Bebas Neue", sans-serif;
-}
-
-body {
-  font-family: "Bebas Neue", sans-serif;
-}
-
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("../fonts/BebasNeue-Thin.eot");
-  src: url("../fonts/BebasNeue-Thin.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/BebasNeue-Thin.woff2") format("woff2"),
-    url("../fonts/BebasNeue-Thin.woff") format("woff");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("../fonts/BebasNeueLight.eot");
-  src: url("../fonts/BebasNeueLight.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/BebasNeueLight.woff2") format("woff2"),
-    url("../fonts/BebasNeueLight.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Bebas Neue";
-  src: url("../fonts/BebasNeueRegular.eot");
-  src: url("../fonts/BebasNeueRegular.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/BebasNeueRegular.woff2") format("woff2"),
-    url("../fonts/BebasNeueRegular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 body {
   background-color: var(--primary-blue);
 }
