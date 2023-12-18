@@ -44,6 +44,8 @@
       rel="stylesheet"
     />
     <script>
+      let simulatedDisc;
+
       function toggleFabMenu() {
         const overlay = document.getElementById("overlay");
         const fabMenuContainer = document.getElementById("fabMenuContainer");
@@ -131,6 +133,9 @@
             (disc) => disc.PhoneNumber === "4567"
           );
           console.log(matchingDisc);
+
+          simulatedDisc = matchingDisc;
+
           const discInfoHTML = `
                     <div class="disc-item">
                         <div class="course-box">
@@ -193,7 +198,10 @@
       function claimDisc() {
         var popupVerify = document.getElementById("popup-verify");
         popupVerify.style.display = "none";
-        window.location.href = "rescueFlowSuccess.html?disc=discinfo";
+        console.log(simulatedDisc);
+        const simulatedDiscID = simulatedDisc.ID;
+        console.log(simulatedDiscID);
+        window.location.href = `claimDisc.html?id=${simulatedDiscID}`;
       }
 
       function formatPhoneNumber(inputField) {

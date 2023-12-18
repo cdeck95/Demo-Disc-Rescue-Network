@@ -155,20 +155,27 @@
         console.log(lastNameInputValue);
 
         const discBrandInput = document.getElementById("inputBrand").value;
+        console.log(discBrandInput);
         const discBrandSelect = document.getElementById("selectBrand").value;
+        console.log(discBrandSelect);
 
         // Determine which element is populated and get its value
         let populatedBrandValue = "";
         if (discBrandInput !== "") {
           populatedBrandValue = discBrandInput;
-        } else if (discBrandSelect !== "") {
+        } else if (
+          discBrandSelect !== "" &&
+          discBrandSelect.toLowerCase() !== "select brand"
+        ) {
           populatedBrandValue = discBrandSelect;
         }
+
+        console.log(populatedBrandValue);
 
         // Check if a disc is found (you can modify this condition)
         var disc_found = false; // Change this condition as needed
 
-        if (populatedBrandValue == "Dynamic Discs") {
+        if (populatedBrandValue.toLowerCase() == "dynamic discs") {
           disc_found = true;
         }
 
