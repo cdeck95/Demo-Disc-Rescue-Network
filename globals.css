@@ -150,9 +150,9 @@ body {
 }
 
 .fab-menu-item:nth-child(1) {
-  left: 0%;
-  top: 20%;
-  transform: translate(-50%, 0);
+  left: -5%;
+  top: 35%;
+  transform: translate(-50%, -50);
   color: var(--secondary-blue);
   display: flex;
   flex-direction: row;
@@ -161,7 +161,7 @@ body {
   margin: auto;
   padding: 0px;
   text-align: left;
-  height: 125px;
+  /* height: 125px; */
   width: 125px;
 }
 
@@ -182,9 +182,9 @@ body {
 }
 
 .fab-menu-item:nth-child(3) {
-  top: 20%;
-  right: -120px;
-  transform: translate(-50%, 0);
+  top: 35%;
+  right: -135px;
+  transform: translate(-50%, -50%);
   color: var(--secondary-blue);
   display: flex;
   flex-direction: row;
@@ -193,7 +193,7 @@ body {
   margin: auto;
   padding: 0px;
   text-align: left;
-  height: 125px;
+  /* height: 125px; */
   width: 125px;
 }
 
