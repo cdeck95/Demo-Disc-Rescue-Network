@@ -397,44 +397,44 @@
     </script>
     <script>
       // When the user clicks on the element with class "rescue-flow", open the popup
-      function showPopup() {
-        var popup = document.getElementById("popup");
-        popup.style.display = "flex"; // Changed to 'flex' to use flexbox for centering
-      }
+      // function showPopup() {
+      //   var popup = document.getElementById("popup");
+      //   popup.style.display = "flex"; // Changed to 'flex' to use flexbox for centering
+      // }
 
-      function closePopup() {
-        var popup = document.getElementById("popup");
-        popup.style.display = "none";
-      }
+      // function closePopup() {
+      //   var popup = document.getElementById("popup");
+      //   popup.style.display = "none";
+      // }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        showPopup();
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   showPopup();
 
-        // Get the element with the ID "close" that closes the popup
-        var closeBtn = document.getElementById("close");
+      //   // Get the element with the ID "close" that closes the popup
+      //   var closeBtn = document.getElementById("close");
 
-        // When the user clicks on the element with ID "close", close the popup
-        if (closeBtn) {
-          closeBtn.onclick = function () {
-            var popup = document.getElementById("popup");
-            popup.style.display = "none";
-          };
-        }
+      //   // When the user clicks on the element with ID "close", close the popup
+      //   if (closeBtn) {
+      //     closeBtn.onclick = function () {
+      //       var popup = document.getElementById("popup");
+      //       popup.style.display = "none";
+      //     };
+      //   }
 
-        // When the user clicks anywhere outside of the popup content, close it
-        window.onclick = function (event) {
-          var popup = document.getElementById("popup");
-          if (event.target == popup) {
-            popup.style.display = "none";
-          }
-        };
-      });
+      //   // When the user clicks anywhere outside of the popup content, close it
+      //   window.onclick = function (event) {
+      //     var popup = document.getElementById("popup");
+      //     if (event.target == popup) {
+      //       popup.style.display = "none";
+      //     }
+      //   };
+      // });
     </script>
   </head>
 
   <body>
     <section class="main-section text-center">
-      <div class="container">
+      <div class="container" style="margin-top: 40px">
         <i
           class="fa fa-arrow-left"
           style="
@@ -502,6 +502,10 @@
             DON’T REMEMBER
           </button>
         </div>
+      </div>
+      <div class="demo-banner">
+        This is a demo version of the DRN Platform. Please select "NJ" &
+        "Tranquility Trails" to simulate the flow.
       </div>
     </section>
 
