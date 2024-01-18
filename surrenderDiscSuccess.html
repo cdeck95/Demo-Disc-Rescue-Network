@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" href="./assets/Color_Logo_Blue.png" />
+
+    <!-- For Apple devices -->
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="./assets/Color_Logo_Blue.png"
+    />
+
+    <!-- For general use, like on Android -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="256x256"
+      href="./assets/Color_Logo_Blue.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="./assets/Color_Logo_Blue.png"
+    />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>DRN Inventory - Surrender Disc Success</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./globals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      function toggleFabMenu() {
+        const overlay = document.getElementById("overlay");
+        const fabMenuContainer = document.getElementById("fabMenuContainer");
+        const fabLogo = document.getElementById("fabLogo"); // Get the logo by its ID
+        const fabClose = document.getElementById("fabClose"); // Get the 'X' span by its ID
+        const fabContainer = document.getElementById("fabContainer"); // Get the 'X' span by its ID
+        const fab = document.getElementById("fab"); // Get the 'X' span by its ID
+
+        // Toggle the active class on the overlay and the FAB menu
+        overlay.classList.toggle("active");
+        fabMenuContainer.classList.toggle("active");
+
+        // Check if the menu is active or not
+        if (fabMenuContainer.classList.contains("active")) {
+          // Menu is active, show 'X' and hide logo
+          fabLogo.style.display = "none"; // Hide the logo
+          fabClose.style.display = "block"; // Show the 'X'
+        } else {
+          // Menu is not active, hide 'X' and show logo
+          fabLogo.style.display = "block"; // Show the logo
+          fabClose.style.display = "none"; // Hide the 'X'
+        }
+      }
+
+      function reportLostDisc() {
+        window.location.href = "reportLostDisc.html";
+      }
+      function requestCourse() {
+        window.location.href = "requestCourse.html";
+      }
+      function openSettings() {
+        window.location.href = "settings.html";
+      }
+
+      function goBack() {
+        if (document.referrer.startsWith(window.location.origin)) {
+          window.history.back();
+        } else {
+          // Handle the case when there is no history to go back to
+          // For example, redirect to a different page or display an error message
+          console.log("No page on the same domain to go back to.");
+        }
+      }
+
+      function refresh() {
+        window.location.href = "/";
+      }
+    </script>
+
+    <script>
+      // Function to parse query parameters from the URL
+      // function parseQueryParameters() {
+      //     const query = window.location.search.substring(1);
+      //     const pairs = query.split('&');
+      //     const params = {};
+
+      //     for (const pair of pairs) {
+      //         const parts = pair.split('=');
+      //         const key = decodeURIComponent(parts[0]);
+      //         const value = decodeURIComponent(parts[1]);
+      //         params[key] = value;
+      //     }
+
+      //     return params;
+      // }
+
+      function parseQueryParameters() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const params = {};
+        for (const [key, value] of urlParams.entries()) {
+          params[key] = value;
+        }
+        return params;
+      }
+
+      var discID = -1;
+      document.addEventListener("DOMContentLoaded", function () {
+        // Parse query parameters
+        const queryParams = parseQueryParameters();
+        const communicationMethodLabel =
+          queryParams.communicationMethodLabel || "";
+
+        // Update the elements with the parsed value
+        document.getElementById("communicationMethodLabel").textContent =
+          communicationMethodLabel;
+        document.getElementById("verifyPickupDate").textContent =
+          queryParams.pickupDate || "";
+        document.getElementById("verifyPickupLocation").textContent =
+          queryParams.pickupLocation || "";
+        document.getElementById("verifyContactInfoForRelease").textContent =
+          queryParams.contactInfo || "";
+
+        discID = queryParams.id || -1;
+
+        //search the found_discs array from /js/discs.js for the discID that was passed in the URL & display the disc info in the popup-verify
+        const matchingDisc = found_discs.find(
+          (disc) => disc.ID === parseInt(discID)
+        );
+
+        if (matchingDisc) {
+          const discInfoHTML = `
+                    <div class="disc-item">
+                        <div class="course-box">
+                            <div class="course-box-detail">
+                                <div class="course-image" style="border: 2px solid var(--primary-red)">
+                                    <img src="./assets/course-image.png" alt="image">
+                                </div>
+                                <div class="course-list">
+                                    <ul>
+                                        <li style="border-top: 1px solid var(--primary-grey);">
+                                            <img src="./assets/course-icon1.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/course-icon.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Brand}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/Courses_Red_Icon.png" alt="icon">
+                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Course}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+
+          // Insert the HTML content into the "discInfoVerify" element
+          const discInfoVerifyElement =
+            document.getElementById("discInfoVerify");
+          discInfoVerifyElement.innerHTML = discInfoHTML;
+        } else {
+          // Handle the case when the disc is not found
+          console.log("Disc not found with ID:", discID);
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <section class="main-section text-center">
+      <div class="container" id="container">
+        <i
+          class="fa fa-arrow-left"
+          style="
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 30px;
+            color: white;
+            padding: 5px;
+          "
+          aria-hidden="true"
+          onclick="goBack()"
+        ></i>
+        <div class="d-flex align-items-center flex-column text-center mb-2">
+          <img
+            class="weblogo"
+            src="./assets/logo.png"
+            alt="logo"
+            onclick="refresh()"
+          />
+
+          <div class="chat-box d-flex align-items-center mt-3">
+            <img class="me-2" src="./assets/chat.svg" alt="chat" />
+            <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
+            <h4 class="m-0 confirmd">CONFIRMED</h4>
+          </div>
+        </div>
+        <div
+          class="rescue d-flex align-items-center flex-column text-center mt-0 mb-0"
+        >
+          <h2
+            class="m-0 text-white"
+            style="font-size: 3rem; color: var(--primary-green) !important"
+          >
+            NAILED
+            <span
+              class="fw-light"
+              style="
+                font-weight: 300 !important;
+                font-size: 3rem;
+                color: var(--primary-white) !important;
+              "
+              >IT!</span
+            >
+          </h2>
+        </div>
+
+        <div
+          class="d-flex align-items-center flex-column text-center mt-2 mb-0 p-2"
+        >
+          <h3
+            class="mb-2 text-white"
+            style="font-size: 1.15rem; color: var(--primary-white) !important"
+          >
+            You have successfully surrendered your disc to the course. The
+            volunteers thank you for your help!
+          </h3>
+        </div>
+      </div>
+    </section>
+
+    <div class="fab-menu-container" id="fabMenuContainer">
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text-left"
+            href="/reportLostDisc.html"
+            style="text-decoration: none"
+            >Report <br />
+            Lost Disc</a
+          >
+          <i class="fa-regular fa-flag" onclick="reportLostDisc()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <a
+            class="fab-menu-item-text"
+            href="/requestCourse.html"
+            style="text-decoration: none"
+            >Request a Course</a
+          >
+          <i class="fa-solid fa-location-dot" onclick="requestCourse()"></i>
+        </div>
+        <div class="fab-menu-item">
+          <i class="fa-solid fa-gear" onclick="openSettings()"></i>
+          <a
+            class="fab-menu-item-text-right"
+            href="/settings.html"
+            style="text-decoration: none"
+            >Settings</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
+      <div class="container">
+        <div class="footer-content row">
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/home.html">
+              <span class="img">
+                <img src="./assets/home.png" alt="home" />
+              </span>
+              <span>HOME</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/searchInventory.html"
+            >
+              <span class="img">
+                <img
+                  class="search"
+                  src="./assets/search.png"
+                  alt="home"
+                  width="18"
+                />
+              </span>
+              <span>SEARCH ALL</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a class="d-flex align-items-center flex-column" href="/store.html">
+              <span class="img">
+                <img src="./assets/disk-store.png" alt="home" />
+              </span>
+              <span>DISC STORE</span>
+            </a>
+          </div>
+          <div class="col-2">
+            <a
+              class="d-flex align-items-center flex-column"
+              href="/courses.html"
+            >
+              <span class="img">
+                <img src="./assets/courses.png" alt="home" />
+              </span>
+              <span>COURSES</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="fab-container" onclick="toggleFabMenu()" id="fabContainer">
+      <button class="fab" id="fab">
+        <img
+          src="./assets/app_center_btn_logo.png"
+          alt="Disc Rescue Network Logo"
+          class="logo-fab"
+          id="fabLogo"
+        />
+        <span id="fabClose" style="display: none; z-index: 15">X</span>
+        <!-- Hidden by default -->
+      </button>
+    </div>
+    <script src="js/discs.js"></script>
+  </body>
+</html>
