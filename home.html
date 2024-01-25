@@ -141,7 +141,7 @@
         }
 
         .logo-container {
-            width: 65%;
+            width: 250px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -163,7 +163,7 @@
 
         .btn-container {
             width: 80%;
-            margin-top: 10px;
+            margin-top: 2px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -172,10 +172,10 @@
         }
 
         .btn-container .btn {
-            padding: 10px;
+            padding: 8px;
             margin: 3px;
             letter-spacing: 1.25px;
-            font-size: 2.25rem;
+            font-size: 2rem;
         }
 
         .btn-description {
@@ -287,21 +287,22 @@
             width: 100%;
             height: 100%;
             margin: 0px;
-            margin-top: 2%;
+            margin-top: 0;
             padding: 0px;
         }
 
         .sub-header {
-            font-size: 1em;
+            font-size: 1.2em;
             font-weight: 500;
             color: var(--primary-blue);
             padding: 0px;
-            margin: 5px 0px;
+            margin: -1px 0px;
+            padding-bottom: 4px;
         }
 
         .grid {
             width: 100%;
-            max-width: 180px;
+            max-width: 190px;
             max-height: 125px;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -337,12 +338,14 @@
 
         .card-container {
             flex-shrink: 0;
-            width: 400px;
+            width: 270px;
             max-width: 400px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             display: flex;
+            position: relative;
+            z-index: 1;
         }
 
         .course-list {
@@ -353,17 +356,18 @@
         }
 
         .disc-info .course-list ul {
-            padding: 0;
-            margin: 0;
+            padding-left: 4px;
+            margin-top: 0;
+            margin: 0px;
             list-style: none;
             text-align: left;
-            max-height: 100px;
+            height: 100px;
         }
 
         .disc-info .course-list ul li {
-            padding: 2px;
+            padding: 17px;
             border-bottom: 1px solid var(--primary-grey);
-            border-right: 1px solid var(--primary-grey);
+            /* border-right: 1px solid var(--primary-grey); */
             display: flex;
             align-items: center;
             font-size: 12px;
@@ -378,15 +382,15 @@
         .disc-info .course-list ul li img {
             margin-right: 10px;
             padding-left: 4px;
-            width: 14px;
+            width: 20px;
         }
 
         .image {
-            width: 115px;
-            height: 115px;
-            max-width: 115px;
+            width:190px;
+            height:170px;
+            /* max-width: 115px; */
             object-fit: fill;
-            border: 5px solid var(--primary-blue);
+            /* border: 5px solid var(--primary-blue); */
             border-radius: 0;
             margin-top: auto;
             margin-bottom: auto;
@@ -415,9 +419,11 @@
         }
 
         .disc-info {
-            width: 100%;
+            width: 85%;
             max-width: 100%;
-            display: flex;
+            display: flow;
+            height: 320px;
+            padding-top: 23px;
         }
 
         .grid-of-cards {
@@ -474,11 +480,13 @@
         .div-block-2 {
             width: 100%;
             display: flex;
-            justify-content: center;
-            align-self: center;
+            /* justify-content: center; */
+            /* align-self: center; */
             align-items: center;
             margin-right: 30px;
-            max-width: 115px;
+            max-width: 190px;
+            position: absolute;
+            transform: translate(-20px, -20px);        
         }
 
         .button-2 {
@@ -518,6 +526,84 @@
         footer::before {
             background-color: var(--primary-grey); 
         }        
+
+        /* New styles */
+
+        .claim-disc {
+            width: 70px;
+            font-size: 13px;
+            position:relative;    
+            margin-left: 59px; 
+            margin-top: 0;   
+            height: 25px;                              
+        } 
+
+        .claim-disc:hover {
+            width: 70px;
+            font-size: 13px;
+            position: relative;
+            margin-left: 59px;
+            transition: 0.3s;
+            height: 25px;
+        }
+
+        .grid-disc {
+            width: 190px;
+            margin: 0;
+
+        }
+
+        .course-list ul {
+            list-style: none; 
+            padding: 0; 
+        }
+
+        .course-list ul li {
+             background: var(--primary-white);
+             border: 1px solid var(--primary-white);
+              border-left: 0;
+             width: calc(100%);
+             border-bottom: 1px solid var(--primary-white); 
+        }
+
+        .course-list ul li:last-child {
+            border-bottom: 0; 
+        }
+
+        .circle-overlay {
+            position: relative;
+            width: 55px; 
+            height: 45px; 
+            border-radius: 50%;
+            background-color:  rgb(193, 2, 2);     
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-overlay img {
+            width: 28px;
+            height: auto;  
+            position: relative;
+        }
+
+        .text-block-2 {
+            background-color: rgb(193, 2, 2);
+            width: 170px;
+            height: 20px;
+            color: rgb(231, 230, 230);
+            display: flex;
+            justify-content: start; 
+            align-items: center;
+            font-size: 11px;
+            padding-left: 8px;
+            margin-left: -5px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            font-family: 'Lato', sans-serif;
+        }
     </style>
     <script>
         function toggleFabMenu() {
@@ -572,25 +658,26 @@
                 return `
                     <div class="card-container">
                         <div class="disc-info">
-                            <img src="${randomImageUrl}" loading="lazy" alt="${disc.Disc}" class="image">
-                            <div class="w-layout-grid grid">
-                                <div class="course-list">
-                                    <ul>
-                                        <li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>${disc.Color} ${disc.Disc}</span></li>
-                                        <li><img src="./assets/course-icon.png" alt="icon"><span>${disc.Brand}</span></li>
-                                        <li><img src="./assets/course-icon2.png" alt="icon"><span>${disc.Name}</span></li>
-                                    </ul>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="sub-info">
                             <div class="div-block-2">
-                                <img src="./assets/basket_icon.png" style="color: var(--primary-blue); margin-right: 5px; width: 14px" alt="icon">
+                                 <div class="circle-overlay">    
+                                    <img src="./assets/pin2.png" style="color: var(--primary-white);" alt="icon">
+                                 </div>
                                 <div class="text-block-2">${disc.Course}</div>
                             </div>
-                            <button class="btn" onClick="window.location.href = 'claimDisc.html?id=${disc.ID}'"}>Claim Disc</button>
-                        </div>
+                            <img src="${randomImageUrl}" loading="lazy" alt="${disc.Disc}" class="image">
+                            <div class="w-layout-grid grid grid-disc">
+                                <div class="course-list">
+                                    <ul>
+                                        <li><img src="./assets/tag.png" alt="icon"><span>${disc.Color} ${disc.Disc}</span></li>
+                                        <li><img src="./assets/course-icon.png" alt="icon"><span>${disc.Brand}</span></li>
+                                        <li><img src="./assets/user.png" alt="icon"><span>${disc.Name}</span></li>
+                                    </ul>
+                                </div>  
+                                <div class="sub-info">
+                             <button class="btn claim-disc" onClick="window.location.href = 'claimDisc.html?id=${disc.ID}'"}>Claim Disc</button>
+                            </div>                              
+                            </div>                            
+                        </div>                        
                     </div>
                 `;
             }).join('');
@@ -696,7 +783,7 @@
             </div>
         </div>
 
-        <div class="discs mt-2">
+        <div class="discs pb-6">
             <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
             <div class="w-layout-grid grid-of-cards">
             </div>

@@ -291,17 +291,26 @@
 
         $.each(discs_list, function (index, value) {
           disc_item +=
-            '<div class="col-6 disc-item' +
-            (index > 5 ? " hidden" : "") +
+            '<div class="col-6 disc-item pb-4' +
+            (index > 3 ? " hidden" : "") +
             '">' +
-            '<div class="course-box">' +
+            '<div class="course-box">' +     
+            '<div class="header-box">' +
+            '<div class="header-img">' +  
+            '<img src="./assets/pin2.png" alt="icon">' +
+            '</div>' +
+            '<span>' +
+            discs_list[index]["Course"] +
+            '</span>' +
+            '</div>'
+            +
             '<div class="course-box-detail">' +
             '<div class="course-image">' +
             '<img src="./assets/course-image.png" alt="image">' +
             "</div>" +
             '<div class="course-list">' +
             "<ul>" +
-            '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>' +
+            '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/tag.png" alt="icon"><span>' +
             discs_list[index]["Color"] +
             " " +
             discs_list[index]["Disc"] +
@@ -309,21 +318,16 @@
             '<li><img src="./assets/course-icon.png" alt="icon"><span>' +
             discs_list[index]["Brand"] +
             "</span></li>" +
-            '<li><img src="./assets/course-icon2.png" alt="icon"><span>' +
+            '<li><img src="./assets/user.png" alt="icon"><span>' +
             discs_list[index]["Name"] +
             "</span></li>" +
             "</ul>" +
-            "</div>" +
-            "</div>" +
-            '<div class="course-bottom">' +
-            '<div class="course-dis">' +
-            '<img src="./assets/rose-icon.png" alt="icon">' +
-            "<span>" +
-            discs_list[index]["Course"] +
-            "</span>" +
-            "</div>" +
             '<div class="course-button">' +
             `<a href="#" class="course-btn" onclick="claimDisc('${discs_list[index]["ID"]}')">Claim Disc</a>` +
+            "</div>" +
+            "</div>" +
+            // '<div class="course-bottom">' +
+            "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +
@@ -384,6 +388,83 @@
         border-bottom-right-radius: 36.5px; /* Half the width, creating a semi-circle */
         z-index: -1;
       }
+
+      /* New changes */
+      .box-search{
+        display: flow;
+      }
+      .header-box{
+        /* width: 100%; */
+        display: flex;
+        /* justify-content: center; */
+        /* align-self: center; */
+        align-items: center;
+        margin-right: 30px;
+        max-width: 190px;
+        position: absolute;
+        transform: translate(-20px, -20px);  
+      }
+      .header-img {
+        position: relative;
+        width: 55px; 
+        height: 45px; 
+        border-radius: 50%;
+        background-color:  rgb(193, 2, 2);     
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header-img img{
+        width: 28px;
+            height: auto;  
+            position: relative;
+      }
+      .header-box span {
+        background-color: rgb(193, 2, 2);
+        width: 120px;
+        height: 20px;
+        color: rgb(231, 230, 230);
+        display: flex;
+        justify-content: start; 
+        align-items: center;
+        font-size: 11px;
+        padding-left: 8px;
+        margin-left: -5px;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        letter-spacing: 0.5px;
+        font-family: 'Lato', sans-serif;
+      }
+
+      @media screen and (max-width: 500px) {
+        .header-box span {
+          width: 90px;
+        }
+        
+        .header-img {
+        position: relative;
+        width: 40px; 
+        height: 38px; 
+        border-radius: 50%;
+        background-color:  rgb(193, 2, 2);     
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header-img img{
+        width: 23px;
+            height: auto;  
+            position: relative;        
+      }
+
+      .course-list .course-button .course-btn {
+        margin-left: 29px;
+      }
+    
+    }
+
+
     </style>
   </head>
 

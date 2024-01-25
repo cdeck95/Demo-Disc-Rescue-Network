@@ -361,6 +361,12 @@ input:checked + .slider:before {
   white-space: nowrap;
 }
 
+@media screen and (max-width: 500px) {
+  .course-button .course-btn {
+    font-size: 10px;
+  }
+} 
+
 .course-btn:hover {
   background: var(--primary-blue);
   color: var(--primary-white);

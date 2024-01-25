@@ -5,25 +5,27 @@ a {
 .course-box .course-box-detail {
   display: flex;
   align-items: center;
-  max-height: 65px;
+  height: 270px;
+  flex-direction: column;
 }
 
 .course-box-detail .course-image img {
-  width: 75px;
-  height: 75px;
+  width: 160px;
+  height: 155px;
   object-fit: cover;
 }
 
-.course-box-detail .course-image {
-  /* width: 75px; */
+/* .course-box-detail .course-image {
+  width: 75px;
   border: 2px solid var(--primary-white);
-}
+} */
 
 .course-box-detail .course-list {
   background: var(--primary-white);
   border: 1px solid var(--primary-white);
   border-left: 0;
-  width: calc(100% - 74px);
+  width: 160px;
+  height: 95px;
 }
 
 .course-box-detail .course-list ul {
@@ -37,28 +39,52 @@ a {
 .course-box-detail .course-list ul li {
   padding: 2px;
   border-bottom: 1px solid var(--primary-grey);
-  border-right: 1px solid var(--primary-grey);
+  /* border-right: 1px solid var(--primary-grey); */
   display: flex;
   align-items: center;
-  font-size: 9px;
+  font-size: 11px;
   font-family: "Lato", sans-serif;
-  max-height: 22px;
-  height: 20px;
+  /* max-height: 22px; */
+  height: 28px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
 }
 
+.course-box-detail .course-list ul li:last-child {
+  border-bottom: 0;
+}
+
 .course-box-detail .course-list ul li img {
   margin-right: 6px;
   padding-left: 4px;
-  width: 10px;
+  width: 14px;
 }
 
 .course-bottom {
   display: flex;
   justify-content: space-between;
   padding: 5px 0 0;
+  margin-left: 40px
+}
+
+@media screen and (max-width: 550px) {
+  .course-box .course-box-detail {
+    height: auto; 
+  }
+
+  .course-box-detail .course-image img {
+    width: 100%; 
+    height: auto; 
+  }
+
+  .course-box-detail .course-list {
+    width: 100%; 
+  }
+  .course-bottom {
+    margin-left: 0; 
+    justify-content: center; 
+  }
 }
 
 .course-bottom .course-dis {
@@ -334,7 +360,8 @@ img.weblogo {
   margin: auto;
   padding: 20px;
   border: 1px solid var(--primary-blue);
-  width: 90%;
+  width: 80%;
+  height: 350px;
   border-radius: 0px;
   border: 3px solid var(--secondary-blue);
   display: flex;

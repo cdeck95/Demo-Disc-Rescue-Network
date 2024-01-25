@@ -455,27 +455,30 @@ footer {
 }
 
 .course-box .course-box-detail {
-  display: flex;
+  display: flow;
   align-items: center;
-  max-height: 65px;
+  height: 100px;
+  width: 200px;
 }
 
 .course-box-detail .course-image img {
-  width: 75px;
-  height: 75px;
+  width: 170px;
+  height: 140px;
   object-fit: cover;
 }
 
 .course-box-detail .course-image {
-  /* width: 75px; */
-  border: 2px solid var(--primary-white);
+  width: 170px;
+  height: 140px;
+  /* border: 2px solid var(--primary-white); */
 }
 
 .course-box-detail .course-list {
   background: var(--primary-white);
-  border: 1px solid var(--primary-white);
+  /* border: 1px solid var(--primary-white); */
   border-left: 0;
-  width: calc(100% - 74px);
+  width: calc(100% - 30px);
+  height: 100px;
 }
 
 .course-box-detail .course-list ul {
@@ -483,42 +486,52 @@ footer {
   margin: 0;
   list-style: none;
   text-align: left;
-  max-height: 66px;
+  max-height: 100px;
 }
 
 .course-box-detail .course-list ul li {
   padding: 2px;
   border-bottom: 1px solid var(--primary-grey);
-  border-right: 1px solid var(--primary-grey);
+  /* border-right: 1px solid var(--primary-grey); */
   display: flex;
   align-items: center;
-  font-size: 9px;
+  font-size: 11px;
   font-family: "Lato", sans-serif;
-  max-height: 22px;
-  height: 20px;
+  /* max-height: 22px; */
+  height: 30px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
 }
 
+.course-list ul li:last-child {
+  border-bottom: 0;
+}
+
 .course-box-detail .course-list ul li img {
   margin-right: 6px;
   padding-left: 4px;
-  width: 10px;
+  width: 13px;
 }
 
-.course-bottom {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0 0;
+.course-list .course-button .course-btn {
+  width: auto;
+  justify-content: center;
+  position: absolute;
+  align-items: center;
+  margin-left: 48px;
+  margin-top: 0px;
 }
+
 
 .course-bottom .course-dis {
   color: var(--primary-white);
-  width: 100%;
+  width: 70px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: left;
+  position: relative;
 }
 
 .course-bottom .course-dis span {
@@ -539,11 +552,14 @@ footer {
 
 .course-section .course-box {
   margin-bottom: 16px;
+  height: 240px;
+  position: relative;
+  margin-left: 10px;
 }
 
 .course-section {
   /* padding: 0 10px; */
-  padding: 10px;
+  padding: 20px;
   padding-bottom: 40px;
   margin-bottom: 10px;
   height: calc(100dvh - 385px);
@@ -766,8 +782,8 @@ footer {
   }
 
   .course-box-detail .course-image img {
-    width: 66px;
-    height: 66px;
+    width: 130px;
+    height: 140px;
   }
 
   .course-box-detail .course-image {
