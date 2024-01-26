@@ -523,8 +523,10 @@
             margin-right: 10px;
             padding: 5px 5px;
         }
+
         footer::before {
             background-color: var(--primary-grey); 
+        
         }        
 
         /* New styles */
@@ -604,6 +606,210 @@
             letter-spacing: 0.5px;
             font-family: 'Lato', sans-serif;
         }
+
+    @media screen and (max-width: 800px) {
+        .card-container {
+    width: 220px; 
+    padding-left: 7px;
+}
+    }    
+
+    @media screen and (min-height: 870px) {
+        .discs {
+            padding-top: 30px;
+        }
+    }
+
+        @media screen and (max-height: 800px) {
+    .logo-container {
+        width: 185px;
+    }
+
+    .btn-container {
+        min-height: 162px;
+        margin-bottom: -10px;
+    }
+
+    .box {
+        height: 58px;
+    }
+
+    .btn-description {
+        margin-bottom: 10px;
+    }
+
+    .btn-container .btn{
+        height: 50px;
+        padding: 5px;
+        margin: 1px;
+        letter-spacing: 1.25px;
+        font-size: 1.5rem;
+    }
+
+    .disc-info {
+        height: auto;
+    }
+
+    .discs {
+        padding: 0;
+    }
+
+    .text-block-2 {
+        width: 115px;
+    }
+
+    .circle-overlay { 
+        width: 50px;
+    }
+
+    .image {
+        width: 160px;
+        height: 140px;
+    }
+
+    .grid-disc {
+        width: 160px;
+    }
+
+    .claim-disc {
+        margin-left: 52px;
+    }
+}
+
+    @media screen and (max-height: 620px){ 
+        .logo-container {
+        width: 150px;
+    }
+
+    .btn-container {
+        min-height: 158px;
+        margin-bottom: -10px;
+    }
+
+    .box {
+        height: 40px;
+    }
+
+    .box-2 {
+        height: 40px;
+    }
+
+    .btn-description {
+        padding-bottom: -10px;
+    }
+
+    .btn-container .btn{
+        height: 40px;
+        padding: 5px;
+        margin: 1px;
+        letter-spacing: 1.25px;
+        font-size: 1.2rem;
+    }
+
+    .disc-info {
+        height: auto;
+    }
+
+    .discs {
+        padding: 0;
+    }
+
+    .text-block-2 {
+        width: 115px;
+    }
+
+    .circle-overlay { 
+        width: 50px;
+    }
+
+    .image {
+        width: 160px;
+        height: 140px;
+    }
+
+    .grid-disc {
+        width: 160px;
+    }
+
+    .claim-disc {
+        margin-left: 52px;
+    }
+    }
+
+    @media screen and (max-width: 380px) {
+        .logo-container {
+        width: 150px;
+    }
+
+    .btn-container {
+        min-height: 150px;
+        margin-bottom: -10px;
+    }
+
+    .card-container {
+        width: 200px;
+    }
+
+    .box {
+        height: 25px;
+    }
+
+    .box-2 {
+        height: 40px;
+    }
+
+    .btn-description {
+        padding-bottom: -10px;
+    }
+
+    .btn-container .btn{
+        height: 35px;
+        padding: 5px;
+        margin: 1px;
+        letter-spacing: 1.25px;
+        font-size: 1rem;
+    }
+
+    .disc-info {
+        height: auto;
+    }
+
+    .discs {
+        padding: 0;
+    }
+
+    .text-block-2 {
+        width: 115px;
+    }
+
+    .circle-overlay { 
+        width: 50px;
+    }
+
+    .image {
+        width: 160px;
+        height: 140px;
+    }
+
+    .grid-disc {
+        width: 160px;
+    }
+
+    .claim-disc {
+        margin-left: 48px;
+    }
+    .sub-header{
+        font-size: 1rem;
+    }
+
+    .img-box {
+        width: 12px;
+    }
+
+    .img-box-2 {
+        width: 14px;
+    }
+    }
     </style>
     <script>
         function toggleFabMenu() {
@@ -763,10 +969,10 @@
             <img src="./assets/DRN_App_Main.png" alt="Disc Rescue Network Logo" class="logo" onclick="refresh()">
         </div>
 
-        <div class="btn-container mb-2">
+        <div class="btn-container">
             <div class="box">
                 <button class="btn" onclick="goToRescueFlow()">
-                    <img src="./assets/search.png" alt="icon" width="18" style="margin-right: 5px; transform: rotate(30deg)"> 
+                    <img class="img-box" src="./assets/search.png" alt="icon" width="18" style="margin-right: 5px; transform: rotate(30deg)"> 
                         <span>FIND MY DISC</span>
                     </img>
                 </button>               
@@ -775,7 +981,7 @@
             </div>
             <div class="box-2">
                 <button class="btn" onclick="searchAllCourses()">
-                    <img src="./assets/rose-icon.png" alt="icon" style="margin-right: 5px;"> 
+                    <img class="img-box-2" src="./assets/rose-icon.png" alt="icon" style="margin-right: 5px;"> 
                         <span>SEARCH COURSES</span>
                     </img>
                 </button>

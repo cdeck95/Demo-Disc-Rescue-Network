@@ -68,7 +68,7 @@ a {
   margin-left: 40px
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 500px) {
   .course-box .course-box-detail {
     height: auto; 
   }
