@@ -770,7 +770,7 @@ footer {
   }
 
   .course-section .row {
-    margin: 0 -3px;
+    /* margin: 0 -3px; */
   }
 
   .course-section .row .col-6 {
@@ -795,5 +795,28 @@ footer {
   .course-button .course-btn {
     font-size: 12px;
     padding: 4px 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .course-box-detail .course-image img {
+    width: 101px;
+    height: 110px;
+  }
+  .course-box-detail .course-list {
+    width: calc(100% - 100px);
+    height: 100px;
+  }
+  .course-list .course-button .course-btn {
+    margin-left: 25px;
+    width: 50px;
+    font-size: 0.6rem;
+  }
+  .course-section .course-box {
+    margin-left: 2px;
+    height: 220px;
+  }
+  .course-box-detail .course-image {
+    height: 110px;
   }
 }

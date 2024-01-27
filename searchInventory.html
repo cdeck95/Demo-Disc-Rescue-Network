@@ -291,8 +291,8 @@
 
         $.each(discs_list, function (index, value) {
           disc_item +=
-            '<div class="col-6 disc-item pb-4' +
-            (index > 3 ? " hidden" : "") +
+            '<div class="col-4 disc-item pb-4' +
+            (index > 5 ? " hidden" : "") +
             '">' +
             '<div class="course-box">' +     
             '<div class="header-box">' +
@@ -310,7 +310,7 @@
             "</div>" +
             '<div class="course-list">' +
             "<ul>" +
-            '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/tag.png" alt="icon"><span>' +
+            '<li><img src="./assets/tag.png" alt="icon"><span>' +
             discs_list[index]["Color"] +
             " " +
             discs_list[index]["Disc"] +
@@ -406,10 +406,10 @@
       }
       .header-img {
         position: relative;
-        width: 55px; 
+        width: 50px; 
         height: 45px; 
         border-radius: 50%;
-        background-color:  rgb(193, 2, 2);     
+        background-color: rgb(196, 11, 51);     
         display: flex;
         justify-content: center;
         align-items: center;
@@ -420,7 +420,7 @@
             position: relative;
       }
       .header-box span {
-        background-color: rgb(193, 2, 2);
+        background-color: rgb(196, 11, 51);
         width: 120px;
         height: 20px;
         color: rgb(231, 230, 230);
@@ -438,28 +438,34 @@
       }
 
       @media screen and (max-width: 500px) {
+        .header-box {
+          margin-left: 8px;
+        }
+
         .header-box span {
-          width: 90px;
+          width: 70px;
+          padding-left: 4px;
+          font-size: 9.5px;
         }
         
         .header-img {
         position: relative;
-        width: 40px; 
-        height: 38px; 
+        width: 30px; 
+        height: 30px; 
         border-radius: 50%;
-        background-color:  rgb(193, 2, 2);     
+        background-color:  rgb(196, 11, 51);     
         display: flex;
         justify-content: center;
         align-items: center;
       }
       .header-img img{
-        width: 23px;
+        width: 18px;
             height: auto;  
             position: relative;        
       }
 
       .course-list .course-button .course-btn {
-        margin-left: 29px;
+        margin-left: 19px;
       }
     
     }
