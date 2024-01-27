@@ -22,14 +22,15 @@ a {
 
 .course-box-detail .course-list {
   background: var(--primary-white);
-  border: 1px solid var(--primary-white);
+  /* border: 1px solid var(--primary-white); */
   border-left: 0;
   width: 160px;
   height: 95px;
 }
 
 .course-box-detail .course-list ul {
-  padding: 0;
+  padding-left: 4px;
+  padding-right: 4px;
   margin: 0;
   list-style: none;
   text-align: left;
@@ -37,15 +38,17 @@ a {
 }
 
 .course-box-detail .course-list ul li {
-  padding: 2px;
+  padding: 8px;
   border-bottom: 1px solid var(--primary-grey);
   /* border-right: 1px solid var(--primary-grey); */
   display: flex;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   font-family: "Lato", sans-serif;
+  color: rgb(105, 107, 110);
+  font-weight: 500;
   /* max-height: 22px; */
-  height: 28px;
+  height: 30px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1;
@@ -369,6 +372,10 @@ img.weblogo {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.verify {
+  height: 550px;
 }
 
 /* The Close Button */
