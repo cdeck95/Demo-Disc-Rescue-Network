@@ -1,3 +1,91 @@
+/* styles for circe-overlay and course */
+
+.div-block-2 {
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  /* align-self: center; */
+  align-items: center;
+  margin-right: 30px;
+  max-width: 190px;
+  position: absolute;
+  transform: translate( 5px, -20px);        
+}
+
+.circle-overlay {
+  position: relative;
+  width: 50px; 
+  height: 45px; 
+  border-radius: 50%;
+  background-color:  rgb(196, 11, 51);     
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-overlay img {
+  width: 28px;
+  height: auto;  
+  position: relative;
+}
+
+.text-block-2 {
+  background-color: rgb(196, 11, 51);
+  width: 112px;
+  height: 20px;
+  color: rgb(231, 230, 230);
+  display: flex;
+  justify-content: start; 
+  align-items: center;
+  font-size: 11px;
+  padding-left: 8px;
+  margin-left: -5px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  font-family: 'Lato', sans-serif;
+}
+
+@media screen and (max-width:500px) {
+  .div-block-2 {
+    margin-left: 8px;
+  }
+  
+  .circle-overlay {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(196, 11, 51);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circle-overlay img {
+    width: 18px;
+    height: auto;
+    position: relative;
+  } 
+  .text-block-2 {
+    width: 70px;
+    padding-left: 4px;
+    font-size: 9.5px;
+    height: 17px;
+  }
+
+  .course-box-detail .course-list ul li span{
+    font-size: 10px;
+  }
+
+
+  .claimDiscSuccess {
+    margin-left: 83px;
+  }
+}
+
+
 a {
   text-decoration: none;
 }
@@ -7,6 +95,7 @@ a {
   align-items: center;
   height: 270px;
   flex-direction: column;
+  position: relative;
 }
 
 .course-box-detail .course-image img {
@@ -25,7 +114,7 @@ a {
   /* border: 1px solid var(--primary-white); */
   border-left: 0;
   width: 160px;
-  height: 95px;
+  height: 104px;
 }
 
 .course-box-detail .course-list ul {
@@ -34,17 +123,17 @@ a {
   margin: 0;
   list-style: none;
   text-align: left;
-  max-height: 66px;
+  max-height: 74px;
 }
 
 .course-box-detail .course-list ul li {
-  padding: 8px;
+  padding: 5px;
   border-bottom: 1px solid var(--primary-grey);
   /* border-right: 1px solid var(--primary-grey); */
   display: flex;
   align-items: center;
   font-size: 12px;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   color: rgb(105, 107, 110);
   font-weight: 500;
   /* max-height: 22px; */
@@ -61,7 +150,7 @@ a {
 .course-box-detail .course-list ul li img {
   margin-right: 6px;
   padding-left: 4px;
-  width: 14px;
+  width: 16px;
 }
 
 .course-bottom {
@@ -73,17 +162,18 @@ a {
 
 @media screen and (max-width: 500px) {
   .course-box .course-box-detail {
-    height: auto; 
+    height: 195px; 
+    padding-left: 5px;
   }
 
   .course-box-detail .course-image img {
-    width: 100%; 
-    height: auto; 
+    width: 101px; 
+    height: 110px; 
   }
 
   .course-box-detail .course-list {
-    width: 170px;
-    height: 100px; 
+    width: 100px;
+    height: 100px;
   }
   .course-bottom {
     margin-left: 0; 
@@ -225,7 +315,7 @@ a {
 }
 
 img.weblogo {
-  width: 12%;
+  width: 10%;
   padding: 20px 0 0;
 }
 
@@ -503,8 +593,24 @@ button.rememberbtn {
   width: 100%;
   max-width: 600px;
   color: var(--primary-white);
-  font-size: 1.35rem;
+  font-size: 1.2rem;
 }
+
+@media screen and (max-width: 500px){
+  .verify-info {
+    flex-direction: row;
+    text-align: start;
+    margin-top: 30px;
+    display: flex;
+    width: 310px;
+  }
+
+  .claimDiscSuccess {
+    margin-left: 0;
+  }
+}
+
+
 
 /* button:hover {
   cursor: pointer;

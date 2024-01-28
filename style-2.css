@@ -490,14 +490,15 @@ footer {
 }
 
 .course-box-detail .course-list ul li {
-  padding: 2px;
+  padding: 5px;
   border-bottom: 1px solid var(--primary-grey);
   /* border-right: 1px solid var(--primary-grey); */
   display: flex;
   align-items: center;
-  font-size: 11px;
-  font-family: "Lato", sans-serif;
-  /* max-height: 22px; */
+  font-size: 12px;
+  font-family: 'Lato', sans-serif;
+  color: rgb(105, 107, 110);
+  font-weight: 600;
   height: 30px;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -509,9 +510,9 @@ footer {
 }
 
 .course-box-detail .course-list ul li img {
-  margin-right: 6px;
+  margin-right: 10px;
   padding-left: 4px;
-  width: 13px;
+  width: 18px;
 }
 
 .course-list .course-button .course-btn {
@@ -769,9 +770,9 @@ footer {
     font-size: 18px;
   }
 
-  .course-section .row {
-    /* margin: 0 -3px; */
-  }
+  /* .course-section .row {
+    margin: 0 -3px;
+  } */
 
   .course-section .row .col-6 {
     padding: 0 3px;

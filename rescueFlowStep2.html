@@ -139,7 +139,13 @@
           const discInfoHTML = `
                     <div class="disc-item">
                         <div class="course-box">
-                            <div class="course-box-detail">
+                            <div class="course-box-detail mt-2">
+                              <div class="div-block-2">
+                                 <div class="circle-overlay">    
+                                    <img src="./assets/pin2.png" style="color: var(--primary-white);" alt="icon">
+                                 </div>
+                                <div class="text-block-2">${matchingDisc.Course}</div>
+                              </div>
                                 <div class="course-image">
                                     <img src="./assets/course-image.png" alt="image">
                                 </div>
@@ -147,15 +153,15 @@
                                     <ul>
                                         <li>
                                             <img src="./assets/tag.png" alt="icon">
-                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                            <span>${matchingDisc.Color} ${matchingDisc.Disc}</span>
                                         </li>
                                         <li>
                                             <img src="./assets/course-icon.png" alt="icon">
-                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Brand}</span>
+                                            <span>${matchingDisc.Brand}</span>
                                         </li>
                                         <li>
                                             <img src="./assets/user.png" alt="icon">
-                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Course}</span>
+                                            <span>${matchingDisc.Name}</span>
                                         </li>
                                     </ul>
                                 </div>
