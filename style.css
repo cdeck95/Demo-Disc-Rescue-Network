@@ -47,7 +47,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
   .div-block-2 {
     margin-left: 8px;
   }
@@ -88,6 +88,7 @@
   .course-box-detail .course-list ul li span{
     font-size: 10px;
   }
+
 
 }
 
@@ -469,10 +470,17 @@ img.weblogo {
   text-align: center;
   justify-content: center;
   align-items: center;
+  max-height: 485px;
+}
+
+@media screen and (max-width: 700px) {
+  .verify {
+    height: 300px;
+  }
 }
 
 .verify {
-  height: 550px;
+  height: 500px;
 }
 
 /* The Close Button */
@@ -629,6 +637,14 @@ button.rememberbtn {
 
   .textDiscSucess {
     width: 80px;
+  }
+
+  .course-box .course-box-detail .boxStep2 {
+    padding-left: 50px;
+  }
+
+  .step2 .verify-info {
+    flex-direction: column;
   }
 }
 
