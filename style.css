@@ -3,8 +3,8 @@
 .div-block-2 {
   width: 100%;
   display: flex;
-  /* justify-content: center; */
-  /* align-self: center; */
+  /* justify-content: center;
+  align-self: center; */
   align-items: center;
   margin-right: 30px;
   max-width: 190px;
@@ -51,6 +51,16 @@
   .div-block-2 {
     margin-left: 8px;
   }
+
+  .claimDisc {
+    margin-left: 83px;
+    transform: translateY(-13px);
+  }
+
+  .flowStep2 {
+    margin-left: 83px;
+    transform: translateY(-13px);
+  }
   
   .circle-overlay {
     position: relative;
@@ -79,10 +89,6 @@
     font-size: 10px;
   }
 
-
-  .claimDiscSuccess {
-    margin-left: 83px;
-  }
 }
 
 
@@ -605,19 +611,35 @@ button.rememberbtn {
     width: 310px;
   }
 
+  .claimDiscInfo {
+    flex-direction: row;
+    text-align: start;
+    margin-top: 30px;
+    display: flex;
+    width: 310px;
+  }
+
+  .box-content {
+    width: 50%;
+  }
+
   .claimDiscSuccess {
-    margin-left: 0;
+    margin-left: 59px;
+  }
+
+  .textDiscSucess {
+    width: 80px;
   }
 }
 
 
 
-/* button:hover {
+button:hover {
   cursor: pointer;
   border: 2px solid var(--primary-white);
   background-color: var(--primary-red);
   color: var(--primary-white);
-} */
+}
 
 .rememberbtn:hover {
   cursor: pointer;
@@ -728,7 +750,7 @@ span.img {
 
 @media only screen and (max-width: 640px) {
   img.weblogo {
-    width: 30%;
+    width: 20%;
     max-width: 100px;
   }
 
