@@ -233,6 +233,13 @@ a {
   overflow-y: auto;
 }
 
+.course-section-popup-step3 {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
 .course-section::-webkit-scrollbar {
   width: 5px;
 }
@@ -645,6 +652,15 @@ button.rememberbtn {
 
   .step2 .verify-info {
     flex-direction: column;
+  }
+
+  .flowStep3 {
+    padding-left: 21px;
+    transform: translateY(-15px);
+  }
+
+  .step3 .course-box .course-box-detail {
+    margin-top: 20px;
   }
 }
 

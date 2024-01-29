@@ -158,7 +158,7 @@
         }
 
         // Check if a disc is found (you can modify this condition)
-        var disc_found = false; // Change this condition as needed
+        var disc_found = true; // Change this condition as needed
 
         if (firstInitialInputValue == "J" && lastNameInputValue == "Doe") {
           disc_found = true;
@@ -192,7 +192,13 @@
                 (matchingDisc) => `
             <div class="col-6 disc-item" style="padding-right: 3.5px; padding-left: 3.5px;">
                 <div class="course-box">
-                    <div class="course-box-detail" style="margin-right: 2.5px; margin-left: 2.5px;">
+                    <div class="course-box-detail step3" style="margin-right: 2.5px; margin-left: 2.5px;">
+                      <div class="div-block-2 flowStep3">
+                                 <div class="circle-overlay">    
+                                    <img src="./assets/pin2.png" style="color: var(--primary-white);" alt="icon">
+                                 </div>
+                                <div class="text-block-2">${matchingDisc.Course}</div>
+                              </div>
                         <div class="course-image">
                             <img src="./assets/course-image.png" alt="image">
                         </div>
@@ -208,7 +214,7 @@
                                 </li>
                                 <li>
                                     <img src="./assets/user.png" alt="icon">
-                                    <span style="font-weight: 300 !important; opacity: .7 !important; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${matchingDisc.Course}</span>
+                                    <span style="font-weight: 300 !important; opacity: .7 !important; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">${matchingDisc.Name}</span>
                                 </li>
                             </ul>
                             <div class="course-bottom" style="margin-top: 10px">
@@ -518,13 +524,13 @@
       <div
         class="popup-content"
         id="popup-verify-content"
-        style="margin: unset !important; padding: 10px 5px !important"
+        style="margin: unset !important; padding: 10px 5px !important;"
       >
         <!-- <span class="close" id="close" onclick="closePopupVerify()"
           >&times;</span
         > -->
         <div
-          class="course-section-popup"
+          class="course-section-popup-step3"
           style="margin: 0px !important; width: 100%"
         >
           <div
