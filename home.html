@@ -141,7 +141,7 @@
         }
 
         .logo-container {
-            width: 65%;
+            width: 250px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -163,7 +163,7 @@
 
         .btn-container {
             width: 80%;
-            margin-top: 10px;
+            margin-top: 2px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -172,10 +172,10 @@
         }
 
         .btn-container .btn {
-            padding: 10px;
+            padding: 8px;
             margin: 3px;
             letter-spacing: 1.25px;
-            font-size: 2.25rem;
+            font-size: 2rem;
         }
 
         .btn-description {
@@ -287,21 +287,26 @@
             width: 100%;
             height: 100%;
             margin: 0px;
-            margin-top: 2%;
+            margin-top: 0;
             padding: 0px;
         }
 
+        .content-sub-header{
+            width: 80%;
+        }
+
         .sub-header {
-            font-size: 1em;
+            font-size: 1.3em;
             font-weight: 500;
             color: var(--primary-blue);
             padding: 0px;
             margin: 5px 0px;
+            align-items: start;
         }
 
         .grid {
             width: 100%;
-            max-width: 180px;
+            max-width: 160px;
             max-height: 125px;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -337,12 +342,13 @@
 
         .card-container {
             flex-shrink: 0;
-            width: 400px;
+            width: 282px;
             max-width: 400px;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
             display: flex;
+            position: relative;
         }
 
         .course-list {
@@ -350,43 +356,54 @@
             border: 1px solid var(--primary-white);
             border-left: 0;
             width: calc(100%);
+            height: 118px;
         }
 
         .disc-info .course-list ul {
-            padding: 0;
-            margin: 0;
+            padding-left: 4px;
+            margin-top: 0;
+            margin: 0px;
             list-style: none;
             text-align: left;
             max-height: 100px;
+            padding-left: 10px; 
+            padding-right: 10px;
         }
 
         .disc-info .course-list ul li {
-            padding: 2px;
+            padding: 0;
             border-bottom: 1px solid var(--primary-grey);
-            border-right: 1px solid var(--primary-grey);
+            /* border-right: 1px solid var(--primary-grey); */
             display: flex;
             align-items: center;
             font-size: 12px;
             font-family: 'Lato', sans-serif;
+            color: rgb(105, 107, 110);
+            font-weight: 600;
             max-height: 33px;
             height: 33px;
             word-wrap: break-word;
             overflow-wrap: break-word;
             line-height: 1;
+            
+        }
+
+        .disc-info .course-list ul li:last-child {
+            border-bottom: none;
         }
 
         .disc-info .course-list ul li img {
             margin-right: 10px;
-            padding-left: 4px;
-            width: 14px;
+            padding-left: 0;
+            width: 15px;
         }
 
         .image {
-            width: 115px;
-            height: 115px;
-            max-width: 115px;
+            width: 100%;
+            height: 140px;
+            max-width: 160px;
             object-fit: fill;
-            border: 5px solid var(--primary-blue);
+            /* border: 5px solid var(--primary-blue); */
             border-radius: 0;
             margin-top: auto;
             margin-bottom: auto;
@@ -415,9 +432,12 @@
         }
 
         .disc-info {
-            width: 100%;
+            width: 85%;
             max-width: 100%;
             display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 20px 0 0 20px;
         }
 
         .grid-of-cards {
@@ -460,25 +480,81 @@
             margin: auto;
         }
 
-        .text-block-2 {
-            aspect-ratio: auto;
+        .circle-overlay {
+            position: relative;
+            width: 40px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--primary-red);
             display: flex;
-            text-align: left;
             justify-content: center;
-            font-size: .9rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            line-height: 1;
+            align-items: center;
+        }
+
+        .circle-overlay img {
+            width: 25px;
+            height: auto;
+            position: relative;
+        }
+
+        .text-block-2 {
+            background-color: var(--primary-red);
+            width: 103px;
+            height: 20px;
+            color: rgb(231, 230, 230);
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            font-size: 11px;
+            padding-left: 8px;
+            margin-left: -5px;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            font-family: 'Lato', sans-serif;
         }
 
         .div-block-2 {
             width: 100%;
             display: flex;
-            justify-content: center;
-            align-self: center;
             align-items: center;
             margin-right: 30px;
-            max-width: 115px;
+            max-width: 155px;
+            position: absolute;
+            transform: translate(-20px, -20px);
+        }
+
+        .btn-2 {
+            width: 80px;
+            text-align: center;
+            background-color: var(--primary-blue);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 0px;
+            font-size: 0.95em;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: translateY(8px);
+            padding-top: 2px;
+        }
+
+        .btn-2:hover {
+            width: 80px;
+            text-align: center;
+            background-color: var(--primary-red);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 0px;
+            font-size: 0.95em;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: translateY(8px);
+            padding-top: 2px;
         }
 
         .button-2 {
@@ -515,9 +591,92 @@
             margin-right: 10px;
             padding: 5px 5px;
         }
+
         footer::before {
             background-color: var(--primary-grey); 
-        }        
+        }       
+        
+        @media screen and (max-width: 500px){
+            .card-container {
+                width: 190px;
+            }
+            .grid-of-cards {
+                overflow: visible;
+            }
+        }
+
+        @media screen and (max-width: 450px) and (max-height: 800px) {
+            .logo {
+                width: 50%;
+            }
+            .btn-container .btn {
+                padding: 2px;
+                font-size: 1.7rem;
+            }
+            .btn-container {
+                min-height: 155px;
+                margin-top: 4px;
+            }
+
+            .grid-of-cards {
+                margin-top: -5px;
+            }
+            .sub-header {
+                margin: 0;
+            }
+            .box {
+                height: 30%;
+            }
+            .box-2 {
+                height: 55%;
+            } 
+            .content-sub-header {
+                margin-top: -20px;
+            }
+
+            /* Cards */
+
+            .image {
+                height: 120px;
+                width: 140px;
+            }
+            .grid {
+                width: 140px;
+            }
+            .course-list {
+                height: 108px;
+            }
+            .disc-info .course-list ul {
+                height: 88px;
+            }
+            .discs {
+                margin-top: -5px;
+            }
+        }
+
+        /* Screens smaller than 850px in height */
+
+        @media screen and (min-width: 1200px) and (max-height: 870px) {
+            .logo {
+                width: 150px;
+            }
+            .btn-container {
+                margin-top: 7px;
+            }
+            .btn-container .btn {
+                padding: 5px;
+                font-size: 1.8rem;
+            }
+            .box {
+                height: 5%;
+            }
+            .box-2 {
+                height: 45%;
+            }
+            .content-sub-header {
+                margin-top: -35px;
+            }
+        }
     </style>
     <script>
         function toggleFabMenu() {
@@ -570,26 +729,25 @@
                 const randomImageUrl = imageURLs[randomIndex];
 
                 return `
-                    <div class="card-container">
+                <div class="card-container">
                         <div class="disc-info">
-                            <img src="${randomImageUrl}" loading="lazy" alt="${disc.Disc}" class="image">
-                            <div class="w-layout-grid grid">
-                                <div class="course-list">
-                                    <ul>
-                                        <li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>${disc.Color} ${disc.Disc}</span></li>
-                                        <li><img src="./assets/course-icon.png" alt="icon"><span>${disc.Brand}</span></li>
-                                        <li><img src="./assets/course-icon2.png" alt="icon"><span>${disc.Name}</span></li>
-                                    </ul>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="sub-info">
                             <div class="div-block-2">
-                                <img src="./assets/basket_icon.png" style="color: var(--primary-blue); margin-right: 5px; width: 14px" alt="icon">
+                                <div class="circle-overlay">
+                                   <img src="./assets/pin.png">
+                                </div>
                                 <div class="text-block-2">${disc.Course}</div>
                             </div>
-                            <button class="btn" onClick="window.location.href = 'claimDisc.html?id=${disc.ID}'"}>Claim Disc</button>
+                            <img src="${randomImageUrl}" loading="lazy" alt="${disc.Disc}" class="image">
+                            <div class="w-layout-grid grid grid-disc">
+                                <div class="course-list">
+                                    <ul>
+                                        <li><img src="./assets/tag.png" alt="icon"><span>${disc.Color} ${disc.Disc}</span></li>
+                                        <li><img src="./assets/user.png" alt="icon"><span>${disc.Name}</span></li>
+                                        <li><img src="./assets/course-icon.png" alt="icon"><span>${disc.Brand}</span></li>                                        
+                                    </ul>
+                                    <button class="btn-2" onClick="window.location.href = 'claimDisc.html?id=${disc.ID}'"}>Claim Disc</button>
+                                </div>                             
+                            </div>
                         </div>
                     </div>
                 `;
@@ -695,9 +853,10 @@
                 <div class="btn-description">SEARCH BY COURSE FOR TURNED IN DISCS</div>
             </div>
         </div>
-
-        <div class="discs mt-2">
+        <div class="content-sub-header">
             <h2 class="sub-header">RECENTLY TURNED IN DISCS</h2>
+           </div>
+        <div class="discs mt-2">
             <div class="w-layout-grid grid-of-cards">
             </div>
         </div>
