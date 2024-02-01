@@ -291,39 +291,39 @@
 
         $.each(discs_list, function (index, value) {
           disc_item +=
-            '<div class="col-6 disc-item' +
+            '<div class="col-4 disc-item' +
             (index > 5 ? " hidden" : "") +
             '">' +
-            '<div class="course-box">' +
+            '<div class="course-box" style="margin-top: -30px; margin-bottom: 70px">' +
+            '<div class="div-block-2">' +
+            '<div class="circle-overlay">' +  
+            '<img src="./assets/pin.png" alt="icon">' +
+            '</div>' +
+            '<div class="text-block-2">' +
+            discs_list[index]["Course"] +
+            "</div>" +
+            "</div>" +    
             '<div class="course-box-detail">' +
             '<div class="course-image">' +
             '<img src="./assets/course-image.png" alt="image">' +
             "</div>" +
             '<div class="course-list">' +
             "<ul>" +
-            '<li style="border-top: 1px solid var(--primary-grey);"><img src="./assets/course-icon1.png" alt="icon"><span>' +
+            '<li><img src="./assets/tag.png" alt="icon"><span>' +
             discs_list[index]["Color"] +
             " " +
             discs_list[index]["Disc"] +
             "</span></li>" +
-            '<li><img src="./assets/course-icon.png" alt="icon"><span>' +
-            discs_list[index]["Brand"] +
-            "</span></li>" +
-            '<li><img src="./assets/course-icon2.png" alt="icon"><span>' +
+            '<li><img src="./assets/user.png" alt="icon"><span>' +
             discs_list[index]["Name"] +
             "</span></li>" +
+            '<li><img src="./assets/course-icon.png" alt="icon"><span>' +
+            discs_list[index]["Brand"] +
+            "</span></li>" +            
             "</ul>" +
-            "</div>" +
-            "</div>" +
-            '<div class="course-bottom">' +
-            '<div class="course-dis">' +
-            '<img src="./assets/rose-icon.png" alt="icon">' +
-            "<span>" +
-            discs_list[index]["Course"] +
-            "</span>" +
-            "</div>" +
             '<div class="course-button">' +
-            `<a href="#" class="course-btn" onclick="claimDisc('${discs_list[index]["ID"]}')">Claim Disc</a>` +
+            `<a href="#" class="btn-2" onclick="claimDisc('${discs_list[index]["ID"]}')">Claim Disc</a>` +
+            "</div>" +
             "</div>" +
             "</div>" +
             "</div>" +

@@ -282,24 +282,30 @@
 
           const discInfoHTML = `
                     <div class="disc-item">
-                        <div class="course-box">
-                            <div class="course-box-detail">
-                                <div class="course-image" style="border: 2px solid var(--primary-red)">
+                      <div class="course-box">
+                            <div class="course-box-detail claim-disc-content" style="justify-content: start;">
+                              <div class="div-block-2">
+                                <div class="circle-overlay">
+                                   <img src="./assets/pin.png">
+                                </div>
+                                <div class="text-block-2">${matchingDisc.Course}</div>
+                            </div>
+                                <div class="course-image">
                                     <img src="./assets/course-image.png" alt="image">
                                 </div>
                                 <div class="course-list">
                                     <ul>
                                         <li style="border-top: 1px solid var(--primary-grey);">
-                                            <img src="./assets/course-icon1.png" alt="icon">
-                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                            <img src="./assets/tag.png" alt="icon">
+                                            <span">${matchingDisc.Color} ${matchingDisc.Disc}</span>
+                                        </li>
+                                        <li>
+                                            <img src="./assets/user.png" alt="icon">
+                                            <span">${matchingDisc.Name}</span>
                                         </li>
                                         <li>
                                             <img src="./assets/course-icon.png" alt="icon">
-                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Brand}</span>
-                                        </li>
-                                        <li>
-                                            <img src="./assets/Courses_Red_Icon.png" alt="icon">
-                                            <span style="font-weight: 300 !important; opacity: .7 !important;">${matchingDisc.Course}</span>
+                                            <span">${matchingDisc.Brand}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -735,17 +741,18 @@
 
     <div id="popup-verify" class="popup" style="flex-direction: column">
       <div
-        class="popup-content"
+        class="popup-content popup-claim-disc"
         id="popup-verify-content"
         style="margin: unset !important"
       >
         <span class="close" id="close" onclick="closePopupVerify()"
           >&times;</span
         >
-        <h2 style="font-size: 3rem">
+        <h2 style="font-size: 3rem; margin-top: 10px; margin-bottom: 10px;">
           Verify Your <span class="fw-light">INFO</span>
         </h2>
-        <div class="verify-info">
+        <div class="verify-info claim-disc">
+          <div class="box-content-disc d-flex flex-column">
           <div class="verify-row">
             <label>Pickup Date:</label>
             <span id="verifyPickupDate" class="fw-light"></span>
@@ -758,9 +765,10 @@
             <label id="communicationMethodLabel"></label>
             <span id="verifyContactInfoForRelease" class="fw-light"></span>
           </div>
+        </div>
 
           <div
-            class="verify-row mt-4"
+            class="verify-row"
             id="discInfoVerify"
             style="
               color: var(--primary-black) !important;
@@ -778,7 +786,8 @@
         class="d-flex justify-content-center align-items-center mt-2 mb-2"
         style="
           flex-direction: column;
-          width: 100%;
+          width: 90%;
+          max-width: 450px;
           background: transparent;
           justify-content: flex-start;
           margin: auto;
@@ -789,7 +798,7 @@
         </button>
         <button
           class="rememberbtn fw-light"
-          style="width: 65%; max-width: unset"
+          style="width: 90%; max-width: 450px"
           onClick="closePopupVerify()"
         >
           Need to adjust some pickup information
@@ -818,7 +827,7 @@
         </button>
         <button
           class="rememberbtn fw-light"
-          style="width: 65%; max-width: unset; font-weight: 400 !important"
+          style="width: 90%; max-width: 450px; font-weight: 400 !important"
           onClick="closePopupSurrender()"
         >
           Sorry, I want my disc back
