@@ -192,6 +192,10 @@ a {
     margin-top: 15px;
   }
 
+  .course-box .flow-step {
+    margin-top: 35px;
+  }
+
   .course-box-detail .course-image img {
     width: 101px; 
     height: 110px; 
@@ -635,7 +639,7 @@ button.rememberbtn {
   }
 
   .claim-disc-content {
-    justify-content: center;
+    justify-content: end;
   }
 
   .claim-disc .verify-info {
@@ -685,8 +689,8 @@ button.rememberbtn {
   img.weblogo {
     width: 10%;
   }
-  .course-box .course-box-detail {
-    margin-top: -40px;
+  .course-box .claim-disc-content{
+    margin-top: -5px;
   }
 }
 
