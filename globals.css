@@ -273,6 +273,12 @@ footer::before {
   color: var(--primary-white);
 }
 
+@media screen and (max-width: 300px) {
+  .footer-content span {
+    font-size: 12px;
+  }
+}
+
 .footer-content img {
   max-width: 25px;
 }
