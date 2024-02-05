@@ -372,6 +372,7 @@ a {
 @media screen and (max-width: 500px) {
   .btn {
     width: 100%;
+    max-width: 290px;
   }
 
   .neg-margin {
