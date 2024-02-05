@@ -365,6 +365,20 @@ a {
   height: 70px;
 }
 
+.neg-margin {
+  margin-top: -3.5rem;
+}
+
+@media screen and (max-width: 500px) {
+  .btn {
+    width: 100%;
+  }
+
+  .neg-margin {
+    margin-top: -1.5rem;
+  }
+}
+
 .red {
   background-color: var(--primary-red);
 }
@@ -385,6 +399,24 @@ a {
 
 .lessHeight {
   height: unset !important;
+}
+
+.nailedIt {
+  font-size: 7.5rem;
+}
+
+.nailedIt p {
+  font-size: 3rem;
+}
+
+@media screen and (max-width: 500px) {
+  .nailedIt {
+    font-size: 6.5rem;
+  }
+
+  .nailedIt p {
+    font-size: 2rem;
+  }
 }
 
 .secondary-btn {
