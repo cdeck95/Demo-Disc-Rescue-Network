@@ -112,15 +112,6 @@ p.course-name {
   letter-spacing: 1px;
 }
 
-button.rememberbtn {
-  width: 110px;
-  padding: 4px 0;
-  border: none;
-  background-color: var(--primary-blue);
-  color: white;
-  font-size: 14px;
-}
-
 .main-section button.stepbutton:hove {
   background-color: var(--primary-red);
   width: 140px;
@@ -130,16 +121,6 @@ button.rememberbtn {
   font-weight: 500;
   letter-spacing: 1px;
 }
-
-button.rememberbtn {
-  width: 110px;
-  padding: 4px 0;
-  border: none;
-  background-color: var(--primary-blue);
-  color: white;
-  font-size: 14px;
-}
-
 .select-box {
   max-width: 260px;
   margin: 0 auto;
@@ -853,11 +834,6 @@ footer {
 
   .main-section button.stepbutton {
     font-size: 23px;
-  }
-
-  button.rememberbtn {
-    padding: 3px 0;
-    font-size: 18px;
   }
 
   .course-section .row {

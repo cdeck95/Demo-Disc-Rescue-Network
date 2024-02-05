@@ -270,6 +270,20 @@ body {
   margin-bottom: 0px;
 }
 
+h4 {
+  font-size: 3rem;
+}
+
+button.rememberbtn {
+  width: 65%;
+  padding: 4px;
+  border: none;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
 .overlay {
   display: none;
   position: fixed;

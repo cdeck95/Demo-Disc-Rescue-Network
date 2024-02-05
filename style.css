@@ -652,17 +652,6 @@ h4.confirmd {
   border: 2px solid var(--primary-white) !important;
 }
 
-button.rememberbtn {
-  width: 50%;
-  max-width: 200px;
-  padding: 4px;
-  border: none;
-  background-color: var(--primary-blue);
-  color: var(--primary-white);
-  font-size: 14px;
-  letter-spacing: 0.08em;
-}
-
 .verify-info {
   display: flex;
   flex-direction: column;
@@ -744,13 +733,6 @@ button.rememberbtn {
   background-color: var(--primary-red);
   color: var(--primary-white);
 } */
-
-.rememberbtn:hover {
-  cursor: pointer;
-  border: none;
-  background-color: var(--primary-red);
-  color: var(--primary-white);
-}
 
 .wizardbox {
   padding: 25px 0;
