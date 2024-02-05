@@ -346,6 +346,16 @@ footer {
   max-width: 25px;
 }
 
+.btn-container {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 #reverse {
   background-color: var(--primary-blue);
 }
