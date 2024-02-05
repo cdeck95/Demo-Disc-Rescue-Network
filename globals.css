@@ -160,8 +160,8 @@ body {
 }
 
 .fab-menu-item:nth-child(1) {
-  left: -5%;
-  top: 35%;
+  left: -10%;
+  top: 30%;
   transform: translate(-50%, -50);
   color: var(--secondary-blue);
   display: flex;
@@ -192,8 +192,8 @@ body {
 }
 
 .fab-menu-item:nth-child(3) {
-  top: 35%;
-  right: -135px;
+  top: 30%;
+  right: -140px;
   transform: translate(-50%, -50%);
   color: var(--secondary-blue);
   display: flex;
@@ -250,7 +250,7 @@ body {
 
 .logo {
   height: auto;
-  width: 300px;
+  width: 600px;
   margin: auto;
   object-fit: contain;
 }

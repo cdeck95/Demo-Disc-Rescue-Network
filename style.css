@@ -359,7 +359,7 @@ a {
 .btn {
   width: 80%;
   text-align: center;
-  padding: 10px 25px;
+  padding: 13px 25px;
   border: 1px solid var(--primary-border);
   color: var(--primary-white);
   border-radius: 0px;
