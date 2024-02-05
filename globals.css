@@ -269,19 +269,27 @@ body {
   margin-top: 10px;
   margin-bottom: 0px;
 }
+h2 {
+  font-size: 7.5rem;
+}
 
 h4 {
-  font-size: 3rem;
+  font-size: 3rem !important;
 }
 
 button.rememberbtn {
-  width: 65%;
+  width: 50%;
   padding: 4px;
   border: none;
   background-color: var(--primary-blue);
   color: var(--primary-white);
   font-size: 14px;
   letter-spacing: 0.08em;
+}
+
+.secondary-missing-text {
+  color: var(--secondary-blue);
+  font-weight: 500 !important;
 }
 
 .overlay {

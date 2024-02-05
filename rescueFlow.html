@@ -434,6 +434,11 @@
       //   };
       // });
     </script>
+    <style>
+      body {
+        background-color: var(--primary-blue) !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -470,7 +475,7 @@
         </div>
 
         <h3 class="mt-0 mb-3 text-white text-center where">
-          WHERE'D IT GO <span class="missingtext">MISSING?</span>
+          WHERE'D IT GO <span class="secondary-missing-text">MISSING?</span>
         </h3>
 
         <div class="row mb-3 select-box d-flex justify-content-center">
@@ -492,10 +497,12 @@
             </select>
           </div>
         </div>
-        <button class="stepbutton text-white mb-3" onClick="searchDiscs()">
-          NEXT STEP
-        </button>
-        <div class="pb-4">
+        <div class="" style="width: 50%; margin: auto">
+          <button class="stepbutton text-white mb-3" onClick="searchDiscs()">
+            NEXT STEP
+          </button>
+        </div>
+        <div class="" style="width: 50%; margin: auto">
           <button
             class="rememberbtn fw-light white-border"
             onClick="skipStep()"

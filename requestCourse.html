@@ -9,7 +9,6 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-
     <!-- For Apple devices -->
     <link
       rel="apple-touch-icon"
@@ -167,6 +166,7 @@
           "Georgia",
           "Hawaii",
           "Iowa",
+          "Indiana",
           "Kansas",
           "Louisiana",
           "Maine",
@@ -277,41 +277,94 @@
         window.location.href = "/";
       }
 
-      function submitCourse() {
-        // Get the button element
-        var button = document.querySelector(".newsletterButton");
-
-        // Change button text to spinner
-        button.innerHTML =
-          '<i class="fa fa-spinner fa-spin"></i> Processing...';
-
+      function searchCourse() {
         // Get the input value
         const courseInputValue = document.getElementById("inputCourse").value;
         const stateInputValue = document.getElementById("inputState").value;
 
+        if (courseInputValue.toLowerCase() === "select a course") {
+          alert("Please select a course to search.");
+          return;
+        }
+
         // Check if a disc is found (you can modify this condition)
         const disc_found = false; // Change this condition as needed
 
-        // Mimic an API call with a timeout
-        setTimeout(function () {
-          // After timeout, change the button text to checkmark
-          button.innerHTML = '<i class="fa fa-check"></i> Request Submitted';
+        // alert("Implement Search Function.");
 
-          // Optional: Redirect or perform other actions after the "API call"
-          window.location.href = "requestCourse.html";
-        }, 2000); // 2 second delay
+        window.location.href = `searchCourse.html?course=${encodeURIComponent(
+          courseInputValue
+        )}`;
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("inputState")
+          .addEventListener("change", function () {
+            var selectedState = this.value;
+            var filteredCourses;
+
+            // Check if "All" is selected
+            if (selectedState === "All") {
+              // Use the entire courses array
+              filteredCourses = courses;
+            } else {
+              // Apply filtering for a specific state
+              console.log("filtering...");
+              console.log(selectedState);
+              filteredCourses = courses.filter(function (course) {
+                return course.state === selectedState;
+              });
+              console.log(filteredCourses);
+            }
+
+            var courseSelect = document.getElementById("inputCourse");
+            courseSelect.innerHTML = ""; // Clear existing options
+
+            filteredCourses.forEach(function (course) {
+              var option = document.createElement("option");
+              option.textContent = course.name;
+              console.log(course.name);
+              option.value = course.name;
+              courseSelect.appendChild(option);
+            });
+          });
+
+        document
+          .getElementById("inputCourse")
+          .addEventListener("change", function () {
+            var selectedCourseName = this.value;
+
+            if (selectedCourseName === "Course Not Listed") {
+              // Show a popup when "Course Not Listed" is selected
+              alert("Please request a course by providing additional details.");
+              // You can replace the above line with code to show a custom modal/dialog if needed
+            } else {
+              // Existing logic for when a course is selected
+
+              console.log("selected course: " + selectedCourseName);
+              var selectedCourse = courses.find(function (course) {
+                return course.name === selectedCourseName;
+              });
+
+              if (selectedCourse) {
+                document.getElementById("inputState").value =
+                  selectedCourse.state;
+              }
+            }
+          });
+      });
     </script>
   </head>
 
   <body>
     <section class="main-section text-center">
-      <div class="container" id="container">
+      <div class="page-container" id="container">
         <i
           class="fa fa-arrow-left"
           style="
             position: absolute;
-            top: 30px;
+            top: 20px;
             left: 20px;
             font-size: 30px;
             color: white;
@@ -332,50 +385,39 @@
           class="rescue d-flex align-items-center flex-column text-center mt-5 mb-0"
         >
           <h3 class="m-0 text-white">
-            Request A
+            Request a
             <span class="fw-light" style="font-weight: 300 !important"
               >Course</span
             >
           </h3>
         </div>
 
-        <h4
-          class="mt-2 mb-6 text-white text-center where"
-          style="font-weight: 500"
-        >
+        <h4 class="mt-0 mb-6 text-white text-center where">
           What are we
-          <span class="missingtext" style="font-weight: 500">Missing?</span>
+          <span class="missingtext">Missing?</span>
         </h4>
 
-        <div class="row mt-5 mb-3 select-box" style="max-width: 90% !important">
-          <div class="col-4 pe-0 arrow one">
-            <select
-              id="inputState"
-              class="form-select"
-              style="height: 55px !important"
-            >
+        <div class="row mt-5 mb-3 select-box" style="max-width: 80% !important">
+          <div class="col-4 pe-0 arrow one" style="padding-left: 0px">
+            <select id="inputState" class="form-select">
               <option selected>STATE</option>
               <!-- States options will be populated by JavaScript -->
             </select>
           </div>
 
-          <div class="col-8">
-            <input
-              type="text"
-              class="form-control placeholder-text"
-              id="inputCourse"
-              placeholder="Enter A Course"
-              style="height: 55px !important; text-align: left"
-            />
+          <!-- Disc Golf Courses Dropdown -->
+          <div class="col-8 pe-0 arrow">
+            <select id="inputCourse" class="form-select">
+              <option selected>SELECT A COURSE</option>
+              <!-- Courses options will be populated by JavaScript -->
+            </select>
           </div>
         </div>
-        <button
-          class="newsletterButton text-white mt-3 mb-3"
-          style="width: 85%"
-          onClick="submitCourse()"
-        >
-          Request Your Course be Added to the Network
-        </button>
+        <div class="btn-container">
+          <button class="btn red lessHeight" style="font-size: 1rem">
+            This is a demo. Courses cannot be added to the network this way.
+          </button>
+        </div>
       </div>
     </section>
 
