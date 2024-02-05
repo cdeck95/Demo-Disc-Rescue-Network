@@ -568,7 +568,8 @@ h4.confirmd {
 }
 
 .main-section .missingtext {
-  color: var(--primary-red);
+  color: #005daa;
+  text-shadow: 0px 2px 3px #ffffff4f;
 }
 
 .main-section .missingtext-blue {

@@ -94,7 +94,7 @@
       document.addEventListener("DOMContentLoaded", function () {
         var courseNameElement = document.getElementById("courseName");
         if (filter_course.length > 0 && courseNameElement) {
-          courseNameElement.textContent = filter_course[0];
+          courseNameElement.textContent = "@ " + filter_course[0];
         }
       });
 
