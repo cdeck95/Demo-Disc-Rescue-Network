@@ -14,7 +14,7 @@
   --primary-green: #55de1f;
   --table-separator: #dcdcdc;
   --error-red: #ff0000;
-  --primary-border: RGBA(255, 255, 255, 0.8);
+  --primary-border: RGBA(255, 255, 255, 0.2);
   height: 100dvh;
   width: 100dvw;
 }
@@ -254,6 +254,11 @@ body {
   margin: auto;
   object-fit: contain;
 }
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 330px;
+  }
+}
 
 .icon-logo {
   height: auto;
@@ -297,7 +302,7 @@ body {
 }
 
 footer {
-  background-color: var(--secondary-blue);
+  background-color: var(--primary-blue);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -305,21 +310,21 @@ footer {
   padding: 13px 0 9px;
   overflow: visible; /* Ensure pseudo-element is visible outside the bounds */
 }
-footer::before {
+/* footer::before {
   content: "";
   position: absolute;
-  top: -5px; /* Align with the top of the footer */
-  left: 50%; /* Center horizontally */
+  top: -5px;
+  left: 50%;
   transform: translateX(-50%);
-  width: 73px; /* Width of the semi-circle, adjust as needed */
-  height: 50px; /* Height of the semi-circle, adjust as needed */
-  background-color: var(--primary-blue); /* Background color of main-section */
+  width: 73px;
+  height: 50px;
+  background-color: var(--secondary-blue);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  border-bottom-left-radius: 36.5px; /* Half the width, creating a semi-circle */
-  border-bottom-right-radius: 36.5px; /* Half the width, creating a semi-circle */
+  border-bottom-left-radius: 36.5px;
+  border-bottom-right-radius: 36.5px;
   z-index: -1;
-}
+} */
 
 .footer-content .col-2 {
   position: relative;

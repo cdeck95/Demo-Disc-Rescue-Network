@@ -242,7 +242,7 @@ a {
   padding: 10px;
   padding-bottom: 40px;
   margin-bottom: 10px;
-  height: calc(100dvh - 385px);
+  height: calc(100dvh - 430px);
   overflow: hidden;
   overflow-y: auto;
 }
@@ -332,7 +332,7 @@ a {
 }
 
 .main-section {
-  background-color: var(--primary-blue);
+  background-color: var(--secondary-blue);
   height: auto;
   width: 100%;
   min-height: 100%;
@@ -648,7 +648,7 @@ button.rememberbtn {
   width: 50%;
   max-width: 200px;
   padding: 4px;
-  border: 2px solid var(--primary-white);
+  border: none;
   background-color: var(--primary-blue);
   color: var(--primary-white);
   font-size: 14px;
@@ -739,7 +739,7 @@ button.rememberbtn {
 
 .rememberbtn:hover {
   cursor: pointer;
-  border: 2px solid var(--primary-red);
+  border: none;
   background-color: var(--primary-red);
   color: var(--primary-white);
 }
@@ -800,7 +800,7 @@ span.img {
   border-radius: 0;
   padding: 10px 6px;
   font-size: 16px;
-  border: 2px solid var(--secondary-blue);
+  border: none;
   background-image: none;
   position: relative;
   color: var(--primary-blue);
