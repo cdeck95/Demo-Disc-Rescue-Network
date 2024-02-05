@@ -527,10 +527,9 @@ ul li svg {
   background-color: var(--primary-blue);
   position: relative;
   margin: auto;
-  padding: 20px;
   border: 1px solid var(--primary-blue);
   width: 90%;
-  height: 350px;
+  height: auto;
   border-radius: 0px;
   border: 3px solid var(--secondary-blue);
   display: flex;
