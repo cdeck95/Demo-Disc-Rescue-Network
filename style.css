@@ -343,8 +343,10 @@ a {
 }
 
 .main-section .overtext {
-  color: var(--secondary-blue);
-  font-weight: 500 !important;
+  /* color: var(--secondary-blue);
+  font-weight: 500 !important; */
+  color: #005daa;
+  text-shadow: 0px 2px 3px #ffffff4f;
 }
 
 .chat-box h4 {

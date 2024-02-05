@@ -61,6 +61,12 @@
   padding: 30px;
 }
 
+.fab-menu-item-icon {
+  color: var(--primary-white);
+  width: 1rem;
+  height: 1rem;
+}
+
 body {
   font-family: "Bebas Neue", sans-serif;
   /* overflow-y: hidden; */
