@@ -278,6 +278,11 @@
         const courseInputValue = document.getElementById("inputCourse").value;
         const stateInputValue = document.getElementById("inputState").value;
 
+        if (courseInputValue.toLowerCase() === "select a course") {
+          alert("Please select a course to search.");
+          return;
+        }
+
         // Check if a disc is found (you can modify this condition)
         const disc_found = false; // Change this condition as needed
 
@@ -350,12 +355,12 @@
 
   <body>
     <section class="main-section text-center">
-      <div class="container" id="container">
+      <div class="page-container" id="container">
         <i
           class="fa fa-arrow-left"
           style="
             position: absolute;
-            top: 30px;
+            top: 20px;
             left: 20px;
             font-size: 30px;
             color: white;
@@ -366,17 +371,11 @@
         ></i>
         <div class="d-flex align-items-center flex-column text-center mb-2">
           <img
-            class="weblogo"
-            src="./assets/logo.png"
+            class="icon-logo"
+            src="./assets/icon_logo_transparent_fullsize.png"
             alt="logo"
             onclick="refresh()"
           />
-
-          <div class="chat-box d-flex align-items-center mt-3">
-            <img class="me-2" src="./assets/chat.svg" alt="chat" />
-            <h4 class="m-0 me-2 text-white">OPT IN STATUS</h4>
-            <h4 class="m-0 confirmd">CONFIRMED</h4>
-          </div>
         </div>
         <div
           class="rescue d-flex align-items-center flex-column text-center mt-5 mb-0"
@@ -416,13 +415,8 @@
           </div>
         </div>
         <button
-          class="stepbutton text-white mt-3 mb-3"
-          style="
-            padding: 16px 8px;
-            font-size: 16px;
-            max-width: 80%;
-            width: 80% !important;
-          "
+          class="btn red lessHeight"
+          style="font-size: 1rem"
           onClick="searchCourse()"
         >
           Search all discs at the selected course

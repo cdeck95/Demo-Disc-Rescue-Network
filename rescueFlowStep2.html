@@ -231,7 +231,7 @@
     </script>
     <style>
       .select-box {
-        height: 100%;
+        height: auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -257,8 +257,8 @@
         ></i>
         <div class="d-flex align-items-center flex-column text-center mb-3">
           <img
-            class="weblogo"
-            src="./assets/logo.png"
+            class="icon-logo"
+            src="./assets/icon_logo_transparent_fullsize.png"
             alt="logo"
             onclick="refresh()"
           />
@@ -284,7 +284,7 @@
 
         <div
           class="row mb-4 select-box d-flex justify-content-center align-items-center"
-          style="height: 100%"
+          style="height: auto"
         >
           <div class="col-12 col-md-10 col-lg-8" style="padding: 0">
             <!-- <span class="m-0 text-white fw-light" style="font-size: 16px"
@@ -458,7 +458,11 @@
           margin: auto;
         "
       >
-        <button class="stepbutton text-white mt-2 mb-3" style="width: 90%; max-width: 450px" onClick="claimDisc()">
+        <button
+          class="stepbutton text-white mt-2 mb-3"
+          style="width: 90%; max-width: 450px"
+          onClick="claimDisc()"
+        >
           Perfect! Give me my disc back!
         </button>
         <button

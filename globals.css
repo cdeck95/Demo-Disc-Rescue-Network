@@ -1,17 +1,27 @@
-:root {
+:root,
+#root {
   --primary-blue: #005daa;
+  --border-primary-blue: #228de5;
+  --dark-primary: #353535;
   --secondary-blue: #228de5;
   --primary-black: #000000;
-  --primary-red: #d31245;
+  --border-primary-black: #606060;
+  --primary-red: #ef3f3f;
+  --secondary-red: #b90c0c;
+  --border-primary-red: #b90c0c;
   --primary-white: #ffffff;
-  --primary-grey: #e3e3e3;
+  --primary-grey: #f7f7f7;
   --primary-green: #55de1f;
-  font-family: "Bebas Neue", sans-serif;
+  --table-separator: #dcdcdc;
+  --error-red: #ff0000;
+  --primary-border: RGBA(255, 255, 255, 0.8);
+  height: 100dvh;
+  width: 100dvw;
 }
 
 body {
   font-family: "Bebas Neue", sans-serif;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   height: 100dvh;
   width: 100dvw;
   display: flex;
@@ -218,7 +228,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   background: rgba(0, 0, 0, 0.9);
   z-index: 12;
   bottom: -30%;
@@ -226,6 +236,31 @@ body {
 
 .overlay.active {
   display: block;
+}
+
+.select-box {
+  max-width: 600px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.text-blue {
+  color: var(--primary-blue);
+}
+
+.logo {
+  height: auto;
+  width: 300px;
+  margin: auto;
+  object-fit: contain;
+}
+
+.icon-logo {
+  height: auto;
+  width: 100px;
+  margin: 0px;
+  padding: 0px;
+  object-fit: contain;
 }
 
 .logo-fab {
@@ -236,6 +271,23 @@ body {
   padding: 0px;
   object-fit: contain;
   z-index: 12;
+}
+
+.page-container {
+  margin: auto;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  position: relative;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: auto;
+  padding-top: 1.5rem;
+  /* padding-bottom: 80px; */
+  gap: 1rem;
 }
 
 footer {

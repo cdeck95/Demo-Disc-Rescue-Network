@@ -1,24 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 body {
-  background-color: var(--primary-blue);
+  background-color: var(--primary-grey);
 }
-
 .main-wrapper {
   transition: 0.5s;
   right: 0;
   position: relative;
-  height: 100dvh;
+  height: auto;
+  min-height: 100%;
+  padding-top: 1rem;
 }
 
 .main-wrapper.open-sidebar {
   right: 210px;
   transition: 0.5s;
-}
-
-.main-section {
-  background-color: var(--primary-blue);
-  /* padding-bottom: 20px; */
 }
 
 .logo-fab {
@@ -31,13 +27,19 @@ body {
   z-index: 12;
 }
 
-img.weblogo {
-  width: 90px;
-  padding: 20px 0 0;
+ul li svg {
+  margin-right: 10px;
+  padding-left: 0;
+  width: 15px;
+}
+
+.main-section {
+  background-color: var(--primary-grey);
+  padding-top: 1rem;
 }
 
 .main-section .overtext {
-  color: var(--secondary-blue);
+  color: var(--primary-blue);
 }
 
 .chat-box h4 {
@@ -58,14 +60,14 @@ h4.confirmd {
 }
 
 .rescue h3 {
-  font-size: 30px;
+  font-size: 4rem;
   letter-spacing: 0.5px;
 }
 
 p.course-name {
   margin: 0;
-  font-size: 16px;
-  color: var(--primary-white);
+  font-size: 1.5rem;
+  color: var(--primary-blue);
   font-weight: 300;
   letter-spacing: 0.8px;
 }
@@ -76,13 +78,13 @@ p.course-name {
 }
 
 .no-more-discs {
-  color: var(--primary-white);
+  color: var(--primary-blue);
   font-weight: 300;
   font-size: 1rem;
 }
 
 .rescue h3 span {
-  font-weight: 100 !important;
+  font-weight: 300 !important;
   font-family: "Bebas Neue";
 }
 
@@ -128,12 +130,6 @@ button.rememberbtn {
   font-size: 14px;
 }
 
-.container {
-  max-width: 680px;
-  max-height: calc(100dvh - 70px);
-  overflow: hidden;
-}
-
 .select-box {
   max-width: 260px;
   margin: 0 auto;
@@ -164,7 +160,7 @@ button.rememberbtn {
 }
 
 footer {
-  background-color: var(--secondary-blue);
+  background-color: var(--primary-blue);
   position: relative;
 }
 
@@ -222,7 +218,7 @@ footer {
   border: 3px solid var(--secondary-blue);
   background-image: none;
   position: relative;
-  color: var(--secondary-blue);
+  color: var(--primary-blue);
 }
 
 .select-box .arrow {
@@ -235,7 +231,7 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 6px 6px 0 6px;
-  border-color: var(--secondary-blue) transparent transparent transparent;
+  border-color: var(--primary-blue) transparent transparent transparent;
   position: absolute;
   right: 21px;
   top: 15px;
@@ -260,7 +256,7 @@ footer {
   position: relative;
   border: 0;
   background: transparent;
-  color: var(--primary-white);
+  color: var(--primary-blue);
   padding: 0 15px;
 }
 
@@ -272,7 +268,7 @@ footer {
   height: 0;
   border-style: solid;
   border-width: 6px 4px 0 4px;
-  border-color: var(--primary-white) transparent transparent transparent;
+  border-color: var(--primary-blue) transparent transparent transparent;
   top: 43%;
   right: 0;
   transform: translateY(-50%);
@@ -283,7 +279,7 @@ footer {
   right: 0;
   top: 0;
   z-index: 9;
-  height: 100%;
+  height: auto;
   transition: 0.5s;
   border-left: 2px solid var(--primary-red);
   width: 0;
@@ -369,7 +365,7 @@ footer {
   border: 0;
   background: transparent;
   margin-bottom: 15px;
-  height: 100%;
+  height: auto;
   max-height: calc(30dvh - 50px);
 }
 
@@ -379,7 +375,7 @@ footer {
   list-style: none;
   overflow: hidden;
   overflow-y: auto;
-  height: 100%;
+  height: auto;
   max-height: calc(30dvh - 100px);
 }
 
@@ -477,7 +473,7 @@ footer {
   /* border: 1px solid var(--primary-white); */
   border-left: 0;
   width: 160px;
-  max-height: 118px
+  max-height: 118px;
 }
 
 .course-box-detail .course-list ul {
@@ -497,7 +493,7 @@ footer {
   display: flex;
   align-items: center;
   font-size: 12px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: rgb(105, 107, 110);
   font-weight: 600;
   max-height: 33px;
@@ -691,7 +687,7 @@ footer {
   overflow: hidden;
   white-space: nowrap;
   letter-spacing: 0.5px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .course-wrapper {
@@ -741,7 +737,6 @@ footer {
   padding-top: 2px;
   text-decoration: none;
 }
- 
 
 @media only screen and (max-width: 992px) {
   .container {
@@ -754,10 +749,6 @@ footer {
 @media only screen and (max-width: 640px) {
   img.weblogo {
     width: 90px;
-  }
-
-  .rescue h3 {
-    font-size: 34px;
   }
 
   .footer-content {
@@ -894,7 +885,7 @@ footer {
   .course-box .course-box-detail {
     align-items: start;
   }
-   
+
   .course-box-detail .course-list {
     width: calc(100% - 26px);
   }

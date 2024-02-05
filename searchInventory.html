@@ -31,8 +31,8 @@
     <link rel="manifest" href="/site.webmanifest" />
     <title>DRN Inventory - Search All</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./style-2.css" />
     <link rel="stylesheet" href="./globals.css" />
+    <link rel="stylesheet" href="./style-2.css" />
 
     <!-- <link rel="stylesheet" href="./style.css"> -->
     <link
@@ -296,15 +296,15 @@
             '">' +
             '<div class="course-box" style="margin-top: -30px; margin-bottom: 70px">' +
             '<div class="div-block-2">' +
-            '<div class="circle-overlay">' +  
+            '<div class="circle-overlay">' +
             '<img src="./assets/pin.png" alt="icon">' +
-            '</div>' +
+            "</div>" +
             '<div class="text-block-2">' +
             '<div class="course-wrapper">' +
             discs_list[index]["Course"] +
             "</div>" +
             "</div>" +
-            "</div>" +    
+            "</div>" +
             '<div class="course-box-detail">' +
             '<div class="course-image">' +
             '<img src="./assets/course-image.png" alt="image">' +
@@ -321,7 +321,7 @@
             "</span></li>" +
             '<li><img src="./assets/course-icon.png" alt="icon"><span>' +
             discs_list[index]["Brand"] +
-            "</span></li>" +            
+            "</span></li>" +
             "</ul>" +
             '<div class="course-button">' +
             `<a href="#" class="btn-2" onclick="claimDisc('${discs_list[index]["ID"]}')">Claim Disc</a>` +
@@ -392,7 +392,7 @@
   <body style="overflow: hidden">
     <div
       class="main-wrapper"
-      style="height: 100%; width: 100%; overflow: hidden"
+      style="height: auto; width: 100%; overflow: hidden"
     >
       <section
         class="main-section text-center"
@@ -414,8 +414,8 @@
           ></i>
           <div class="d-flex align-items-center flex-column text-center mb-2">
             <img
-              class="weblogo"
-              src="./assets/logo.png"
+              class="icon-logo"
+              src="./assets/full_logo_transparent_1740x300.png"
               alt="logo"
               onclick="refresh()"
             />
