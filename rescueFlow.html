@@ -433,7 +433,7 @@
   </head>
 
   <body>
-    <section class="main-section text-center">
+    <section class="main-section text-center" id="reverse">
       <div class="container" style="margin-top: 40px">
         <i
           class="fa fa-arrow-left"
@@ -492,7 +492,10 @@
           NEXT STEP
         </button>
         <div class="pb-4">
-          <button class="rememberbtn fw-light" onClick="skipStep()">
+          <button
+            class="rememberbtn fw-light white-border"
+            onClick="skipStep()"
+          >
             DON’T REMEMBER
           </button>
         </div>
@@ -536,7 +539,7 @@
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="f-reverse">
       <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
       <div class="container">
         <div class="footer-content row">

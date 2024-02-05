@@ -346,6 +346,18 @@ footer {
   max-width: 25px;
 }
 
+#reverse {
+  background-color: var(--primary-blue);
+}
+
+#f-reverse {
+  background-color: var(--secondary-blue);
+}
+
+.white-border {
+  border: 1px solid var(--primary-white) !important;
+}
+
 .sort-toggle {
   display: flex;
   flex-direction: row;
