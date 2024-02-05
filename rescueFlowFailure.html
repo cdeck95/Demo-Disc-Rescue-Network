@@ -84,6 +84,10 @@
         text-decoration: none;
         cursor: pointer;
       }
+
+      body {
+        height: 100dvh;
+      }
     </style>
     <script>
       function toggleFabMenu() {
@@ -185,7 +189,7 @@
     </script>
   </head>
   <body>
-    <section class="main-section text-center">
+    <section class="main-section text-center" id="reverse">
       <div class="container">
         <i
           class="fa fa-arrow-left"
@@ -211,12 +215,12 @@
         <div
           class="rescue d-flex align-items-center flex-column text-center mb-2"
         >
-          <h3 class="m-0 text-white">
+          <h2 class="m-0 text-white">
             0/10 RESCUE FLOW <span class="fw-light">wizard</span>
-          </h3>
-          <h2 class="m-0 mt-2 text-white">
-            So maybe it's not <span class="overtext">Perfect</span>.
           </h2>
+          <h4 class="m-0 mt-2 text-white">
+            So maybe it's not <span class="overtext">Perfect</span>.
+          </h4>
         </div>
 
         <p class="text-white px-2 mt-4 mb-4" style="font-weight: unset" ;>
@@ -232,7 +236,10 @@
           Report my Disc Lost and Help the Wizard
         </button>
         <div class="pb-5">
-          <button class="rememberbtn fw-light" onclick="goToInventory()">
+          <button
+            class="rememberbtn fw-light white-border"
+            onclick="goToInventory()"
+          >
             Fine, I'll do it myself
           </button>
         </div>
@@ -272,7 +279,7 @@
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="f-reverse">
       <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
       <div class="container">
         <div class="footer-content row">

@@ -70,7 +70,7 @@
 body {
   font-family: "Bebas Neue", sans-serif;
   /* overflow-y: hidden; */
-  height: 100dvh;
+  /* height: 100dvh; */
   width: 100dvw;
   display: flex;
   align-items: center;
@@ -274,7 +274,7 @@ h2 {
 }
 
 h4 {
-  font-size: 3rem !important;
+  font-size: 3rem;
 }
 
 button.rememberbtn {
@@ -327,6 +327,14 @@ button.rememberbtn {
 @media screen and (max-width: 500px) {
   .logo {
     width: 330px;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
   }
 }
 

@@ -229,11 +229,15 @@
         justify-content: center;
         align-items: center;
       }
+
+      body {
+        height: 100dvh;
+      }
     </style>
   </head>
 
   <body>
-    <section class="main-section text-center" id="reverse>
+    <section class="main-section text-center" id="reverse">
       <div class="container" style="margin-top: 40px">
         <i
           class="fa fa-arrow-left"
@@ -266,7 +270,7 @@
         </div>
 
         <h3 class="mt-3 text-white text-center mb-3 where">
-          New Phone, <span class="missingtext">Who Dis?</span>
+          New Phone, <span class="secondary-missing-text">Who Dis?</span>
         </h3>
 
         <div
@@ -288,16 +292,22 @@
           </div>
         </div>
 
-        <button
+         <div
+          class="row mb-3 select-box d-flex justify-content-center"
+          style="margin: auto"
+        >
+          <button
           class="stepbutton text-white mb-3"
           onClick="searchPhoneNumber()"
         >
           Locate My Disc
         </button>
         <div class="pb-5">
-          <button class="rememberbtn fw-light" onClick="skipStep()">
+          <button class="rememberbtn fw-light white-border" onClick="skipStep()">
             Didn't Write One
           </button>
+        </div>
+      </div>
         </div>
       </div>
       <div class="demo-banner">
@@ -325,7 +335,7 @@
         </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="f-reverse">
       <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
       <div class="container">
         <div class="footer-content row">

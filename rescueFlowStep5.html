@@ -47,6 +47,11 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <style>
+      body {
+        height: 100dvh;
+      }
+    </style>
     <script>
       function goBack() {
         if (document.referrer.startsWith(window.location.origin)) {
@@ -275,7 +280,7 @@
   </head>
 
   <body>
-    <section class="main-section text-center">
+    <section class="main-section text-center" id="reverse">
       <div class="container" style="margin-top: 40px">
         <i
           class="fa fa-arrow-left"
@@ -309,7 +314,7 @@
         </div>
 
         <h3 class="mt-3 mb-3 text-white text-center mb-3 where">
-          Shoot for the <span class="missingtext-blue">Moon</span>.
+          Shoot for the <span class="secondary-missing-text">Moon</span>.
           <span class="line-break"></span>
           <span class="smaller-text"
             >Last minute hail mary to save the flow...</span
@@ -333,13 +338,21 @@
           />
         </div>
 
-        <button class="stepbutton text-white mb-3" onclick="searchDiscs()">
-          Show me the discs
-        </button>
-        <div class="pb-5">
-          <button class="rememberbtn fw-light" onclick="skipStep()">
-            This is just sad now
+        <div
+          class="row mb-3 select-box d-flex justify-content-center"
+          style="margin: auto"
+        >
+          <button class="stepbutton text-white mb-3" onclick="searchDiscs()">
+            Show me the discs
           </button>
+          <div class="pb-5">
+            <button
+              class="rememberbtn fw-light white-border"
+              onclick="skipStep()"
+            >
+              This is just sad now
+            </button>
+          </div>
         </div>
       </div>
       <div class="demo-banner">
@@ -381,7 +394,7 @@
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="f-reverse">
       <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
       <div class="container">
         <div class="footer-content row">

@@ -436,7 +436,8 @@
     </script>
     <style>
       body {
-        background-color: var(--primary-blue) !important;
+        /* background-color: var(--primary-blue) !important; */
+        height: 100dvh;
       }
     </style>
   </head>
@@ -497,12 +498,13 @@
             </select>
           </div>
         </div>
-        <div class="" style="width: 50%; margin: auto">
+        <div
+          class="row mb-3 select-box d-flex justify-content-center"
+          style="margin: auto"
+        >
           <button class="stepbutton text-white mb-3" onClick="searchDiscs()">
             NEXT STEP
           </button>
-        </div>
-        <div class="" style="width: 50%; margin: auto">
           <button
             class="rememberbtn fw-light white-border"
             onClick="skipStep()"

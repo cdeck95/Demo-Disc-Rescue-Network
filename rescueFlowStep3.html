@@ -295,11 +295,14 @@
         display: block; /* Ensures this text appears on a new line */
         margin-top: -5px; /* Adjusts the space above this line, set as needed */
       }
+      body {
+        height: 100dvh;
+      }
     </style>
   </head>
 
   <body>
-    <section class="main-section text-center">
+    <section class="main-section text-center" id="reverse">
       <div class="container" style="margin-top: 40px">
         <i
           class="fa fa-arrow-left"
@@ -333,7 +336,7 @@
         </div>
 
         <h3 class="mt-3 text-white text-center mb-3 where">
-          Throw and a <span class="missingtext-blue">Miss</span>.
+          Throw and a <span class="secondary-missing-text">Miss</span>.
           <span class="line-break"></span>
           <span class="smaller-text">Not to worry, Let's keep searching</span>
         </h3>
@@ -388,13 +391,21 @@
           </div>
         </div>
 
-        <button class="stepbutton text-white mb-3" onClick="searchName()">
-          Let's try this again
-        </button>
-        <div class="pb-5">
-          <button class="rememberbtn fw-light" onClick="skipStep()">
-            Didn't write one
+        <div
+          class="row mb-3 select-box d-flex justify-content-center"
+          style="margin: auto"
+        >
+          <button class="stepbutton text-white mb-3" onClick="searchName()">
+            Let's try this again
           </button>
+          <div class="pb-5">
+            <button
+              class="rememberbtn fw-light white-border"
+              onClick="skipStep()"
+            >
+              Didn't write one
+            </button>
+          </div>
         </div>
       </div>
       <div class="demo-banner">
@@ -436,7 +447,7 @@
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="f-reverse">
       <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
       <div class="container">
         <div class="footer-content row">

@@ -343,6 +343,10 @@
     </script>
 
     <style>
+      body {
+        height: 100dvh;
+      }
+
       .input-dropdown-wrapper {
         display: flex;
         align-items: center;
@@ -555,7 +559,7 @@
     </style>
   </head>
   <body>
-    <section class="main-section text-center">
+    <section class="main-section text-center" id="reverse">
       <div class="container" style="margin-top: 40px">
         <i
           class="fa fa-arrow-left"
@@ -589,7 +593,7 @@
         </div>
 
         <h3 class="mt-3 mb-2 text-white text-center mb-3 where">
-          Let's Widen Our <span class="missingtext-blue">Stance</span>.
+          Let's Widen Our <span class="secondary-missing-text">Stance</span>.
           <span class="line-break"></span>
           <span class="smaller-text"
             >We probably just couldn't read the handwriting...</span
@@ -612,14 +616,24 @@
             <!-- More options here -->
           </select>
         </div>
-
-        <button class="stepbutton text-white mb-3 mt-4" onClick="searchDiscs()">
-          Show Me The Discs
-        </button>
-        <div class="pb-5">
-          <button class="rememberbtn fw-light" onClick="skipStep()">
-            Don't Know It
+        <div
+          class="row mb-3 select-box d-flex justify-content-center"
+          style="margin: auto"
+        >
+          <button
+            class="stepbutton text-white mb-3 mt-4"
+            onClick="searchDiscs()"
+          >
+            Show Me The Discs
           </button>
+          <div class="pb-5">
+            <button
+              class="rememberbtn fw-light white-border"
+              onClick="skipStep()"
+            >
+              Don't Know It
+            </button>
+          </div>
         </div>
       </div>
       <div class="demo-banner">
@@ -661,7 +675,7 @@
       </div>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="f-reverse">
       <div class="overlay" id="overlay" onclick="toggleFabMenu()"></div>
       <div class="container">
         <div class="footer-content row">
