@@ -30,7 +30,7 @@ body {
   margin: auto;
   padding: 0;
   max-width: 1300px;
-  background-color: var(--primary-blue);
+  background-color: var(--secondary-blue);
 }
 
 @font-face {
@@ -273,6 +273,12 @@ body {
   z-index: 12;
 }
 
+.course-wrapper {
+  max-width: 95px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page-container {
   margin: auto;
   width: 100%;
@@ -286,7 +292,7 @@ body {
   justify-content: space-evenly;
   overflow: auto;
   padding-top: 1.5rem;
-  /* padding-bottom: 80px; */
+  padding-bottom: 80px;
   gap: 1rem;
 }
 

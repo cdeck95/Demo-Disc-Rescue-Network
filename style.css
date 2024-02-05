@@ -401,7 +401,13 @@ a {
   height: unset !important;
 }
 
-.nailedIt {
+ul li svg {
+  margin-right: 10px;
+  padding-left: 0;
+  width: 15px;
+}
+
+.h2 {
   font-size: 7.5rem;
 }
 
@@ -572,7 +578,7 @@ h4.confirmd {
 }
 
 .rescue h3 {
-  font-size: 3rem;
+  font-size: 7.5rem;
 }
 
 .rescue h3 span {
@@ -582,7 +588,7 @@ h4.confirmd {
 
 .stepbutton {
   background-color: var(--primary-red);
-  width: 80%;
+  width: 90%;
   /* max-width: 200px; */
   padding: 8px 4px;
   border: none;
@@ -840,7 +846,7 @@ span.img {
 
 @media only screen and (max-width: 640px) {
   .rescue h3 {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
 
   .footer-content {
