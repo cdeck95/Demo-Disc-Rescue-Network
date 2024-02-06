@@ -333,9 +333,21 @@ button.rememberbtn {
     font-size: 3rem;
   }
 
+  .bigger-header {
+    font-size: 4.5rem;
+  }
+
   h4 {
     font-size: 1.5rem;
   }
+
+  .sub-header {
+    font-size: 2rem;
+  }
+}
+
+p {
+  text-align: center;
 }
 
 .icon-logo {
