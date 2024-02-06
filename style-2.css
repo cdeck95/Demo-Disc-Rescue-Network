@@ -110,13 +110,14 @@ p.course-name {
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
+  border: 2px solid transparent;
 }
 
 .main-section button.stepbutton:hove {
   background-color: var(--primary-red);
   width: 140px;
   padding: 4px 0;
-  border: none;
+  border: 2px solid transparent;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
