@@ -384,12 +384,12 @@
         <div
           class="rescue d-flex align-items-center flex-column text-center mt-5 mb-0"
         >
-          <h3 class="m-0 text-white">
+          <h2 class="m-0 text-white">
             Request a
             <span class="fw-light" style="font-weight: 300 !important"
               >Course</span
             >
-          </h3>
+          </h2>
         </div>
 
         <h4 class="mt-0 mb-6 text-white text-center where">
@@ -397,7 +397,7 @@
           <span class="missingtext">Missing?</span>
         </h4>
 
-        <div class="row mt-5 mb-3 select-box" style="max-width: 80% !important">
+        <div class="row mt-5 mb-3 select-box">
           <div class="col-4 pe-0 arrow one" style="padding-left: 0px">
             <select id="inputState" class="form-select">
               <option selected>STATE</option>
@@ -413,9 +413,13 @@
             </select>
           </div>
         </div>
-        <div class="btn-container">
-          <button class="btn red lessHeight" style="font-size: 1rem">
-            This is a demo. Courses cannot be added to the network this way.
+        <div class="btn-container-request-course">
+          <button
+            class="btn red lessHeight fullWidth"
+            style="font-size: 1rem"
+            onclick="alert('This is a demo, courses cannot be added this way. Thank you for using the demo!')"
+          >
+            Request your course
           </button>
         </div>
       </div>

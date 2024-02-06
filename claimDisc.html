@@ -351,6 +351,7 @@
       }
 
       function closePopupVerify() {
+        console.log("Closing the popup...");
         var modal = document.getElementById("popup");
         var btnPhone = document.getElementById("choosePhone");
         var btnEmail = document.getElementById("chooseEmail");
@@ -400,12 +401,14 @@
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
           modal.style.display = "none";
+          closePopupVerify();
         };
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
           if (event.target == modal) {
             modal.style.display = "none";
+            closePopupVerify();
           }
         };
 
@@ -594,10 +597,10 @@
           style="padding: 0px !important; flex-wrap: nowrap"
         >
           <button
-            class="btn red text-white mt-3 mb-3"
+            class="btn red white-border-hover text-white mt-3 mb-3"
             style="
               width: 100%;
-              height: 55px !important;
+              min-height: 55px !important;
               font-size: unset !important;
             "
             onClick="verifyInfo()"
@@ -606,8 +609,12 @@
           </button>
 
           <button
-            class="rememberbtn btn blue"
-            style="height: 55px !important; font-size: unset !important"
+            class="btn blue white-border-hover"
+            style="
+              min-height: 55px !important;
+              width: 100%;
+              font-size: unset !important;
+            "
             onClick="surrenderDisc()"
           >
             Surrender Disc
@@ -716,7 +723,9 @@
 
     <div id="popup" class="popup">
       <div class="popup-content">
-        <span class="close" id="close">&times;</span>
+        <span class="close" id="close" onclick="closePopupVerify()"
+          >&times;</span
+        >
         <h2>
           WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF
           COMMUNICATION?
@@ -805,8 +814,12 @@
       </div>
     </div>
 
-    <div id="popup-surrender" class="popup">
-      <div class="popup-content" id="popup-surrender-content">
+    <div id="popup-surrender" class="popup" style="flex-direction: column">
+      <div
+        class="popup-content"
+        id="popup-surrender-content"
+        style="margin: unset !important"
+      >
         <span class="close" id="close" onclick="closePopupSurrender()"
           >&times;</span
         >
@@ -816,17 +829,30 @@
         <p style="font-size: 18px; text-align: left">
           Hi There! Surrendering your disc is just like a donation. This disc
           can be sold by the course to raise funds for things like new tee pads,
-          new baskets or general maintenance. Please confirm below!
+          new baskets or general maintenance.
         </p>
+      </div>
+      <div
+        class="d-flex justify-content-center align-items-center mt-2 mb-2"
+        style="
+          flex-direction: column;
+          width: 90%;
+          max-width: 450px;
+          background: transparent;
+          justify-content: flex-start;
+          margin: auto;
+        "
+      >
         <button
-          class="stepbutton text-white mt-2 mb-3"
+          class="stepbutton red text-white mt-2 mb-3 no-border"
           onClick="surrenderDiscConfirm()"
+          style="font-size: 1rem"
         >
           Yes, please donate my disc to the course!
         </button>
         <button
-          class="rememberbtn fw-light"
-          style="width: 90%; max-width: 450px; font-weight: 400 !important"
+          class="rememberbtn fw-light blue no-border-1"
+          style="width: 80%; max-width: 450px; font-weight: 300 !important"
           onClick="closePopupSurrender()"
         >
           Sorry, I want my disc back

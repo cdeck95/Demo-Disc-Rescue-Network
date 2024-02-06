@@ -427,11 +427,36 @@ footer {
 .btn-container {
   width: 100%;
   height: auto;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.btn-container-request-course {
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.min-height-35 {
+  min-height: 35dvh;
+}
+
+.no-border {
+  border: 2px solid transparent;
+}
+
+.no-border-1 {
+  border: 1px solid transparent !important;
+}
+
+.no-border-1:hover {
+  border: 1px solid var(--primary-white) !important;
 }
 
 #reverse {
