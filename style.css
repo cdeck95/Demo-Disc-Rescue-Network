@@ -679,7 +679,9 @@ h4.confirmd {
     text-align: start;
     margin-top: 15px;
     display: flex;
-    width: 90%;
+    padding: 15px 30px !important;
+
+    /* width: 90%; */
   }
 
   .claim-disc-content {

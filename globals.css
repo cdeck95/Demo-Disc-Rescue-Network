@@ -80,6 +80,7 @@ body {
   padding: 0;
   max-width: 1300px;
   background-color: var(--secondary-blue);
+  text-align: center;
 }
 
 @font-face {
