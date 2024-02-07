@@ -418,6 +418,19 @@
       }
 
       function closePopupVerify() {
+        console.log("Closing the popup...");
+        var modal = document.getElementById("popup");
+        var btnPhone = document.getElementById("choosePhone");
+        var btnEmail = document.getElementById("chooseEmail");
+        var span = document.getElementById("close");
+
+        // Open the modal
+        modal.style.display = "flex";
+        document.getElementById("inputPhone").style.display = "block";
+        document.getElementById("inputEmail").style.display = "none !important";
+        modal.style.display = "none";
+        communicationMethodLabel.textContent = "Phone Number For Release: ";
+        communicationMethod = "phone";
         var popupVerify = document.getElementById("popup-verify");
         popupVerify.style.display = "none";
       }
@@ -516,12 +529,14 @@
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
           modal.style.display = "none";
+          closePopupVerify();
         };
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
           if (event.target == modal) {
             modal.style.display = "none";
+            closePopupVerify();
           }
         };
 
@@ -926,7 +941,7 @@
     <div id="popup" class="popup">
       <div class="popup-content">
         <span class="close" id="close">&times;</span>
-        <h2>
+        <h2 style="margin-left: 5px; margin-right: 5px">
           WHAT IS YOUR <span class="redText">PREFERRED</span> METHOD OF
           COMMUNICATION?
         </h2>
