@@ -532,23 +532,23 @@ ul li svg {
 
 /* Popup Content */
 .popup-content {
-  max-width: 650px;
-  background-color: var(--primary-blue);
-  position: relative;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid var(--primary-blue);
-  width: 90%;
-  height: auto;
-  border-radius: 0px;
-  border: 3px solid var(--secondary-blue);
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  height: auto;
+  max-width: 650px;
   max-height: 700px;
-  /* min-height: 485px; */
+  background-color: var(--primary-blue);
+  position: relative;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid var(--primary-blue);
+  border-radius: 0px;
+  border: 3px solid var(--secondary-blue);
+  overflow-y: auto;
 }
 
 .popup-claim-disc {
