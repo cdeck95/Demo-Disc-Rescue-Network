@@ -807,6 +807,21 @@ span.img {
   height: 50px !important;
 }
 
+.select-box input {
+  border-radius: 0;
+  padding: 10px 6px;
+  font-size: 16px;
+  border: none;
+  background-image: none;
+  position: relative;
+  color: var(--primary-blue);
+  height: 50px !important;
+}
+
+.select-box input::placeholder {
+  color: var(--primary-blue);
+}
+
 .select-box .arrow {
   position: relative;
 }
