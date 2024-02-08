@@ -132,6 +132,38 @@
         .addEventListener("change", function () {
           validateContact(this.value);
         });
+
+      function signUp() {
+        var input = document.getElementById("inputContact").value;
+        var errorMessageElement = document.getElementById("error");
+        var successMessageElement = document.getElementById("success");
+        var submitButton = document.getElementById("submitButton");
+
+        // Regular expression for validating an email address
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        // Regular expression for validating a phone number (basic validation)
+        var phonePattern = /^[0-9]{10,15}$/;
+
+        if (emailPattern.test(input)) {
+          console.log("Input is an email address.");
+          errorMessageElement.style.display = "none";
+          successMessageElement.style.display = "block";
+          submitButton.style.display = "none";
+        } else if (phonePattern.test(input)) {
+          console.log("Input is a phone number.");
+          errorMessageElement.style.display = "none";
+          successMessageElement.style.display = "block";
+          submitButton.style.display = "none";
+        } else {
+          console.log("Input is neither a valid email nor a phone number.");
+          errorMessageElement.textContent =
+            "Please enter a valid email or phone number.";
+          errorMessageElement.style.display = "block";
+          successMessageElement.style.display = "none";
+          submitButton.style.display = "block";
+        }
+      }
     </script>
   </head>
 
@@ -162,52 +194,52 @@
         <div
           class="rescue d-flex align-items-center flex-column text-center mb-2"
         >
-          <h1 class="m-0 text-white" style="font-size: 3rem">Coming Soon</h1>
+          <h2 class="m-0 text-white">Coming Soon</h2>
         </div>
 
-        <h4
-          class="mt-3 text-white text-center mb-4 where"
-          style="font-size: 1.5rem"
-        >
-          In the meantime, let's talk about what else is coming! <br />
-          <br />
-          Not all discs will be claimed, but they can still be rescued! The DRN
-          Shop will bring quality, affordable discs for purchase. <br />
+        <h4 class="mt-3 text-white text-center mb-4 where">
+          In the meantime, let's talk about what else is coming! Not all discs
+          will be claimed, but they can still be rescued! The DRN Shop will
+          bring quality, affordable discs for purchase. <br />
           <br />
           <span class="text-white"
             >Get notified when we launch for
-            <span
-              style="
-                text-decoration: underline;
-                font-weight: bold;
-                color: var(--secondary-blue);
-              "
-              >20% off</span
-            >
+            <span style="text-decoration: underline">20% off</span>
             your first order!</span
           >
         </h4>
 
-        <div
-          class="d-flex align-items-center flex-column text-center mt-4 mb-2"
-          style="width: 100%"
-        >
-          <div
+       <div
             class="d-flex align-items-center flex-column text-center mb-0"
             style="width: 100%"
           >
             <input
               type="text"
               class="form-control"
+              style="max-width: 610px !important"
               id="inputContact"
               placeholder="Phone Number or Email for Notification"
             />
-          </div>
-        </div>
+            <div
+              id="error"
+              style="color: var(--primary-red); display: none"
+            ></div>
+            <div
+              id="success"
+              style="color: var(--primary-green); display: none"
+            >
+              This is a demo. If you would like to opt in, visit our website <a href="https://www.discrescuenetwork.com" style="text-decoration: underline; color: var(--primary-white);">here</a>
+            </div>
 
-        <button class="btn red text-white mb-3" onClick="searchPhoneNumber()">
-          Get notified when the deals are live
-        </button>
+        <div class="btn-container">
+          <button
+            class="newsletterButton red text-white mt-2 mb-3"
+            style="width: 90%"
+            onClick="signUp()"
+          >
+            Get notified when the deals are live
+          </button>
+        </div>
       </div>
     </section>
 
